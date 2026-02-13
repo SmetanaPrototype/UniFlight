@@ -1,0 +1,30 @@
+{
+  "name": "falcon",
+  "block_number": 2,
+  "payload_mass": 22200,
+  "block_mass": [
+    442000,
+    117000
+  ],
+  "components_ratio": 2.56,
+  "thrust_ratio": 0.4,
+  "exhaust_velocity": [
+    3100,
+    3480
+  ],
+  "thrust": [
+    7607000,
+    934000
+  ],
+  "structural_values": [
+    18,
+    25
+  ],
+  "integration_step": 1,
+  "fuel": "RP-1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    0.7936738379616926,
+    0.11953919670201826
+  ]
+}

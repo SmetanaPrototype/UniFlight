@@ -1,0 +1,30 @@
+{
+    "name": "epsilon",
+    "block_number": 2,
+    "payload_mass": 1500,
+    "block_mass": [
+        75000,
+        28000
+    ],
+    "components_ratio": 0.75,
+    "thrust_ratio": 0.5,
+    "exhaust_velocity": [
+        2800,
+        2950
+    ],
+    "thrust": [
+        2150000,
+        445000
+    ],
+    "structural_values": [
+        12,
+        15
+    ],
+    "integration_step": 1,
+    "fuel": "HTPB",
+    "oxidizer": "AP",
+    "attack_coefs": [
+        3.0,
+        0.1
+    ]
+}
