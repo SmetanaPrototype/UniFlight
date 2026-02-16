@@ -31,3 +31,4 @@ The thirt attempt to make an universal application for rocket flight.
     4 reusable stages
     5 shuttles
     6 AI
+    7 Fix frequency issue (mass)

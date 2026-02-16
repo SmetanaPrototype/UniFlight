@@ -41,8 +41,7 @@ Csw_list = [[] for _ in range(constants.mode_num)]
 Csy_list = [[] for _ in range(constants.mode_num)]
 Csb_list = [[] for _ in range(constants.mode_num)]
 
-rocket = "master"
-parser = rp.rocket_parser(path.rocket_lib + rocket + ".json")
+parser = rp.rocket_parser("falcon")
 
 # Диапазоны коэффициентов согласно требованиям
 COEF1_RANGE = (0.1, 4.5)  # Первый коэффициент: 0.1 - 4.5
