@@ -20,7 +20,6 @@
     19.9,
     17.6
   ],
-  "integration_step": 2,
   "fuel": "UDMH",
   "oxidizer": "N2O4",
   "attack_coefs": [

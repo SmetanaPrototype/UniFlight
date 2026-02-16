@@ -43,10 +43,11 @@ class rocket_parser:
         self.exhaust_velocity = r_data['exhaust_velocity']
         self.thrust = r_data['thrust']
         self.structural_values = r_data['structural_values']
-        self.interstep = r_data['integration_step']
         self.fuel = r_data['fuel']
         self.oxidizer = r_data['oxidizer']
         self.attack_coefs = r_data['attack_coefs']
+
+        self.L_vector_new = []
 
         # handled data
         self.full_mass = self.payload_mass + sum(self.block_mass)
@@ -64,7 +65,7 @@ class rocket_parser:
 
     def _initialize_distributed_arrays(self):
         """Инициализация массивов распределенных параметров"""
-        self.lengths = self.distr_data['length']
+        self.asc_length = self.distr_data['length']
         self.diameters = self.distr_data['diameter']
         self.masses = self.distr_data['mass']
         self.stiffnesses = self.distr_data['stiffness']
@@ -104,11 +105,10 @@ class rocket_parser:
         area_vector = []
         mass_vector = []
         rocket_volume = 0
-        step = 0.1
+        step = constants.lenstep
         len_t = 0
 
         # Новые векторы для дискретизации
-        L_vector_new = []
         L_vector_sum_new = []
         D_vector_new = []
         m_vector_new = []
@@ -195,14 +195,15 @@ class rocket_parser:
 
             element_len = 0
 
-            while element_len < L - step/2:
+            target_length = L
+            while element_len < target_length - 1e-10:
                 current_pos = len_t + element_len
 
                 D_current = D_vector.iloc[i] + d_delta * element_len
                 mass_per_length = mass_vector[i] / L if L > 0 else 0
                 mass_element = mass_per_length * step * (D_current/self.max_diameter if self.max_diameter > 0 else 1)
 
-                L_vector_new.append(step)
+                self.L_vector_new.append(step)
                 L_vector_sum_new.append(current_pos)
                 D_vector_new.append(D_current)
                 m_vector_new.append(mass_element)
@@ -213,9 +214,14 @@ class rocket_parser:
 
                 element_len += step
 
+                if element_len > target_length:
+                    remaining = target_length - (element_len - step)
+                    if remaining > 1e-10:
+                        pass
+                    break
+
             current_position_from_nose += L
             len_t += L
-
         # Сохраняем координаты последней ступени
         if current_stage is not None:
             stage_coords[current_stage] = {
@@ -274,7 +280,7 @@ class rocket_parser:
 
         # Создание DataFrame с результатами
         new_data = {
-            'step': L_vector_new,
+            'step': self.L_vector_new,
             'length': L_vector_sum_new,
             'diameter': D_vector_new,
             'area': A_vector_new,
@@ -318,8 +324,8 @@ class rocket_parser:
         m = self.propellant_mass[1]
         t = 0
         while m > 0:
-            m -= self.delta_mass[1]*self.interstep
-            t +=self.interstep
+            m -= self.delta_mass[1]*constants.timestep
+            t +=constants.timestep
         print(t)
         print(self.work_time[1])
 
@@ -379,33 +385,34 @@ class rocket_parser:
                     break
 
             if current_stage is not None:
-                current_mass -= self.delta_mass[current_stage] * self.interstep
-                self.static_moment -=constants.calculate_static (self.delta_mass_fu[i], self.fuel_coordinates[i].end + self.fuel_coordinates[i].end-self.delta_level_fu[i])* self.interstep
-                self.static_moment -=constants.calculate_static (self.delta_mass_ox[i], self.oxidyzer_coordinates[i].end + self.oxidyzer_coordinates[i].end-self.delta_level_ox[i])* self.interstep
-                self.inertia_moment-=constants.calculate_inertia(self.delta_mass_fu[i], self.fuel_coordinates[i].end + self.fuel_coordinates[i].end-self.delta_level_fu[i], self.fuel_coordinates[i].end - self.fuel_coordinates[i].end-self.delta_level_fu[i], self.max_diameter)* self.interstep
-                self.inertia_moment-=constants.calculate_inertia(self.delta_mass_ox[i], self.oxidyzer_coordinates[i].end + self.oxidyzer_coordinates[i].end-self.delta_level_ox[i], self.fuel_coordinates[i].end - self.fuel_coordinates[i].end-self.delta_level_fu[i], self.max_diameter)* self.interstep
+                current_mass -= self.delta_mass[current_stage] * constants.timestep
+                self.static_moment -=constants.calculate_static (self.delta_mass_fu[i], self.fuel_coordinates[i].end + self.fuel_coordinates[i].end-self.delta_level_fu[i])* constants.timestep
+                self.static_moment -=constants.calculate_static (self.delta_mass_ox[i], self.oxidyzer_coordinates[i].end + self.oxidyzer_coordinates[i].end-self.delta_level_ox[i])* constants.timestep
+                self.inertia_moment-=constants.calculate_inertia(self.delta_mass_fu[i], self.fuel_coordinates[i].end + self.fuel_coordinates[i].end-self.delta_level_fu[i], self.fuel_coordinates[i].end - self.fuel_coordinates[i].end-self.delta_level_fu[i], self.max_diameter)* constants.timestep
+                self.inertia_moment-=constants.calculate_inertia(self.delta_mass_ox[i], self.oxidyzer_coordinates[i].end + self.oxidyzer_coordinates[i].end-self.delta_level_ox[i], self.fuel_coordinates[i].end - self.fuel_coordinates[i].end-self.delta_level_fu[i], self.max_diameter)* constants.timestep
                 thrust = self.thrust[i]
-                prop_test[current_stage] += self.delta_mass[current_stage] * self.interstep
+                prop_test[current_stage] += self.delta_mass[current_stage] * constants.timestep
                 thrust = self.thrust[current_stage]
                 cent = self.static_moment / current_mass
 
             for i in range(self.block_number):
                 if not stage_dropped[i] and time >= stage_separation_times[i]:
+                    print(self.structural_mass[i])
                     current_mass -= self.structural_mass[i]
                     self.static_moment -=constants.calculate_static (self.structural_mass[i],self.structural_coordinates[i].end + self.structural_coordinates[i].start)
                     self.inertia_moment-=constants.calculate_inertia(self.structural_mass[i],self.structural_coordinates[i].end + self.structural_coordinates[i].start, self.structural_coordinates[i].length, self.max_diameter)
                     stage_dropped[i] = True
-                    stage_dropped[i] = True
-                    print(f"Отделена {i+1}-я ступень в t={time} с, расчетное время: {stage_separation_times[i]}")
+                    print(f"Отделена {i+1}-я ступень в t={time} с, расчетное время: {stage_separation_times[i]} c, текущая масса: {current_mass}")
 
             self.mass_vector.append(current_mass)
             self.time_vector.append(time)
             self.thrust_vector.append(thrust)
             self.center_vector.append(cent)
-            time += self.interstep
+            time += constants.timestep
 
-    def get_interstep(self):
-        return self.interstep
+    def get_step_length(self):
+        self.L_vector_new[0] = 0
+        return self.L_vector_new
 
     def get_work_time(self):
         return self.work_time

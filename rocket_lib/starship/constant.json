@@ -20,7 +20,6 @@
     18,
     12
   ],
-  "integration_step": 1,
   "fuel": "CH4",
   "oxidizer": "LOX",
   "attack_coefs": [

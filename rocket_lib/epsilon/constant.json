@@ -20,7 +20,6 @@
         12,
         15
     ],
-    "integration_step": 1,
     "fuel": "HTPB",
     "oxidizer": "AP",
     "attack_coefs": [
