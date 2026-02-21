@@ -41,7 +41,8 @@ Csw_list = [[] for _ in range(constants.mode_num)]
 Csy_list = [[] for _ in range(constants.mode_num)]
 Csb_list = [[] for _ in range(constants.mode_num)]
 
-parser = rp.rocket_parser("falcon")
+rocketname = "falcon"
+parser = rp.rocket_parser(rocketname)
 
 # Диапазоны коэффициентов согласно требованиям
 COEF1_RANGE = (0.1, 4.5)  # Первый коэффициент: 0.1 - 4.5
@@ -54,62 +55,21 @@ TARGET_ALTITUDE_MAX = 210000
 TARGET_ANGLE_RANGE = 6
 TARGET_FINAL_ATTACK_MIN = 1  # Минимальный финальный угол атаки
 
-
-def read_forms_from_csv(filename):
-    # Инициализация массивов нулями
-    f_stiffness = [[0], [0], [0]]
-    f_stiffness_diff = [[0], [0], [0]]
-
-    try:
-        df = pd.read_csv(filename)
-
-        column_f = [None] * constants.mode_num
-        column_df = [None] * constants.mode_num
-        column_c = [None]
-
-        column_f[0] = df["form_1"]
-        column_f[1] = df["form_2"]
-        column_f[2] = df["form_3"]
-
-        column_df[0] = df["difform_1"]
-        column_df[1] = df["difform_2"]
-        column_df[2] = df["difform_3"]
-
-        column_c = df["length"]
-
-        for i in range(constants.mode_num):
-            f_stiffness[i] = column_f[i].to_numpy()
-            f_stiffness_diff[i] = column_df[i].to_numpy()
-
-    except FileNotFoundError:
-        print(f"Файл {filename} не найден")
-    except Exception as e:
-        print(f"Ошибка при чтении файла {filename}: {e}")
-
-    return f_stiffness, f_stiffness_diff, column_c
-
-def read_freqmass_from_csv(filename):
-    time_vector = []
-    freqmass_vector = []
-
-    try:
-        df = pd.read_csv(filename)
-
-        time_vector = df["time"]
-        freqmass_vector = df["freq_mass_1"]
-
-    except FileNotFoundError:
-        print(f"Файл {filename} не найден")
-    except Exception as e:
-        print(f"Ошибка при чтении файла {filename}: {e}")
-
-    return time_vector, freqmass_vector
-
 f_stiffness = [0] * constants.mode_num
 f_stiffness_diff = [0] * constants.mode_num
-f_stiffness, f_stiffness_diff, coord_stiffness = read_forms_from_csv("output/Master_oscillations.csv")
-freq_time, freq_mass = read_freqmass_from_csv("output/Master_frequency.csv")
 
+oscillations_file = "output/"+rocketname+"_oscillations.csv"
+f_stiffness[0]      = constants.read_array_from_csv(oscillations_file, "form_1")
+f_stiffness[1]      = constants.read_array_from_csv(oscillations_file, "form_2")
+f_stiffness[2]      = constants.read_array_from_csv(oscillations_file, "form_3")
+f_stiffness_diff[0] = constants.read_array_from_csv(oscillations_file, "difform_1")
+f_stiffness_diff[1] = constants.read_array_from_csv(oscillations_file, "difform_2")
+f_stiffness_diff[2] = constants.read_array_from_csv(oscillations_file, "difform_3")
+coord_stiffness     = constants.read_array_from_csv(oscillations_file, "length")
+
+freq_file = "output/"+rocketname+"_frequency.csv"
+freq_times = constants.read_array_from_csv(freq_file, "time")
+freq_mass  = constants.read_array_from_csv(freq_file, "freq_mass_1")
 
 def check_target_achieved(final_velocity, final_altitude, final_angle, final_attack):
     """Проверяет, достигнуты ли целевые параметры"""
@@ -330,7 +290,7 @@ def run_simulation_and_evaluate_detailed(coefs):
         fall_event.direction = -1
 
         ft = parser.get_full_time()
-        h = parser.interstep
+        h = constants.timestep
         t_span = (0, min(ft - 1, 800))  # Увеличил максимальное время
 
         # Улучшенные начальные условия
@@ -658,7 +618,7 @@ def final_simulation_with_coefficients(coefs, description=""):
     fall_event.direction = -1
 
     ft = parser.get_full_time()
-    h = parser.interstep
+    h = constants.timestep
     t_span = (0, min(ft - 1, 800))
     y0 = [0, math.pi / 2, 10.0, 100.0, 0.1]
 

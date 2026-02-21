@@ -432,6 +432,12 @@ class rocket_parser:
     def get_coordinates_ox(self):
         return self.oxidyzer_coordinates
 
+    def get_full_time(self):
+        return self.full_time
+
+    def get_diameters(self):
+        return self.diameters
+
 # r = rocket_parser("falcon")
 # print(f"Rocket name: {r.name}")
 

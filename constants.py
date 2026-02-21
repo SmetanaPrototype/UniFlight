@@ -3,6 +3,7 @@ import numpy as np
 import math
 import os
 import csv
+import pandas as pd
 
 acceleration_of_gravity = 9.81
 earth_radius = 6371000
@@ -70,3 +71,18 @@ def write_arrays_to_csv(filename, **arrays):
            row = [arrays[name][i] for name in headers]
            writer.writerow(row)
    print(f"Data was moved to '{filename}'.")
+
+
+def read_array_from_csv(filename, arrayname):
+    try:
+        df = pd.read_csv(filename)
+
+        column_c  = [None]
+        column_c = df[arrayname]
+
+    except FileNotFoundError:
+        print(f"Файл {filename} не найден")
+    except Exception as e:
+        print(f"Ошибка при чтении файла {filename}: {e}")
+
+    return column_c
