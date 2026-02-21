@@ -1,0 +1,29 @@
+{
+  "name": "zenit",
+  "block_number": 2,
+  "payload_mass": 15000,
+  "block_mass": [
+    466000,
+    45000
+  ],
+  "components_ratio": 2.6,
+  "thrust_ratio": 0.5,
+  "exhaust_velocity": [
+    3370,
+    3490
+  ],
+  "thrust": [
+    8180000,
+    991500
+  ],
+  "structural_values": [
+    12,
+    10
+  ],
+  "fuel": "RP-1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    3.68880768,
+    0.21378464
+  ]
+}
