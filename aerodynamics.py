@@ -89,10 +89,17 @@ class Geometry:
             e.lower_area = self.PI * (e.lower_diameter / 2) ** 2
 
             try:
-                e.virtual_length = e.elem_length + e.elem_length / (
-                    e.lower_diameter / e.upper_diameter - 1
-                )
-            except ZeroDivisionError:
+                if e.upper_diameter != 0:
+                    ratio = e.lower_diameter / e.upper_diameter
+                    denominator = ratio - 1
+
+                    if abs(denominator) > 1e-10:
+                        e.virtual_length = e.elem_length + e.elem_length / denominator
+                    else:
+                        e.virtual_length = e.elem_length
+                else:
+                    e.virtual_length = e.elem_length
+            except Exception as e:
                 e.virtual_length = e.elem_length
 
             self.full_length += e.elem_length

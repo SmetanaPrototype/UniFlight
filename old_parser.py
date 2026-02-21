@@ -335,16 +335,16 @@ class rocket_parser:
     def vector_thrust(self):
         return self.thrust_vector
 
-    def get_mass_from_time(self, time):
-        for k in range(len(self.time_vector)):
-            if abs(self.time_vector[k] - time) < self.interstep:
-                return self.mass_vector[k]
-        return None
-
     def get_thrust_from_time(self, time):
         for k in range(len(self.time_vector)):
             if abs(self.time_vector[k] - time) < self.interstep:
                 return self.thrust_vector[k]
+        return None
+
+    def get_mass_from_time(self, time):
+        for k in range(len(self.time_vector)):
+            if abs(self.time_vector[k] - time) < self.interstep:
+                return self.mass_vector[k]
         return None
 
     def get_inertia_from_time(self, time):

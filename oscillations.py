@@ -240,7 +240,7 @@ for mo, mass in enumerate(ver_mass_vector):
 
        f_start = f_zero[index]
        tolerance = 1e-8
-       for i in range(100):
+       while(True):
            m_f1 = calculate_multi(mass, f_start)
            sum_m_f1 = calculate_sum(m_f1)
 
@@ -307,6 +307,8 @@ for mo, mass in enumerate(ver_mass_vector):
 
            mass_s[index] = sum_mf_12[-1] *1000
            f_start = f_stiffness_res
+           if max(abs(f_stiffness_res[i] - f_start[i]) for i in range(len(f_start))) < tolerance:
+                break
 
        return f_stiffness_res
    #################################################################

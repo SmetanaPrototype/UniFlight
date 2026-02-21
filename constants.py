@@ -77,7 +77,7 @@ def read_array_from_csv(filename, arrayname):
     try:
         df = pd.read_csv(filename)
         if arrayname in df.columns:
-            column_c = df[arrayname]
+            column_c = df[arrayname].tolist()
             return column_c
         else:
             print(f"Столбец '{arrayname}' не найден в файле {filename}")

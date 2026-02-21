@@ -1,17 +1,14 @@
 import rocket_parser as rp
 import constants
-import csv
-import os
 import path
 import atmosphere as atmo
 import aerodynamics as aero
 import attack
 import json
 import warnings
-from collections import deque
 import matplotlib.pyplot as plt
-import numpy as np
-import pandas as pd
+import math
+from scipy.integrate import solve_ivp
 
 # Глобальные переменные для хранения лучших коэффициентов
 best_coefficients = None
@@ -68,7 +65,7 @@ f_stiffness_diff[2] = constants.read_array_from_csv(oscillations_file, "difform_
 coord_stiffness     = constants.read_array_from_csv(oscillations_file, "length")
 
 freq_file = "output/"+rocketname+"_frequency.csv"
-freq_times = constants.read_array_from_csv(freq_file, "time")
+freq_time = constants.read_array_from_csv(freq_file, "time")
 freq_mass  = constants.read_array_from_csv(freq_file, "freq_mass_1")
 
 def check_target_achieved(final_velocity, final_altitude, final_angle, final_attack):
@@ -341,7 +338,38 @@ def run_simulation_and_evaluate_detailed(coefs):
             return 1000.0, None, None
 
     except Exception as e:
-        print(f"❌ Ошибка в симуляции: {e}")
+        import traceback
+        import sys
+
+        print(f"\n❌ ПОДРОБНАЯ ИНФОРМАЦИЯ ОБ ОШИБКЕ:")
+        print(f"   Тип ошибки: {type(e).__name__}")
+        print(f"   Сообщение: {str(e)}")
+        print(f"   Коэффициенты: {coefs}")
+
+        print(f"\n   Трассировка стека:")
+        exc_type, exc_value, exc_traceback = sys.exc_info()
+        traceback_details = traceback.extract_tb(exc_traceback)
+
+        for i, frame in enumerate(traceback_details):
+            filename = frame.filename.split('\\')[-1]
+            print(f"   {i+1}. Файл: {filename}, строка: {frame.lineno}, функция: {frame.name}")
+            if frame.line:
+                print(f"      Код: {frame.line}")
+
+        print(f"\n   Контекст ошибки:")
+        try:
+            if 't' in locals():
+                print(f"      t (время): {t}")
+            if 'vars' in locals():
+                print(f"      vars (состояние): {vars}")
+            if 'self' in locals() and hasattr(locals()['self'], 'mass'):
+                print(f"      масса: {locals()['self'].mass}")
+            if 'self' in locals() and hasattr(locals()['self'], 'vel'):
+                print(f"      скорость: {locals()['self'].vel}")
+            if 'self' in locals() and hasattr(locals()['self'], 'alt'):
+                print(f"      высота: {locals()['self'].alt}")
+        except:
+            pass
         return 1000.0, None, None
 
 
@@ -924,7 +952,7 @@ class ballistics:
 def output(parser):
     """Сохранение результатов в файл"""
     rocketname = parser.name
-    write_arrays_to_csv(
+    constants.write_arrays_to_csv(
         "output/" + rocketname + "_dynamic_coefs.csv",
         time=time_list,
         wind=wind_list,
@@ -950,29 +978,9 @@ def output(parser):
     )
 
 
-def write_arrays_to_csv(filename, **arrays):
-    """Запись массивов в CSV файл"""
-    if not arrays:
-        raise ValueError("Array is required.")
-
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
-
-    headers = list(arrays.keys())
-    max_length = min(len(arr) for arr in arrays.values())
-
-    with open(filename, "w", newline="", encoding="utf-8") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(headers)
-        for i in range(max_length):
-            row = [arrays[name][i] for name in headers]
-            writer.writerow(row)
-
-    print(f"Data was moved to '{filename}'.")
-
-
 def update_rocket_json(new_coefficients):
     """Обновляет коэффициенты в JSON файле ракеты"""
-    json_path = path.rocket_lib + rocket + ".json"
+    json_path = path.rocket_lib + rocketname + "constant.json"
 
     try:
         with open(json_path, "r", encoding="utf-8") as file:

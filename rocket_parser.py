@@ -47,7 +47,7 @@ class rocket_parser:
         self.oxidizer = r_data['oxidizer']
         self.attack_coefs = r_data['attack_coefs']
 
-        self.L_sec_vector_new = []
+        self.Length_secs  = []
         self.Length_parts = []
 
         # handled data
@@ -65,7 +65,7 @@ class rocket_parser:
         self._calculate_flight_dynamics()
 
     def _initialize_distributed_arrays(self):
-        """Инициализация массивов распределенных параметров"""
+        """Distributed parameters initialization"""
         self.asc_length = self.distr_data['length']
         self.diameters = self.distr_data['diameter']
         self.masses = self.distr_data['mass']
@@ -76,7 +76,7 @@ class rocket_parser:
         self.steps = self.distr_data['step']
 
     def _distributed_handler(self, filename):
-        """Обработка распределенных данных с расчетом координат блоков ступеней"""
+        """Distributed parameters handling & Further calculation"""
         df = pd.read_csv(filename)
 
         L_sec_vector = df['L']
@@ -84,7 +84,7 @@ class rocket_parser:
         Class_sec_vector = df['Class']
         Stage_sec_vector = df['Stage']
 
-        # Подсчет классов для распределения массы
+        # Classification handling
         class_counts = df['Class'].value_counts()
         class_counts_dict = class_counts.to_dict()
         tail_count = class_counts_dict.get("Tail", 0)
@@ -94,18 +94,16 @@ class rocket_parser:
         self.Length_parts.append(df[df['Stage'] == 'First']['L'].sum())
         self.Length_parts.append(df[df['Stage'] == 'Second']['L'].sum())
 
-        # Массы
+        #Masses
         m_payload = self.payload_mass
         m_fuel = sum(self.mass_fu)
         m_oxidyzer = sum(self.mass_ox)
         m_full = self.full_mass
-
         m_engine = m_payload/3
         self.max_diameter = max(D_sec_vector)
-
         m_construction = m_full - m_oxidyzer - m_fuel - m_payload - m_engine
 
-        # Инициализация векторов
+        # Vector init
         stiff_vector = []
         area_vector = []
         mass_vector = []
@@ -208,7 +206,7 @@ class rocket_parser:
                 mass_per_length = mass_vector[i] / L if L > 0 else 0
                 mass_element = mass_per_length * step * (D_current/self.max_diameter if self.max_diameter > 0 else 1)
 
-                self.L_sec_vector_new.append(step)
+                self.Length_secs.append(step)
                 L_sec_vector_sum_new.append(current_pos)
                 D_sec_vector_new.append(D_current)
                 m_vector_new.append(mass_element)
@@ -285,7 +283,7 @@ class rocket_parser:
 
         # Создание DataFrame с результатами
         new_data = {
-            'step': self.L_sec_vector_new,
+            'step': self.Length_secs,
             'length': L_sec_vector_sum_new,
             'diameter': D_sec_vector_new,
             'area': A_vector_new,
@@ -336,12 +334,12 @@ class rocket_parser:
 
     def _calculate_flight_dynamics(self):
         """Расчет динамических параметров полета"""
-        self.max_area = max(self.distr_data["area"])
+        self.maximum_area = max(self.distr_data["area"])
         self.delta_level_ox = []
         self.delta_level_fu = []
         for k in range(self.block_number):
-            self.delta_level_ox.append(self.delta_mass_ox[k]/self.oxidizer_density/self.max_area)
-            self.delta_level_fu.append(self.delta_mass_fu[k]/self.fuel_density/self.max_area)
+            self.delta_level_ox.append(self.delta_mass_ox[k]/self.oxidizer_density/self.maximum_area)
+            self.delta_level_fu.append(self.delta_mass_fu[k]/self.fuel_density/self.maximum_area)
 
         self.thrust_vector = []
         self.mass_vector = []
@@ -416,8 +414,8 @@ class rocket_parser:
             time += constants.timestep
 
     def get_step_length(self):
-        self.L_sec_vector_new[0] = 0
-        return self.L_sec_vector_new
+        self.Length_secs[0] = 0
+        return self.Length_secs
 
     def get_work_time(self):
         return self.work_time
@@ -450,6 +448,30 @@ class rocket_parser:
         return self.Length_parts
 
     def get_thrust_from_time(self, time):
+        for k in range(len(self.time_vector)):
+            if abs(self.time_vector[k] - time) < constants.timestep:
+                return self.thrust_vector[k]
+        return None
+
+    def get_mass_from_time(self, time):
+        for k in range(len(self.time_vector)):
+            if abs(self.time_vector[k] - time) < constants.timestep:
+                return self.mass_vector[k]
+        return None
+
+    def get_inertia_from_time(self, time):
+        for k in range(len(self.inertia_vector)):
+            if abs(self.time_vector[k] - time) < constants.timestep:
+                return self.inertia_vector[k]
+        return None
+
+    def get_center_from_time(self, time):
+        for k in range(len(self.center_vector)):
+            if abs(self.time_vector[k] - time) < constants.timestep:
+                return self.center_vector[k]
+        return None
+
+    def get_propellant_from_time(self, time):
         for k in range(len(self.time_vector)):
             if abs(self.time_vector[k] - time) < constants.timestep:
                 return self.thrust_vector[k]
