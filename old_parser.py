@@ -296,7 +296,7 @@ class rocket_parser:
     def get_full_time(self):
         return self.full_time
 
-    def get_diameters(self):
+    def get_part_diameters(self):
         return self.diameters
 
     def get_thrust(self):

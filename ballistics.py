@@ -83,7 +83,7 @@ def check_target_achieved(final_velocity, final_altitude, final_angle, final_att
 
 def update_rocket_json(new_coefficients):
     """Обновляет коэффициенты в JSON файле ракеты"""
-    json_path = path.rocket_lib + rocket + ".json"
+    json_path = path.rocket_lib + rocketname + ".json"
 
     try:
         with open(json_path, "r", encoding="utf-8") as file:
@@ -744,8 +744,9 @@ class ballistics:
         self.get_attack_func = get_attack_func
 
         self.G = aero.UnionStream()
+        #TODO: parts, no sections
         self.G.set_elnumber(parser.get_block_number() + 1)
-        self.G.set_diameter(parser.get_diameters())
+        self.G.set_diameter(parser.get_part_diameters())
         self.G.set_length(parser.get_part_length())
 
         self.thrust = 0

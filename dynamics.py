@@ -248,7 +248,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
     pitch_vector = []
     velocity_vector = []
     movement_vector = []
-    cotrol_vector = []
+    cotroL_sec_vector = []
     time_vector = []
     zero_line = []
 
@@ -298,7 +298,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
             velocity_vector.append(float(v))
             pitch_vector.append(float(w * 57.3))
             movement_vector.append(float(y))
-            cotrol_vector.append(float(uc * 57.3))
+            cotroL_sec_vector.append(float(uc * 57.3))
             time_vector.append(float(t))
 
             zero_line.append(float(0))
@@ -326,7 +326,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
     plt.grid(True)
 
     plt.subplot(4, 1, 4)
-    plt.plot(time_vector, cotrol_vector)
+    plt.plot(time_vector, cotroL_sec_vector)
     plt.ylabel("Поворот ОУ(t), град", color="gray")
     plt.plot(time_vector, zero_line)
     plt.grid(True)

@@ -605,11 +605,11 @@ class UnionStream(DragForce, LiftForce):
         return constants.get_coefficient_simple(x, self.lengthprofile, self.liftprofile)
 
 def main():
-    parser = rp.rocket_parser(path.rocket_lib + "master.json")
+    parser = rp.rocket_parser("falcon")
     G = UnionStream()
     G.set_elnumber(parser.get_block_number() + 1)
-    G.set_diameter(parser.get_diameters())
-    G.set_length(parser.get_part_length())
+    G.set_diameter(parser.get_part_diameters())
+    G.set_length([2, 5, 7])
 
     arrayVelocity = np.linspace(10, 3000, 100)
     altitudes = [0, 10, 20, 40, 60]

@@ -47,7 +47,7 @@ class rocket_parser:
         self.oxidizer = r_data['oxidizer']
         self.attack_coefs = r_data['attack_coefs']
 
-        self.L_vector_new = []
+        self.L_sec_vector_new = []
 
         # handled data
         self.full_mass = self.payload_mass + sum(self.block_mass)
@@ -78,10 +78,10 @@ class rocket_parser:
         """Обработка распределенных данных с расчетом координат блоков ступеней"""
         df = pd.read_csv(filename)
 
-        L_vector = df['L']
-        D_vector = df['D']
-        Class_vector = df['Class']
-        Stage_vector = df['Stage']
+        L_sec_vector = df['L']
+        D_sec_vector = df['D']
+        Class_sec_vector = df['Class']
+        Stage_sec_vector = df['Stage']
 
         # Подсчет классов для распределения массы
         class_counts = df['Class'].value_counts()
@@ -96,7 +96,7 @@ class rocket_parser:
         m_full = self.full_mass
 
         m_engine = m_payload/3
-        self.max_diameter = max(D_vector)
+        self.max_diameter = max(D_sec_vector)
 
         m_construction = m_full - m_oxidyzer - m_fuel - m_payload - m_engine
 
@@ -109,13 +109,13 @@ class rocket_parser:
         len_t = 0
 
         # Новые векторы для дискретизации
-        L_vector_sum_new = []
-        D_vector_new = []
+        L_sec_vector_sum_new = []
+        D_sec_vector_new = []
         m_vector_new = []
         s_vector_new = []
         A_vector_new = []
-        class_vector_new = []
-        stage_vector_new = []
+        Class_sec_vector_new = []
+        Stage_sec_vector_new = []
 
         # Координаты компонентов
         fuel_coords = []
@@ -125,9 +125,9 @@ class rocket_parser:
         current_stage_start = 0
 
         # Расчет жесткости и площадей
-        for i, L in enumerate(L_vector):
-            stiff_vector.append(constants.calculate_stiffness(D_vector[i]))
-            area_vector.append(constants.cross_sectional_area(D_vector[i]))
+        for i, L in enumerate(L_sec_vector):
+            stiff_vector.append(constants.calculate_stiffness(D_sec_vector[i]))
+            area_vector.append(constants.cross_sectional_area(D_sec_vector[i]))
             rocket_volume += L * area_vector[-1]
 
         # Плотность конструкции
@@ -140,10 +140,10 @@ class rocket_parser:
         current_position_from_nose = 0
 
         # Обработка каждого элемента
-        for i, L in enumerate(L_vector):
+        for i, L in enumerate(L_sec_vector):
             d_delta = 0
             # Определение начала новой ступени
-            stage_name = Stage_vector[i]
+            stage_name = Stage_sec_vector[i]
             if stage_name != current_stage:
                 if current_stage is not None:
                     # Сохраняем координаты предыдущей ступени
@@ -158,23 +158,23 @@ class rocket_parser:
 
             # Расчет массы элемента
             m_temp = dencity_free * area_vector[i] * L
-            if Class_vector[i] == "Head":
+            if Class_sec_vector[i] == "Head":
                 m_temp += m_payload / (head_count if head_count > 0 else 1)
-            elif Class_vector[i] == "Oxidizer":
+            elif Class_sec_vector[i] == "Oxidizer":
                 m_temp += self.mass_ox[o_count]
                 oxidyzer_start = current_position_from_nose
                 oxidyzer_end = current_position_from_nose + L
-                oxidyzer_coords.append((oxidyzer_start, oxidyzer_end, Stage_vector[i]))
+                oxidyzer_coords.append((oxidyzer_start, oxidyzer_end, Stage_sec_vector[i]))
                 o_count -= 1
-            elif Class_vector[i] == "Fuel":
+            elif Class_sec_vector[i] == "Fuel":
                 m_temp += self.mass_fu[f_count]
                 fuel_start = current_position_from_nose
                 fuel_end = current_position_from_nose + L
-                fuel_coords.append((fuel_start, fuel_end, Stage_vector[i]))
+                fuel_coords.append((fuel_start, fuel_end, Stage_sec_vector[i]))
                 f_count -= 1
-            elif Class_vector[i] == "Tail":
+            elif Class_sec_vector[i] == "Tail":
                 m_temp += m_engine / (tail_count if tail_count > 0 else 1)
-            elif Class_vector[i] == "Construction":
+            elif Class_sec_vector[i] == "Construction":
                 m_temp += 0
 
             mass_vector.append(m_temp)
@@ -182,16 +182,16 @@ class rocket_parser:
             # Запись информации о компоненте ступени
             if current_stage in stage_coords:
                 stage_coords[current_stage]['components'].append({
-                    'class': Class_vector[i],
+                    'class': Class_sec_vector[i],
                     'length': L,
-                    'diameter': D_vector[i],
+                    'diameter': D_sec_vector[i],
                     'start': current_position_from_nose,
                     'end': current_position_from_nose + L
                 })
 
             # Дискретизация элемента на шаги
-            if i + 1 < len(D_vector):
-                d_delta = (D_vector.iloc[i+1] - D_vector.iloc[i]) / L
+            if i + 1 < len(D_sec_vector):
+                d_delta = (D_sec_vector.iloc[i+1] - D_sec_vector.iloc[i]) / L
 
             element_len = 0
 
@@ -199,18 +199,18 @@ class rocket_parser:
             while element_len < target_length - 1e-10:
                 current_pos = len_t + element_len
 
-                D_current = D_vector.iloc[i] + d_delta * element_len
+                D_current = D_sec_vector.iloc[i] + d_delta * element_len
                 mass_per_length = mass_vector[i] / L if L > 0 else 0
                 mass_element = mass_per_length * step * (D_current/self.max_diameter if self.max_diameter > 0 else 1)
 
-                self.L_vector_new.append(step)
-                L_vector_sum_new.append(current_pos)
-                D_vector_new.append(D_current)
+                self.L_sec_vector_new.append(step)
+                L_sec_vector_sum_new.append(current_pos)
+                D_sec_vector_new.append(D_current)
                 m_vector_new.append(mass_element)
                 s_vector_new.append(constants.calculate_stiffness(D_current))
                 A_vector_new.append(constants.cross_sectional_area(D_current))
-                class_vector_new.append(Class_vector[i])
-                stage_vector_new.append(Stage_vector[i])
+                Class_sec_vector_new.append(Class_sec_vector[i])
+                Stage_sec_vector_new.append(Stage_sec_vector[i])
 
                 element_len += step
 
@@ -280,14 +280,14 @@ class rocket_parser:
 
         # Создание DataFrame с результатами
         new_data = {
-            'step': self.L_vector_new,
-            'length': L_vector_sum_new,
-            'diameter': D_vector_new,
+            'step': self.L_sec_vector_new,
+            'length': L_sec_vector_sum_new,
+            'diameter': D_sec_vector_new,
             'area': A_vector_new,
             'mass': m_vector_new,
             'stiffness': s_vector_new,
-            'class': class_vector_new,
-            'stage': stage_vector_new
+            'class': Class_sec_vector_new,
+            'stage': Stage_sec_vector_new
         }
 
         df_result = pd.DataFrame(new_data)
@@ -411,8 +411,8 @@ class rocket_parser:
             time += constants.timestep
 
     def get_step_length(self):
-        self.L_vector_new[0] = 0
-        return self.L_vector_new
+        self.L_sec_vector_new[0] = 0
+        return self.L_sec_vector_new
 
     def get_work_time(self):
         return self.work_time
@@ -435,8 +435,11 @@ class rocket_parser:
     def get_full_time(self):
         return self.full_time
 
-    def get_diameters(self):
-        return self.diameters
+    def get_part_diameters(self):
+        res = []
+        for i in range(self.block_number+1):
+            res.append(self.diameters[-1])
+        return res
 
 # r = rocket_parser("falcon")
 # print(f"Rocket name: {r.name}")
