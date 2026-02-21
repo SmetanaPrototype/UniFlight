@@ -609,7 +609,7 @@ def main():
     G = UnionStream()
     G.set_elnumber(parser.get_block_number() + 1)
     G.set_diameter(parser.get_part_diameters())
-    G.set_length([2, 5, 7])
+    G.set_length(parser.get_part_length())
 
     arrayVelocity = np.linspace(10, 3000, 100)
     altitudes = [0, 10, 20, 40, 60]

@@ -48,6 +48,7 @@ class rocket_parser:
         self.attack_coefs = r_data['attack_coefs']
 
         self.L_sec_vector_new = []
+        self.Length_parts = []
 
         # handled data
         self.full_mass = self.payload_mass + sum(self.block_mass)
@@ -88,6 +89,10 @@ class rocket_parser:
         class_counts_dict = class_counts.to_dict()
         tail_count = class_counts_dict.get("Tail", 0)
         head_count = class_counts_dict.get("Head", 0)
+
+        self.Length_parts.append(df[df['Stage'] == 'Payload']['L'].sum())
+        self.Length_parts.append(df[df['Stage'] == 'First']['L'].sum())
+        self.Length_parts.append(df[df['Stage'] == 'Second']['L'].sum())
 
         # Массы
         m_payload = self.payload_mass
@@ -440,6 +445,9 @@ class rocket_parser:
         for i in range(self.block_number+1):
             res.append(self.diameters[-1])
         return res
+
+    def get_part_length(self):
+        return self.Length_parts
 
 # r = rocket_parser("falcon")
 # print(f"Rocket name: {r.name}")

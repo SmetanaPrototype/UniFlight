@@ -76,13 +76,15 @@ def write_arrays_to_csv(filename, **arrays):
 def read_array_from_csv(filename, arrayname):
     try:
         df = pd.read_csv(filename)
-
-        column_c  = [None]
-        column_c = df[arrayname]
-
+        if arrayname in df.columns:
+            column_c = df[arrayname]
+            return column_c
+        else:
+            print(f"Столбец '{arrayname}' не найден в файле {filename}")
+            return None
     except FileNotFoundError:
         print(f"Файл {filename} не найден")
+        return None
     except Exception as e:
         print(f"Ошибка при чтении файла {filename}: {e}")
-
-    return column_c
+        return None
