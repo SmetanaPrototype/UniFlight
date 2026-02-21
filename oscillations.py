@@ -1,12 +1,8 @@
 import matplotlib.pyplot as plt
-import matplotlib.pyplot as plt1
-import csv
 import math as m
-import path
 import rocket_parser as rp
 import constants
 import numpy as np
-import os
 
 # Lists init
 numeric = []
@@ -18,6 +14,7 @@ stiffness = []
 # Lambda oscillations constants
 L = constants.lamb
 
+# Local functions
 def calculate_sum(base):
     summ = [0] * len(base)
     for i in range(len(base)):
@@ -33,19 +30,10 @@ def calculate_multi(one, second):
 parser = rp.rocket_parser("falcon")
 work_time = parser.get_work_time()
 
-# length_sector = parser.lengths
-# mass_sector = parser.masses
-# stiffness_vector = parser.stiffnesses
-
-# # tmp
 numeric   =  [int(i/constants.lenstep) for i in parser.asc_length]
 stiffness =  parser.stiffnesses
 length    =  parser.get_step_length()
 masses    =  parser.masses
-print(len(numeric       ))
-print(len(stiffness       ))
-print(len(length       ))
-print(len(masses       ))
 
 seen = set()
 indexes_to_remove = []
@@ -56,34 +44,21 @@ for i, val in enumerate(numeric):
     else:
         seen.add(val)
 
-print(f"\nНайдено повторов: {len(indexes_to_remove)}")
-print(f"Индексы для удаления: {indexes_to_remove}")
+print(f"\nRepeates: {len(indexes_to_remove)}")
+print(f"Indexes for deleting: {indexes_to_remove}")
 
-# Удаляем элементы из всех списков (идем с конца, чтобы не сбить индексы)
 if indexes_to_remove:
     for idx in sorted(indexes_to_remove, reverse=True):
         numeric.pop(idx)
         stiffness.pop(idx)
         length.pop(idx)
         masses.pop(idx)
-# le = 0
-# each_len = [0]
-# while (le<length_sector[-1]):
-#     each_len.append(lenstep)
-#     le+=lenstep
 
-
-block_number = int(parser.get_block_number())
-
-delta_mass_fu = parser.get_delta_mass_fu()
-sector_range_fu =  parser.get_coordinates_fu()
-
-delta_mass_ox = parser.get_delta_mass_ox()
+block_number    = int(parser.get_block_number())
+delta_mass_fu   = parser.get_delta_mass_fu()
+sector_range_fu = parser.get_coordinates_fu()
+delta_mass_ox   = parser.get_delta_mass_ox()
 sector_range_ox = parser.get_coordinates_ox()
-
-# # print(sector_range_ox[0].start)
-# # print(sector_range_ox[0].end)
-# # print(sector_range_ox[0].length)
 
 def changed_mass(current_time):
 
@@ -191,7 +166,7 @@ custom_lines = [
 plt.figure(figsize=(8, 8))
 
 def output(parser):
-   """Сохранение результатов в файл"""
+   """Save results to file"""
    rocketname = parser.name
    constants.write_arrays_to_csv("output/"+rocketname+"_oscillations.csv",
                                 length   =numeric,
@@ -332,8 +307,6 @@ for mo, mass in enumerate(ver_mass_vector):
 
            mass_s[index] = sum_mf_12[-1] *1000
            f_start = f_stiffness_res
-        #    if max(abs(f_stiffness_res[i] - f_start[i]) for i in range(len(f_start))) < tolerance:
-        #        break
 
        return f_stiffness_res
    #################################################################
