@@ -2,3 +2,4 @@ __pycache__
 .github
 output
 .venv
+resources/rocket_data.csv
