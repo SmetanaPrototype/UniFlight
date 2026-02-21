@@ -449,6 +449,12 @@ class rocket_parser:
     def get_part_length(self):
         return self.Length_parts
 
+    def get_thrust_from_time(self, time):
+        for k in range(len(self.time_vector)):
+            if abs(self.time_vector[k] - time) < constants.timestep:
+                return self.thrust_vector[k]
+        return None
+
 # r = rocket_parser("falcon")
 # print(f"Rocket name: {r.name}")
 

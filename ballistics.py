@@ -762,10 +762,10 @@ class ballistics:
 
     def update_params(self, time):
         if self.last_time != time:
-            self.thrust = self.parser.get_thrust_from_time(time)
-            self.mass = self.parser.get_mass_from_time(time)
+            self.thrust  = self.parser.get_thrust_from_time(time)
+            self.mass    = self.parser.get_mass_from_time(time)
             self.inertia = self.parser.get_inertia_from_time(time)
-            self.center = self.parser.get_center_from_time(time)
+            self.center  = self.parser.get_center_from_time(time)
 
             # Проверка на None значения
             if self.center is None:
