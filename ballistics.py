@@ -840,7 +840,7 @@ class ballistics:
             time_list.append(time)
             wind_list.append(self.wind)
             # common dynamics data
-            Cbs_list.append(self.thrust * self.parser.thrust_ratio / self.mass)
+            Cbs_list.append(- self.thrust * self.parser.thrust_ratio / self.mass)
             Cyw_list.append(
                 -(self.thrust + self.G.CY * self.dypressure * self.parser.maximum_area)
                 / self.mass

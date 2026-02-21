@@ -1,154 +1,67 @@
 import constants
 import matplotlib.pyplot as plt
-import path
-import pandas as pd
 import rocket_parser as rp
 import math
 
-rocket = "master"
-parser = rp.rocket_parser(path.rocket_lib + rocket + ".json")
+rocketname = "falcon"
+parser = rp.rocket_parser(rocketname)
 
-
-def read_aero_coefficients_from_csv(filename):
-    """
-    Чтение аэродинамических коэффициентов из CSV файла
-    """
-    # Инициализация массивов нулями
-    const_time = []
-    Cwv = []
-    Cww = []
-    Cwb = []
-    Cvv = []
-    Cvb = []
-    Cvw = []
-    velocity = []
-    Wind = []
-    Csv = [[] for _ in range(constants.mode_num)]
-    Csw = [[] for _ in range(constants.mode_num)]
-    Csb = [[] for _ in range(constants.mode_num)]
-    CsvQ = []
-    CswQ = []
-    CssQ = []
-
-    try:
-
-        df = pd.read_csv(filename)
-
-        const_time = df["time"]
-
-        Cwv = df["Cwy"]
-        Cww = df["Cww"]
-        Cwb = df["Cwb"]
-        Cvv = df["Cyy"]
-        Cvb = -df["Cbs"]
-        Cvw = df["Cyw"]
-        velocity = df["velocity"]
-        Wind = df["wind"]
-
-        Csw[0] = df["Csw1"]
-        Csw[1] = df["Csw2"]
-        Csw[2] = df["Csw3"]
-        Csv[0] = df["Csy1"]
-        Csv[1] = df["Csy2"]
-        Csv[2] = df["Csy3"]
-        Csb[0] = df["Csb1"]
-        Csb[1] = df["Csb2"]
-        Csb[2] = df["Csb3"]
-
-        CsvQ = df["CsyQ"]
-        CswQ = df["CswQ"]
-        CssQ = df["CssQ"]
-
-    except FileNotFoundError:
-        print(f"Файл {filename} не найден")
-    except Exception as e:
-        print(f"Ошибка при чтении файла {filename}: {e}")
-
-    return (
-        const_time,
-        Cwv,
-        Cww,
-        Cwb,
-        Cvv,
-        Cvb,
-        Cvw,
-        velocity,
-        Wind,
-        Csv,
-        Csw,
-        Csb,
-        CsvQ,
-        CswQ,
-        CssQ,
-    )
-
-
-def read_freq_from_csv(filename):
-    freq_time = []
-    freq = [[] for _ in range(constants.mode_num)]
-
-    df = pd.read_csv(filename)
-    freq_time = df["time"]
-    freq[0] = df["freq_1"]
-    freq[1] = df["freq_2"]
-    freq[2] = df["freq_3"]
-
-    return freq_time, freq
-
-
-def read_forms_from_csv(filename):
-    f_stiffness = [[0], [0], [0]]
-    f_stiffness_diff = [[0], [0], [0]]
-
-    try:
-        df = pd.read_csv(filename)
-
-        column_f = [None] * constants.mode_num
-        column_df = [None] * constants.mode_num
-
-        column_f[0] = df["form_1"]
-        column_f[1] = df["form_2"]
-        column_f[2] = df["form_3"]
-
-        column_df[0] = df["difform_1"]
-        column_df[1] = df["difform_2"]
-        column_df[2] = df["difform_3"]
-
-        for i in range(constants.mode_num):
-            f_stiffness[i] = column_f[i].to_numpy()
-            f_stiffness_diff[i] = column_df[i].to_numpy()
-
-    except FileNotFoundError:
-        print(f"Файл {filename} не найден")
-    except Exception as e:
-        print(f"Ошибка при чтении файла {filename}: {e}")
-
-    return f_stiffness, f_stiffness_diff
-
-
+oscillations_file = "output/"+rocketname+"_oscillations.csv"
 f_stiffness = [0] * constants.mode_num
 f_stiffness_diff = [0] * constants.mode_num
-f_stiffness, f_stiffness_diff = read_forms_from_csv("output/Master_oscillations.csv")
 
-# Инициализация массивов
-(
-    const_time,
-    Cwv,
-    Cww,
-    Cwb,
-    Cvv,
-    Cvb,
-    Cvw,
-    velocity,
-    Wind,
-    Csv,
-    Csw,
-    Csb,
-    CsvQ,
-    CswQ,
-    CssQ,
-) = read_aero_coefficients_from_csv("output/Master_dynamic_coefs.csv")
-freq_time, freq = read_freq_from_csv("output/Master_frequency.csv")
+f_stiffness[0]      = constants.read_array_from_csv(oscillations_file, "form_1")
+f_stiffness[1]      = constants.read_array_from_csv(oscillations_file, "form_2")
+f_stiffness[2]      = constants.read_array_from_csv(oscillations_file, "form_3")
+f_stiffness_diff[0] = constants.read_array_from_csv(oscillations_file, "difform_1")
+f_stiffness_diff[1] = constants.read_array_from_csv(oscillations_file, "difform_2")
+f_stiffness_diff[2] = constants.read_array_from_csv(oscillations_file, "difform_3")
+
+freq_file = "output/"+rocketname+"_frequency.csv"
+freq = [[] for _ in range(constants.mode_num)]
+freq_time = constants.read_array_from_csv(freq_file, "time")
+freq[0]   = constants.read_array_from_csv(freq_file, "freq_1")
+freq[1]   = constants.read_array_from_csv(freq_file, "freq_2")
+freq[2]   = constants.read_array_from_csv(freq_file, "freq_3")
+
+dynamic_file = "output/"+rocketname+"_dynamic_coefs.csv"
+const_time = []
+Cwv = []
+Cww = []
+Cwb = []
+Cvv = []
+Cvb = []
+Cvw = []
+velocity = []
+Wind = []
+Csv = [[] for _ in range(constants.mode_num)]
+Csw = [[] for _ in range(constants.mode_num)]
+Csb = [[] for _ in range(constants.mode_num)]
+CsvQ = []
+CswQ = []
+CssQ = []
+
+const_time = constants.read_array_from_csv(dynamic_file, "time")
+Cwv        = constants.read_array_from_csv(dynamic_file, "Cwy")
+Cww        = constants.read_array_from_csv(dynamic_file, "Cww")
+Cwb        = constants.read_array_from_csv(dynamic_file, "Cwb")
+Cvv        = constants.read_array_from_csv(dynamic_file, "Cyy")
+Cvb        = constants.read_array_from_csv(dynamic_file, "Cbs")
+Cvw        = constants.read_array_from_csv(dynamic_file, "Cyw")
+velocity   = constants.read_array_from_csv(dynamic_file, "velocity")
+Wind       = constants.read_array_from_csv(dynamic_file, "wind")
+Csw[0]     = constants.read_array_from_csv(dynamic_file, "Csw1")
+Csw[1]     = constants.read_array_from_csv(dynamic_file, "Csw2")
+Csw[2]     = constants.read_array_from_csv(dynamic_file, "Csw3")
+Csv[0]     = constants.read_array_from_csv(dynamic_file, "Csy1")
+Csv[1]     = constants.read_array_from_csv(dynamic_file, "Csy2")
+Csv[2]     = constants.read_array_from_csv(dynamic_file, "Csy3")
+Csb[0]     = constants.read_array_from_csv(dynamic_file, "Csb1")
+Csb[1]     = constants.read_array_from_csv(dynamic_file, "Csb2")
+Csb[2]     = constants.read_array_from_csv(dynamic_file, "Csb3")
+CsvQ       = constants.read_array_from_csv(dynamic_file, "CsyQ")
+CswQ       = constants.read_array_from_csv(dynamic_file, "CswQ")
+CssQ       = constants.read_array_from_csv(dynamic_file, "CssQ")
 
 
 def Cwv_t(time):
