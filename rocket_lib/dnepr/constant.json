@@ -1,0 +1,33 @@
+{
+  "name": "dnepr",
+  "block_number": 3,
+  "payload_mass": 3700,
+  "block_mass": [
+    147900,
+    36740,
+    1910
+  ],
+  "components_ratio": 2.67,
+  "thrust_ratio": 0.5,
+  "exhaust_velocity": [
+    3120,
+    3335,
+    3030
+  ],
+  "thrust": [
+    4520000,
+    755000,
+    20200
+  ],
+  "structural_values": [
+    12,
+    10,
+    8
+  ],
+  "fuel": "UDMH",
+  "oxidizer": "N2O4",
+  "attack_coefs": [
+    3.68880768,
+    0.21378464
+  ]
+}

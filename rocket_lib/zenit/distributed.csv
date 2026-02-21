@@ -1,12 +1,12 @@
 L,D,Class,Stage
-8.0,3.9,Head,Payload      // Головной обтекатель
-1.5,3.9,Construction,Second // Переходник
-6.5,3.9,Fuel,Second        // Бак горючего второй ступени
-6.5,3.9,Oxidizer,Second    // Бак окислителя второй ступени
-2.5,3.9,Construction,Second // Приборный отсек
-1.0,3.9,Tail,Second        // Хвостовой отсек второй ступени (РД-120 + РД-8)
-1.0,3.9,Construction,First  // Межступенчатый переходник
-15.0,3.9,Fuel,First         // Бак горючего первой ступени
-12.0,3.9,Oxidizer,First      // Бак окислителя первой ступени
-2.0,3.9,Construction,First  // Приборный отсек первой ступени
-1.0,3.9,Tail,First          // Хвостовой отсек первой ступени (РД-171)
+8.0,3.9,Head,Payload
+1.5,3.9,Construction,Second
+6.5,3.9,Fuel,Second
+6.5,3.9,Oxidizer,Second
+2.5,3.9,Construction,Second
+1.0,3.9,Tail,Second
+1.0,3.9,Construction,First
+15.0,3.9,Fuel,First
+12.0,3.9,Oxidizer,First
+2.0,3.9,Construction,First
+1.0,3.9,Tail,First
