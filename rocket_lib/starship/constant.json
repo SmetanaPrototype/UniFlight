@@ -1,26 +1,26 @@
 {
-  "name": "starship",
+  "name": "soyuz_2-1v",
   "block_number": 2,
-  "payload_mass": 150000,
+  "payload_mass": 3000,
   "block_mass": [
-    3600000,
-    1320000
+    158000,
+    25380
   ],
-  "components_ratio": 3.6,
-  "thrust_ratio": 0.5,
+  "components_ratio": 2.6,
+  "thrust_ratio": 0.0,
   "exhaust_velocity": [
-    3270,
-    3800
+    3100,
+    3520
   ],
   "thrust": [
-    75900000,
-    15000000
+    1978000,
+    294000
   ],
   "structural_values": [
-    18,
-    12
+    12,
+    10
   ],
-  "fuel": "CH4",
+  "fuel": "RP-1",
   "oxidizer": "LOX",
   "attack_coefs": [
     3.68880768,

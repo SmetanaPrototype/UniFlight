@@ -331,7 +331,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
     plt.plot(time_vector, zero_line)
     plt.grid(True)
 
-
+# on/off oscillations & aerostiffness
 calculate_parameters(False, False)
 calculate_parameters(True, False)
 calculate_parameters(True, True)

@@ -26,12 +26,12 @@ The thirt attempt to make an universal application for rocket flight.
 
 ### TODO
     1 add 3d motion
-    2 refactoring
-    3 create UML diagrams
-    4 reusable stages
-    5 shuttles
-    6 AI
-    7 Fix frequency issue (mass)
+    2 create UML diagrams
+    3 reusable stages
+    4 shuttles
+    5 AI
+    6 Fix frequency issue (mass)
+    7 Fix extreme of altitude & attack coefs update
 
 ### Syntax RULES
     _sec  - rocket micro parts
