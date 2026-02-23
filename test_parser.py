@@ -55,7 +55,8 @@ class rocket_parser:
         self.oxidizer_density = read_propellant_density(self.oxidizer)
 
         self._calculate_stage_parameters()
-        self._distributed_handler(csv_filename)
+        self.distr_data = self._distributed_handler(csv_filename)
+        self._initialize_distributed_arrays()
 
     def _calculate_stage_parameters(self):
         """Расчет параметров ступеней"""
@@ -151,7 +152,17 @@ class rocket_parser:
                 if li < Sum_Length_start_vector[i+1] and li > Sum_Length_start_vector[i]:
                     Class_final_vector   .append(Class_start_vector[i])
                     Stage_final_vector   .append(Stage_start_vector[i])
-                    Diameter_final_vector.append(Diameter_start_vector[i])
+                    delta_diameter = Diameter_start_vector[i + 1] - Diameter_start_vector[i]
+                    delta_length = Sum_Length_start_vector[i + 1] - Sum_Length_start_vector[i]
+
+                    offset = li - Sum_Length_start_vector[i]
+
+                    if delta_length > 0:
+                        current_diameter = Diameter_start_vector[i] + (delta_diameter / delta_length) * offset
+                    else:
+                        current_diameter = Diameter_start_vector[i]
+
+                    Diameter_final_vector.append(current_diameter)
                     Stiffness_final_vetor.append(constants.calculate_stiffness(Diameter_start_vector[i]))
                     Area_final_vector.append(constants.cross_sectional_area(Diameter_start_vector[i]))
                     Volume_final_vector.append(Area_final_vector[-1]*constants.lenstep)
@@ -210,6 +221,117 @@ class rocket_parser:
         df_result = pd.DataFrame(new_data)
         df_result.to_csv('output/rocket_data.csv', index=False, encoding='utf-8')
 
+        return new_data
+
+    def _initialize_distributed_arrays(self):
+        """Distributed parameters initialization"""
+        self.asc_length = self.distr_data['length']
+        self.diameters = self.distr_data['diameter']
+        self.masses = self.distr_data['mass']
+        self.stiffnesses = self.distr_data['stiffness']
+        self.areas = self.distr_data['area']
+        self.classes = self.distr_data['class']
+        self.stages = self.distr_data['stage']
+        self.steps = self.distr_data['step']
+
+    # def changed_mass(self, time_):
+    #     mass_t = self.masses.copy()
+        
+    #     # Сохраняем начальную сумму для проверки
+    #     initial_sum = sum(mass_t)
+        
+    #     if time_ < 1E-7:
+    #         return mass_t
+
+    #     # Iteration on blocks
+    #     for j in range(block_number):
+    #         n_ox = int(sector_range_ox[0].length/constants.lenstep)
+    #         n_fu = int(sector_range_fu[0].length/constants.lenstep)
+
+    #         # Working time on block
+    #         total_time = work_time[j]
+
+    #         time_per_sector_ox = total_time / n_ox if n_ox > 0 else 0
+    #         time_per_sector_fu = total_time / n_fu if n_fu > 0 else 0
+            
+    #         total_burn_time_ox = 0
+    #         total_burn_time_fu = 0
+            
+    #         # Для каждого сектора считаем, сколько времени он горел
+    #         for idx_sector in range(n_ox):
+    #             sector_start_time = idx_sector * time_per_sector_ox
+    #             sector_end_time = (idx_sector + 1) * time_per_sector_ox
+    #             start_idx = int(sector_range_ox[0].start) + idx_sector
+    #             end_idx = start_idx + 1
+                
+    #             # Определяем время горения этого сектора
+    #             if current_time >= sector_end_time:
+    #                 burn_time = time_per_sector_ox  # Сектор полностью сгорел
+    #             elif current_time > sector_start_time:
+    #                 burn_time = current_time - sector_start_time  # Сектор горит частично
+    #             else:
+    #                 burn_time = 0  # Сектор еще не начал гореть
+                
+    #             total_burn_time_ox += burn_time
+                
+    #             # Вычитаем массу пропорционально времени горения
+    #             for k in range(start_idx, end_idx):
+    #                 mass_t[k] = masses[k] - delta_mass_ox[0] * burn_time
+    #                 mass_t[k] = max(mass_t[k], 0)
+            
+    #         # Аналогично для топлива
+    #         for idx_sector in range(n_fu):
+    #             sector_start_time = idx_sector * time_per_sector_fu
+    #             sector_end_time = (idx_sector + 1) * time_per_sector_fu
+    #             start_idx = int(sector_range_fu[0].start) + idx_sector
+    #             end_idx = start_idx + 1
+                
+    #             # Определяем время горения этого сектора
+    #             if current_time >= sector_end_time:
+    #                 burn_time = time_per_sector_fu
+    #             elif current_time > sector_start_time:
+    #                 burn_time = current_time - sector_start_time
+    #             else:
+    #                 burn_time = 0
+                
+    #             total_burn_time_fu += burn_time
+                
+    #             # Вычитаем массу пропорционально времени горения
+    #             for k in range(start_idx, end_idx):
+    #                 mass_t[k] = masses[k] - delta_mass_fu[0] * burn_time
+    #                 mass_t[k] = max(mass_t[k], 0)
+            
+    #         print(f"Time: {current_time}")
+    #         print(f"Total burn time ox: {total_burn_time_ox}")
+    #         print(f"Total burn time fu: {total_burn_time_fu}")
+    #         print(f"Expected total burn time: {current_time}")
+            
+    #         # Выходим после первого блока
+    #         break
+
+    #     # Проверка сохранения массы
+    #     final_sum = sum(mass_t)
+    #     expected_difference = (delta_mass_ox[0] + delta_mass_fu[0]) * current_time
+        
+    #     # Вычисляем фактическую разницу
+    #     actual_difference = initial_sum - final_sum
+        
+    #     # Проверяем с учетом погрешности вычислений
+    #     if abs(actual_difference - expected_difference) > 1e-10:
+    #         print(f"Warning: Mass conservation violation!")
+    #         print(f"Initial sum: {initial_sum}")
+    #         print(f"Final sum: {final_sum}")
+    #         print(f"Expected difference: {expected_difference}")
+    #         print(f"Actual difference: {actual_difference}")
+    #         print(f"Error: {abs(actual_difference - expected_difference)}")
+    #         print(f"current_time: {current_time}")
+    #         print(f"delta_mass_ox: {delta_mass_ox[0]}")
+    #         print(f"delta_mass_fu: {delta_mass_fu[0]}")
+    #         quit()
+
+    # return mass_t
+
 rp = rocket_parser("falcon")
+print(sum(rp.changed_mass(0)))
 
 
