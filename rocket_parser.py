@@ -323,14 +323,11 @@ class rocket_parser:
             self.delta_mass_fu.append(delta_mass / (self.components_ratio + 1))
 
         self.full_time = sum(self.work_time)
-        print("test")
         m = self.propellant_mass[1]
         t = 0
         while m > 0:
             m -= self.delta_mass[1]*constants.timestep
             t +=constants.timestep
-        print(t)
-        print(self.work_time[1])
 
     def _calculate_flight_dynamics(self):
         """Расчет динамических параметров полета"""
@@ -358,16 +355,12 @@ class rocket_parser:
             t_sep += self.work_time[i]
             stage_separation_times.append(t_sep)
 
-        print(stage_separation_times)
-
         self.mass_vector.append(current_mass)
         self.time_vector.append(time)
         self.thrust_vector.append(self.thrust[0])
 
         self.static_moment = constants.calculate_static(self.full_mass, self.rocket_length)
         self.inertia_moment = constants.calculate_inertia(self.full_mass, self.rocket_length, self.rocket_length, self.max_diameter)
-        print(self.static_moment)
-        print(self.inertia_moment)
         self.static_vector.append(self.static_moment)
         self.inertia_vector.append(self.inertia_moment)
         self.center_vector.append(self.rocket_length - self.static_moment/current_mass)
@@ -400,7 +393,6 @@ class rocket_parser:
 
             for i in range(self.block_number):
                 if not stage_dropped[i] and time >= stage_separation_times[i]:
-                    print(self.structural_mass[i])
                     current_mass -= self.structural_mass[i]
                     self.static_moment -=constants.calculate_static (self.structural_mass[i],self.structural_coordinates[i].end + self.structural_coordinates[i].start)
                     self.inertia_moment-=constants.calculate_inertia(self.structural_mass[i],self.structural_coordinates[i].end + self.structural_coordinates[i].start, self.structural_coordinates[i].length, self.max_diameter)
@@ -477,6 +469,10 @@ class rocket_parser:
                 return self.thrust_vector[k]
         return None
 
+def main():
+    parser = rocket_parser("falcon")
+
+main()
 # r = rocket_parser("falcon")
 # print(f"Rocket name: {r.name}")
 
