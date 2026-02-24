@@ -19,11 +19,10 @@ def read_propellant_density(propellant_type):
     return density_map.get(propellant_type, 0)
 
 class coord_element:
-    def __init__(self, start, end, length, propellant_type=None):
+    def __init__(self, start, length):
         self.start = float(start)
-        self.end = float(end)
         self.length = float(length)
-        self.propellant_type = propellant_type
+        self.end = self.start + self.length
 
 class rocket_parser:
     def __init__(self, rocket):
@@ -47,9 +46,6 @@ class rocket_parser:
         self.oxidizer = r_data['oxidizer']
         self.attack_coefs = r_data['attack_coefs']
 
-        self.Length_secs  = []
-        self.Length_parts = []
-
         # handled data
         self.full_mass = self.payload_mass + sum(self.block_mass)
         print(f"Payload mass: {self.payload_mass}")
@@ -60,244 +56,8 @@ class rocket_parser:
 
         self._calculate_stage_parameters()
         self.distr_data = self._distributed_handler(csv_filename)
-        self.rocket_length = self.distr_data["length"][-1]
         self._initialize_distributed_arrays()
         self._calculate_flight_dynamics()
-
-    def _initialize_distributed_arrays(self):
-        """Distributed parameters initialization"""
-        self.asc_length = self.distr_data['length']
-        self.diameters = self.distr_data['diameter']
-        self.masses = self.distr_data['mass']
-        self.stiffnesses = self.distr_data['stiffness']
-        self.areas = self.distr_data['area']
-        self.classes = self.distr_data['class']
-        self.stages = self.distr_data['stage']
-        self.steps = self.distr_data['step']
-
-    def _distributed_handler(self, filename):
-        """Distributed parameters handling & Further calculation"""
-        df = pd.read_csv(filename)
-
-        L_sec_vector = df['L']
-        D_sec_vector = df['D']
-        Class_sec_vector = df['Class']
-        Stage_sec_vector = df['Stage']
-
-        # Classification handling
-        class_counts = df['Class'].value_counts()
-        class_counts_dict = class_counts.to_dict()
-        tail_count = class_counts_dict.get("Tail", 0)
-        head_count = class_counts_dict.get("Head", 0)
-
-        self.Length_parts.append(df[df['Stage'] == 'Payload']['L'].sum())
-        self.Length_parts.append(df[df['Stage'] == 'First']['L'].sum())
-        self.Length_parts.append(df[df['Stage'] == 'Second']['L'].sum())
-
-        #Masses
-        m_payload = self.payload_mass
-        m_fuel = sum(self.mass_fu)
-        m_oxidyzer = sum(self.mass_ox)
-        m_full = self.full_mass
-        m_engine = m_payload/3
-        self.max_diameter = max(D_sec_vector)
-        m_construction = m_full - m_oxidyzer - m_fuel - m_payload - m_engine
-
-        # Vector init
-        stiff_vector = []
-        area_vector = []
-        mass_vector = []
-        rocket_volume = 0
-        step = constants.lenstep
-        len_t = 0
-
-        # Новые векторы для дискретизации
-        L_sec_vector_sum_new = []
-        D_sec_vector_new = []
-        m_vector_new = []
-        s_vector_new = []
-        A_vector_new = []
-        Class_sec_vector_new = []
-        Stage_sec_vector_new = []
-
-        # Координаты компонентов
-        fuel_coords = []
-        oxidyzer_coords = []
-        stage_coords = {}  # Словарь для хранения координат ступеней
-        current_stage = None
-        current_stage_start = 0
-
-        # Расчет жесткости и площадей
-        for i, L in enumerate(L_sec_vector):
-            stiff_vector.append(constants.calculate_stiffness(D_sec_vector[i]))
-            area_vector.append(constants.cross_sectional_area(D_sec_vector[i]))
-            rocket_volume += L * area_vector[-1]
-
-        # Плотность конструкции
-        dencity_free = m_construction / rocket_volume
-
-        # Счетчики для распределения массы по ступеням
-        f_count = self.block_number - 1
-        o_count = self.block_number - 1
-
-        current_position_from_nose = 0
-
-        # Обработка каждого элемента
-        for i, L in enumerate(L_sec_vector):
-            d_delta = 0
-            # Определение начала новой ступени
-            stage_name = Stage_sec_vector[i]
-            if stage_name != current_stage:
-                if current_stage is not None:
-                    # Сохраняем координаты предыдущей ступени
-                    stage_coords[current_stage] = {
-                        'start': current_stage_start,
-                        'end': current_position_from_nose,
-                        'length': current_position_from_nose - current_stage_start,
-                        'components': []
-                    }
-                current_stage = stage_name
-                current_stage_start = current_position_from_nose
-
-            # Расчет массы элемента
-            m_temp = dencity_free * area_vector[i] * L
-            if Class_sec_vector[i] == "Head":
-                m_temp += m_payload / (head_count if head_count > 0 else 1)
-            elif Class_sec_vector[i] == "Oxidizer":
-                m_temp += self.mass_ox[o_count]
-                oxidyzer_start = current_position_from_nose
-                oxidyzer_end = current_position_from_nose + L
-                oxidyzer_coords.append((oxidyzer_start, oxidyzer_end, Stage_sec_vector[i]))
-                o_count -= 1
-            elif Class_sec_vector[i] == "Fuel":
-                m_temp += self.mass_fu[f_count]
-                fuel_start = current_position_from_nose
-                fuel_end = current_position_from_nose + L
-                fuel_coords.append((fuel_start, fuel_end, Stage_sec_vector[i]))
-                f_count -= 1
-            elif Class_sec_vector[i] == "Tail":
-                m_temp += m_engine / (tail_count if tail_count > 0 else 1)
-            elif Class_sec_vector[i] == "Construction":
-                m_temp += 0
-
-            mass_vector.append(m_temp)
-
-            # Запись информации о компоненте ступени
-            if current_stage in stage_coords:
-                stage_coords[current_stage]['components'].append({
-                    'class': Class_sec_vector[i],
-                    'length': L,
-                    'diameter': D_sec_vector[i],
-                    'start': current_position_from_nose,
-                    'end': current_position_from_nose + L
-                })
-
-            # Дискретизация элемента на шаги
-            if i + 1 < len(D_sec_vector):
-                d_delta = (D_sec_vector.iloc[i+1] - D_sec_vector.iloc[i]) / L
-
-            element_len = 0
-
-            target_length = L
-            while element_len < target_length - 1e-10:
-                current_pos = len_t + element_len
-
-                D_current = D_sec_vector.iloc[i] + d_delta * element_len
-                mass_per_length = mass_vector[i] / L if L > 0 else 0
-                mass_element = mass_per_length * step * (D_current/self.max_diameter if self.max_diameter > 0 else 1)
-
-                self.Length_secs.append(step)
-                L_sec_vector_sum_new.append(current_pos)
-                D_sec_vector_new.append(D_current)
-                m_vector_new.append(mass_element)
-                s_vector_new.append(constants.calculate_stiffness(D_current))
-                A_vector_new.append(constants.cross_sectional_area(D_current))
-                Class_sec_vector_new.append(Class_sec_vector[i])
-                Stage_sec_vector_new.append(Stage_sec_vector[i])
-
-                element_len += step
-
-                if element_len > target_length:
-                    remaining = target_length - (element_len - step)
-                    if remaining > 1e-10:
-                        pass
-                    break
-
-            current_position_from_nose += L
-            len_t += L
-        # Сохраняем координаты последней ступени
-        if current_stage is not None:
-            stage_coords[current_stage] = {
-                'start': current_stage_start,
-                'end': current_position_from_nose,
-                'length': current_position_from_nose - current_stage_start,
-                'components': stage_coords.get(current_stage, {}).get('components', [])
-            }
-
-        # Сохранение координат топлива и окислителя
-        self.fuel_coordinates = []
-        self.oxidyzer_coordinates = []
-        self.structural_coordinates = []
-        print("\n=== Координаты топлива от носа ракеты ===")
-        for i, (start, end, stage) in enumerate(fuel_coords):
-            print(f"Горючее {i+1} (ступень {stage}):")
-            print(f"  Начало: {start:.2f} м от носа")
-            print(f"  Конец:  {end:.2f} м от носа")
-            print(f"  Длина:  {end-start:.2f} м")
-            self.fuel_coordinates.append(coord_element(start, end, end-start))
-
-        for i, (start, end, stage) in enumerate(oxidyzer_coords):
-            print(f"Окислитель {i+1} (ступень {stage}):")
-            print(f"  Начало: {start:.2f} м от носа")
-            print(f"  Конец:  {end:.2f} м от носа")
-            print(f"  Длина:  {end-start:.2f} м")
-            self.oxidyzer_coordinates.append(coord_element(start, end, end-start))
-
-        # Вывод информации о ступенях
-        print("\n=== Координаты блоков ступеней ===")
-        self.stage_coordinates = {}
-        for stage_name, stage_info in sorted(stage_coords.items()):
-            print(f"\nСтупень: {stage_name}")
-            print(f"  Начало: {stage_info['start']:.2f} м от носа")
-            print(f"  Конец:  {stage_info['end']:.2f} м от носа")
-            print(f"  Длина:  {stage_info['length']:.2f} м")
-            self.structural_coordinates.append(coord_element(stage_info['start'], stage_info['end'], stage_info['length']))
-
-            # Вывод информации о компонентах ступени
-            print(f"  Компоненты:")
-            for comp in stage_info['components']:
-                print(f"    - {comp['class']}: {comp['length']:.1f} м, Ø{comp['diameter']:.1f} м "
-                    f"(от {comp['start']:.1f} до {comp['end']:.1f} м)")
-
-        # Корректировка массы
-        final_total_mass = sum(m_vector_new)
-        dif = - ( final_total_mass - m_full )
-        for i in range(len(m_vector_new)):
-            m_vector_new[i] += dif/len(m_vector_new)
-
-        final_total_mass = sum(m_vector_new)
-        dif = - ( final_total_mass - m_full )
-        print(f"\nFinal total mass: {final_total_mass:.4f} kg")
-        print(f"Target mass: {m_full} kg")
-        print(f"Difference: {dif:.4f} kg")
-
-        # Создание DataFrame с результатами
-        new_data = {
-            'step': self.Length_secs,
-            'length': L_sec_vector_sum_new,
-            'diameter': D_sec_vector_new,
-            'area': A_vector_new,
-            'mass': m_vector_new,
-            'stiffness': s_vector_new,
-            'class': Class_sec_vector_new,
-            'stage': Stage_sec_vector_new
-        }
-
-        df_result = pd.DataFrame(new_data)
-        df_result.to_csv('resources/rocket_data.csv', index=False, encoding='utf-8')
-        # Добавляем координаты ступеней в возвращаемые данные
-        new_data['stage_coordinates'] = self.stage_coordinates
-        return new_data
 
     def _calculate_stage_parameters(self):
         """Расчет параметров ступеней"""
@@ -328,6 +88,195 @@ class rocket_parser:
         while m > 0:
             m -= self.delta_mass[1]*constants.timestep
             t +=constants.timestep
+
+    def _distributed_handler(self, filename):
+        df = pd.read_csv(filename)
+        Length_start_vector     = df['L']
+        Diameter_start_vector   = df['D']
+        Class_start_vector      = df['Class']
+        Stage_start_vector      = df['Stage']
+
+        # Classification handling
+        class_counts = df['Class'].value_counts()
+        class_counts_dict = class_counts.to_dict()
+        tail_count = class_counts_dict.get("Tail", 0)
+        head_count = class_counts_dict.get("Head", 0)
+
+        # self.Length_parts.append(df[df['Stage'] == 'Payload']['L'].sum())
+        # self.Length_parts.append(df[df['Stage'] == 'First']['L'].sum())
+        # self.Length_parts.append(df[df['Stage'] == 'Second']['L'].sum())
+
+        #Masses
+        m_payload = self.payload_mass
+        m_fuel = sum(self.mass_fu)
+        m_oxidyzer = sum(self.mass_ox)
+        m_full = self.full_mass
+        m_engine = m_payload/3
+        self.max_diameter = max(Diameter_start_vector)
+        m_construction = m_full - m_oxidyzer - m_fuel - m_payload - m_engine
+
+        Sum_Length_start_vector = []
+        cumlength = 0
+        for le in Length_start_vector:
+            cumlength+=le
+            Sum_Length_start_vector.append(cumlength)
+
+        Length_final_vector     = []
+        Diameter_final_vector   = []
+        Class_final_vector      = []
+        Stage_final_vector      = []
+        Stiffness_final_vetor   = []
+        Area_final_vector       = []
+        Volume_final_vector     = []
+        Mass_final_vector       = []
+
+        Length_final_vector     .append(0)
+        Diameter_final_vector   .append(0)
+        Class_final_vector      .append('Head')
+        Stage_final_vector      .append('Payload')
+        Stiffness_final_vetor   .append(0)
+        Area_final_vector       .append(0)
+        Volume_final_vector     .append(0)
+
+        self.numeric = []
+        raised_length = []
+
+        li = 0
+        num = 0
+
+        while (li<sum(Length_start_vector)):
+            if (li >= constants.lenstep/2): Length_final_vector.append(constants.lenstep)
+            raised_length.append(round(li,1))
+            self.numeric.append(num)
+
+            for i in range(len(Sum_Length_start_vector) - 1):
+                if li < Sum_Length_start_vector[i+1] and li > Sum_Length_start_vector[i]:
+                    Class_final_vector   .append(Class_start_vector[i+1])
+                    Stage_final_vector   .append(Stage_start_vector[i+1])
+                    delta_diameter = Diameter_start_vector[i + 1] - Diameter_start_vector[i]
+                    delta_length = Sum_Length_start_vector[i + 1] - Sum_Length_start_vector[i]
+
+                    offset = li - Sum_Length_start_vector[i]
+
+                    if delta_length > 0:
+                        current_diameter = Diameter_start_vector[i] + (delta_diameter / delta_length) * offset
+                    else:
+                        current_diameter = Diameter_start_vector[i]
+
+                    Diameter_final_vector.append(current_diameter)
+                    Stiffness_final_vetor.append(constants.calculate_stiffness(current_diameter))
+                    Area_final_vector.append(constants.cross_sectional_area(current_diameter))
+                    Volume_final_vector.append(Area_final_vector[-1]*constants.lenstep)
+
+
+            li+=constants.lenstep
+            num+=1
+
+        def mass_per_class(mass_, classname_):
+            print(sum(Volume_final_vector[i] for i in range(len(Class_final_vector)) if Class_final_vector[i] == classname_))
+            return mass_ / sum(Volume_final_vector[i] for i in range(len(Class_final_vector)) if Class_final_vector[i] == classname_)
+
+        def tanklen_per_class(type_, classname_):
+            return sum(Length_final_vector[i] for i in range(len(Class_final_vector))
+                        if Class_final_vector[i] == type_ and Stage_final_vector[i] == classname_)
+
+        def tankpoint_per_class(type_, classname_):
+            return min(raised_length[i] for i in range(len(Class_final_vector))
+                        if Class_final_vector[i] == type_ and Stage_final_vector[i] == classname_)
+
+        def len_per_class(classname_):
+            return sum(Length_final_vector[i] for i in range(len(Class_final_vector))
+                        if  Stage_final_vector[i] == classname_)
+
+        def point_per_class(classname_):
+            return min(raised_length[i] for i in range(len(Class_final_vector))
+                        if  Stage_final_vector[i] == classname_)
+
+        self.m_construction_per = m_construction / sum(Volume_final_vector)
+        self.m_payload_per      = mass_per_class(m_payload, 'Head')
+        self.m_oxidizer_per     = mass_per_class(m_oxidyzer, 'Oxidizer')
+        self.m_fuel_per         = mass_per_class(m_fuel, 'Fuel')
+        self.m_engine_per       = mass_per_class(m_engine, 'Tail')
+
+        self.fuel_coordinates = []
+        self.oxidyzer_coordinates = []
+        self.structural_coordinates = []
+
+        self.fuel_coordinates.append(coord_element(tankpoint_per_class('Fuel', 'First'),
+                                                    tanklen_per_class('Fuel', 'First')))
+        self.fuel_coordinates.append(coord_element(tankpoint_per_class('Fuel', 'Second'),
+                                                    tanklen_per_class('Fuel', 'Second')))
+
+
+        self.oxidyzer_coordinates.append(coord_element(tankpoint_per_class('Oxidizer', 'First'),
+                                                    tanklen_per_class('Oxidizer', 'First')))
+        self.oxidyzer_coordinates.append(coord_element(tankpoint_per_class('Oxidizer', 'Second'),
+                                                    tanklen_per_class('Oxidizer', 'Second')))
+
+        self.structural_coordinates.append(coord_element(point_per_class('First'),
+                                                    len_per_class('First')))
+        self.structural_coordinates.append(coord_element(point_per_class('Second'),
+                                                    len_per_class('Second')))
+
+        for j in range(len(Volume_final_vector)):
+            m = self.m_construction_per * Volume_final_vector[j]
+            if Class_final_vector[j] == 'Head':
+                m += self.m_payload_per * Volume_final_vector[j]
+            elif Class_final_vector[j] == 'Oxidizer':
+                m += self.m_oxidizer_per * Volume_final_vector[j]
+            elif Class_final_vector[j] == 'Fuel':
+                m += self.m_fuel_per * Volume_final_vector[j]
+            elif Class_final_vector[j] == 'Tail':
+                m += self.m_engine_per * Volume_final_vector[j]
+            Mass_final_vector.append(m)
+
+        #zero start
+
+        print("Destr mass:", sum(Mass_final_vector))
+
+        new_data = {
+            'numeric':   self.numeric,
+            'step':      Length_final_vector,
+            'length':    raised_length,
+            'diameter':  Diameter_final_vector,
+            'area':      Area_final_vector,
+            'mass':      Mass_final_vector,
+            'stiffness': Stiffness_final_vetor,
+            'class':     Class_final_vector,
+            'stage':     Stage_final_vector
+        }
+        self.rocket_length = raised_length[-1]
+
+        # print(len(numeric))
+        # print(len(Length_final_vector))
+        # print(len(raised_length))
+        # print(len(Diameter_final_vector))
+        # print(len(Area_final_vector))
+        # print(len(Mass_final_vector))
+        # print(len(Stiffness_final_vetor))
+        # print(len(Class_final_vector))
+        # print(len(Stage_final_vector))
+
+        df_result = pd.DataFrame(new_data)
+        df_result.to_csv('output/rocket_data.csv', index=False, encoding='utf-8')
+
+        return new_data
+
+    def _initialize_distributed_arrays(self):
+        """Distributed parameters initialization"""
+        self.asc_length = self.distr_data['length']
+        self.diameters = self.distr_data['diameter']
+        self.masses = self.distr_data['mass']
+        self.stiffnesses = self.distr_data['stiffness']
+        self.areas = self.distr_data['area']
+        self.classes = self.distr_data['class']
+        self.stages = self.distr_data['stage']
+        self.steps = self.distr_data['step']
+
+    def changed_mass(self, time_):
+        """Расчет распределенной массы в заданный момент времени"""
+        mass_t = self.masses.copy()
+        return mass_t
 
     def _calculate_flight_dynamics(self):
         """Расчет динамических параметров полета"""
@@ -406,8 +355,7 @@ class rocket_parser:
             time += constants.timestep
 
     def get_step_length(self):
-        self.Length_secs[0] = 0
-        return self.Length_secs
+        return self.steps
 
     def get_work_time(self):
         return self.work_time
@@ -469,62 +417,69 @@ class rocket_parser:
                 return self.thrust_vector[k]
         return None
 
-def main():
-    parser = rocket_parser("falcon")
+rp = rocket_parser("falcon")
+print(sum(rp.changed_mass(160)))
+print(rp.get_mass_from_time(160))
 
-main()
-# r = rocket_parser("falcon")
-# print(f"Rocket name: {r.name}")
 
-# plt.figure(figsize=(15, 10))
+# def changed_mass(current_time):
 
-# plt.subplot(2, 1, 1)
-# plt.plot(r.distr_data["length"], r.distr_data["mass"], label="Mass distribution", color="green")
-# plt.xlabel("Rocket length, m")
-# plt.ylabel("Mass, kg")
-# plt.legend()
-# plt.grid(True)
+#    mass_t = masses.copy()
 
-# plt.subplot(2, 1, 2)
-# plt.plot(r.distr_data["length"], r.distr_data["stiffness"], label="Stiffness distribution", color="black")
-# plt.xlabel("Rocket length, m")
-# plt.ylabel("Stiffness")
-# plt.legend()
-# plt.grid(True)
+#    # Iteration on blocks
+#    for j in range(block_number):
+#        n_ox = int(sector_range_ox[j].length/constants.lenstep)
+#        n_fu = int(sector_range_fu[j].length/constants.lenstep)
 
-# plt.tight_layout()
-# plt.show()
+#        # Working time on block
+#        total_time = work_time[j]
 
-# # Дополнительная визуализация динамических параметров
-# # plt.figure(figsize=(15, 10))
+#        time_per_sector_ox = total_time / n_ox if n_ox > 0 else 0
+#        time_per_sector_fu = total_time / n_fu if n_fu > 0 else 0
+#        block_processed = False
 
-# plt.subplot(2, 2, 1)
-# plt.plot(r.time_vector, r.mass_vector, label="Total mass", color="blue")
-# plt.xlabel("Time, s")
-# plt.ylabel("Mass, kg")
-# plt.legend()
-# plt.grid(True)
+#         # Oxidizer
+#        for idx_sector in range(n_ox):
+#            sector_start_time = idx_sector * time_per_sector_ox
+#            sector_end_time = (idx_sector + 1) * time_per_sector_ox
+#            start_idx = int(sector_range_ox[j].start) + idx_sector
+#            end_idx = start_idx + 1
 
-# plt.subplot(2, 2, 2)
-# plt.plot(r.time_vector, r.center_vector, label="Thrust", color="red")
-# plt.xlabel("Time, s")
-# plt.ylabel("Center position, m")
-# plt.legend()
-# plt.grid(True)
+#            if current_time >= sector_end_time:
+#                for k in range(start_idx, end_idx):
+#                    mass_t[k] -= delta_mass_ox[j] * time_per_sector_ox
+#                    mass_t[k] = max(mass_t[k], 0)
+#            elif sector_start_time <= current_time < sector_end_time:
+#                elapsed = current_time - sector_start_time
+#                for k in range(start_idx, end_idx):
+#                    mass_t[k] -= delta_mass_ox[j] * elapsed
+#                    mass_t[k] = max(mass_t[k], 0)
+#                block_processed = True
+#                break
+#            else:
+#                pass
 
-# plt.subplot(2, 2, 3)
-# plt.plot(r.time_vector, r.static_vector, label="Static moment", color="purple")
-# plt.xlabel("Time, s")
-# plt.ylabel("Static moment")
-# plt.legend()
-# plt.grid(True)
+#        # Fuel
+#        for idx_sector in range(n_fu):
+#            sector_start_time = idx_sector * time_per_sector_fu
+#            sector_end_time = (idx_sector + 1) * time_per_sector_fu
+#            start_idx = int(sector_range_fu[j].start) + idx_sector
+#            end_idx = start_idx + 1
 
-# plt.subplot(2, 2, 4)
-# plt.plot(r.time_vector, r.inertia_vector, label="Moment of inertia", color="orange")
-# plt.xlabel("Time, s")
-# plt.ylabel("Inertia, kg·m²")
-# plt.legend()
-# plt.grid(True)
+#            if current_time >= sector_end_time:
+#                for k in range(start_idx, end_idx):
+#                    mass_t[k] -= delta_mass_fu[j] * time_per_sector_fu
+#                    mass_t[k] = max(mass_t[k], 0)
+#            elif sector_start_time <= current_time < sector_end_time:
+#                elapsed = current_time - sector_start_time
+#                for k in range(start_idx, end_idx):
+#                    mass_t[k] -= delta_mass_fu[j] * elapsed
+#                    mass_t[k] = max(mass_t[k], 0)
+#                block_processed = True
+#                break
+#            else:
+#                pass
+#        if block_processed:
+#            break
 
-# plt.tight_layout()
-# plt.show()
+#    return mass_t

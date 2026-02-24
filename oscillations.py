@@ -30,9 +30,9 @@ def calculate_multi(one, second):
 parser = rp.rocket_parser("falcon")
 work_time = parser.get_work_time()
 
-numeric   =  [int(i/constants.lenstep) for i in parser.asc_length]
+numeric   =  parser.numeric
 stiffness =  parser.stiffnesses
-length    =  parser.get_step_length()
+length    =  parser.steps
 masses    =  parser.masses
 
 seen = set()
@@ -60,69 +60,6 @@ sector_range_fu = parser.get_coordinates_fu()
 delta_mass_ox   = parser.get_delta_mass_ox()
 sector_range_ox = parser.get_coordinates_ox()
 
-def changed_mass(current_time):
-
-   mass_t = masses.copy()
-
-   # Iteration on blocks
-   for j in range(block_number):
-       n_ox = int(sector_range_ox[j].length/constants.lenstep)
-       n_fu = int(sector_range_fu[j].length/constants.lenstep)
-
-       # Working time on block
-       total_time = work_time[j]
-
-       time_per_sector_ox = total_time / n_ox if n_ox > 0 else 0
-       time_per_sector_fu = total_time / n_fu if n_fu > 0 else 0
-       block_processed = False
-
-        # Oxidizer
-       for idx_sector in range(n_ox):
-           sector_start_time = idx_sector * time_per_sector_ox
-           sector_end_time = (idx_sector + 1) * time_per_sector_ox
-           start_idx = int(sector_range_ox[j].start) + idx_sector
-           end_idx = start_idx + 1
-
-           if current_time >= sector_end_time:
-               for k in range(start_idx, end_idx):
-                   mass_t[k] -= delta_mass_ox[j] * time_per_sector_ox
-                   mass_t[k] = max(mass_t[k], 0)
-           elif sector_start_time <= current_time < sector_end_time:
-               elapsed = current_time - sector_start_time
-               for k in range(start_idx, end_idx):
-                   mass_t[k] -= delta_mass_ox[j] * elapsed
-                   mass_t[k] = max(mass_t[k], 0)
-               block_processed = True
-               break
-           else:
-               pass
-
-       # Fuel
-       for idx_sector in range(n_fu):
-           sector_start_time = idx_sector * time_per_sector_fu
-           sector_end_time = (idx_sector + 1) * time_per_sector_fu
-           start_idx = int(sector_range_fu[j].start) + idx_sector
-           end_idx = start_idx + 1
-
-           if current_time >= sector_end_time:
-               for k in range(start_idx, end_idx):
-                   mass_t[k] -= delta_mass_fu[j] * time_per_sector_fu
-                   mass_t[k] = max(mass_t[k], 0)
-           elif sector_start_time <= current_time < sector_end_time:
-               elapsed = current_time - sector_start_time
-               for k in range(start_idx, end_idx):
-                   mass_t[k] -= delta_mass_fu[j] * elapsed
-                   mass_t[k] = max(mass_t[k], 0)
-               block_processed = True
-               break
-           else:
-               pass
-       if block_processed:
-           break
-
-   return mass_t
-
-
 ti = 0.0
 ver_mass_vector = []
 time_vector = []
@@ -133,9 +70,9 @@ freqmass_vector_1 = []
 freqmass_vector_2 = []
 freqmass_vector_3 = []
 total_iterations = 0
-while ti < work_time[0]:
+while ti < 5:
 #  print(sum(changed_mass(ti))) TODO: Fix mass issue
-   ver_mass_vector.append(changed_mass(ti))
+   ver_mass_vector.append(parser.changed_mass(ti))
 #   ver_mass_vector.append(masses)
    time_vector.append(ti)
    ti += constants.timestep
