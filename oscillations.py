@@ -27,13 +27,14 @@ def calculate_sum(base):
 def calculate_multi(one, second):
     return [a * b for a, b in zip(one, second)]
 
-parser = rp.rocket_parser("falcon")
+parser = rp.rocket_parser()
 work_time = parser.get_work_time()
 
 numeric   =  parser.numeric
 stiffness =  parser.stiffnesses
 length    =  parser.steps
 masses    =  parser.masses
+alength   =  parser.asc_length
 
 seen = set()
 indexes_to_remove = []
@@ -70,7 +71,7 @@ freqmass_vector_1 = []
 freqmass_vector_2 = []
 freqmass_vector_3 = []
 total_iterations = 0
-while ti < 5:
+while ti < 90:
 #  print(sum(changed_mass(ti))) TODO: Fix mass issue
    ver_mass_vector.append(parser.changed_mass(ti))
 #   ver_mass_vector.append(masses)
@@ -82,12 +83,6 @@ start_color = [0.68, 0.85, 0.9]
 end_color = [0, 0, 0.55]
 
 total_iterations = len(ver_mass_vector)
-
-def interpolate_color(start_color, end_color, i, total):
-   return [
-       start_color[j] + (end_color[j] - start_color[j]) * i / (total - 1)
-       for j in range(constants.mode_num)
-   ]
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -262,7 +257,7 @@ for mo, mass in enumerate(ver_mass_vector):
    for i in range(0, constants.mode_num):
        f_stiffness[i] = calculate_form(i)
        dif_y = np.diff(np.array(f_stiffness[i]))
-       dif_x = np.diff(np.array(numeric))
+       dif_x = np.diff(np.array(alength))
        f_stiffness_diff[i] = dif_y/dif_x
        f_stiffness_diff[i] = np.insert(f_stiffness_diff[i], 0, f_stiffness_diff[i][0])
        if (len(f_stiffness_diff[i])!=len(f_stiffness[i])):
@@ -270,11 +265,11 @@ for mo, mass in enumerate(ver_mass_vector):
            exit()
 
        plt.subplot(2, 1, 1)
-       plt.plot(numeric, f_stiffness[i], color = interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
+       plt.plot(alength, f_stiffness[i], color = constants.interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
        if mo==0:
-           plt.plot(numeric, f_stiffness[i], color = 'g', linewidth=5)
+           plt.plot(alength, f_stiffness[i], color = 'g', linewidth=5)
        if mo == len(ver_mass_vector) - 1:
-           plt.plot(numeric, f_stiffness[i], color = 'y')
+           plt.plot(alength, f_stiffness[i], color = 'y')
 
        plt.title('Расчет форм колебаний', fontsize=16)
        plt.xlabel('Длина РН, м', fontsize=14)
@@ -284,11 +279,11 @@ for mo, mass in enumerate(ver_mass_vector):
        plt.legend(custom_lines, ['1 Тон', '2 Тон', '3 Тон', '0 секунда', '130 секунда'])
 
        plt.subplot(2, 1, 2)
-       plt.plot(numeric, f_stiffness_diff[i], color = interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
+       plt.plot(alength, f_stiffness_diff[i], color = constants.interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
        if mo==0:
-           plt.plot(numeric, f_stiffness_diff[i], color = 'g', linewidth=5)
+           plt.plot(alength, f_stiffness_diff[i], color = 'g', linewidth=5)
        if mo == len(ver_mass_vector) - 1:
-           plt.plot(numeric, f_stiffness_diff[i], color = 'y')
+           plt.plot(alength, f_stiffness_diff[i], color = 'y')
        plt.title('Расчет производных форм колебаний', fontsize=16)
        plt.xlabel('Длина РН, м', fontsize=14)
        plt.ylabel('Производная формы', fontsize=14)

@@ -1,0 +1,14 @@
+L,D,Class,Stage
+0.0,0,Head,Payload
+10.0,4.1,Head,Payload
+1.5,4.1,Construction,Second
+0.8,4.1,Construction,Second
+4.0,4.1,Oxidizer,Second
+0.8,4.1,Construction,Second
+3.5,4.1,Fuel,Second
+1.5,4.1,Tail,Second
+1.2,4.1,Construction,First
+14.0,4.1,Oxidizer,First
+2.0,4.1,Construction,First
+9.0,4.1,Fuel,First
+4.0,4.1,Tail,First

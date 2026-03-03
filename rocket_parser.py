@@ -25,7 +25,8 @@ class coord_element:
         self.end = self.start + self.length
 
 class rocket_parser:
-    def __init__(self, rocket):
+    def __init__(self):
+        rocket = constants.current_rocket
         json_filename  = "rocket_lib/" + rocket + "/constant.json"
         csv_filename = "rocket_lib/" + rocket + "/distributed.csv"
 
@@ -284,62 +285,66 @@ class rocket_parser:
     def changed_mass(self, time_):
         """Расчет распределенной массы в заданный момент времени"""
         mass_t = self.masses.copy()
-        # Process each stage
         time_remaining = time_
+
         for stage in range(self.block_number):
             stage_time = self.work_time[stage]
             if time_remaining <= 0:
                 break
+
             if time_remaining >= stage_time:
-                # Stage completely burned
-                # Drain all fuel and oxidizer for this stage
+                # Ступень полностью отработала
                 for i in range(len(mass_t)):
-                    if self.stages[i] == ['Payload', 'First', 'Second'][stage + 1]:  # Adjust based on your stage naming
+                    stage_name = ['Payload', 'First', 'Second'][stage + 1]
+                    if self.stages[i] == stage_name:
                         if self.classes[i] in ['Fuel', 'Oxidizer']:
-                            mass_t[i] = 0
+                            # Оставляем только массу конструкции бака
+                            mass_t[i] = self.volumes[i] * self.m_construction_per
+                        # Сегменты типа 'Construction', 'Tail' уже имеют правильную массу
                 time_remaining -= stage_time
+
             else:
-                # Stage partially burned
-                # Calculate how much of each tank is consumed
-                fuel_consumed_ratio = time_remaining / stage_time
-                oxid_consumed_ratio = time_remaining / stage_time
-                # Drain tanks from the top
+
+                burn_ratio = time_remaining / stage_time
+
                 fuel_segments = []
                 oxid_segments = []
-                # Collect segments for this stage
+
                 for i in range(len(mass_t)):
-                    if self.stages[i] == ['Payload', 'First', 'Second'][stage + 1]:
+                    stage_name = ['Payload', 'First', 'Second'][stage + 1]
+                    if self.stages[i] == stage_name:
                         if self.classes[i] == 'Fuel':
                             fuel_segments.append((i, self.asc_length[i]))
                         elif self.classes[i] == 'Oxidizer':
                             oxid_segments.append((i, self.asc_length[i]))
-                # Sort by position (from top/end)
-                fuel_segments.sort(key=lambda x: x[1])
-                oxid_segments.sort(key=lambda x: x[1])
 
-                # Drain fuel tanks from top
-                fuel_mass_to_remove = self.mass_fu[stage] * fuel_consumed_ratio
+                fuel_segments.sort(key=lambda x: -x[1], reverse=True)
+                oxid_segments.sort(key=lambda x: -x[1], reverse=True)
+
+                fuel_mass_to_remove = self.mass_fu[stage] * burn_ratio
+                oxid_mass_to_remove = self.mass_ox[stage] * burn_ratio
+
                 for idx, _ in fuel_segments:
-                    segment_mass = mass_t[idx]
-                    if segment_mass > 0:
-                        remove = min(segment_mass, fuel_mass_to_remove)
+                    if fuel_mass_to_remove <= 0:
+                        break
+                    construction_mass = self.volumes[idx] * self.m_construction_per
+                    current_fuel_mass = mass_t[idx] - construction_mass
+                    if current_fuel_mass > 0:
+                        remove = min(current_fuel_mass, fuel_mass_to_remove)
                         mass_t[idx] -= remove
                         fuel_mass_to_remove -= remove
-                        if fuel_mass_to_remove <= 0:
-                            break
 
-                # Drain oxidizer tanks from top
-                oxid_mass_to_remove = self.mass_ox[stage] * oxid_consumed_ratio
                 for idx, _ in oxid_segments:
-                    segment_mass = mass_t[idx]
-                    if segment_mass > 0:
-                        remove = min(segment_mass, oxid_mass_to_remove)
+                    if oxid_mass_to_remove <= 0:
+                        break
+                    construction_mass = self.volumes[idx] * self.m_construction_per
+                    current_oxid_mass = mass_t[idx] - construction_mass
+                    if current_oxid_mass > 0:
+                        remove = min(current_oxid_mass, oxid_mass_to_remove)
                         mass_t[idx] -= remove
                         oxid_mass_to_remove -= remove
-                        if oxid_mass_to_remove <= 0:
-                            break
 
-                time_remaining = 0  # Used partial stage
+                time_remaining = 0
 
         return mass_t
 
@@ -483,46 +488,51 @@ class rocket_parser:
                 return self.thrust_vector[k]
         return None
 
-import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib.cm as cm
-from matplotlib.colors import Normalize
+# import matplotlib.pyplot as plt
+# import numpy as np
+# import matplotlib.cm as cm
+# from matplotlib.colors import Normalize
 
-# Создаем объект ракеты
-rp = rocket_parser("falcon")
+# # Создаем объект ракеты
+# rp = rocket_parser()
 
-# Выбираем моменты времени для анализа
+# # Выбираем моменты времени для анализа
 
-ti = 0
-time_points = []
-while ti < rp.work_time[0]:
-    time_points.append(ti)
-    ti +=5
-# time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
+# ti = 0
+# time_points = []
+# while ti < rp.work_time[0]:
+#     time_points.append(ti)
+#     ti +=5
+# # time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
 
-# Создаем цветовую карту (от темного к светлому)
-colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
+# # Создаем цветовую карту (от темного к светлому)
+# colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
 
-# Создаем фигуру с двумя подграфиками
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10), sharex=True)
+# # Создаем фигуру с двумя подграфиками
+# fig, (ax1) = plt.subplots(1, 1, figsize=(10, 5), sharex=True)
 
-# Получаем координаты по длине ракеты
-x_coords = rp.asc_length
+# # Получаем координаты по длине ракеты
+# x_coords = rp.asc_length
 
-for i, t in enumerate(time_points):
-    if t <= rp.full_time + 30:
-        mass_distribution = rp.changed_mass(t)
+# color_pairs = [
+#     ([0.68, 0.85, 0.9], [0, 0, 1]),
+#     ([1, 0.68, 0.68], [1, 0, 0]),
+#     ([0.8, 0.8, 0.8], [0, 0, 0])
+# ]
 
-        ax1.plot(x_coords, mass_distribution,
-                color=colors[i],
-                linewidth=2,
-                alpha=0.8,
-                label=f't = {t:.1f} с')
+# for i, t in enumerate(time_points):
+#     if t <= rp.full_time + 30:
+#         mass_distribution = rp.changed_mass(t)
 
-ax1.set_xlabel('Длина ракеты, м')
-ax1.set_ylabel('Масса в сечении, кг')
-ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
-ax1.grid(True, alpha=0.3)
-ax1.legend(loc='upper right', fontsize=9)
+#         ax1.plot(x_coords, mass_distribution,
+#                 color = constants.interpolate_color(color_pairs[0][0], color_pairs[0][1], i, len(time_points)),
+#                 linewidth=2,
+#                 alpha=0.8,
+#                 label=f't = {t:.1f} с')
 
-plt.show()
+# ax1.set_xlabel('Длина ракеты, м')
+# ax1.set_ylabel('Масса в сечении, кг')
+# ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
+# ax1.grid(True, alpha=0.3)
+
+# plt.show()

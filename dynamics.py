@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import rocket_parser as rp
 import math
 
-rocketname = "falcon"
-parser = rp.rocket_parser(rocketname)
+rocketname = constants.current_rocket
+parser = rp.rocket_parser()
 
 oscillations_file = "output/"+rocketname+"_oscillations.csv"
 f_stiffness = [0] * constants.mode_num

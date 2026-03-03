@@ -9,6 +9,7 @@ acceleration_of_gravity = 9.81
 earth_radius = 6371000
 lamb = (4.73, 7.853, 10.996, 14.137, 17.279)
 
+current_rocket = 'amur'
 
 class density(enum.Enum):
     LOX = 1100.0  # Жидкий кислород
@@ -19,7 +20,7 @@ class density(enum.Enum):
     AP = 1950.0  # Перхлорат аммония (окислитель в твердом топливе)
     RG_1 = 440.0  # Российский ракетный керосин
     UH25 = 880.0  # Смесь UDMH и гидразина
-    CH4 = 450.0  # Сжиженный метан
+    CH4 = 500.0  # Сжиженный метан
 
 mode_num = 3
 
@@ -88,3 +89,9 @@ def read_array_from_csv(filename, arrayname):
     except Exception as e:
         print(f"Ошибка при чтении файла {filename}: {e}")
         return None
+
+def interpolate_color(start_color, end_color, i, total):
+   return [
+       start_color[j] + (end_color[j] - start_color[j]) * i / (total - 1)
+       for j in range(mode_num)
+   ]

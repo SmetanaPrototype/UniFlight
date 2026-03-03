@@ -40,8 +40,8 @@ Csw_list = [[] for _ in range(constants.mode_num)]
 Csy_list = [[] for _ in range(constants.mode_num)]
 Csb_list = [[] for _ in range(constants.mode_num)]
 
-rocketname = "falcon"
-parser = rp.rocket_parser(rocketname)
+parser = rp.rocket_parser()
+rocketname = constants.current_rocket
 
 # Диапазоны коэффициентов согласно требованиям
 COEF1_RANGE = (0.1, 4.5)  # Первый коэффициент: 0.1 - 4.5
