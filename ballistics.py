@@ -8,7 +8,9 @@ import json
 import warnings
 import matplotlib.pyplot as plt
 import math
+import numpy as np
 from scipy.integrate import solve_ivp
+from scipy.optimize import differential_evolution, Bounds, minimize
 
 # Глобальные переменные для хранения лучших коэффициентов
 best_coefficients = None
@@ -43,7 +45,7 @@ parser = rp.rocket_parser(rocketname)
 
 # Диапазоны коэффициентов согласно требованиям
 COEF1_RANGE = (0.1, 4.5)  # Первый коэффициент: 0.1 - 4.5
-COEF2_RANGE = (0.02, 2.0)  # Второй коэффициент: 0.01 - 0.5
+COEF2_RANGE = (0.02, 2.0)  # Второй коэффициент: 0.02 - 2.0
 
 # Целевые параметры
 TARGET_VELOCITY = 7780

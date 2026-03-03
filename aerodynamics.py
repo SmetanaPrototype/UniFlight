@@ -619,7 +619,7 @@ def main():
     G.set_length(parser.get_part_length())
 
     arrayVelocity = np.linspace(10, 3000, 100)
-    altitudes = [0, 10, 20, 40, 60]
+    altitudes = [10]
     red_colors = Reds(np.linspace(0.2, 1.0, len(arrayVelocity)))
 
     plt.figure(figsize=(14, 10))
