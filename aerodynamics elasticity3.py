@@ -41,164 +41,35 @@ class RealModeShapeLoader:
         self.has_mode_data = False
 
     def load_frequency_data(self, filename=None):
-        """Загрузка частот и приведенных масс из CSV"""
-        if filename is None:
-            filename = f"output/{self.rocket_name}_frequency.csv"
-
-        try:
-            if not os.path.exists(filename):
-                print(f"   Файл {filename} не найден")
-                return False
-
-            df = pd.read_csv(filename)
-            self.time_vector = df["time"].tolist()
-            self.freq_vectors[0] = df["freq_1"].tolist()
-            self.freq_vectors[1] = df["freq_2"].tolist()
-            self.freq_vectors[2] = df["freq_3"].tolist()
-            self.freqmass_vectors[0] = df["freq_mass_1"].tolist()
-            self.freqmass_vectors[1] = df["freq_mass_2"].tolist()
-            self.freqmass_vectors[2] = df["freq_mass_3"].tolist()
-
-            self.has_frequency_data = True
-
-            print(f"   Загружено частот: {len(self.time_vector)} временных точек")
-            if len(self.time_vector) > 0:
-                print(
-                    f"   Частоты (t=0): 1 тон = {self.freq_vectors[0][0]:.2f} Гц, "
-                    f"2 тон = {self.freq_vectors[1][0]:.2f} Гц, "
-                    f"3 тон = {self.freq_vectors[2][0]:.2f} Гц"
-                )
-                print(
-                    f"   Обобщенные массы (t=0): 1 тон = {self.freqmass_vectors[0][0]:.1f} кг, "
-                    f"2 тон = {self.freqmass_vectors[1][0]:.1f} кг, "
-                    f"3 тон = {self.freqmass_vectors[2][0]:.1f} кг"
-                )
-            return True
-        except Exception as e:
-            print(f"   Ошибка загрузки частот: {e}")
-            return False
+        freq_file = "output/"+constants.current_rocket+"_frequency.csv"
+        self.time_vector = constants.read_array_from_csv(freq_file, "time")
+        self.freq_vectors[0]   = constants.read_array_from_csv(freq_file, "freq_1")
+        self.freq_vectors[1]   = constants.read_array_from_csv(freq_file, "freq_2")
+        self.freq_vectors[2]   = constants.read_array_from_csv(freq_file, "freq_3")
+        self.freqmass_vectors[0]   = constants.read_array_from_csv(freq_file, "freq_mass_1")
+        self.freqmass_vectors[1]   = constants.read_array_from_csv(freq_file, "freq_mass_2")
+        self.freqmass_vectors[2]   = constants.read_array_from_csv(freq_file, "freq_mass_3")
+        self.has_frequency_data = True
+        return True
 
     def load_mode_shapes(self, filename=None):
-        """Загрузка форм колебаний и их производных из CSV"""
-        if filename is None:
-            filename = f"output/{self.rocket_name}_oscillations.csv"
 
-        try:
-            if not os.path.exists(filename):
-                print(f"   Файл {filename} не найден")
-                return False
+        f_stiffness = [0] * constants.mode_num
+        f_stiffness_diff = [0] * constants.mode_num
+        oscillations_file = "output/"+constants.current_rocket+"_oscillations.csv"
+        f_stiffness[0]      = constants.read_array_from_csv(oscillations_file, "form_1")
+        f_stiffness[1]      = constants.read_array_from_csv(oscillations_file, "form_2")
+        f_stiffness[2]      = constants.read_array_from_csv(oscillations_file, "form_3")
+        f_stiffness_diff[0] = constants.read_array_from_csv(oscillations_file, "difform_1")
+        f_stiffness_diff[1] = constants.read_array_from_csv(oscillations_file, "difform_2")
+        f_stiffness_diff[2] = constants.read_array_from_csv(oscillations_file, "difform_3")
 
-            df = pd.read_csv(filename)
+        self.mode_shapes = [f_stiffness[s] for s in range(constants.mode_num)]
+        self.mode_shapes_diff = [f_stiffness_diff[s] for s in range(constants.mode_num)]
 
-            # Загружаем координаты
-            if "length" in df.columns:
-                self.x_coords = df["length"].tolist()
-                print(f"   Загружено {len(self.x_coords)} точек по длине")
-            else:
-                print("   В файле нет колонки 'length'")
-                return False
+        self.has_mode_data = True
+        return True
 
-            # Проверяем наличие колонок с формами
-            form_columns = [col for col in df.columns if col.startswith("form_")]
-            difform_columns = [col for col in df.columns if col.startswith("difform_")]
-
-            if not form_columns:
-                print("   В файле нет колонок с формами колебаний")
-                return False
-
-            # Загружаем формы для каждого момента времени
-            # Определяем все уникальные индексы времени из названий колонок
-            time_indices = set()
-            for col in form_columns:
-                parts = col.split("_")
-                if len(parts) >= 3 and parts[2].isdigit():
-                    time_indices.add(int(parts[2]))
-                else:
-                    # Если нет индекса времени, используем индекс 0
-                    time_indices.add(0)
-
-            if len(time_indices) == 0:
-                time_indices = {0}
-
-            self.mode_shapes = []
-            self.mode_shapes_diff = []
-
-            for t_idx in sorted(time_indices):
-                shapes = {}
-                shapes_diff = {}
-
-                for mode in range(3):
-                    mode_num = mode + 1
-
-                    # Пробуем разные форматы названий колонок
-                    possible_names = [
-                        f"form_{mode_num}_{t_idx}",
-                        f"form_{mode_num}",
-                        f"form_{mode_num}",
-                    ]
-
-                    for col_name in possible_names:
-                        if col_name in df.columns:
-                            shapes[mode] = df[col_name].tolist()
-                            break
-
-                    possible_diff_names = [
-                        f"difform_{mode_num}_{t_idx}",
-                        f"difform_{mode_num}",
-                        f"difform_{mode_num}",
-                    ]
-
-                    for diff_name in possible_diff_names:
-                        if diff_name in df.columns:
-                            shapes_diff[mode] = df[diff_name].tolist()
-                            break
-
-                if shapes:
-                    self.mode_shapes.append(shapes)
-                    self.mode_shapes_diff.append(shapes_diff)
-
-            if self.mode_shapes:
-                self.has_mode_data = True
-                print(f"   Загружено {len(self.mode_shapes)} наборов форм колебаний")
-
-                # Нормализуем формы (максимальное значение = 1)
-                for time_idx in range(len(self.mode_shapes)):
-                    for mode in range(3):
-                        if mode in self.mode_shapes[time_idx]:
-                            values = np.array(self.mode_shapes[time_idx][mode])
-                            max_val = np.max(np.abs(values))
-                            if max_val > 0:
-                                self.mode_shapes[time_idx][mode] = (
-                                    values / max_val
-                                ).tolist()
-
-                                # Также нормализуем производные
-                                if (
-                                    time_idx < len(self.mode_shapes_diff)
-                                    and mode in self.mode_shapes_diff[time_idx]
-                                ):
-                                    self.mode_shapes_diff[time_idx][mode] = (
-                                        np.array(self.mode_shapes_diff[time_idx][mode])
-                                        / max_val
-                                    ).tolist()
-
-                # Выводим информацию о формах
-                if self.mode_shapes and 0 in self.mode_shapes[0]:
-                    print(
-                        f"   Форма 1: min={min(self.mode_shapes[0][0]):.3f}, max={max(self.mode_shapes[0][0]):.3f}"
-                    )
-            else:
-                print("   Не удалось загрузить формы колебаний")
-                return False
-
-            return True
-
-        except Exception as e:
-            print(f"   Ошибка загрузки форм колебаний: {e}")
-            import traceback
-
-            traceback.print_exc()
-            return False
 
     def set_time(self, time_seconds):
         """Установка текущего времени полета для выбора соответствующей формы"""
@@ -220,8 +91,8 @@ class RealModeShapeLoader:
             self.set_time(time_seconds)
 
         # Получаем частоту и обобщенную массу
-        frequency = 20.0
-        gen_mass = 1000.0
+        frequency = 0
+        gen_mass = 0
 
         if self.has_frequency_data:
             if mode_index < len(self.freq_vectors) and self.current_time_index < len(
@@ -229,9 +100,9 @@ class RealModeShapeLoader:
             ):
                 frequency = self.freq_vectors[mode_index][self.current_time_index]
 
-            if mode_index < len(self.freqmass_vectors) and self.current_time_index < len(
-                self.freqmass_vectors[mode_index]
-            ):
+            if mode_index < len(
+                self.freqmass_vectors
+            ) and self.current_time_index < len(self.freqmass_vectors[mode_index]):
                 gen_mass = self.freqmass_vectors[mode_index][self.current_time_index]
 
         # Создаем объект ModeShape
@@ -858,7 +729,7 @@ class DragForce(Friction, Pressure):
 
 @dataclass
 class AeroElasticParams:
-    mass_per_length: float = 200.0
+    mass_per_length: float = 1000.0
     bending_stiffness: float = 5e6
     torsional_stiffness: float = 8e6
 
@@ -880,54 +751,12 @@ class AdvancedAeroElasticity:
             print(f"   Используются реальные формы колебаний")
         else:
             print(f"   Внимание: используются приближенные формы колебаний")
-            self._generate_approx_modes()
 
     def set_flight_time(self, time_seconds):
         """Установка времени полета для выбора соответствующих форм"""
         self.current_time = time_seconds
         if self.mode_loader and self.mode_loader.has_data():
             self.modes = self.mode_loader.get_all_modes_at_time(time_seconds)
-
-    def _generate_approx_modes(self):
-        """Генерация приближенных форм (заглушка)"""
-        L = self.geom.full_length
-        if L <= 0:
-            return
-
-        from scipy import special
-
-        beta = [4.73004074, 7.85320462, 10.9956078, 14.1371655, 17.2787597]
-
-        modes = []
-        for i in range(3):
-            bl = beta[i]
-            sigma = (math.cos(bl) - math.cosh(bl)) / (math.sin(bl) - math.sinh(bl))
-
-            x_nodes = np.linspace(0, L, 100)
-            values = []
-            for x in x_nodes:
-                xi = x / L
-                value = (
-                    math.cos(bl * xi)
-                    - math.cosh(bl * xi)
-                    - sigma * (math.sin(bl * xi) - math.sinh(bl * xi))
-                )
-                values.append(value)
-
-            max_val = max(abs(v) for v in values)
-            values = [v / max_val for v in values]
-
-            modes.append(
-                ModeShape(
-                    name=f"{i+1}-я изгибная (приближ.)",
-                    frequency=15.0 * (i + 1),
-                    generalized_mass=1000.0,
-                    nodes=x_nodes.tolist(),
-                    values=values,
-                )
-            )
-
-        self.modes = modes
 
     def _get_local_diameter(self, x: float) -> float:
         for elem in self.geom.elem:
@@ -1159,7 +988,9 @@ class AdvancedAeroElasticity:
             print(f"  Обобщенная масса: {mode.generalized_mass:.1f} кг")
             print(f"  Циклическая частота: {mode.omega:.3f} рад/с")
             if mode.nodes and len(mode.nodes) > 10 and mode.values:
-                print(f"  Амплитуда: min={min(mode.values):.3f}, max={max(mode.values):.3f}")
+                print(
+                    f"  Амплитуда: min={min(mode.values):.3f}, max={max(mode.values):.3f}"
+                )
                 nodes_pos = []
                 for j in range(len(mode.values) - 1):
                     if mode.values[j] * mode.values[j + 1] <= 0:
@@ -1332,6 +1163,8 @@ class ParallelAerodynamics:
             CY=calc.CY,
             focus_rigid=focus_rigid,
         )
+        if not self.mode_loader.has_data():
+            raise SystemExit
 
         if use_elastic:
             aero_elastic = AdvancedAeroElasticity(calc, self.mode_loader)
@@ -1625,95 +1458,197 @@ def save_results(results_rigid: List[AeroResult], results_elastic: List[AeroResu
 def main():
     print("=" * 60)
     print("АЭРОДИНАМИЧЕСКИЙ РАСЧЕТ С УЧЕТОМ АЭРОУПРУГОСТИ")
-    print("(с использованием реальных форм колебаний из первого расчета)")
     print("=" * 60)
 
     # Загрузка геометрии ракеты
     print("\n1. Загрузка геометрии ракеты...")
     try:
-        parser = rp.rocket_parser()
+        parser = rp.rocket_parser()  # Указываем имя ракеты
         calculator = UnionStream()
         calculator.set_elnumber(parser.get_block_number() + 1)
         calculator.set_diameter(parser.get_part_diameters())
         calculator.set_length(parser.get_part_length())
-
         print(f"   Элементов: {len(calculator.elem)}")
         print(f"   Полная длина: {calculator.full_length:.2f} м")
-        print(f"   Миделево сечение: {calculator.midel_diameter:.3f} м")
     except Exception as e:
         print(f"   Ошибка загрузки: {e}")
+        import traceback
+
+        traceback.print_exc()
         return
 
-    # Загрузка реальных форм колебаний
+    # Загрузка форм колебаний
     print("\n2. Загрузка результатов первого расчета...")
     mode_loader = RealModeShapeLoader("amur")
-
-    if not mode_loader.load_frequency_data():
-        print("   Не удалось загрузить частоты, будут использованы приближенные формы")
+    if not mode_loader.load_frequency_data() or not mode_loader.load_mode_shapes():
+        print("   Используются приближенные формы колебаний")
         mode_loader = None
-    else:
-        if not mode_loader.load_mode_shapes():
-            print("   Не удалось загрузить формы колебаний")
-            mode_loader = None
 
-    # Информация о формах
-    if mode_loader and mode_loader.has_data():
-        aero_elastic_test = AdvancedAeroElasticity(calculator, mode_loader)
-        aero_elastic_test.print_mode_info()
-    else:
-        print("\n   Внимание: используются приближенные формы колебаний")
-        aero_elastic_test = AdvancedAeroElasticity(calculator, None)
-        aero_elastic_test.print_mode_info()
-
-    # Параметры расчета
-    velocities = np.linspace(100, 2000, 30)  # Увеличили начальную скорость
-    altitudes = [0, 20, 40, 70]
-    attack_angle = 3.0  # Увеличили угол атаки
-    flight_times = [0, 30, 60, 90]
-
-    print(f"\n3. Параметры расчета:")
-    print(f"   Скорости: {velocities[0]:.0f} - {velocities[-1]:.0f} м/с")
-    print(f"   Высоты: {altitudes} км")
-    print(f"   Угол атаки: {attack_angle}°")
-    print(f"   Моменты времени: {flight_times} с")
-
-    # Выбор времени для расчета
-    print(f"\n4. Выберите время полета для расчета:")
-    for i, t in enumerate(flight_times):
-        print(f"   {i+1}. t = {t} с")
-    choice = input("   Введите номер (1-4) или нажмите Enter для t=0: ")
-
-    try:
-        time_idx = int(choice) - 1 if choice else 0
-        flight_time = flight_times[min(time_idx, len(flight_times) - 1)]
-    except:
-        flight_time = 0
-
-    # Параллельный расчет
     parallel = ParallelAerodynamics(calculator, mode_loader)
 
-    print(f"\n5. Расчет без учета аэроупругости...")
-    results_rigid = parallel.calculate_range(velocities, altitudes, attack_angle, False)
+    # Расширенный список точек
+    points = [
+        # Старт и начальный участок (плотные слои атмосферы)
+        {"V": 500, "t": 25, "H": 5, "name": "Старт (500 м/с, 25 с, 5 км)"},
+        # Трансзвуковая область (максимальные аэродинамические нагрузки)
+        {"V": 680, "t": 62, "H": 24, "name": "Околозвук (680 м/с, M≈2.0, 24 км)"},
+        {"V": 720, "t": 65, "H": 26, "name": "Max Q область (720 м/с, 65 с, 26 км)"},
+        {"V": 750, "t": 67, "H": 27, "name": "Пик нагрузок (750 м/с, 67 с, 27 км)"},
+        # Работа первой ступени (основные нагрузки)
+        {
+            "V": 800,
+            "t": 70,
+            "H": 28,
+            "name": "Середина работы 1 ступени (800 м/с, 70 с, 28 км)",
+        },
+        {"V": 900, "t": 78, "H": 33, "name": "Сверхзвук (900 м/с, 78 с, 33 км)"},
+        {
+            "V": 1000,
+            "t": 85,
+            "H": 38,
+            "name": "Окончание плотных слоев (1000 м/с, 85 с, 38 км)",
+        },
+    ]
 
-    print(f"\n6. Расчет с учетом аэроупругости (t = {flight_time} с)...")
-    results_elastic = parallel.calculate_range(
-        velocities, altitudes, attack_angle, True, flight_time
+    attack_angle = 4.0
+
+    print(f"\nПараметры расчета:")
+    print(f"   Угол атаки: {attack_angle}°")
+    print(f"\nРасчетных точек: {len(points)}")
+
+    # Списки для сбора всех приращений
+    all_cx_changes = []
+    all_cyy_changes = []
+    all_xf_changes = []
+    all_alpha_add = []
+
+    # Заголовок таблицы
+    print("\n" + "=" * 140)
+    print(
+        f"{'Точка':<35} {'Cx (старый)':>12} {'Cx (новый)':>12} {'Cx изм,%':>10} "
+        f"{'Cyy (старый)':>12} {'Cyy (новый)':>12} {'Cyy изм,%':>10} "
+        f"{'Xf (старый)':>10} {'Xf (новый)':>10} {'Xf изм,%':>8} {'Δα, °':>6}"
     )
+    print("=" * 140)
 
-    # Визуализация
-    print(f"\n7. Построение графиков...")
-    visualizer = SimpleVisualizer()
-    visualizer.plot_results(results_rigid, results_elastic, altitudes)
+    for point in points:
+        V, t, H = point["V"], point["t"], point["H"]
 
-    # Статистика
-    visualizer.print_summary(results_rigid, results_elastic)
+        # Создаем списки для одной точки
+        velocities = [V]
+        altitudes = [H]
 
-    # Сохранение
-    save_results(results_rigid, results_elastic)
+        # Жесткий расчет
+        results_rigid = parallel.calculate_range(
+            velocities, altitudes, attack_angle, False
+        )
 
-    print(f"\n{'='*60}")
+        # Упругий расчет
+        results_elastic = parallel.calculate_range(
+            velocities, altitudes, attack_angle, True, t
+        )
+
+        if not results_rigid or not results_elastic:
+            print(
+                f"{point['name'][:33]:<33} {'Ошибка':>12} {'Ошибка':>12} {'Ошибка':>10} "
+                f"{'Ошибка':>12} {'Ошибка':>12} {'Ошибка':>10} "
+                f"{'Ошибка':>10} {'Ошибка':>10} {'Ошибка':>8} {'Ошибка':>6}"
+            )
+            continue
+
+        result_rigid = results_rigid[0]
+        result_elastic = results_elastic[0]
+
+        # Cx
+        cx_rigid = result_rigid.CX
+        cx_elastic = (
+            result_elastic.CX_elastic if result_elastic.CX_elastic else cx_rigid
+        )
+        cx_change = (cx_elastic - cx_rigid) / cx_rigid * 100 if cx_rigid != 0 else 0
+
+        # Cyy
+        cyy_rigid = result_rigid.CYY
+        cyy_elastic = (
+            result_elastic.CYY_elastic if result_elastic.CYY_elastic else cyy_rigid
+        )
+        cyy_change = (
+            (cyy_elastic - cyy_rigid) / cyy_rigid * 100 if cyy_rigid != 0 else 0
+        )
+
+        # Xf (положение фокуса в долях длины)
+        xf_rigid = result_rigid.focus_rigid if result_rigid.focus_rigid else 0
+        xf_elastic = (
+            result_elastic.focus_elastic if result_elastic.focus_elastic else xf_rigid
+        )
+        xf_change = (xf_elastic - xf_rigid) * 100  # в процентах от длины
+
+        # Дополнительный угол атаки
+        alpha_add = (
+            result_elastic.additional_angle_mean
+            if result_elastic.additional_angle_mean
+            else 0
+        )
+
+        # Сохраняем для статистики (абсолютные значения)
+        all_cx_changes.append(abs(cx_change))
+        all_cyy_changes.append(abs(cyy_change))
+        all_xf_changes.append(abs(xf_change))
+        all_alpha_add.append(abs(alpha_add))
+
+        # Вывод строки таблицы
+        print(
+            f"{point['name'][:33]:<33} "
+            f"{cx_rigid:>12.6f} {cx_elastic:>12.6f} {cx_change:>+9.2f}% "
+            f"{cyy_rigid:>12.6f} {cyy_elastic:>12.6f} {cyy_change:>+9.2f}% "
+            f"{xf_rigid:>10.4f} {xf_elastic:>10.4f} {xf_change:>+7.2f}% {alpha_add:>+5.2f}"
+        )
+
+    print("=" * 140)
+
+    # Вывод максимальных приращений
+    print("\n" + "=" * 80)
+    print("МАКСИМАЛЬНЫЕ ПРИРАЩЕНИЯ ПО ВСЕМ ТОЧКАМ")
+    print("=" * 80)
+
+    if all_cx_changes:
+        max_cx_idx = np.argmax(all_cx_changes)
+        print(
+            f"Максимальное изменение Cx: {all_cx_changes[max_cx_idx]:.2f}% "
+            f"(в точке: {points[max_cx_idx]['name']})"
+        )
+    else:
+        print("Максимальное изменение Cx: нет данных")
+
+    if all_cyy_changes:
+        max_cyy_idx = np.argmax(all_cyy_changes)
+        print(
+            f"Максимальное изменение Cyy: {all_cyy_changes[max_cyy_idx]:.2f}% "
+            f"(в точке: {points[max_cyy_idx]['name']})"
+        )
+    else:
+        print("Максимальное изменение Cyy: нет данных")
+
+    if all_xf_changes:
+        max_xf_idx = np.argmax(all_xf_changes)
+        print(
+            f"Максимальное смещение фокуса: {all_xf_changes[max_xf_idx]:.2f}% "
+            f"(в точке: {points[max_xf_idx]['name']})"
+        )
+    else:
+        print("Максимальное смещение фокуса: нет данных")
+
+    if all_alpha_add:
+        max_alpha_idx = np.argmax(all_alpha_add)
+        print(
+            f"Максимальный доп. угол атаки: {all_alpha_add[max_alpha_idx]:.2f}° "
+            f"(в точке: {points[max_alpha_idx]['name']})"
+        )
+    else:
+        print("Максимальный доп. угол атаки: нет данных")
+
+    print("\n" + "=" * 80)
     print("РАСЧЕТ ЗАВЕРШЕН")
-    print("=" * 60)
+    print("=" * 80)
 
 
 if __name__ == "__main__":

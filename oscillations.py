@@ -4,6 +4,9 @@ import rocket_parser as rp
 import constants
 import numpy as np
 
+import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
+
 # Lists init
 numeric = []
 length = []
@@ -36,25 +39,6 @@ length    =  parser.steps
 masses    =  parser.masses
 alength   =  parser.asc_length
 
-seen = set()
-indexes_to_remove = []
-
-for i, val in enumerate(numeric):
-    if val in seen:
-        indexes_to_remove.append(i)
-    else:
-        seen.add(val)
-
-print(f"\nRepeates: {len(indexes_to_remove)}")
-print(f"Indexes for deleting: {indexes_to_remove}")
-
-if indexes_to_remove:
-    for idx in sorted(indexes_to_remove, reverse=True):
-        numeric.pop(idx)
-        stiffness.pop(idx)
-        length.pop(idx)
-        masses.pop(idx)
-
 block_number    = int(parser.get_block_number())
 delta_mass_fu   = parser.get_delta_mass_fu()
 sector_range_fu = parser.get_coordinates_fu()
@@ -71,21 +55,13 @@ freqmass_vector_1 = []
 freqmass_vector_2 = []
 freqmass_vector_3 = []
 total_iterations = 0
-while ti < 90:
-#  print(sum(changed_mass(ti))) TODO: Fix mass issue
-   ver_mass_vector.append(parser.changed_mass(ti))
-#   ver_mass_vector.append(masses)
-   time_vector.append(ti)
-   ti += constants.timestep
-   total_iterations+=1
+
+time_vector = [t for t in range(0, 90+1, constants.timestep)]
+ver_mass_vector = [parser.changed_mass(ti) for ti in time_vector]
+total_iterations = len(ver_mass_vector)
 
 start_color = [0.68, 0.85, 0.9]
 end_color = [0, 0, 0.55]
-
-total_iterations = len(ver_mass_vector)
-
-import matplotlib.pyplot as plt
-from matplotlib.lines import Line2D
 
 custom_lines = [
    Line2D([0], [0], color='blue', lw=2),
@@ -237,15 +213,13 @@ for mo, mass in enumerate(ver_mass_vector):
            sum_mf_12 = calculate_sum(mf_12)
            w_calc[index] = m.sqrt(sum_mf_12[-1]/(sum_M1x2_E[-1]*1000.0*pow(length[-1]/2,4)))/(2*m.pi)
 
-           mass_s[index] = sum_mf_12[-1] *1000
-           f_start = f_stiffness_res
+           mass_s[index] = sum_mf_12[-1]
            if max(abs(f_stiffness_res[i] - f_start[i]) for i in range(len(f_start))) < tolerance:
                 break
+           f_start = f_stiffness_res
 
        return f_stiffness_res
    #################################################################
-
-
 
    w_femap = [11.86, 32.51, 60.66, 86.75, 124.37]
    color_pairs = [

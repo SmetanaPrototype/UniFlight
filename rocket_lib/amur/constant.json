@@ -1,7 +1,7 @@
 {
   "name": "amur",
   "block_number": 2,
-  "payload_mass": 10500,
+  "payload_mass": 12000,
   "block_mass": [
     302000,
     47500
@@ -23,7 +23,7 @@
   "fuel": "CH4",
   "oxidizer": "LOX",
   "attack_coefs": [
-    1.05,
-    0.7
+    1.73811068,
+    0.19935052
   ]
 }

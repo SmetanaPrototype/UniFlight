@@ -611,6 +611,9 @@ class UnionStream(DragForce, LiftForce):
     def get_cya_from_coord(self, x):
         return constants.get_coefficient_simple(x, self.lengthprofile, self.liftprofile)
 
+# def test:
+
+
 def main():
     parser = rp.rocket_parser()
     G = UnionStream()
@@ -687,7 +690,7 @@ def main():
     ax3.grid(True)
     ax3.set_title("Зависимость CYY от скорости")
 
-    plt.suptitle("Аэродинамические коэффициенты, 1/рад")
+    plt.suptitle("Аэродинамические коэффициенты")
     plt.tight_layout(rect=[0, 0.03, 1, 0.90])
 
     fig = plt.gcf()
