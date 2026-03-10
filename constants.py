@@ -38,7 +38,7 @@ def calculate_stiffness(diameter):
     return young_modulus * math.pi * cross_sectional_area(diameter)
 
 def cross_sectional_area(diameter):
-    return math.pi * ((diameter**2) / 4 - ((diameter - 0.04)**2) / 4)
+    return math.pi * (diameter**2) / 4
 
 def calculate_static(mass_, shoulder):
     return 0.5 * mass_ * shoulder
