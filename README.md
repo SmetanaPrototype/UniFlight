@@ -32,6 +32,7 @@ The thirt attempt to make an universal application for rocket flight.
     5 AI
     6 Fix frequency issue (mass)
     7 Fix extreme of altitude & attack coefs update
+    8 Update output (form per time)
 
 ### Syntax RULES
     _sec  - rocket micro parts

@@ -6,6 +6,7 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
+from scipy import integrate
 
 # Lists init
 numeric = []
@@ -83,7 +84,10 @@ def output(parser):
                                 form_3     =f_stiffness[2],
                                 difform_1  =f_stiffness_diff[0],
                                 difform_2  =f_stiffness_diff[1],
-                                difform_3  =f_stiffness_diff[2])
+                                difform_3  =f_stiffness_diff[2],
+                                intform_1  =f_stiffness_integral[0],
+                                intform_2  =f_stiffness_integral[1],
+                                intform_3  =f_stiffness_integral[2])
 
    constants.write_arrays_to_csv("output/"+rocketname+"_frequency.csv",
                                 time       =time_vector,
@@ -134,6 +138,7 @@ for mo, mass in enumerate(ver_mass_vector):
    f_zero = [0] * constants.mode_num
    f_stiffness = [0] * constants.mode_num
    f_stiffness_diff = [0] * constants.mode_num
+   f_stiffness_integral = [0] * constants.mode_num
    f_mass = [0] * constants.mode_num
    w_calc = [0] * constants.mode_num
    fi     = [0] * constants.mode_num
@@ -144,12 +149,14 @@ for mo, mass in enumerate(ver_mass_vector):
    w_zero = [m.sqrt(max(stiffness)/(rocket_mass*(10**3)/rocket_length*pow(rocket_length,4)))*(x**2)/(2*m.pi) for x in L]
 
 
-   def calculate_form(index):
+   def calculate_form(index, time_idx):
 
        f_start = f_zero[index]
        tolerance = 1e-8
+       mass_effective = mass#parser.effective_mass(time_idx, index)
+
        while(True):
-           m_f1 = calculate_multi(mass, f_start)
+           m_f1 = calculate_multi(mass_effective, f_start)
            sum_m_f1 = calculate_sum(m_f1)
 
            value_6_11 = calculate_multi(m_f1, N_Nm)
@@ -169,7 +176,7 @@ for mo, mass in enumerate(ver_mass_vector):
            f1_16 = [a + b + c for a, b, c in zip(D2_15, f_start, accumulated_delta)]
            f_mass[index] = [x/max(f1_16) for x in f1_16]
 
-           m_f1 = calculate_multi(mass, f_mass[index])
+           m_f1 = calculate_multi(mass_effective, f_mass[index])
            sum_m_f1 = calculate_sum(m_f1)
            double_sum_m_f1 = calculate_sum(sum_m_f1)
            dm1 = [-x*double_sum_m_f1[-1]/numeric[-1] for x in numeric]
@@ -177,7 +184,7 @@ for mo, mass in enumerate(ver_mass_vector):
            M1x_E = [a/b if b != 0 else 0 for a, b in zip(M1x, stiffness)]
            sum_M1x_E = calculate_sum(M1x_E)
            fi[index] = calculate_sum(sum_M1x_E)
-           double_sum_M1x_E_mass = calculate_multi(fi[index], mass)
+           double_sum_M1x_E_mass = calculate_multi(fi[index], mass_effective)
            summ_13 = calculate_sum(double_sum_M1x_E_mass)
 
            value_13_15 = [a * b for a, b in zip(double_sum_M1x_E_mass, N_Nm)]
@@ -200,7 +207,7 @@ for mo, mass in enumerate(ver_mass_vector):
            f_stiffness_res = [x/constants.absmax(D2_11) for x in D2_11]
 
 
-           m_f1 = calculate_multi(mass, f_stiffness_res)
+           m_f1 = calculate_multi(mass_effective, f_stiffness_res)
            sum_m_f1 = calculate_sum(m_f1)
            double_sum_m_f1 = calculate_sum(sum_m_f1)
            dm1 = [-x*double_sum_m_f1[-1]/numeric[-1] for x in numeric]
@@ -209,7 +216,7 @@ for mo, mass in enumerate(ver_mass_vector):
            M1x2_E = [a/b if b != 0 else 0 for a, b in zip(M1x2, stiffness)]
            sum_M1x2_E = calculate_sum(M1x2_E)
            f_12 = [x ** 2 for x in f_stiffness_res]
-           mf_12 = calculate_multi(f_12, mass)
+           mf_12 = calculate_multi(f_12, mass_effective)
            sum_mf_12 = calculate_sum(mf_12)
            w_calc[index] = m.sqrt(sum_mf_12[-1]/(sum_M1x2_E[-1]*1000.0*pow(length[-1]/2,4)))/(2*m.pi)
 
@@ -228,12 +235,13 @@ for mo, mass in enumerate(ver_mass_vector):
        ([0.8, 0.8, 0.8], [0, 0, 0])
    ]
 
-   for i in range(0, constants.mode_num):
-       f_stiffness[i] = calculate_form(i)
+   for i in range(constants.mode_num):
+       f_stiffness[i] = calculate_form(i, mo*constants.timestep)
        dif_y = np.diff(np.array(f_stiffness[i]))
        dif_x = np.diff(np.array(alength))
        f_stiffness_diff[i] = dif_y/dif_x
        f_stiffness_diff[i] = np.insert(f_stiffness_diff[i], 0, f_stiffness_diff[i][0])
+       f_stiffness_integral[i] = [integrate.trapezoid(f_stiffness[i], alength)] *  len(f_stiffness[i])
        if (len(f_stiffness_diff[i])!=len(f_stiffness[i])):
            print("original and differential oscill forms are not synchronized")
            exit()
