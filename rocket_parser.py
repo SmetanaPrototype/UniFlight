@@ -7,15 +7,15 @@ import matplotlib.pyplot as plt
 
 def read_propellant_density(propellant_type):
     density_map = {
-        "LOX": constants.density.LOX.value,
+        "LOX" : constants.density.LOX.value,
         "RP-1": constants.density.RP_1.value,
         "RG_1": constants.density.RG_1.value,
         "UDMH": constants.density.UDMH.value,
         "N2O4": constants.density.N2O4.value,
         "HTPB": constants.density.HTPB.value,
-        "AP": constants.density.AP.value,
+        "AP"  : constants.density.AP.value,
         "UH25": constants.density.UH25.value,
-        "CH4": constants.density.CH4.value,
+        "CH4" : constants.density.CH4.value,
     }
     return density_map.get(propellant_type, 0)
 
@@ -437,7 +437,7 @@ class rocket_parser:
 
         for i in range(len(mass_effective)):
             if self.classes[i] in ["Fuel", "Oxidizer"]:
-                construction_ratio = 0.1
+                construction_ratio = 1/self.structural_values[0]
                 construction_mass = mass_total[i] * construction_ratio
                 fluid_mass = mass_total[i] - construction_mass
 

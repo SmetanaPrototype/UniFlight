@@ -3,6 +3,7 @@ import math as m
 import rocket_parser as rp
 import constants
 import numpy as np
+import math
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -148,13 +149,11 @@ for mo, mass in enumerate(ver_mass_vector):
 
    w_zero = [m.sqrt(max(stiffness)/(rocket_mass*(10**3)/rocket_length*pow(rocket_length,4)))*(x**2)/(2*m.pi) for x in L]
 
-
    def calculate_form(index, time_idx):
 
        f_start = f_zero[index]
        tolerance = 1e-8
-       mass_effective = mass#parser.effective_mass(time_idx, index)
-
+       mass_effective = parser.effective_mass(time_idx, index)
        while(True):
            m_f1 = calculate_multi(mass_effective, f_start)
            sum_m_f1 = calculate_sum(m_f1)

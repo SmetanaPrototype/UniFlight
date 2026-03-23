@@ -606,10 +606,38 @@ class UnionStream(DragForce, LiftForce):
 
             self.liftprofile.append(cy)
             self.lengthprofile.append(li)
-            li += 0.1
+            li += constants.lenstep
 
     def get_cya_from_coord(self, x):
         return constants.get_coefficient_simple(x, self.lengthprofile, self.liftprofile)
+
+def loc_calc():
+    parser = rp.rocket_parser()
+    G = UnionStream()
+    G.set_elnumber(parser.get_block_number() + 1)
+    G.set_diameter(parser.get_part_diameters())
+    G.set_length(parser.get_part_length())
+    arrayVelocity = [200, 1000, 2000]
+    altitudes = [5, 25, 45]
+
+    l = [[],[],[]]
+
+    for i in range(len(arrayVelocity)):
+        velocity = arrayVelocity[i]
+        altitude = altitudes[i] * 1000
+        G.calculate_CXY(velocity, altitude, 0)
+        print(f"for vel = {velocity}m/s and alt = {altitude} km:")
+        print(f"cx = {G.CX:6.5f}")
+        print(f"cya = {G.CYY:6.5f}")
+        print(f"xf = {G.focus_position:6.1f}")
+        l[i] = G.liftprofile
+
+    rocketname = parser.name
+    constants.write_arrays_to_csv("output/"+rocketname+"_aero.csv",
+                                length   =G.lengthprofile,
+                                cy1      =l[0],
+                                cy2      =l[1],
+                                cy3      =l[2])
 
 def main():
     parser = rp.rocket_parser()
@@ -619,7 +647,7 @@ def main():
     G.set_length(parser.get_part_length())
 
     arrayVelocity = np.linspace(10, 3000, 100)
-    altitudes = [10, 20, 40]
+    altitudes = [10, 40, 80]
     red_colors = Reds(np.linspace(0.2, 1.0, len(arrayVelocity)))
 
     plt.figure(figsize=(14, 12))
@@ -716,4 +744,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    loc_calc()
+    # main()
