@@ -1,0 +1,29 @@
+{
+  "name": "rockot",
+  "block_number": 2,
+  "payload_mass": 1950,
+  "block_mass": [
+    107000,
+    23500
+  ],
+  "components_ratio": 2.6,
+  "thrust_ratio": 0.6,
+  "exhaust_velocity": [
+    3100,
+    3250
+  ],
+  "thrust": [
+    1600000,
+    350000
+  ],
+  "structural_values": [
+    14,
+    11
+  ],
+  "fuel": "UDMH",
+  "oxidizer": "N2O4",
+  "attack_coefs": [
+    3.2,
+    0.22
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "diamant",
+  "block_number": 3,
+  "payload_mass": 100,
+  "block_mass": [
+    18000,
+    4500,
+    1200
+  ],
+  "components_ratio": 0.0,
+  "thrust_ratio": 0.6,
+  "exhaust_velocity": [
+    2650,
+    2750,
+    2850
+  ],
+  "thrust": [
+    350000,
+    80000,
+    25000
+  ],
+  "structural_values": [
+    15,
+    12,
+    10
+  ],
+  "fuel": "HTPB",
+  "oxidizer": "AP",
+  "attack_coefs": [
+    3.6,
+    0.27
+  ]
+}

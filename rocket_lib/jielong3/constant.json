@@ -1,0 +1,29 @@
+{
+  "name": "jielong3",
+  "block_number": 2,
+  "payload_mass": 1500,
+  "block_mass": [
+    72000,
+    15000
+  ],
+  "components_ratio": 3.5,
+  "thrust_ratio": 0.6,
+  "exhaust_velocity": [
+    2750,
+    2900
+  ],
+  "thrust": [
+    1400000,
+    250000
+  ],
+  "structural_values": [
+    14,
+    11
+  ],
+  "fuel": "HTPB",
+  "oxidizer": "AP",
+  "attack_coefs": [
+    3.1,
+    0.22
+  ]
+}
