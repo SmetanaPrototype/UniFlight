@@ -1,0 +1,29 @@
+{
+  "name": "new_glenn",
+  "block_number": 2,
+  "payload_mass": 45000,
+  "block_mass": [
+    1150000,
+    300000
+  ],
+  "components_ratio": 3.0,
+  "thrust_ratio": 0.5,
+  "exhaust_velocity": [
+    3150,
+    3600
+  ],
+  "thrust": [
+    17500000,
+    970000
+  ],
+  "structural_values": [
+    16,
+    14
+  ],
+  "fuel": "CH4",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    2.8,
+    0.19
+  ]
+}

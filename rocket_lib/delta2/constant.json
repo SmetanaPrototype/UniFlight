@@ -1,0 +1,29 @@
+{
+  "name": "delta_ii_core",
+  "block_number": 2,
+  "payload_mass": 1500,
+  "block_mass": [
+    95000,
+    14000
+  ],
+  "components_ratio": 2.6,
+  "thrust_ratio": 0.6,
+  "exhaust_velocity": [
+    2950,
+    3200
+  ],
+  "thrust": [
+    1050000,
+    110000
+  ],
+  "structural_values": [
+    13,
+    10
+  ],
+  "fuel": "RP-1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    3.0,
+    0.21
+  ]
+}

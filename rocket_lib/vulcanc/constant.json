@@ -1,0 +1,29 @@
+{
+  "name": "vulcan_centaur_vc0",
+  "block_number": 2,
+  "payload_mass": 8400,
+  "block_mass": [
+    417000,
+    50000
+  ],
+  "components_ratio": 2.4,
+  "thrust_ratio": 0.55,
+  "exhaust_velocity": [
+    3100,
+    4500
+  ],
+  "thrust": [
+    4900000,
+    106800
+  ],
+  "structural_values": [
+    15,
+    12
+  ],
+  "fuel": "CH4",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    3.0,
+    0.2
+  ]
+}
