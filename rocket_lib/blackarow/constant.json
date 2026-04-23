@@ -1,0 +1,29 @@
+{
+  "name": "blackarrow",
+  "block_number": 2,
+  "payload_mass": 135,
+  "block_mass": [
+    18300,
+    2700
+  ],
+  "components_ratio": 2.1,
+  "thrust_ratio": 0.7,
+  "exhaust_velocity": [
+    2650,
+    2780
+  ],
+  "thrust": [
+    222000,
+    26000
+  ],
+  "structural_values": [
+    16,
+    13
+  ],
+  "fuel": "RP-1",
+  "oxidizer": "H2O2",
+  "attack_coefs": [
+    3.9,
+    0.3
+  ]
+}

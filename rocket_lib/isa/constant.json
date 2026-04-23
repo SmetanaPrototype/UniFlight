@@ -1,0 +1,29 @@
+{
+  "name": "vlm1",
+  "block_number": 2,
+  "payload_mass": 200,
+  "block_mass": [
+    18000,
+    3800
+  ],
+  "components_ratio": 0.0,
+  "thrust_ratio": 0.65,
+  "exhaust_velocity": [
+    2750,
+    2900
+  ],
+  "thrust": [
+    330000,
+    50000
+  ],
+  "structural_values": [
+    15,
+    12
+  ],
+  "fuel": "HTPB",
+  "oxidizer": "AP",
+  "attack_coefs": [
+    3.3,
+    0.24
+  ]
+}

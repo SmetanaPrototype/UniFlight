@@ -33,6 +33,7 @@ The thirt attempt to make an universal application for rocket flight.
     6 Fix frequency issue (mass)
     7 Fix extreme of altitude & attack coefs update
     8 Update output (form per time)
+    9 Soyuz-2
 
 ### Syntax RULES
     _sec  - rocket micro parts

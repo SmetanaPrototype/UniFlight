@@ -1,0 +1,29 @@
+{
+  "name": "antares",
+  "block_number": 2,
+  "payload_mass": 8000,
+  "block_mass": [
+    175000,
+    31200
+  ],
+  "components_ratio": 2.3,
+  "thrust_ratio": 0.6,
+  "exhaust_velocity": [
+    3030,
+    3480
+  ],
+  "thrust": [
+    3260000,
+    350000
+  ],
+  "structural_values": [
+    15,
+    12
+  ],
+  "fuel": "RP-1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    3.0,
+    0.21
+  ]
+}
