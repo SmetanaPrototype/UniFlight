@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import atmosphere as atmo
 
-flight_file = "crs16_falcon9_051218.csv"
+flight_file = "missions/crs16_falcon9_051218.csv"
 v_time = constants.read_array_from_csv(flight_file, "time")
 v_velocity = constants.read_array_from_csv(flight_file, "velocity")
 v_altitude = constants.read_array_from_csv(flight_file, "altitude")
@@ -13,6 +13,10 @@ v_dypressure = constants.read_array_from_csv(flight_file, "q")
 v_thrust = constants.read_array_from_csv(flight_file, "thrust")
 v_mass = constants.read_array_from_csv(flight_file, "mass")
 
+v_mach = []
+for v,a in zip(v_velocity, v_altitude):
+    at = atmo.atmosphere(a*1000)
+    v_mach.append(v/at.get_SV())
 # Преобразование
 time = np.array(v_time)
 velocity = np.array(v_velocity)
@@ -23,10 +27,8 @@ acceleration = np.array(v_acceleration)
 dyn_pressure = np.array(v_dypressure)
 
 # Параметры
-S = constants.cross_sectional_area
+S = constants.cross_sectional_area(3.3)
 g = 9.81
-
-
 
 angle_rad = np.radians(angle_deg)
 drag_force = thrust - mass * acceleration
@@ -62,12 +64,12 @@ for i in range(len(time)):
         print(f"{time[i]:10.1f} {cx_val:12.4f} {cy_val:12.4f}")
 
 plt.figure(figsize=(12, 6))
-plt.plot(v_velocity, Cx, 'b-', linewidth=1.5, label='Cx (Drag)')
-plt.plot(v_velocity, Cy, 'r-', linewidth=1.5, label='Cy (Lift)')
+plt.plot(v_mach, Cx, 'b-', linewidth=1.5, label='Cx (Drag)')
+plt.plot(v_mach, Cy, 'r-', linewidth=1.5, label='Cy (Lift)')
 plt.axhline(y=0, color='k', linestyle='-', linewidth=0.5)
-plt.xlabel('Time (s)')
+plt.xlabel('Mach')
 plt.ylabel('Coefficient')
-plt.title('Aerodynamic Coefficients Cx and Cy vs Time')
+plt.title('Aerodynamic Coefficients Cx and Cy vs Mach')
 # plt.xlim(20,80)
 plt.legend()
 plt.grid(True, alpha=0.3)

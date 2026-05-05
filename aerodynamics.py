@@ -7,6 +7,7 @@ import path
 import rocket_parser as rp
 import numpy as np
 import constants
+import atmosphere as atmo
 
 class Element:
     def __init__(self):
@@ -639,6 +640,8 @@ def loc_calc():
                                 cy2      =l[1],
                                 cy3      =l[2])
 
+
+
 def main():
     parser = rp.rocket_parser()
     G = UnionStream()
@@ -648,6 +651,14 @@ def main():
 
     arrayVelocity = np.linspace(10, 3000, 100)
     altitudes = [10, 40, 80]
+
+    def get_machvec(altit):
+        at = atmo.atmosphere(altit)
+        res = []
+        for v in arrayVelocity:
+            res.append(v/at.get_SV())
+        return res
+
     red_colors = Reds(np.linspace(0.2, 1.0, len(arrayVelocity)))
 
     plt.figure(figsize=(14, 12))
@@ -694,8 +705,8 @@ def main():
                 G.lengthprofile, G.liftprofile, label=label, color=red_colors[v]
             )
 
-        (line2,) = ax2.plot(arrayVelocity, CX_list, label=label)
-        (line3,) = ax3.plot(arrayVelocity, CY_list, label=label)
+        (line2,) = ax2.plot(get_machvec(alt), CX_list, label=label)
+        (line3,) = ax3.plot(get_machvec(alt), CY_list, label=label)
         # (line4,) = ax4.plot(arrayVelocity, focus_positions, label=label)
 
         profile_lines.append(line1)
@@ -703,6 +714,13 @@ def main():
         cy_lines.append(line3)
         # focus_lines.append(line4)
         legend_labels.append(label)
+
+        constants.write_arrays_to_csv(
+            "output/"+constants.current_rocket+"_"+str(alt)+"stat.csv",
+            mach=get_machvec(alt),
+            cx=CX_list,
+            cy=CY_list
+        )
 
     ax1.set_xlabel("Координаты, м")
     ax1.set_ylabel("CYY")
@@ -712,17 +730,17 @@ def main():
     ax2.set_xlabel("Скорость, м/с")
     ax2.set_ylabel("CX")
     ax2.grid(True)
-    ax2.set_title("Зависимость CX от скорости")
+    ax2.set_title("Зависимость CX от числа Маха")
 
     ax3.set_xlabel("Скорость, м/с")
     ax3.set_ylabel("CYY")
     ax3.grid(True)
-    ax3.set_title("Зависимость CYY от скорости")
+    ax3.set_title("Зависимость CYY от числа Маха")
 
     # ax4.set_xlabel("Скорость, м/с")
     # ax4.set_ylabel("Фокус, м")
     # ax4.grid(True)
-    # ax4.set_title("Зависимость положения фокуса от скорости")
+    # ax4.set_title("Зависимость положения фокуса от числа Маха")
 
     plt.suptitle("Аэродинамические коэффициенты, 1/рад")
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
