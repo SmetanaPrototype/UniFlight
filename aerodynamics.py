@@ -655,7 +655,7 @@ def main():
     ax1 = plt.subplot(4, 1, 1)
     ax2 = plt.subplot(4, 1, 2)
     ax3 = plt.subplot(4, 1, 3)
-    ax4 = plt.subplot(4, 1, 4)
+    # ax4 = plt.subplot(4, 1, 4)
 
     focus_data = []
     profile_lines = []
@@ -696,12 +696,12 @@ def main():
 
         (line2,) = ax2.plot(arrayVelocity, CX_list, label=label)
         (line3,) = ax3.plot(arrayVelocity, CY_list, label=label)
-        (line4,) = ax4.plot(arrayVelocity, focus_positions, label=label)
+        # (line4,) = ax4.plot(arrayVelocity, focus_positions, label=label)
 
         profile_lines.append(line1)
         cx_lines.append(line2)
         cy_lines.append(line3)
-        focus_lines.append(line4)
+        # focus_lines.append(line4)
         legend_labels.append(label)
 
     ax1.set_xlabel("Координаты, м")
@@ -719,10 +719,10 @@ def main():
     ax3.grid(True)
     ax3.set_title("Зависимость CYY от скорости")
 
-    ax4.set_xlabel("Скорость, м/с")
-    ax4.set_ylabel("Фокус, м")
-    ax4.grid(True)
-    ax4.set_title("Зависимость положения фокуса от скорости")
+    # ax4.set_xlabel("Скорость, м/с")
+    # ax4.set_ylabel("Фокус, м")
+    # ax4.grid(True)
+    # ax4.set_title("Зависимость положения фокуса от скорости")
 
     plt.suptitle("Аэродинамические коэффициенты, 1/рад")
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
@@ -744,5 +744,5 @@ def main():
 
 
 if __name__ == "__main__":
-    loc_calc()
-    # main()
+    # loc_calc()
+    main()

@@ -9,7 +9,7 @@ acceleration_of_gravity = 9.81
 earth_radius = 6371000
 lamb = (4.73, 7.853, 10.996, 14.137, 17.279)
 
-current_rocket = 'amur'
+current_rocket = 'falcon'
 
 class density(enum.Enum):
     LOX = 1100.0  # Жидкий кислород
