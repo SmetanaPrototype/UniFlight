@@ -23,6 +23,11 @@ traj_list = []
 alt_list = []
 time_list = []
 wind_list = []
+Q_list    = []
+thrust_list = []
+aog_list = []
+mass_list = []
+acceleration_list = []
 CswQ_list = []
 CsyQ_list = []
 CssQ_list = []
@@ -50,6 +55,7 @@ rocketname = constants.current_rocket
 # freq_file = "output/"+rocketname+"_frequency.csv"
 # freq_time = constants.read_array_from_csv(freq_file, "time")
 # freq_mass = constants.read_array_from_csv(freq_file, "freq_mass_1")
+
 
 def get_attack_from_coefs(vel, time):
     """Получение угла атаки по коэффициентам из парсера"""
@@ -145,6 +151,10 @@ class ballistics:
             alt_list.append(self.alt)
             time_list.append(time)
             wind_list.append(self.wind)
+            Q_list.append(self.dypressure)
+            thrust_list.append(self.thrust)
+            aog_list.append(self.atm.get_AOG())
+            mass_list.append(self.mass)
 
             # Cbs_list.append(-self.thrust * self.parser.thrust_ratio / self.mass)
             # Cyw_list.append(-(self.thrust + self.G.CY * self.dypressure * self.parser.maximum_area) / self.mass)
@@ -178,7 +188,9 @@ class ballistics:
         self.update_params(time)
         F_P = self.thrust * math.cos(self.attack)
         F_X = self.G.CX * self.dypressure * self.parser.maximum_area
-        return (F_P - F_X) / self.mass - self.atm.get_AOG() * math.sin(self.Y)
+        res = (F_P - F_X) / self.mass - self.atm.get_AOG() * math.sin(self.Y)
+        acceleration_list.append(res)
+        return res
 
     def delta_trajangle(self, time):
         self.update_params(time)
@@ -218,6 +230,51 @@ def output(parser):
         Csb1=Csb_list[0], Csb2=Csb_list[1], Csb3=Csb_list[2],
         CswQ=CswQ_list, CsyQ=CsyQ_list, CssQ=CssQ_list
     )
+
+def to_reverse(parser):
+    """Сохранение результатов в файл с интервалом ~1 секунда"""
+    rocketname = parser.name
+    
+    # Прореживание массивов до ~1 секунды
+    time_reduced = []
+    mass_reduced = []
+    acceleration_reduced = []
+    thrust_reduced = []
+    q_reduced = []
+    g_reduced = []
+    tetta_reduced = []
+    
+    # Интервал округления (секунды)
+    interval = 1.0
+    
+    last_saved_time = -interval  # чтобы первая точка сохранилась
+    
+    for i in range(len(time_list)):
+        current_time = time_list[i]
+        
+        # Сохраняем, если прошло достаточно времени или это последняя точка
+        if current_time - last_saved_time >= interval - 1e-9 or i == len(time_list) - 1:
+            time_reduced.append(current_time)
+            mass_reduced.append(mass_list[i])
+            acceleration_reduced.append(acceleration_list[i])
+            thrust_reduced.append(thrust_list[i])
+            q_reduced.append(Q_list[i])
+            g_reduced.append(aog_list[i])
+            tetta_reduced.append(traj_list[i])
+            last_saved_time = current_time
+    
+    constants.write_arrays_to_csv(
+        "output/" + rocketname + "_ball_data.csv",
+        time = time_reduced,
+        mass = mass_reduced,
+        acceleration = acceleration_reduced,
+        thrust = thrust_reduced,
+        q = q_reduced,
+        g = g_reduced,
+        tetta = tetta_reduced
+    )
+    
+    print(f"Сжатие данных: {len(time_list)} -> {len(time_reduced)} точек")
 
 def main():
     print("ЗАПУСК БАЛЛИСТИЧЕСКОГО РАСЧЕТА")
@@ -259,6 +316,7 @@ def main():
         print(f"Максимальный угол атаки: {max(attack_list):.2f}°")
 
         output(parser)
+        to_reverse(parser)
     else:
         print("❌ Ошибка при расчете траектории")
 
