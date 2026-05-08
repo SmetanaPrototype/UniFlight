@@ -1,7 +1,7 @@
 import basis
 import matplotlib.pyplot as plt
 import rocket_parser as rp
-import math
+import numpy as np
 
 rocketname = basis.current_rocket
 parser = rp.rocket_parser()
@@ -135,7 +135,7 @@ t2 = 0.04
 # constants
 work_time = parser.get_work_time()
 dempher = 0.06
-h = 2 / (2 * math.pi * freq_t(work_time[0], 2) * math.sqrt(1 + dempher * dempher))
+h = 2 / (2 * np.pi * freq_t(work_time[0], 2) * np.sqrt(1 + dempher * dempher))
 
 
 def calculate_parameters(include_oscillations, include_aerostiffness):
@@ -177,7 +177,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
             for ci in range(basis.mode_num):
                 dv += Csv_t(t, ci) * s[ci]
                 ddw += Csw_t(t, ci) * s[ci]
-                fre = freq_t(t, ci) * (2 * math.pi)
+                fre = freq_t(t, ci) * (2 * np.pi)
                 dds[ci] = (
                     Csb_t(t, ci) * uc - pow(fre, 2) * s[ci] - 2 * dempher * fre * ds[ci]
                 )

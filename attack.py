@@ -1,5 +1,4 @@
-import math
-
+import numpy as np
 
 class alpha:
     def __init__(self, k1: float, k2: float, septime: float, IsRichOrbit: bool):
@@ -14,17 +13,17 @@ class alpha:
         che = 0.0
 
         if 50 < velocity < 270 and time <= self.septime:
-            z = math.pi * (velocity - 50)
+            z = np.pi * (velocity - 50)
             che = (velocity - 50) + 0.25 * (270 - velocity)
-            ans = -self.k1 * (math.sin(z / che) ** 2)
+            ans = -self.k1 * (np.sin(z / che) ** 2)
         elif time >= self.septime:
             if not self.IsRichOrbit:
                 ans = self.k2 * (time - self.septime) ** (1 / 2)
             else:
                 if time - self.septime < 60:
-                    z = math.pi * (time - self.septime)
+                    z = np.pi * (time - self.septime)
                     che = (time - self.septime) + 0.25 * (self.septime + 60 - time)
-                    ans = 90 * (math.sin(z / che) ** 2)
+                    ans = 90 * (np.sin(z / che) ** 2)
 
         # Применяем ограничения в зависимости от времени
         if time <= self.septime:

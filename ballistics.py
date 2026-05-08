@@ -1,13 +1,11 @@
 import rocket_parser as rp
 import basis
-import path
 import atmosphere as atmo
 import aerodynamics as aero
 import attack
 import json
 import warnings
 import matplotlib.pyplot as plt
-import math
 import numpy as np
 from scipy.integrate import solve_ivp
 from scipy.optimize import differential_evolution, Bounds, minimize
@@ -293,7 +291,7 @@ def run_simulation_and_evaluate_detailed(coefs):
         t_span = (0, min(ft - 1, 800))  # Увеличил максимальное время
 
         # Улучшенные начальные условия
-        y0 = [0, math.pi / 2, 1.0, 1.0, 0.1]
+        y0 = [0, np.pi / 2, 1.0, 1.0, 0.1]
 
         # Временные списки для этой симуляции
         temp_attack_list = []
@@ -319,7 +317,7 @@ def run_simulation_and_evaluate_detailed(coefs):
         if sol.success and len(sol.y[2]) > 0:
             final_velocity = sol.y[2][-1]
             final_altitude = sol.y[3][-1]
-            final_angle = sol.y[1][-1] * 180 / math.pi
+            final_angle = sol.y[1][-1] * 180 / np.pi
             max_attack = max(temp_attack_list) if temp_attack_list else 0
             final_attack = temp_attack_list[-1] if temp_attack_list else 0
 
@@ -327,7 +325,7 @@ def run_simulation_and_evaluate_detailed(coefs):
                 "time": sol.t,
                 "velocity": sol.y[2],
                 "altitude": sol.y[3],
-                "angle": sol.y[1] * 180 / math.pi,
+                "angle": sol.y[1] * 180 / np.pi,
                 "attack": temp_attack_list,
             }
 
@@ -581,7 +579,7 @@ def analyze_trajectory(sol, coefs):
 
     final_velocity = sol.y[2][-1]
     final_altitude = sol.y[3][-1]
-    final_angle = sol.y[1][-1] * 180 / math.pi
+    final_angle = sol.y[1][-1] * 180 / np.pi
     final_attack = attack_list[-1] if attack_list else 0
 
     print(f"\n📈 АНАЛИЗ ТРАЕКТОРИИ:")
@@ -650,7 +648,7 @@ def final_simulation_with_coefficients(coefs, description=""):
     ft = parser.get_full_time()
     h = basis.timestep
     t_span = (0, min(ft - 1, 800))
-    y0 = [0, math.pi / 2, 10.0, 100.0, 0.1]
+    y0 = [0, np.pi / 2, 10.0, 100.0, 0.1]
 
     try:
         sol = solve_ivp(
@@ -678,7 +676,7 @@ def final_simulation_with_coefficients(coefs, description=""):
             else:
                 final_velocity = sol.y[2][-1]
                 final_altitude = sol.y[3][-1]
-                final_angle = sol.y[1][-1] * 180 / math.pi
+                final_angle = sol.y[1][-1] * 180 / np.pi
                 final_attack = attack_list[-1] if attack_list else 0
 
                 print(f"Конечная скорость: {final_velocity:.2f} м/с")
@@ -699,7 +697,7 @@ def final_simulation_with_coefficients(coefs, description=""):
 
                 final_velocity = sol.y[2][-1]
                 final_altitude = sol.y[3][-1]
-                final_angle = sol.y[1][-1] * 180 / math.pi
+                final_angle = sol.y[1][-1] * 180 / np.pi
                 final_attack = attack_list[-1] if attack_list else 0
                 print(f"\n=== ПРОВЕРКА ЦЕЛЕВЫХ ПАРАМЕТРОВ ===")
                 print(f"Целевая скорость: > {target_velocity} м/с")
@@ -807,7 +805,7 @@ class ballistics:
             if self.inertia is None:
                 self.inertia = 0.1
 
-            self.attack = self.get_attack_func(self.vel, time) * math.pi / 180
+            self.attack = self.get_attack_func(self.vel, time) * np.pi / 180
             self.G.calculate_CXY(self.vel, self.alt, self.attack)
 
             self.atm = atmo.atmosphere(self.alt)
@@ -835,9 +833,9 @@ class ballistics:
 
             # Записываем данные для вывода
             # ballistics data
-            attack_list.append(self.attack * 180 / math.pi)
+            attack_list.append(self.attack * 180 / np.pi)
             vel_list.append(self.vel)
-            traj_list.append(self.Y * 180 / math.pi)
+            traj_list.append(self.Y * 180 / np.pi)
             alt_list.append(self.alt)
             time_list.append(time)
             wind_list.append(self.wind)
@@ -919,17 +917,17 @@ class ballistics:
 
     def delta_velocity(self, time):
         self.update_params(time)
-        F_P = self.thrust * math.cos(self.attack)
+        F_P = self.thrust * np.cos(self.attack)
         F_X = self.G.CX * self.dypressure * self.parser.maximum_area
-        return (F_P - F_X) / self.mass - self.atm.get_AOG() * math.sin(self.Y)
+        return (F_P - F_X) / self.mass - self.atm.get_AOG() * np.sin(self.Y)
 
     def delta_trajangle(self, time):
         self.update_params(time)
-        F_P = self.thrust * math.sin(self.attack)
+        F_P = self.thrust * np.sin(self.attack)
         F_Y = self.G.CY * self.dypressure * self.parser.maximum_area
         F_G = (
             self.atm.get_AOG()
-            * math.cos(self.Y)
+            * np.cos(self.Y)
             * (
                 1
                 - self.vel**2
@@ -940,15 +938,15 @@ class ballistics:
 
     def delta_polar(self, time):
         self.update_params(time)
-        return (self.vel / (basis.earth_radius + self.alt)) * math.cos(self.Y)
+        return (self.vel / (basis.earth_radius + self.alt)) * np.cos(self.Y)
 
     def delta_altitude(self, time):
         self.update_params(time)
-        return self.vel * math.sin(self.Y)
+        return self.vel * np.sin(self.Y)
 
     def delta_longitude(self, time):
         self.update_params(time)
-        return self.vel * math.cos(self.Y)
+        return self.vel * np.cos(self.Y)
 
 
 def output(parser):

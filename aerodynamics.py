@@ -1,9 +1,6 @@
-import math
 from matplotlib.cm import Reds
 import matplotlib.pyplot as plt
-import pandas as pd
 import atmosphere
-import path
 import rocket_parser as rp
 import numpy as np
 import basis
@@ -31,7 +28,7 @@ class Element:
 
 
 class Geometry:
-    PI = math.pi
+    PI = np.pi
 
     def __init__(self):
         self.elem = []
@@ -70,7 +67,7 @@ class Geometry:
                 e.base_line = (
                     2
                     * self.PI
-                    * math.sqrt(e.elem_length**2 + (e.upper_diameter / 2) ** 2)
+                    * np.sqrt(e.elem_length**2 + (e.upper_diameter / 2) ** 2)
                 )
                 e.round_area = (
                     2 * self.PI * e.elem_length * e.upper_diameter / 2
@@ -78,7 +75,7 @@ class Geometry:
                 )
                 e.focus_position = current_position + e.elem_length * 0.67
             else:
-                e.base_line = math.sqrt(
+                e.base_line = np.sqrt(
                     e.elem_length**2 + ((e.lower_diameter - e.upper_diameter) ** 2) / 4
                 )
                 e.round_area = (
@@ -139,14 +136,14 @@ class Friction(Geometry):
             if abs(Re) < 0.0001:
                 self.cif = 0
             else:
-                self.cif = 2.656 / math.sqrt(Re)
+                self.cif = 2.656 / np.sqrt(Re)
             self.num = pow(1 + 0.1 * pow(Mach, 0.1), -0.125)
         elif Re < 10000000:
             try:
                 log_arg = (self.h_s / self.full_length * Re) - 1
                 denominator = 2.2 + 0.08 * pow(Mach, 2) / (1 + 0.312 * pow(Mach, 2))
-                self.n = 5 + (1.3 + 0.6 * Mach * (1 - 0.25 * pow(Mach, 2))) * math.sqrt(
-                    1 - pow(math.log10(log_arg) / denominator, 2)
+                self.n = 5 + (1.3 + 0.6 * Mach * (1 - 0.25 * pow(Mach, 2))) * np.sqrt(
+                    1 - pow(np.log10(log_arg) / denominator, 2)
                 )
             except (ValueError, ZeroDivisionError):
                 self.n = 5
@@ -157,7 +154,7 @@ class Friction(Geometry):
             if self.x_t >= 1:
                 self.cif = (
                     0.91
-                    / pow(math.log10(Re), 2.58)
+                    / pow(np.log10(Re), 2.58)
                     * pow(
                         1 - self.x_t + 40 * pow(self.x_t, 0.625) / pow(Re, 0.375), 0.8
                     )
@@ -166,10 +163,10 @@ class Friction(Geometry):
                 if abs(Re) < 0.0001:
                     self.cif = 0
                 else:
-                    self.cif = 2.656 / math.sqrt(Re)
+                    self.cif = 2.656 / np.sqrt(Re)
             self.num = pow(1 + 0.1 * pow(Mach, 0.1), -2 / 3)
         else:
-            self.cif = 0.91 / pow(math.log10(Re), 2.58)
+            self.cif = 0.91 / pow(np.log10(Re), 2.58)
             self.num = pow(1 + 0.1 * pow(Mach, 0.1), -2 / 3)
 
     def fricalc(self, Mach, SS, nu):
@@ -237,7 +234,7 @@ class Pressure(Geometry):
         if Mach < 1:
             if self.cif * self.num * self.full_ratio == 0:
                 return 0
-            return 0.0155 / math.sqrt(self.cif * self.num * self.full_ratio)
+            return 0.0155 / np.sqrt(self.cif * self.num * self.full_ratio)
         else:
             data = basis.aerostat_file("resources/" + "HeadPressure.csv")
             # 7-й столбец (индекс 6) - как в исходнике
@@ -274,13 +271,13 @@ class Inductance(Geometry):
 
         if Mach < 1:
             Mach_val = (
-                -math.sqrt(1 - np.square(Mach)) / self.elem[0].ratio
+                -np.sqrt(1 - np.square(Mach)) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
         else:
             Mach_val = (
-                math.sqrt(np.square(Mach) - 1) / self.elem[0].ratio
+                np.sqrt(np.square(Mach) - 1) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
@@ -349,13 +346,13 @@ class LiftForce(Inductance):
 
         if Mach < 1:
             Mach_val = (
-                -math.sqrt(1 - np.square(Mach)) / self.elem[0].ratio
+                -np.sqrt(1 - np.square(Mach)) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
         else:
             Mach_val = (
-                math.sqrt(np.square(Mach) - 1) / self.elem[0].ratio
+                np.sqrt(np.square(Mach) - 1) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
@@ -378,8 +375,8 @@ class LiftForce(Inductance):
             if (self.elem[index].virtual_length - self.elem[index].elem_length) != 0
             else 0
         )
-        Q = math.atan(arg)
-        return (2 / 57.3) * np.square(math.cos(Q))
+        Q = np.atan(arg)
+        return (2 / 57.3) * np.square(np.cos(Q))
 
     def triangle_lift(self, Mach, ratio, index):
         N = 9
@@ -418,9 +415,9 @@ class LiftForce(Inductance):
                 H_current.append(H_0[i])
 
         if Mach < 1:
-            Mach_val = -math.sqrt(1 - np.square(Mach)) / ratio if ratio != 0 else 0
+            Mach_val = -np.sqrt(1 - np.square(Mach)) / ratio if ratio != 0 else 0
         else:
-            Mach_val = math.sqrt(np.square(Mach) - 1) / ratio if ratio != 0 else 0
+            Mach_val = np.sqrt(np.square(Mach) - 1) / ratio if ratio != 0 else 0
 
         C_head = 0.0
         for i in range(1, N):

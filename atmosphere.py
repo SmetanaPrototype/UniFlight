@@ -1,4 +1,4 @@
-import math
+import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -114,7 +114,7 @@ class atmosphere:
         self.b = 0.365 * 10**-9
         self.R = 6371000
 
-        self.PI = math.pi
+        self.PI = np.pi
         self.D = 2.66
         self.S = self.PI * self.D**2 / 4
 
@@ -173,21 +173,21 @@ class atmosphere:
             ) * 1e-20
 
             if abs(Bett) < 1e-7:
-                pp = math.log(101325)
+                pp = np.log(101325)
                 Hs = H - 0.1
-                self.P = math.exp(
+                self.P = np.exp(
                     pp - (0.434294 * self.gc / (self.r * self.T)) * (H - 0)
                 )
             else:
-                pp = math.log(101325)
+                pp = np.log(101325)
                 Hs = H - 0.1
-                self.P = math.exp(
+                self.P = np.exp(
                     pp
-                    - (self.gc * math.log((self.Tm + Bett * (H - 0)) / self.Tm))
+                    - (self.gc * np.log((self.Tm + Bett * (H - 0)) / self.Tm))
                     / (Bett * self.r)
                 )
 
-            self.Pap = 101325 * math.exp(-self.gc * H * self.Mc / (self.RB * self.T))
+            self.Pap = 101325 * np.exp(-self.gc * H * self.Mc / (self.RB * self.T))
 
             self.po = (self.P * self.Mol) / (self.RB * self.T)
 
@@ -196,10 +196,10 @@ class atmosphere:
             self.tCel = self.T - 273.15
             self.yyd = self.po * self.g
             self.Hmas = (self.RB / self.Mol) * (self.T / self.g)
-            self.a = 20.046796 * math.sqrt(self.T)
+            self.a = 20.046796 * np.sqrt(self.T)
             self.vsred = 145.50685 * self.T / self.Mol
             self.lsred = 2.332376e-5 * self.T / self.P
-            self.omega = 6.238629e6 * self.P / math.sqrt(self.T * self.Mol)
+            self.omega = 6.238629e6 * self.P / np.sqrt(self.T * self.Mol)
             self.lamb = (2.648151e-3 * self.T ** (3 / 2)) / (
                 self.T + 245.4 * 10 ** (-(12 / self.T))
             )

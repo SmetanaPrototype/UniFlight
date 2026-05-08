@@ -1,4 +1,4 @@
-import math
+import numpy as np
 import basis
 import rocket_parser as rp
 import atmosphere
@@ -101,7 +101,7 @@ def aeroelastic_corrections(index, len_):
     dform = [deform_per_len(m, len_) for m in range(basis.mode_num)]
     smass = [freqmass_per_time(time_, m) for m in range(basis.mode_num)]
 
-    freq_rad = [2 * math.pi * w for w in freq_hz]
+    freq_rad = [2 * np.pi * w for w in freq_hz]
     alpha_flight_rad = alpha_flight_deg * deg_to_rad
     cyy_rad = cyy_deg / rad_to_deg
 
