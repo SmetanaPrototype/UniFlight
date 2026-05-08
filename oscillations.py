@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import math as m
 import rocket_parser as rp
-import constants
+import basis
 import numpy as np
 
 import matplotlib.pyplot as plt
@@ -16,7 +16,7 @@ mass = []
 stiffness = []
 
 # Lambda oscillations constants
-L = constants.lamb
+L = basis.lamb
 
 # Local functions
 def calculate_sum(base):
@@ -27,9 +27,6 @@ def calculate_sum(base):
         else:
             summ[i] = summ[i-1] + base[i - 1] + base[i]
     return summ
-
-def calculate_multi(one, second):
-    return [a * b for a, b in zip(one, second)]
 
 parser = rp.rocket_parser()
 work_time = parser.get_work_time()
@@ -57,7 +54,7 @@ freqmass_vector_2 = []
 freqmass_vector_3 = []
 total_iterations = 0
 
-time_vector = [t for t in range(0, 80+1, constants.timestep)]
+time_vector = [t for t in range(0, 80+1, basis.timestep)]
 ver_mass_vector = [parser.changed_mass(ti) for ti in time_vector]
 total_iterations = len(ver_mass_vector)
 
@@ -77,7 +74,7 @@ plt.figure(figsize=(8, 8))
 def output(parser):
    """Save results to file"""
    rocketname = parser.name
-   constants.write_arrays_to_csv("output/"+rocketname+"_oscillations.csv",
+   basis.write_arrays_to_csv("output/"+rocketname+"_oscillations.csv",
                                 length   =numeric,
                                 form_1     =f_stiffness[0],
                                 form_2     =f_stiffness[1],
@@ -89,7 +86,7 @@ def output(parser):
                                 intform_2  =f_stiffness_integral[1],
                                 intform_3  =f_stiffness_integral[2])
 
-   constants.write_arrays_to_csv("output/"+rocketname+"_frequency.csv",
+   basis.write_arrays_to_csv("output/"+rocketname+"_frequency.csv",
                                 time       =time_vector,
                                 freq_1     =freq_vector_1,
                                 freq_2     =freq_vector_2,
@@ -104,16 +101,16 @@ for mo, mass in enumerate(ver_mass_vector):
    print(round(mo/len(ver_mass_vector)*100), "%", end="\r")
    def delta_vector(previous, actual):
     f_12 = [x ** 2 for x in previous]
-    mf_12 = calculate_multi(f_12, mass)
+    mf_12 = basis.calculate_multi(f_12, mass)
     sum_mf_12 = calculate_sum(mf_12)
-    f1_f20 = calculate_multi(previous, actual)
-    f1_f20_mass = calculate_multi(f1_f20, mass)
+    f1_f20 = basis.calculate_multi(previous, actual)
+    f1_f20_mass = basis.calculate_multi(f1_f20, mass)
     f1_f20_mass_summ = calculate_sum(f1_f20_mass)
     delta12 = - f1_f20_mass_summ[-1]/sum_mf_12[-1]
     delta12f = [x * delta12 for x in previous]
     return delta12f
 
-   m_N = [a * b for a, b in zip(numeric, mass)]
+   m_N = basis.calculate_multi(numeric, mass)
 
    sum_m = calculate_sum(mass)
    sum_m_N = calculate_sum(m_N)
@@ -123,7 +120,7 @@ for mo, mass in enumerate(ver_mass_vector):
    N_Nm  = [x - Nmid for x in numeric]
    N_Nm2 = [x ** 2 for x in N_Nm]
 
-   preIn = calculate_multi(N_Nm2, mass)
+   preIn = basis.calculate_multi(N_Nm2, mass)
    In = calculate_sum(preIn)
 
    rocket_length = parser.rocket_length
@@ -136,14 +133,14 @@ for mo, mass in enumerate(ver_mass_vector):
    Y = [a / b for a, b in zip(chJ_cosJ, sinJ_shJ)]
 
 
-   f_zero = [0] * constants.mode_num
-   f_stiffness = [0] * constants.mode_num
-   f_stiffness_diff = [0] * constants.mode_num
-   f_stiffness_integral = [0] * constants.mode_num
-   f_mass = [0] * constants.mode_num
-   w_calc = [0] * constants.mode_num
-   fi     = [0] * constants.mode_num
-   mass_s = [0] * constants.mode_num
+   f_zero = [0] * basis.mode_num
+   f_stiffness = [0] * basis.mode_num
+   f_stiffness_diff = [0] * basis.mode_num
+   f_stiffness_integral = [0] * basis.mode_num
+   f_mass = [0] * basis.mode_num
+   w_calc = [0] * basis.mode_num
+   fi     = [0] * basis.mode_num
+   mass_s = [0] * basis.mode_num
    for i in range(len(f_zero)):
        f_zero[i] = list(((m.sin(a[i]*x)+m.sinh(a[i]*x))*Y[i]+(m.cos(a[i]*x)+m.cosh(a[i]*x)))/2 for x in numeric)
 
@@ -156,10 +153,10 @@ for mo, mass in enumerate(ver_mass_vector):
        mass_effective = parser.effective_mass(time_idx, index)
        iteration = 0
        while(True):
-           m_f1 = calculate_multi(mass_effective, f_start)
+           m_f1 = basis.calculate_multi(mass_effective, f_start)
            sum_m_f1 = calculate_sum(m_f1)
 
-           value_6_11 = calculate_multi(m_f1, N_Nm)
+           value_6_11 = basis.calculate_multi(m_f1, N_Nm)
            sum_value_6_11 = calculate_sum(value_6_11)
 
            D1 = - sum_value_6_11[-1]/In[-1]
@@ -176,7 +173,7 @@ for mo, mass in enumerate(ver_mass_vector):
            f1_16 = [a + b + c for a, b, c in zip(D2_15, f_start, accumulated_delta)]
            f_mass[index] = [x/max(f1_16) for x in f1_16]
 
-           m_f1 = calculate_multi(mass_effective, f_mass[index])
+           m_f1 = basis.calculate_multi(mass_effective, f_mass[index])
            sum_m_f1 = calculate_sum(m_f1)
            double_sum_m_f1 = calculate_sum(sum_m_f1)
            dm1 = [-x*double_sum_m_f1[-1]/numeric[-1] for x in numeric]
@@ -184,10 +181,10 @@ for mo, mass in enumerate(ver_mass_vector):
            M1x_E = [a/b if b != 0 else 0 for a, b in zip(M1x, stiffness)]
            sum_M1x_E = calculate_sum(M1x_E)
            fi[index] = calculate_sum(sum_M1x_E)
-           double_sum_M1x_E_mass = calculate_multi(fi[index], mass_effective)
+           double_sum_M1x_E_mass = basis.calculate_multi(fi[index], mass_effective)
            summ_13 = calculate_sum(double_sum_M1x_E_mass)
 
-           value_13_15 = [a * b for a, b in zip(double_sum_M1x_E_mass, N_Nm)]
+           value_13_15 = basis.calculate_multi(double_sum_M1x_E_mass, N_Nm)
            sum_13_15 = calculate_sum(value_13_15)
 
            D1 = - sum_13_15[-1]/In[-1]
@@ -204,10 +201,10 @@ for mo, mass in enumerate(ver_mass_vector):
 
            D2_11 = [a + b  for a, b in zip(D2_11, accumulated_delta)]
 
-           f_stiffness_res = [x/constants.absmax(D2_11) for x in D2_11]
+           f_stiffness_res = [x/max(D2_11,key=abs) for x in D2_11]
 
 
-           m_f1 = calculate_multi(mass_effective, f_stiffness_res)
+           m_f1 = basis.calculate_multi(mass_effective, f_stiffness_res)
            sum_m_f1 = calculate_sum(m_f1)
            double_sum_m_f1 = calculate_sum(sum_m_f1)
            dm1 = [-x*double_sum_m_f1[-1]/numeric[-1] for x in numeric]
@@ -216,7 +213,7 @@ for mo, mass in enumerate(ver_mass_vector):
            M1x2_E = [a/b if b != 0 else 0 for a, b in zip(M1x2, stiffness)]
            sum_M1x2_E = calculate_sum(M1x2_E)
            f_12 = [x ** 2 for x in f_stiffness_res]
-           mf_12 = calculate_multi(f_12, mass_effective)
+           mf_12 = basis.calculate_multi(f_12, mass_effective)
            sum_mf_12 = calculate_sum(mf_12)
            w_calc[index] = m.sqrt(sum_mf_12[-1]/(sum_M1x2_E[-1]*1000.0*pow(length[-1]/2,4)))/(2*m.pi)
 
@@ -238,8 +235,8 @@ for mo, mass in enumerate(ver_mass_vector):
        ([0.8, 0.8, 0.8], [0, 0, 0])
    ]
 
-   for i in range(constants.mode_num):
-       f_stiffness[i] = calculate_form(i, mo*constants.timestep)
+   for i in range(basis.mode_num):
+       f_stiffness[i] = calculate_form(i, mo*basis.timestep)
        dif_y = np.diff(np.array(f_stiffness[i]))
        dif_x = np.diff(np.array(alength))
        f_stiffness_diff[i] = dif_y/dif_x
@@ -250,7 +247,7 @@ for mo, mass in enumerate(ver_mass_vector):
            exit()
 
        plt.subplot(2, 1, 1)
-       plt.plot(alength, f_stiffness[i], color = constants.interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
+       plt.plot(alength, f_stiffness[i], color = basis.interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
        if mo==0:
            plt.plot(alength, f_stiffness[i], color = 'g', linewidth=5)
        if mo == len(ver_mass_vector) - 1:
@@ -264,7 +261,7 @@ for mo, mass in enumerate(ver_mass_vector):
        plt.legend(custom_lines, ['1 Тон', '2 Тон', '3 Тон', '0 секунда', '130 секунда'])
 
        plt.subplot(2, 1, 2)
-       plt.plot(alength, f_stiffness_diff[i], color = constants.interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
+       plt.plot(alength, f_stiffness_diff[i], color = basis.interpolate_color(color_pairs[i][0], color_pairs[i][1], mo, total_iterations))
        if mo==0:
            plt.plot(alength, f_stiffness_diff[i], color = 'g', linewidth=5)
        if mo == len(ver_mass_vector) - 1:

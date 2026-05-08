@@ -1,28 +1,28 @@
-import constants
+import basis
 import matplotlib.pyplot as plt
 import rocket_parser as rp
 import math
 
-rocketname = constants.current_rocket
+rocketname = basis.current_rocket
 parser = rp.rocket_parser()
 
 oscillations_file = "output/"+rocketname+"_oscillations.csv"
-f_stiffness = [0] * constants.mode_num
-f_stiffness_diff = [0] * constants.mode_num
+f_stiffness = [0] * basis.mode_num
+f_stiffness_diff = [0] * basis.mode_num
 
-f_stiffness[0]      = constants.read_array_from_csv(oscillations_file, "form_1")
-f_stiffness[1]      = constants.read_array_from_csv(oscillations_file, "form_2")
-f_stiffness[2]      = constants.read_array_from_csv(oscillations_file, "form_3")
-f_stiffness_diff[0] = constants.read_array_from_csv(oscillations_file, "difform_1")
-f_stiffness_diff[1] = constants.read_array_from_csv(oscillations_file, "difform_2")
-f_stiffness_diff[2] = constants.read_array_from_csv(oscillations_file, "difform_3")
+f_stiffness[0]      = basis.read_array_from_csv(oscillations_file, "form_1")
+f_stiffness[1]      = basis.read_array_from_csv(oscillations_file, "form_2")
+f_stiffness[2]      = basis.read_array_from_csv(oscillations_file, "form_3")
+f_stiffness_diff[0] = basis.read_array_from_csv(oscillations_file, "difform_1")
+f_stiffness_diff[1] = basis.read_array_from_csv(oscillations_file, "difform_2")
+f_stiffness_diff[2] = basis.read_array_from_csv(oscillations_file, "difform_3")
 
 freq_file = "output/"+rocketname+"_frequency.csv"
-freq = [[] for _ in range(constants.mode_num)]
-freq_time = constants.read_array_from_csv(freq_file, "time")
-freq[0]   = constants.read_array_from_csv(freq_file, "freq_1")
-freq[1]   = constants.read_array_from_csv(freq_file, "freq_2")
-freq[2]   = constants.read_array_from_csv(freq_file, "freq_3")
+freq = [[] for _ in range(basis.mode_num)]
+freq_time = basis.read_array_from_csv(freq_file, "time")
+freq[0]   = basis.read_array_from_csv(freq_file, "freq_1")
+freq[1]   = basis.read_array_from_csv(freq_file, "freq_2")
+freq[2]   = basis.read_array_from_csv(freq_file, "freq_3")
 
 dynamic_file = "output/"+rocketname+"_dynamic_coefs.csv"
 const_time = []
@@ -34,94 +34,94 @@ Cvb = []
 Cvw = []
 velocity = []
 Wind = []
-Csv = [[] for _ in range(constants.mode_num)]
-Csw = [[] for _ in range(constants.mode_num)]
-Csb = [[] for _ in range(constants.mode_num)]
+Csv = [[] for _ in range(basis.mode_num)]
+Csw = [[] for _ in range(basis.mode_num)]
+Csb = [[] for _ in range(basis.mode_num)]
 CsvQ = []
 CswQ = []
 CssQ = []
 
-const_time = constants.read_array_from_csv(dynamic_file, "time")
-Cwv        = constants.read_array_from_csv(dynamic_file, "Cwy")
-Cww        = constants.read_array_from_csv(dynamic_file, "Cww")
-Cwb        = constants.read_array_from_csv(dynamic_file, "Cwb")
-Cvv        = constants.read_array_from_csv(dynamic_file, "Cyy")
-Cvb        = constants.read_array_from_csv(dynamic_file, "Cbs")
-Cvw        = constants.read_array_from_csv(dynamic_file, "Cyw")
-velocity   = constants.read_array_from_csv(dynamic_file, "velocity")
-Wind       = constants.read_array_from_csv(dynamic_file, "wind")
-Csw[0]     = constants.read_array_from_csv(dynamic_file, "Csw1")
-Csw[1]     = constants.read_array_from_csv(dynamic_file, "Csw2")
-Csw[2]     = constants.read_array_from_csv(dynamic_file, "Csw3")
-Csv[0]     = constants.read_array_from_csv(dynamic_file, "Csy1")
-Csv[1]     = constants.read_array_from_csv(dynamic_file, "Csy2")
-Csv[2]     = constants.read_array_from_csv(dynamic_file, "Csy3")
-Csb[0]     = constants.read_array_from_csv(dynamic_file, "Csb1")
-Csb[1]     = constants.read_array_from_csv(dynamic_file, "Csb2")
-Csb[2]     = constants.read_array_from_csv(dynamic_file, "Csb3")
-CsvQ       = constants.read_array_from_csv(dynamic_file, "CsyQ")
-CswQ       = constants.read_array_from_csv(dynamic_file, "CswQ")
-CssQ       = constants.read_array_from_csv(dynamic_file, "CssQ")
+const_time = basis.read_array_from_csv(dynamic_file, "time")
+Cwv        = basis.read_array_from_csv(dynamic_file, "Cwy")
+Cww        = basis.read_array_from_csv(dynamic_file, "Cww")
+Cwb        = basis.read_array_from_csv(dynamic_file, "Cwb")
+Cvv        = basis.read_array_from_csv(dynamic_file, "Cyy")
+Cvb        = basis.read_array_from_csv(dynamic_file, "Cbs")
+Cvw        = basis.read_array_from_csv(dynamic_file, "Cyw")
+velocity   = basis.read_array_from_csv(dynamic_file, "velocity")
+Wind       = basis.read_array_from_csv(dynamic_file, "wind")
+Csw[0]     = basis.read_array_from_csv(dynamic_file, "Csw1")
+Csw[1]     = basis.read_array_from_csv(dynamic_file, "Csw2")
+Csw[2]     = basis.read_array_from_csv(dynamic_file, "Csw3")
+Csv[0]     = basis.read_array_from_csv(dynamic_file, "Csy1")
+Csv[1]     = basis.read_array_from_csv(dynamic_file, "Csy2")
+Csv[2]     = basis.read_array_from_csv(dynamic_file, "Csy3")
+Csb[0]     = basis.read_array_from_csv(dynamic_file, "Csb1")
+Csb[1]     = basis.read_array_from_csv(dynamic_file, "Csb2")
+Csb[2]     = basis.read_array_from_csv(dynamic_file, "Csb3")
+CsvQ       = basis.read_array_from_csv(dynamic_file, "CsyQ")
+CswQ       = basis.read_array_from_csv(dynamic_file, "CswQ")
+CssQ       = basis.read_array_from_csv(dynamic_file, "CssQ")
 
 
 def Cwv_t(time):
-    return constants.get_coefficient_simple(time, const_time, Cwv)
+    return basis.get_y(time, const_time, Cwv)
 
 
 def Cww_t(time):
-    return constants.get_coefficient_simple(time, const_time, Cww)
+    return basis.get_y(time, const_time, Cww)
 
 
 def Cwb_t(time):
-    return constants.get_coefficient_simple(time, const_time, Cwb)
+    return basis.get_y(time, const_time, Cwb)
 
 
 def Cvv_t(time):
-    return constants.get_coefficient_simple(time, const_time, Cvv)
+    return basis.get_y(time, const_time, Cvv)
 
 
 def Cvb_t(time):
-    return constants.get_coefficient_simple(time, const_time, Cvb)
+    return basis.get_y(time, const_time, Cvb)
 
 
 def Cvw_t(time):
-    return constants.get_coefficient_simple(time, const_time, Cvw)
+    return basis.get_y(time, const_time, Cvw)
 
 
 def velocity_t(time):
-    return constants.get_coefficient_simple(time, const_time, velocity)
+    return basis.get_y(time, const_time, velocity)
 
 
 def Wind_t(time):
-    return constants.get_coefficient_simple(time, const_time, Wind)
+    return basis.get_y(time, const_time, Wind)
 
 
 def Csw_t(time, index):
-    return constants.get_coefficient_simple(time, const_time, Csw[index])
+    return basis.get_y(time, const_time, Csw[index])
 
 
 def Csv_t(time, index):
-    return constants.get_coefficient_simple(time, const_time, Csv[index])
+    return basis.get_y(time, const_time, Csv[index])
 
 
 def Csb_t(time, index):
-    return constants.get_coefficient_simple(time, const_time, Csb[index])
+    return basis.get_y(time, const_time, Csb[index])
 
 
 def freq_t(time, index):
-    return constants.get_coefficient_simple(time, freq_time, freq[index])
+    return basis.get_y(time, freq_time, freq[index])
 
 
 def CsvQ_t(time):
-    return constants.get_coefficient_simple(time, const_time, CsvQ)
+    return basis.get_y(time, const_time, CsvQ)
 
 
 def CswQ_t(time):
-    return constants.get_coefficient_simple(time, const_time, CswQ)
+    return basis.get_y(time, const_time, CswQ)
 
 
 def CssQ_t(time):
-    return constants.get_coefficient_simple(time, const_time, CssQ)
+    return basis.get_y(time, const_time, CssQ)
 
 
 # control coefficients
@@ -155,7 +155,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
     ddw = 0
     s = [f_stiffness[0][0], f_stiffness[1][0], f_stiffness[2][0]]
     ds = [f_stiffness_diff[0][0], f_stiffness_diff[1][0], f_stiffness_diff[2][0]]
-    dds = constants.mode_num * [0]
+    dds = basis.mode_num * [0]
     t = 0
 
     pitch_vector = []
@@ -174,7 +174,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
         ddw += Cwv_t(t) * Wind_t(t)
 
         if include_oscillations:
-            for ci in range(constants.mode_num):
+            for ci in range(basis.mode_num):
                 dv += Csv_t(t, ci) * s[ci]
                 ddw += Csw_t(t, ci) * s[ci]
                 fre = freq_t(t, ci) * (2 * math.pi)

@@ -1,24 +1,14 @@
 import pandas as pd
 import numpy as np
-import constants
+import basis
 import json
 import matplotlib.pyplot as plt
 
-
 def read_propellant_density(propellant_type):
-    density_map = {
-        "LOX" : constants.density.LOX.value,
-        "RP-1": constants.density.RP_1.value,
-        "RG_1": constants.density.RG_1.value,
-        "UDMH": constants.density.UDMH.value,
-        "N2O4": constants.density.N2O4.value,
-        "HTPB": constants.density.HTPB.value,
-        "AP"  : constants.density.AP.value,
-        "UH25": constants.density.UH25.value,
-        "CH4" : constants.density.CH4.value,
-    }
-    return density_map.get(propellant_type, 0)
-
+    try:
+        return getattr(basis.density, propellant_type).value
+    except AttributeError:
+        return 0
 
 class coord_element:
     def __init__(self, start, length):
@@ -29,7 +19,7 @@ class coord_element:
 
 class rocket_parser:
     def __init__(self):
-        rocket = constants.current_rocket
+        rocket = basis.current_rocket
         json_filename = "rocket_lib/" + rocket + "/constant.json"
         csv_filename = "rocket_lib/" + rocket + "/distributed.csv"
 
@@ -102,8 +92,8 @@ class rocket_parser:
         m = self.propellant_mass[1]
         t = 0
         while m > 0:
-            m -= self.delta_mass[1] * constants.timestep
-            t += constants.timestep
+            m -= self.delta_mass[1] * basis.timestep
+            t += basis.timestep
 
     def _distributed_handler(self, filename):
         df = pd.read_csv(filename)
@@ -183,8 +173,8 @@ class rocket_parser:
         num = 0
 
         while li < sum(Length_start_vector):
-            if li >= constants.lenstep / 2:
-                Length_final_vector.append(constants.lenstep)
+            if li >= basis.lenstep / 2:
+                Length_final_vector.append(basis.lenstep)
             raised_length.append(round(li, 1))
             self.numeric.append(num)
 
@@ -214,16 +204,16 @@ class rocket_parser:
 
                     Diameter_final_vector.append(current_diameter)
                     Stiffness_final_vetor.append(
-                        constants.calculate_stiffness(current_diameter)
+                        basis.calculate_stiffness(current_diameter)
                     )
                     Area_final_vector.append(
-                        constants.cross_sectional_area(current_diameter)
+                        basis.cross_sectional_area(current_diameter)
                     )
                     Volume_final_vector.append(
-                        Area_final_vector[-1] * constants.lenstep
+                        Area_final_vector[-1] * basis.lenstep
                     )
 
-            li += constants.lenstep
+            li += basis.lenstep
             num += 1
 
         def mass_per_class(mass_, classname_):
@@ -525,10 +515,10 @@ class rocket_parser:
         self.time_vector.append(time)
         self.thrust_vector.append(self.thrust[0])
 
-        self.static_moment = constants.calculate_static(
+        self.static_moment = basis.calculate_static(
             self.full_mass, self.rocket_length
         )
-        self.inertia_moment = constants.calculate_inertia(
+        self.inertia_moment = basis.calculate_inertia(
             self.full_mass, self.rocket_length, self.rocket_length, self.max_diameter
         )
         self.static_vector.append(self.static_moment)
@@ -558,27 +548,27 @@ class rocket_parser:
                     break
 
             if current_stage is not None:
-                current_mass -= self.delta_mass[current_stage] * constants.timestep
+                current_mass -= self.delta_mass[current_stage] * basis.timestep
                 self.static_moment -= (
-                    constants.calculate_static(
+                    basis.calculate_static(
                         self.delta_mass_fu[i],
                         self.fuel_coordinates[i].end
                         + self.fuel_coordinates[i].end
                         - self.delta_level_fu[i],
                     )
-                    * constants.timestep
+                    * basis.timestep
                 )
                 self.static_moment -= (
-                    constants.calculate_static(
+                    basis.calculate_static(
                         self.delta_mass_ox[i],
                         self.oxidyzer_coordinates[i].end
                         + self.oxidyzer_coordinates[i].end
                         - self.delta_level_ox[i],
                     )
-                    * constants.timestep
+                    * basis.timestep
                 )
                 self.inertia_moment -= (
-                    constants.calculate_inertia(
+                    basis.calculate_inertia(
                         self.delta_mass_fu[i],
                         self.fuel_coordinates[i].end
                         + self.fuel_coordinates[i].end
@@ -588,10 +578,10 @@ class rocket_parser:
                         - self.delta_level_fu[i],
                         self.max_diameter,
                     )
-                    * constants.timestep
+                    * basis.timestep
                 )
                 self.inertia_moment -= (
-                    constants.calculate_inertia(
+                    basis.calculate_inertia(
                         self.delta_mass_ox[i],
                         self.oxidyzer_coordinates[i].end
                         + self.oxidyzer_coordinates[i].end
@@ -601,11 +591,11 @@ class rocket_parser:
                         - self.delta_level_fu[i],
                         self.max_diameter,
                     )
-                    * constants.timestep
+                    * basis.timestep
                 )
                 thrust = self.thrust[i]
                 prop_test[current_stage] += (
-                    self.delta_mass[current_stage] * constants.timestep
+                    self.delta_mass[current_stage] * basis.timestep
                 )
                 thrust = self.thrust[current_stage]
                 cent = self.static_moment / current_mass
@@ -613,12 +603,12 @@ class rocket_parser:
             for i in range(self.block_number):
                 if not stage_dropped[i] and time >= stage_separation_times[i]:
                     current_mass -= self.structural_mass[i]
-                    self.static_moment -= constants.calculate_static(
+                    self.static_moment -= basis.calculate_static(
                         self.structural_mass[i],
                         self.structural_coordinates[i].end
                         + self.structural_coordinates[i].start,
                     )
-                    self.inertia_moment -= constants.calculate_inertia(
+                    self.inertia_moment -= basis.calculate_inertia(
                         self.structural_mass[i],
                         self.structural_coordinates[i].end
                         + self.structural_coordinates[i].start,
@@ -634,7 +624,7 @@ class rocket_parser:
             self.time_vector.append(time)
             self.thrust_vector.append(thrust)
             self.center_vector.append(cent)
-            time += constants.timestep
+            time += basis.timestep
 
     def get_step_length(self):
         return self.steps
@@ -670,81 +660,65 @@ class rocket_parser:
         return self.Length_parts
 
     def get_thrust_from_time(self, time):
-        for k in range(len(self.time_vector)):
-            if abs(self.time_vector[k] - time) < constants.timestep:
-                return self.thrust_vector[k]
-        return None
+        return basis.get_y(time,self.time_vector,self.thrust_vector)
 
     def get_mass_from_time(self, time):
-        for k in range(len(self.time_vector)):
-            if abs(self.time_vector[k] - time) < constants.timestep:
-                return self.mass_vector[k]
-        return None
+        return basis.get_y(time,self.time_vector,self.mass_vector)
 
     def get_inertia_from_time(self, time):
-        for k in range(len(self.inertia_vector)):
-            if abs(self.time_vector[k] - time) < constants.timestep:
-                return self.inertia_vector[k]
-        return None
+        return basis.get_y(time,self.time_vector,self.inertia_vector)
 
     def get_center_from_time(self, time):
-        for k in range(len(self.center_vector)):
-            if abs(self.time_vector[k] - time) < constants.timestep:
-                return self.center_vector[k]
-        return None
+        return basis.get_y(time,self.time_vector,self.center_vector)
 
     def get_propellant_from_time(self, time):
-        for k in range(len(self.time_vector)):
-            if abs(self.time_vector[k] - time) < constants.timestep:
-                return self.thrust_vector[k]
-        return None
+        return basis.get_y(time,self.time_vector,self.thrust_vector)
 
+# import matplotlib.pyplot as plt
+# import numpy as np
+# import matplotlib.cm as cm
+# from matplotlib.colors import Normalize
 
-import matplotlib.pyplot as plt
-import numpy as np
-import matplotlib.cm as cm
-from matplotlib.colors import Normalize
+# # Создаем объект ракеты
+# rp = rocket_parser()
 
-# Создаем объект ракеты
-rp = rocket_parser()
+# # Выбираем моменты времени для анализа
 
-# Выбираем моменты времени для анализа
+# ti = 0
+# time_points = []
+# while ti < rp.work_time[0]:
+#     time_points.append(ti)
+#     ti +=5
+# # time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
 
-ti = 0
-time_points = []
-while ti < rp.work_time[0]:
-    time_points.append(ti)
-    ti +=5
-# time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
+# # Создаем цветовую карту (от темного к светлому)
+# colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
 
-# Создаем цветовую карту (от темного к светлому)
-colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
+# # Создаем фигуру с двумя подграфиками
+# fig, (ax1) = plt.subplots(1, 1, figsize=(10, 5), sharex=True)
 
-# Создаем фигуру с двумя подграфиками
-fig, (ax1) = plt.subplots(1, 1, figsize=(10, 5), sharex=True)
+# # Получаем координаты по длине ракеты
+# x_coords = rp.asc_length
 
-# Получаем координаты по длине ракеты
-x_coords = rp.asc_length
+# color_pairs = [
+#     ([0.68, 0.85, 0.9], [0, 0, 1]),
+#     ([1, 0.68, 0.68], [1, 0, 0]),
+#     ([0.8, 0.8, 0.8], [0, 0, 0])
+# ]
 
-color_pairs = [
-    ([0.68, 0.85, 0.9], [0, 0, 1]),
-    ([1, 0.68, 0.68], [1, 0, 0]),
-    ([0.8, 0.8, 0.8], [0, 0, 0])
-]
+# for i, t in enumerate(time_points):
+#     if t <= rp.full_time + 30:
+#         mass_distribution = rp.effective_mass(t,0)
 
-for i, t in enumerate(time_points):
-    if t <= rp.full_time + 30:
-        mass_distribution = rp.effective_mass(t,0)
+#         ax1.plot(x_coords, mass_distribution,
+#                 color = basis.interpolate_color(color_pairs[0][0], color_pairs[0][1], i, len(time_points)),
+#                 linewidth=2,
+#                 alpha=0.8,
+#                 label=f't = {t:.1f} с')
 
-        ax1.plot(x_coords, mass_distribution,
-                color = constants.interpolate_color(color_pairs[0][0], color_pairs[0][1], i, len(time_points)),
-                linewidth=2,
-                alpha=0.8,
-                label=f't = {t:.1f} с')
+# ax1.set_xlabel('Длина ракеты, м')
+# ax1.set_ylabel('Масса в сечении, кг')
+# ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
+# ax1.grid(True, alpha=0.3)
 
-ax1.set_xlabel('Длина ракеты, м')
-ax1.set_ylabel('Масса в сечении, кг')
-ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
-ax1.grid(True, alpha=0.3)
-
-plt.show()
+# plt.show()

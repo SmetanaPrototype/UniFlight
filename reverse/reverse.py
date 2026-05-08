@@ -1,4 +1,4 @@
-import constants
+import basis
 import matplotlib.pyplot as plt
 import numpy as np
 import atmosphere as atmo
@@ -6,12 +6,12 @@ import aerodynamics as aero
 import rocket_parser as rp
 
 flight_file = "missions/crs16_falcon9_051218.csv"
-v_time = constants.read_array_from_csv(flight_file, "time")
-v_velocity = constants.read_array_from_csv(flight_file, "velocity")
-v_altitude = constants.read_array_from_csv(flight_file, "altitude")
-v_tetta = constants.read_array_from_csv(flight_file, "angle")
-v_dypressure = constants.read_array_from_csv(flight_file, "q")
-v_fullac = constants.read_array_from_csv(flight_file, "acceleration")
+v_time = basis.read_array_from_csv(flight_file, "time")
+v_velocity = basis.read_array_from_csv(flight_file, "velocity")
+v_altitude = basis.read_array_from_csv(flight_file, "altitude")
+v_tetta = basis.read_array_from_csv(flight_file, "angle")
+v_dypressure = basis.read_array_from_csv(flight_file, "q")
+v_fullac = basis.read_array_from_csv(flight_file, "acceleration")
 
 parser = rp.rocket_parser()
 G = aero.UnionStream()
@@ -43,7 +43,7 @@ cx = np.array(v_cx)
 
 acceleration = np.gradient(velocity, time)
 # Параметры
-S = constants.cross_sectional_area(3.7)
+S = basis.cross_sectional_area(3.7)
 mass0 = 549000
 delta = 3100
 
@@ -64,7 +64,7 @@ cx = drag_force/dyn_pressure/S
 
 
 # # drag_force = thrust - mass * acceleration - mass * v_grav * np.sin(angle_rad)
-# # lift_force = mass * velocity * angular_velocity_rad + mass * v_grav * np.cos(angle_rad) * (1 - velocity**2 / (v_grav * (altitude + constants.earth_radius)))
+# # lift_force = mass * velocity * angular_velocity_rad + mass * v_grav * np.cos(angle_rad) * (1 - velocity**2 / (v_grav * (altitude + basis.earth_radius)))
 
 # # th = mass * acceleration + dyn_pressure * cx * S + mass * v_grav * np.sin(angle_rad)
 plt.plot(time, drag_force)

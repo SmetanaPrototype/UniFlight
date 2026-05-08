@@ -1,14 +1,12 @@
 import rocket_parser as rp
-import constants
-import path
+import basis
 import atmosphere as atmo
 import aerodynamics as aero
 import attack
-import json
 import matplotlib.pyplot as plt
-import math
 import numpy as np
 from scipy.integrate import solve_ivp
+import scipy.constants as earth
 
 # Глобальные списки для записи данных
 Cbs_list = []
@@ -23,7 +21,7 @@ traj_list = []
 alt_list = []
 time_list = []
 wind_list = []
-Q_list    = []
+Q_list = []
 thrust_list = []
 aog_list = []
 mass_list = []
@@ -33,42 +31,47 @@ CsyQ_list = []
 CssQ_list = []
 mach_list = []
 
-Csw_list = [[] for _ in range(constants.mode_num)]
-Csy_list = [[] for _ in range(constants.mode_num)]
-Csb_list = [[] for _ in range(constants.mode_num)]
+Csw_list = [[] for _ in range(basis.mode_num)]
+Csy_list = [[] for _ in range(basis.mode_num)]
+Csb_list = [[] for _ in range(basis.mode_num)]
 
 parser = rp.rocket_parser()
-rocketname = constants.current_rocket
+rocketname = basis.current_rocket
 
 # Загрузка данных жесткости
-# f_stiffness = [0] * constants.mode_num
-# f_stiffness_diff = [0] * constants.mode_num
+# f_stiffness = [0] * basis.mode_num
+# f_stiffness_diff = [0] * basis.mode_num
 
 # oscillations_file = "output/"+rocketname+"_oscillations.csv"
-# f_stiffness[0] = constants.read_array_from_csv(oscillations_file, "form_1")
-# f_stiffness[1] = constants.read_array_from_csv(oscillations_file, "form_2")
-# f_stiffness[2] = constants.read_array_from_csv(oscillations_file, "form_3")
-# f_stiffness_diff[0] = constants.read_array_from_csv(oscillations_file, "difform_1")
-# f_stiffness_diff[1] = constants.read_array_from_csv(oscillations_file, "difform_2")
-# f_stiffness_diff[2] = constants.read_array_from_csv(oscillations_file, "difform_3")
-# coord_stiffness = constants.read_array_from_csv(oscillations_file, "length")
+# f_stiffness[0] = basis.read_array_from_csv(oscillations_file, "form_1")
+# f_stiffness[1] = basis.read_array_from_csv(oscillations_file, "form_2")
+# f_stiffness[2] = basis.read_array_from_csv(oscillations_file, "form_3")
+# f_stiffness_diff[0] = basis.read_array_from_csv(oscillations_file, "difform_1")
+# f_stiffness_diff[1] = basis.read_array_from_csv(oscillations_file, "difform_2")
+# f_stiffness_diff[2] = basis.read_array_from_csv(oscillations_file, "difform_3")
+# coord_stiffness = basis.read_array_from_csv(oscillations_file, "length")
 
 # freq_file = "output/"+rocketname+"_frequency.csv"
-# freq_time = constants.read_array_from_csv(freq_file, "time")
-# freq_mass = constants.read_array_from_csv(freq_file, "freq_mass_1")
+# freq_time = basis.read_array_from_csv(freq_file, "time")
+# freq_mass = basis.read_array_from_csv(freq_file, "freq_mass_1")
 
 
 def get_attack_from_coefs(vel, time):
     """Получение угла атаки по коэффициентам из парсера"""
-    alpha_obj = attack.alpha(parser.attack_coefs[0], parser.attack_coefs[1], parser.work_time[0], False)
+    alpha_obj = attack.alpha(
+        parser.attack_coefs[0], parser.attack_coefs[1], parser.work_time[0], False
+    )
     alpha_val = alpha_obj.calculate_alpha(vel, time)
     return max(-30, min(30, alpha_val))
+
 
 def fall_event(t, y, parser, get_attack_func):
     return y[3]
 
+
 fall_event.terminal = True
 fall_event.direction = -1
+
 
 def system(t, vars, parser, get_attack_func):
     """Система дифференциальных уравнений"""
@@ -81,6 +84,7 @@ def system(t, vars, parser, get_attack_func):
         b.delta_altitude(t),
         b.delta_longitude(t),
     ]
+
 
 class ballistics:
     def __init__(self, N, Y, vel, alt, parser, get_attack_func):
@@ -108,7 +112,7 @@ class ballistics:
         self.last_time = None
 
     def update_params(self, time):
-        print(round(time/parser.full_time*100), "%", end="\r")
+        print(round(time / parser.full_time * 100), "%", end="\r")
         if self.last_time != time:
             self.thrust = self.parser.get_thrust_from_time(time)
             self.mass = self.parser.get_mass_from_time(time)
@@ -124,7 +128,7 @@ class ballistics:
             if self.inertia is None:
                 self.inertia = 0.1
 
-            self.attack = self.get_attack_func(self.vel, time) * math.pi / 180
+            self.attack = self.get_attack_func(self.vel, time) * np.pi / 180
             self.G.calculate_CXY(self.vel, self.alt, self.attack)
 
             self.atm = atmo.atmosphere(self.alt)
@@ -133,9 +137,14 @@ class ballistics:
 
             if self.alt < 100:
                 sv = self.atm.get_SV()
-                mach_list.append(self.vel/sv)
+                mach_list.append(self.vel / sv)
 
-            focus_pos = self.G.focus_position if hasattr(self.G, "focus_position") and self.G.focus_position is not None else 0.0
+            focus_pos = (
+                self.G.focus_position
+                if hasattr(self.G, "focus_position")
+                and self.G.focus_position is not None
+                else 0.0
+            )
             self.first_point = abs(focus_pos - self.center)
             self.second_point = abs(self.parser.rocket_length - self.center)
 
@@ -151,9 +160,9 @@ class ballistics:
             self.dypressure = self.dencity * self.vel**2 / 2
 
             # Запись данных
-            attack_list.append(self.attack * 180 / math.pi)
+            attack_list.append(self.attack * 180 / np.pi)
             vel_list.append(self.vel)
-            traj_list.append(self.Y * 180 / math.pi)
+            traj_list.append(self.Y * 180 / np.pi)
             alt_list.append(self.alt)
             time_list.append(time)
             wind_list.append(self.wind)
@@ -170,8 +179,8 @@ class ballistics:
             # Cwy_list.append((self.G.CY * self.dypressure * self.parser.maximum_area * self.first_point) / self.inertia / self.vel)
             # Cwb_list.append(self.thrust * self.parser.thrust_ratio * self.second_point / self.inertia)
 
-            # for k in range(constants.mode_num):
-            #     Csw_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia * 
+            # for k in range(basis.mode_num):
+            #     Csw_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia *
             #                       ((self.second_point - self.parser.rocket_length) * f_stiffness_diff[k][-1] + f_stiffness[k][-1]))
             #     Csy_list[k].append(self.thrust * self.parser.thrust_ratio * f_stiffness_diff[k][-1] / self.mass)
             #     Csb_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia * f_stiffness[k][-1])
@@ -179,7 +188,7 @@ class ballistics:
             # stream_ratio = -self.parser.maximum_area * self.dypressure
             # cy_integral = [0, 0, 0]
             # delta_stiffness = 1
-            # mass_s = constants.get_coefficient_simple(time, freq_time, freq_mass)
+            # mass_s = basis.get_y(time, freq_time, freq_mass)
 
             # for f, scoord in enumerate(coord_stiffness):
             #     dcy = self.G.get_cya_from_coord(scoord)
@@ -193,35 +202,44 @@ class ballistics:
 
     def delta_velocity(self, time):
         self.update_params(time)
-        F_P = self.thrust * math.cos(self.attack)
+        F_P = self.thrust * np.cos(self.attack)
         F_X = self.G.CX * self.dypressure * self.parser.maximum_area
-        res = (F_P - F_X) / self.mass - self.atm.get_AOG() * math.sin(self.Y)
+        res = (F_P - F_X) / self.mass - self.atm.get_AOG() * np.sin(self.Y)
         acceleration_list.append(res)
         return res
 
     def delta_trajangle(self, time):
         self.update_params(time)
-        F_P = self.thrust * math.sin(self.attack)
+        F_P = self.thrust * np.sin(self.attack)
         F_Y = self.G.CY * self.dypressure * self.parser.maximum_area
-        F_G = self.atm.get_AOG() * math.cos(self.Y) * (1 - self.vel**2 / (self.atm.get_AOG() * (constants.earth_radius + self.alt)))
+        F_G = (
+            self.atm.get_AOG()
+            * np.cos(self.Y)
+            * (
+                1
+                - self.vel**2
+                / (self.atm.get_AOG() * (basis.earth_radius + self.alt))
+            )
+        )
         return (F_P + F_Y) / (self.mass * self.vel) - F_G / self.vel
 
     def delta_polar(self, time):
         self.update_params(time)
-        return (self.vel / (constants.earth_radius + self.alt)) * math.cos(self.Y)
+        return (self.vel / (basis.earth_radius + self.alt)) * np.cos(self.Y)
 
     def delta_altitude(self, time):
         self.update_params(time)
-        return self.vel * math.sin(self.Y)
+        return self.vel * np.sin(self.Y)
 
     def delta_longitude(self, time):
         self.update_params(time)
-        return self.vel * math.cos(self.Y)
+        return self.vel * np.cos(self.Y)
+
 
 def output(parser):
     """Сохранение результатов в файл"""
     rocketname = parser.name
-    constants.write_arrays_to_csv(
+    basis.write_arrays_to_csv(
         "output/" + rocketname + "_dynamic_coefs.csv",
         time=time_list,
         wind=wind_list,
@@ -232,16 +250,25 @@ def output(parser):
         Cyy=Cyy_list,
         Cwy=Cwy_list,
         Cwb=Cwb_list,
-        Csw1=Csw_list[0], Csw2=Csw_list[1], Csw3=Csw_list[2],
-        Csy1=Csy_list[0], Csy2=Csy_list[1], Csy3=Csy_list[2],
-        Csb1=Csb_list[0], Csb2=Csb_list[1], Csb3=Csb_list[2],
-        CswQ=CswQ_list, CsyQ=CsyQ_list, CssQ=CssQ_list
+        Csw1=Csw_list[0],
+        Csw2=Csw_list[1],
+        Csw3=Csw_list[2],
+        Csy1=Csy_list[0],
+        Csy2=Csy_list[1],
+        Csy3=Csy_list[2],
+        Csb1=Csb_list[0],
+        Csb2=Csb_list[1],
+        Csb3=Csb_list[2],
+        CswQ=CswQ_list,
+        CsyQ=CsyQ_list,
+        CssQ=CssQ_list,
     )
+
 
 def to_reverse(parser):
     """Сохранение результатов в файл с интервалом ~1 секунда"""
     rocketname = parser.name
-    
+
     # Прореживание массивов до ~1 секунды
     time_reduced = []
     mass_reduced = []
@@ -250,15 +277,15 @@ def to_reverse(parser):
     q_reduced = []
     g_reduced = []
     tetta_reduced = []
-    
+
     # Интервал округления (секунды)
     interval = 1.0
-    
+
     last_saved_time = -interval  # чтобы первая точка сохранилась
-    
+
     for i in range(len(time_list)):
         current_time = time_list[i]
-        
+
         # Сохраняем, если прошло достаточно времени или это последняя точка
         if current_time - last_saved_time >= interval - 1e-9 or i == len(time_list) - 1:
             time_reduced.append(current_time)
@@ -269,19 +296,20 @@ def to_reverse(parser):
             g_reduced.append(aog_list[i])
             tetta_reduced.append(traj_list[i])
             last_saved_time = current_time
-    
-    constants.write_arrays_to_csv(
+
+    basis.write_arrays_to_csv(
         "output/" + rocketname + "_ball_data.csv",
-        time = time_reduced,
-        mass = mass_reduced,
-        acceleration = acceleration_reduced,
-        thrust = thrust_reduced,
-        q = q_reduced,
-        g = g_reduced,
-        tetta = tetta_reduced
+        time=time_reduced,
+        mass=mass_reduced,
+        acceleration=acceleration_reduced,
+        thrust=thrust_reduced,
+        q=q_reduced,
+        g=g_reduced,
+        tetta=tetta_reduced,
     )
-    
+
     print(f"Сжатие данных: {len(time_list)} -> {len(time_reduced)} точек")
+
 
 def main():
     print("ЗАПУСК БАЛЛИСТИЧЕСКОГО РАСЧЕТА")
@@ -292,9 +320,9 @@ def main():
 
     # Начальные условия
     ft = parser.get_full_time()
-    h = constants.timestep
+    h = basis.timestep
     t_span = (0, min(ft - 1, 800))
-    y0 = [0, math.pi / 2, 10.0, 100.0, 0.1]
+    y0 = [0, np.pi / 2, 10.0, 100.0, 0.1]
 
     # Запуск симуляции
     sol = solve_ivp(
@@ -312,7 +340,7 @@ def main():
     if sol.success:
         final_velocity = sol.y[2][-1]
         final_altitude = sol.y[3][-1]
-        final_angle = sol.y[1][-1] * 180 / math.pi
+        final_angle = sol.y[1][-1] * 180 / np.pi
         final_attack = attack_list[-1] if attack_list else 0
 
         print("\n=== РЕЗУЛЬТАТЫ РАСЧЕТА ===")
@@ -328,6 +356,7 @@ def main():
         print("❌ Ошибка при расчете траектории")
 
     return sol
+
 
 # Запуск расчета
 sol = main()

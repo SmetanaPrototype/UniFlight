@@ -6,7 +6,7 @@ import atmosphere
 import path
 import rocket_parser as rp
 import numpy as np
-import constants
+import basis
 import atmosphere as atmo
 
 class Element:
@@ -190,19 +190,6 @@ class Friction(Geometry):
 
 
 class Pressure(Geometry):
-    def read_pressure_file(self, filename, rows, cols):
-        df = pd.read_csv(filename, delimiter=None, engine="python", header=None)
-        if rows > 0:
-            df = df.head(rows)
-
-        if df.shape[1] < cols:
-            raise ValueError(f"File {filename} has fewer than {cols} columns")
-
-        df = df.iloc[:, :cols]
-        data = df.values.tolist()
-        transposed = list(map(list, zip(*data)))
-        return transposed
-
     def interpolate_Mach(self, Mach, data):
         Mach_v = data[0]
         values = data[1]
@@ -252,18 +239,18 @@ class Pressure(Geometry):
                 return 0
             return 0.0155 / math.sqrt(self.cif * self.num * self.full_ratio)
         else:
-            data = self.read_pressure_file(path.root_path + "HeadPressure.csv", 10, 10)
+            data = basis.aerostat_file(path.root_path + "HeadPressure.csv")
             # 7-й столбец (индекс 6) - как в исходнике
             return self.interpolate_Mach(Mach, [data[0], data[6]])
 
     def head_Cpres(self, Mach):
-        data = self.read_pressure_file(path.root_path + "HeadPressure.csv", 10, 10)
+        data = basis.aerostat_file(path.root_path + "HeadPressure.csv")
         ratio = self.elem[0].ratio
         H_current = self.select_ratio_data_pressure(ratio, data)
         return self.interpolate_Mach(Mach, H_current)
 
     def triangle_Cpres(self, Mach, ratio):
-        data = self.read_pressure_file(path.root_path + "TrianglePressure.csv", 10, 7)
+        data = basis.aerostat_file(path.root_path + "TrianglePressure.csv")
         H_current = self.select_ratio_data_triangle(ratio, data)
         return self.interpolate_Mach(Mach, H_current)
 
@@ -278,38 +265,22 @@ class Pressure(Geometry):
 
 
 class Inductance(Geometry):
-    def read_pressure_file(self, filename, rows, cols):
-        data = []
-        with open(filename, "r") as f:
-            for _ in range(rows):
-                line = f.readline()
-                if not line:
-                    break
-                parts = line.strip().split()
-                if len(parts) < cols:
-                    raise ValueError(
-                        f"File {filename} line {_+1} has fewer than {cols} columns"
-                    )
-                data.append([float(x) for x in parts[:cols]])
-        transposed = list(map(list, zip(*data)))
-        return transposed
-
     def E_pressure(self, angle, Mach):
         N = 10
-        data = self.read_pressure_file(path.root_path + "EPressure.csv", N, 3)
+        data = basis.aerostat_file(path.root_path + "EPressure.csv")
         Mach_v = data[0]
         H_head = data[1]
         H_cone = data[2]
 
         if Mach < 1:
             Mach_val = (
-                -math.sqrt(1 - constants.sqr(Mach)) / self.elem[0].ratio
+                -math.sqrt(1 - np.square(Mach)) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
         else:
             Mach_val = (
-                math.sqrt(constants.sqr(Mach) - 1) / self.elem[0].ratio
+                math.sqrt(np.square(Mach) - 1) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
@@ -325,35 +296,30 @@ class Inductance(Geometry):
                     H_cone[i] - H_cone[i - 1]
                 ) / (Mach_v[i] - Mach_v[i - 1])
 
-        self.elem[0].C_ind = (self.elem[0].CY + constants.rad(2 * E_head)) * constants.sqr(angle)
+        self.elem[0].C_ind = (self.elem[0].CY + np.radians(2 * E_head)) * np.square(angle)
         for j in range(1, len(self.elem)):
             if self.elem[j].upper_diameter < self.elem[j].lower_diameter:
                 ratio = self.elem[-1].upper_area if self.elem[-1].upper_area != 0 else 1
                 self.elem[j].C_ind = (
                     self.elem[j].CY * self.elem[j].upper_area / ratio
-                    + constants.rad(2 * E_cone * self.elem[j].upper_area / ratio)
-                ) * constants.sqr(angle)
+                    + np.radians(2 * E_cone * self.elem[j].upper_area / ratio)
+                ) * np.square(angle)
 
         E = sum(e.C_ind for e in self.elem)
         return E
 
 
 class LiftForce(Inductance):
-    def sqr(self, x):
-        return x * x
-
-    def rad(self, x):
-        return x / 57.3
-
     def head_lift(self, Mach):
-        N = 9
-        data = self.read_pressure_file(path.root_path + "HeadNormal.csv", N, 6)
+        data = basis.aerostat_file(path.root_path + "HeadNormal.csv")
         Mah_v = data[0]
         H_0 = data[1]
         H_05 = data[2]
         H_1 = data[3]
         H_2 = data[4]
         H_4 = data[5]
+
+        N = len(Mah_v)
 
         L_cyl = 0.0
         for j in range(1, len(self.elem)):
@@ -383,13 +349,13 @@ class LiftForce(Inductance):
 
         if Mach < 1:
             Mach_val = (
-                -math.sqrt(1 - constants.sqr(Mach)) / self.elem[0].ratio
+                -math.sqrt(1 - np.square(Mach)) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
         else:
             Mach_val = (
-                math.sqrt(constants.sqr(Mach) - 1) / self.elem[0].ratio
+                math.sqrt(np.square(Mach) - 1) / self.elem[0].ratio
                 if self.elem[0].ratio != 0
                 else 0
             )
@@ -413,11 +379,11 @@ class LiftForce(Inductance):
             else 0
         )
         Q = math.atan(arg)
-        return (2 / 57.3) * constants.sqr(math.cos(Q))
+        return (2 / 57.3) * np.square(math.cos(Q))
 
     def triangle_lift(self, Mach, ratio, index):
         N = 9
-        data = self.read_pressure_file(path.root_path + "TriangleNormal.csv", N, 6)
+        data = basis.aerostat_file(path.root_path + "TriangleNormal.csv")
         Mah_v = data[0]
         H_0 = data[1]
         H_1 = data[2]
@@ -452,9 +418,9 @@ class LiftForce(Inductance):
                 H_current.append(H_0[i])
 
         if Mach < 1:
-            Mach_val = -math.sqrt(1 - constants.sqr(Mach)) / ratio if ratio != 0 else 0
+            Mach_val = -math.sqrt(1 - np.square(Mach)) / ratio if ratio != 0 else 0
         else:
-            Mach_val = math.sqrt(constants.sqr(Mach) - 1) / ratio if ratio != 0 else 0
+            Mach_val = math.sqrt(np.square(Mach) - 1) / ratio if ratio != 0 else 0
 
         C_head = 0.0
         for i in range(1, N):
@@ -483,7 +449,7 @@ class LiftForce(Inductance):
                     - self.free_triangle_lift(i) * S_rat
                 )
             else:
-                self.elem[i].CY = constants.rad(2)
+                self.elem[i].CY = np.radians(2)
             res += (
                 self.elem[i].CY * self.elem[i].upper_area / self.elem[-1].upper_area
                 if self.elem[-1].upper_area != 0
@@ -572,7 +538,7 @@ class UnionStream(DragForce, LiftForce):
             self.CY = self.calculate_CY(Mach)
             self.E = self.E_pressure(attack_angle, Mach)
             self.CX += self.CY + self.E
-            self.CY -= constants.rad(self.CY + self.E)
+            self.CY -= np.radians(self.CY + self.E)
 
             # from normal to lift for parts
             # TODO
@@ -607,10 +573,10 @@ class UnionStream(DragForce, LiftForce):
 
             self.liftprofile.append(cy)
             self.lengthprofile.append(li)
-            li += constants.lenstep
+            li += basis.lenstep
 
     def get_cya_from_coord(self, x):
-        return constants.get_coefficient_simple(x, self.lengthprofile, self.liftprofile)
+        return basis.get_y(x, self.lengthprofile, self.liftprofile)
 
 def loc_calc():
     parser = rp.rocket_parser()
@@ -634,7 +600,7 @@ def loc_calc():
         l[i] = G.liftprofile
 
     rocketname = parser.name
-    constants.write_arrays_to_csv("output/"+rocketname+"_aero.csv",
+    basis.write_arrays_to_csv("output/"+rocketname+"_aero.csv",
                                 length   =G.lengthprofile,
                                 cy1      =l[0],
                                 cy2      =l[1],
@@ -715,8 +681,8 @@ def main():
         # focus_lines.append(line4)
         legend_labels.append(label)
 
-        constants.write_arrays_to_csv(
-            "output/"+constants.current_rocket+"_"+str(alt)+"stat.csv",
+        basis.write_arrays_to_csv(
+            "output/"+basis.current_rocket+"_"+str(alt)+"stat.csv",
             mach=get_machvec(alt),
             cx=CX_list,
             cy=CY_list
@@ -756,10 +722,6 @@ def main():
     )
 
     plt.show()
-
-    if focus_data:
-        print(focus_data[-1])
-
 
 if __name__ == "__main__":
     # loc_calc()

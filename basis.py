@@ -1,12 +1,9 @@
 import enum
 import numpy as np
-import math
 import os
 import csv
 import pandas as pd
 
-acceleration_of_gravity = 9.81
-earth_radius = 6371000
 lamb = (4.73, 7.853, 10.996, 14.137, 17.279)
 
 current_rocket = 'falcon'
@@ -28,32 +25,24 @@ timestep = 1
 lenstep  = 0.1
 
 young_modulus = 71000000000
+earth_radius  = 6371000
 
-def get_coefficient_simple(x, x_array, y_array):
+def get_y(x, x_array, y_array):
     if len(x_array) == 0 or len(y_array) == 0:
         return 0
     return np.interp(x, x_array, y_array)
 
 def calculate_stiffness(diameter):
-    return young_modulus * math.pi * cross_sectional_area(diameter)
+    return young_modulus * np.pi * cross_sectional_area(diameter)
 
 def cross_sectional_area(diameter):
-    return math.pi * (diameter**2) / 4
+    return np.pi * (diameter**2) / 4
 
 def calculate_static(mass_, shoulder):
     return 0.5 * mass_ * shoulder
 
 def calculate_inertia(mass_, shoulder, shoulder_diff, diameter):
-    return 0.25 * mass_ * (math.pow(shoulder, 2) + 0.333 * math.pow(shoulder_diff, 2) + math.pow((diameter/2), 2))
-
-def sqr(x):
-    return x * x
-
-def rad(x):
-    return x / 57.3
-
-def absmax(iterable):
-    return max(iterable, key=abs)
+    return 0.25 * mass_ * (np.pow(shoulder, 2) + 0.333 * np.pow(shoulder_diff, 2) + np.pow((diameter/2), 2))
 
 def write_arrays_to_csv(filename, **arrays):
    """Запись массивов в CSV файл"""
@@ -95,3 +84,10 @@ def interpolate_color(start_color, end_color, i, total):
        start_color[j] + (end_color[j] - start_color[j]) * i / (total - 1)
        for j in range(mode_num)
    ]
+
+def aerostat_file(filename):
+    df = pd.read_csv(filename)
+    return df.T.values.tolist()
+
+def calculate_multi(one, second):
+    return [a * b for a, b in zip(one, second)]

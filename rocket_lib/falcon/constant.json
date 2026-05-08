@@ -20,7 +20,7 @@
     18,
     25
   ],
-  "fuel": "RP-1",
+  "fuel": "RP_1",
   "oxidizer": "LOX",
   "attack_coefs": [
     1.17,
