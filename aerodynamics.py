@@ -239,18 +239,18 @@ class Pressure(Geometry):
                 return 0
             return 0.0155 / math.sqrt(self.cif * self.num * self.full_ratio)
         else:
-            data = basis.aerostat_file(path.root_path + "HeadPressure.csv")
+            data = basis.aerostat_file("resources/" + "HeadPressure.csv")
             # 7-й столбец (индекс 6) - как в исходнике
             return self.interpolate_Mach(Mach, [data[0], data[6]])
 
     def head_Cpres(self, Mach):
-        data = basis.aerostat_file(path.root_path + "HeadPressure.csv")
+        data = basis.aerostat_file("resources/" + "HeadPressure.csv")
         ratio = self.elem[0].ratio
         H_current = self.select_ratio_data_pressure(ratio, data)
         return self.interpolate_Mach(Mach, H_current)
 
     def triangle_Cpres(self, Mach, ratio):
-        data = basis.aerostat_file(path.root_path + "TrianglePressure.csv")
+        data = basis.aerostat_file("resources/" + "TrianglePressure.csv")
         H_current = self.select_ratio_data_triangle(ratio, data)
         return self.interpolate_Mach(Mach, H_current)
 
@@ -267,7 +267,7 @@ class Pressure(Geometry):
 class Inductance(Geometry):
     def E_pressure(self, angle, Mach):
         N = 10
-        data = basis.aerostat_file(path.root_path + "EPressure.csv")
+        data = basis.aerostat_file("resources/" + "EPressure.csv")
         Mach_v = data[0]
         H_head = data[1]
         H_cone = data[2]
@@ -311,7 +311,7 @@ class Inductance(Geometry):
 
 class LiftForce(Inductance):
     def head_lift(self, Mach):
-        data = basis.aerostat_file(path.root_path + "HeadNormal.csv")
+        data = basis.aerostat_file("resources/" + "HeadNormal.csv")
         Mah_v = data[0]
         H_0 = data[1]
         H_05 = data[2]
@@ -383,7 +383,7 @@ class LiftForce(Inductance):
 
     def triangle_lift(self, Mach, ratio, index):
         N = 9
-        data = basis.aerostat_file(path.root_path + "TriangleNormal.csv")
+        data = basis.aerostat_file("resources/" + "TriangleNormal.csv")
         Mah_v = data[0]
         H_0 = data[1]
         H_1 = data[2]

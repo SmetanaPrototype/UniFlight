@@ -82,7 +82,7 @@ def check_target_achieved(final_velocity, final_altitude, final_angle, final_att
 
 def update_rocket_json(new_coefficients):
     """Обновляет коэффициенты в JSON файле ракеты"""
-    json_path = path.rocket_lib + rocketname + ".json"
+    json_path = "rocket_lib/" + rocketname + ".json"
 
     try:
         with open(json_path, "r", encoding="utf-8") as file:
@@ -982,7 +982,7 @@ def output(parser):
 
 def update_rocket_json(new_coefficients):
     """Обновляет коэффициенты в JSON файле ракеты"""
-    json_path = path.rocket_lib + rocketname + "constant.json"
+    json_path = "rocket_lib/" + rocketname + "constant.json"
 
     try:
         with open(json_path, "r", encoding="utf-8") as file:
