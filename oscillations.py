@@ -3,7 +3,6 @@ import math as m
 import rocket_parser as rp
 import constants
 import numpy as np
-import math
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -58,7 +57,7 @@ freqmass_vector_2 = []
 freqmass_vector_3 = []
 total_iterations = 0
 
-time_vector = [t for t in range(0, 90+1, constants.timestep)]
+time_vector = [t for t in range(0, 80+1, constants.timestep)]
 ver_mass_vector = [parser.changed_mass(ti) for ti in time_vector]
 total_iterations = len(ver_mass_vector)
 
@@ -102,6 +101,7 @@ def output(parser):
 
 for mo, mass in enumerate(ver_mass_vector):
 
+   print(round(mo/len(ver_mass_vector)*100), "%", end="\r")
    def delta_vector(previous, actual):
     f_12 = [x ** 2 for x in previous]
     mf_12 = calculate_multi(f_12, mass)
@@ -154,6 +154,7 @@ for mo, mass in enumerate(ver_mass_vector):
        f_start = f_zero[index]
        tolerance = 1e-8
        mass_effective = parser.effective_mass(time_idx, index)
+       iteration = 0
        while(True):
            m_f1 = calculate_multi(mass_effective, f_start)
            sum_m_f1 = calculate_sum(m_f1)
@@ -222,7 +223,10 @@ for mo, mass in enumerate(ver_mass_vector):
            mass_s[index] = sum_mf_12[-1]
            if max(abs(f_stiffness_res[i] - f_start[i]) for i in range(len(f_start))) < tolerance:
                 break
+           if iteration >= 300:
+                break
            f_start = f_stiffness_res
+           iteration+=1
 
        return f_stiffness_res
    #################################################################

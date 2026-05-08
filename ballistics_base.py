@@ -31,6 +31,7 @@ acceleration_list = []
 CswQ_list = []
 CsyQ_list = []
 CssQ_list = []
+mach_list = []
 
 Csw_list = [[] for _ in range(constants.mode_num)]
 Csy_list = [[] for _ in range(constants.mode_num)]
@@ -107,6 +108,7 @@ class ballistics:
         self.last_time = None
 
     def update_params(self, time):
+        print(round(time/parser.full_time*100), "%", end="\r")
         if self.last_time != time:
             self.thrust = self.parser.get_thrust_from_time(time)
             self.mass = self.parser.get_mass_from_time(time)
@@ -128,6 +130,10 @@ class ballistics:
             self.atm = atmo.atmosphere(self.alt)
             self.dencity = self.atm.get_density()
             self.wind = self.atm.get_wind()
+
+            if self.alt < 100:
+                sv = self.atm.get_SV()
+                mach_list.append(self.vel/sv)
 
             focus_pos = self.G.focus_position if hasattr(self.G, "focus_position") and self.G.focus_position is not None else 0.0
             self.first_point = abs(focus_pos - self.center)
@@ -155,6 +161,7 @@ class ballistics:
             thrust_list.append(self.thrust)
             aog_list.append(self.atm.get_AOG())
             mass_list.append(self.mass)
+            # mach_list.append(self.mach)
 
             # Cbs_list.append(-self.thrust * self.parser.thrust_ratio / self.mass)
             # Cyw_list.append(-(self.thrust + self.G.CY * self.dypressure * self.parser.maximum_area) / self.mass)

@@ -428,36 +428,68 @@ class rocket_parser:
 
         return mass_t
 
-
     def effective_mass(self, time_, mode_index):
-        mass_total = self.changed_mass(time_)
-        mass_effective = mass_total.copy()
+
+        f1lev = self.fuel_coordinates[0].length
+        f2lev = self.fuel_coordinates[1].length
+        o1lev = self.oxidyzer_coordinates[0].length
+        o2lev = self.oxidyzer_coordinates[1].length
+
+        if   mode_index == 0: E = 1.841
+        elif mode_index == 1: E = 3.054
+        elif mode_index == 2: E = 4.201
 
         first_stage_end = self.work_time[0]
 
+        mass_total = self.changed_mass(time_)
+        mass_effective = mass_total.copy()
         for i in range(len(mass_effective)):
-            if self.classes[i] in ["Fuel", "Oxidizer"]:
-                construction_ratio = 1/self.structural_values[0]
-                construction_mass = mass_total[i] * construction_ratio
-                fluid_mass = mass_total[i] - construction_mass
+            s = 0
+            h = 0
+            if self.classes[i] in ["Fuel"] and self.stages[i] in ["First"]:
+                h = f1lev * (first_stage_end - time_)/first_stage_end
+                s = self.structural_values[0]
+            elif self.classes[i] in ["Oxidizer"] and self.stages[i] in ["First"]:
+                h = o1lev * (first_stage_end - time_)/first_stage_end
+                s = self.structural_values[0]
+            elif self.classes[i] in ["Fuel"] and self.stages[i] in ["Second"]:
+                h = f2lev
+                s = self.structural_values[1]
+            elif self.classes[i] in ["Oxidizer"] and self.stages[i] in ["Second"]:
+                h = o2lev
+                s = self.structural_values[1]
 
-                if fluid_mass > 0:
-                    # Коэффициент от времени (заполнения)
-                    if time_ < first_stage_end * 0.3:
-                        k_fill = 0.9
-                    elif time_ < first_stage_end * 0.7:
-                        k_fill = 0.7
-                    else:
-                        k_fill = 0.4
-
-                    # Коэффициент от номера формы
-                    # Для 1 тона: 1.0, для 2 тона: 0.8, для 3 тона: 0.6
-                    k_mode = [1.0, 0.8, 0.6][min(mode_index, 2)]
-
-                    k = k_fill * k_mode
-                    mass_effective[i] = construction_mass + k * fluid_mass
+            if s!=0:
+                construction_ratio = 1/s
+                construction_mass = mass_effective[i] * construction_ratio
+                fluid_mass = mass_effective[i] - construction_mass
+                mass_effective[i] = construction_mass + fluid_mass*self.max_diameter/(E*h)*np.tanh(E*2*h/self.max_diameter)/(E*E-1)
 
         return mass_effective
+
+    # def effective_mass(self, time_, mode_index):
+    #     mass_total = self.changed_mass(time_)
+    #     mass_effective = mass_total.copy()
+
+    #     first_stage_end = self.work_time[0]
+    #     for i in range(len(mass_effective)):
+    #         if self.classes[i] in ["Fuel", "Oxidizer"]:
+    #             construction_ratio = 1/self.structural_values[0]
+    #             construction_mass = mass_total[i] * construction_ratio
+    #             fluid_mass = mass_total[i] - construction_mass
+
+    #             if mode_index == 0: E = 1.841
+    #             if mode_index == 1: E = 3.054
+    #             if mode_index == 2: E = 4.201
+
+    #             if fluid_mass > 0:
+    #                 h = 1 # нужны высоты столбов жидкости в моменте
+    #                 kt = self.max_diameter/(E*h)*np.tanh(E*2*h/self.max_diameter)/(E*E-1)
+    #                 # здесь надо получить высоту h заполнения каждого бака для рсчета коэффициентов участия
+
+    #                 mass_effective[i] = construction_mass + kt * fluid_mass
+
+    #     return mass_effective
 
     def _calculate_flight_dynamics(self):
         """Расчет динамических параметров полета"""
@@ -668,51 +700,51 @@ class rocket_parser:
         return None
 
 
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import matplotlib.cm as cm
-# from matplotlib.colors import Normalize
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.cm as cm
+from matplotlib.colors import Normalize
 
-# # Создаем объект ракеты
-# rp = rocket_parser()
+# Создаем объект ракеты
+rp = rocket_parser()
 
-# # Выбираем моменты времени для анализа
+# Выбираем моменты времени для анализа
 
-# ti = 0
-# time_points = []
-# while ti < rp.work_time[0]:
-#     time_points.append(ti)
-#     ti +=5
-# # time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
+ti = 0
+time_points = []
+while ti < rp.work_time[0]:
+    time_points.append(ti)
+    ti +=5
+# time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
 
-# # Создаем цветовую карту (от темного к светлому)
-# colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
+# Создаем цветовую карту (от темного к светлому)
+colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
 
-# # Создаем фигуру с двумя подграфиками
-# fig, (ax1) = plt.subplots(1, 1, figsize=(10, 5), sharex=True)
+# Создаем фигуру с двумя подграфиками
+fig, (ax1) = plt.subplots(1, 1, figsize=(10, 5), sharex=True)
 
-# # Получаем координаты по длине ракеты
-# x_coords = rp.asc_length
+# Получаем координаты по длине ракеты
+x_coords = rp.asc_length
 
-# color_pairs = [
-#     ([0.68, 0.85, 0.9], [0, 0, 1]),
-#     ([1, 0.68, 0.68], [1, 0, 0]),
-#     ([0.8, 0.8, 0.8], [0, 0, 0])
-# ]
+color_pairs = [
+    ([0.68, 0.85, 0.9], [0, 0, 1]),
+    ([1, 0.68, 0.68], [1, 0, 0]),
+    ([0.8, 0.8, 0.8], [0, 0, 0])
+]
 
-# for i, t in enumerate(time_points):
-#     if t <= rp.full_time + 30:
-#         mass_distribution = rp.changed_mass(t)
+for i, t in enumerate(time_points):
+    if t <= rp.full_time + 30:
+        mass_distribution = rp.effective_mass(t,0)
 
-#         ax1.plot(x_coords, mass_distribution,
-#                 color = constants.interpolate_color(color_pairs[0][0], color_pairs[0][1], i, len(time_points)),
-#                 linewidth=2,
-#                 alpha=0.8,
-#                 label=f't = {t:.1f} с')
+        ax1.plot(x_coords, mass_distribution,
+                color = constants.interpolate_color(color_pairs[0][0], color_pairs[0][1], i, len(time_points)),
+                linewidth=2,
+                alpha=0.8,
+                label=f't = {t:.1f} с')
 
-# ax1.set_xlabel('Длина ракеты, м')
-# ax1.set_ylabel('Масса в сечении, кг')
-# ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
-# ax1.grid(True, alpha=0.3)
+ax1.set_xlabel('Длина ракеты, м')
+ax1.set_ylabel('Масса в сечении, кг')
+ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
+ax1.grid(True, alpha=0.3)
 
-# plt.show()
+plt.show()

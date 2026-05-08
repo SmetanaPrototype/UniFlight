@@ -650,7 +650,7 @@ def main():
     G.set_length(parser.get_part_length())
 
     arrayVelocity = np.linspace(10, 3000, 100)
-    altitudes = [0, 40, 80]
+    altitudes = [10, 40, 80]
 
     def get_machvec(altit):
         at = atmo.atmosphere(altit)
