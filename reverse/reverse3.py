@@ -1,16 +1,19 @@
-import constants
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import basis
 import matplotlib.pyplot as plt
 import numpy as np
 import atmosphere as atmo
 import aerodynamics as aero
 import rocket_parser as rp
 
-
-flight_file = "test.csv"
-v_time     =      np.array(constants.read_array_from_csv(flight_file, "time"))
-v_altitude =      np.array(constants.read_array_from_csv(flight_file, "altitude"))
-v_vel      =      np.array(constants.read_array_from_csv(flight_file, "velocity"))
-v_tetta    =      np.array(constants.read_array_from_csv(flight_file, "angle"))
+flight_file = "reverse/test.csv"
+v_time     =      np.array(basis.read_array_from_csv(flight_file, "time"))
+v_altitude =      np.array(basis.read_array_from_csv(flight_file, "altitude"))
+v_vel      =      np.array(basis.read_array_from_csv(flight_file, "velocity"))
+v_tetta    =      np.array(basis.read_array_from_csv(flight_file, "angle"))
 
 parser = rp.rocket_parser()
 G = aero.UnionStream()
