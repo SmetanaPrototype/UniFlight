@@ -177,12 +177,13 @@ class rocket_parser:
                 Length_final_vector.append(basis.lenstep)
             raised_length.append(round(li, 1))
             self.numeric.append(num)
-
+            found = False
             for i in range(len(Sum_Length_start_vector) - 1):
                 if (
-                    li < Sum_Length_start_vector[i + 1]
+                    li <= Sum_Length_start_vector[i + 1]
                     and li > Sum_Length_start_vector[i]
                 ):
+                    found = True
                     Class_final_vector.append(Class_start_vector[i + 1])
                     Stage_final_vector.append(Stage_start_vector[i + 1])
                     delta_diameter = (
@@ -212,6 +213,10 @@ class rocket_parser:
                     Volume_final_vector.append(
                         Area_final_vector[-1] * basis.lenstep
                     )
+            if not found:
+                print(f"ПРОБЛЕМА: li={li} не попало ни в один интервал")
+                print(f"Доступные узлы: {Sum_Length_start_vector}")
+                print(f"Диапазон: от {min(Sum_Length_start_vector)} до {max(Sum_Length_start_vector)}")
 
             li += basis.lenstep
             num += 1
@@ -325,15 +330,16 @@ class rocket_parser:
         }
         self.rocket_length = raised_length[-1]
 
-        print(len(self.numeric))
-        print(len(Length_final_vector))
-        print(len(raised_length))
+        print(len(self.numeric)) # diff
+        print(len(Length_final_vector)) # diff
+        print(len(raised_length)) # diff
         print(len(Diameter_final_vector))
         print(len(Area_final_vector))
         print(len(Mass_final_vector))
         print(len(Stiffness_final_vetor))
         print(len(Class_final_vector))
         print(len(Stage_final_vector))
+
 
         df_result = pd.DataFrame(new_data)
         df_result.to_csv("output/rocket_data.csv", index=False, encoding="utf-8")

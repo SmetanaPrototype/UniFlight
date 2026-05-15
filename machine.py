@@ -12,19 +12,31 @@ def read_rocket(rocket):
     with open(path, "r") as r_file:
         r_data = json.load(r_file)
     s = r_data["structural_values"]
-    Ratio = r_data["components_ratio"]
     mb = r_data["block_mass"]
     mpn = r_data["payload_mass"]
     thrust = r_data["thrust"]
+    coefs  = r_data["attack_coefs"]
     mstep = []
     mstep.append(mpn + sum(mb))
     mstep.append(mpn + sum(mb) - mb[0])
     N = []
     for i in range(len(mb)):
         N.append(thrust[i]/(mstep[i]*9.81))
-    return s[0], s[1], N[0], N[1], Ratio
+    return s[0], s[1], N[0], N[1], coefs[0], coefs[1]
 
-s1, s2, n1, n2, r = read_rocket("mlv")
+rockets_list = ["amur", "falcon", "cz2c", "fireflyalpha", "electron"]
+
+results = [read_rocket(rocket) for rocket in rockets_list]
+
+data = {
+    "s1": np.array([r[0] for r in results]),
+    "s2": np.array([r[1] for r in results]),
+    "N1": np.array([r[2] for r in results]),
+    "N2": np.array([r[3] for r in results]),
+    "k1": np.array([r[4] for r in results]),
+    "k2": np.array([r[5] for r in results]),
+}
+print(pd.DataFrame(data))
 # ============= 1. СОЗДАЕМ СИНТЕТИЧЕСКУЮ ВЫБОРКУ =============
 np.random.seed(42)
 n_rockets = 200  # количество ракет

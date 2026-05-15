@@ -1,29 +1,29 @@
 {
     "name": "electron",
     "block_number": 2,
-    "payload_mass": 300,
+    "payload_mass": 250,
     "block_mass": [
-        12500,
-        2500
+        10200,
+        2400
     ],
-    "components_ratio": 2.05,
+    "components_ratio": 2.56,
     "thrust_ratio": 0.8,
     "exhaust_velocity": [
         3110,
         3500
     ],
     "thrust": [
-        224000,
-        26000
+        162000,
+        22000
     ],
     "structural_values": [
         20,
         25
     ],
-    "fuel": "RP-1",
+    "fuel": "RP_1",
     "oxidizer": "LOX",
     "attack_coefs": [
-        6.0,
-        0.4
+        0.75,
+        1.0
     ]
 }
