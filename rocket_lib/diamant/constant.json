@@ -1,7 +1,7 @@
 {
   "name": "diamant",
   "block_number": 3,
-  "payload_mass": 100,
+  "payload_mass": 0.01,
   "block_mass": [
     18000,
     4500,

@@ -1,7 +1,7 @@
 {
   "name": "mlv",
   "block_number": 2,
-  "payload_mass": 200,
+  "payload_mass": 0.02,
   "block_mass": [
     15000,
     3000
@@ -20,7 +20,7 @@
     17,
     14
   ],
-  "fuel": "RP-1",
+  "fuel": "RP_1",
   "oxidizer": "LOX",
   "attack_coefs": [
     3.5,

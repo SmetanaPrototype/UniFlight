@@ -1,0 +1,4288 @@
+Transcript Start Time:  22:16:34, 13 May 2026 RTZ 2 (зима) 
+Current Directory: "E:\UniFlight\ansys"
+
+Build Time: May 13 2024 11:21:01 EST 
+Executable Path: C:/PROGRA~1/ANSYSI~1/v242/fluent/ntbin/win64/fluent.exe
+
+--------------------------------------------------------------------------------------------------
+ID    Hostname         Core  O.S.         PID    Vendor                                          
+--------------------------------------------------------------------------------------------------
+n3    DESKTOP-Q5AGLJJ  4/12  Windows-x64  16624  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n2    DESKTOP-Q5AGLJJ  3/12  Windows-x64  22960  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n1    DESKTOP-Q5AGLJJ  2/12  Windows-x64  18452  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n0*   DESKTOP-Q5AGLJJ  1/12  Windows-x64  1740   11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+host  DESKTOP-Q5AGLJJ        Windows-x64  22456  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+
+MPI Option Selected: intel
+Selected system interconnect: default
+--------------------------------------------------------------------------------------------------
+
+Cortex Process ID: 14420 
+License Server Path: 1055@localhost 
+Fast-loading "C:\PROGRA~1\ANSYSI~1\v242\fluent\fluent24.2.0\\addons\afd\lib\hdfio.bin"
+Done.
+Multicore SMT processors detected. Processor affinity set!
+Reading setting file in cache: "E:\UniFlight\ansys\aero_files\dp4\FFF\Fluent\FFF.set"
+
+Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp4\FFF\Fluent\FFF-Setup-Output.cas.h5" in NODE0 mode ...
+  Reading mesh ...
+      138131 cells,     1 cell zone  ...
+         138131 tetrahedral cells,  zone id: 3
+      279088 faces,     5 face zones ...
+           1198 triangular wall faces,  zone id: 1
+         273436 triangular interior faces,  zone id: 2
+            288 triangular pressure-far-field faces,  zone id: 5
+            290 triangular pressure-outlet faces,  zone id: 6
+           3876 triangular wall faces,  zone id: 8
+       24333 nodes,     1 node zone  ...
+  Done.
+
+
+
+Building...
+     mesh
+	distributing mesh
+		parts....,
+		faces....,
+		nodes....,
+		cells....,
+        bandwidth reduction using Reverse Cuthill-McKee: 34437/1043 = 33.0173
+     materials,
+     interface,
+     domains,
+	mixture
+     zones,
+	ball
+	outlet
+	interior-cross-freeparts
+	wall-cross-freeparts
+	inlet
+	cross-freeparts
+ Warning: For compressible (ideal and real) gas models with buoyancy,
+ it is recommended that you use a specified operating density value of zero:
+ define/operating-conditions/operating-density? yes 0.
+Setting cross-freeparts (mixture) ... Done.
+ Setting zone id of cross-freeparts to 3.
+ Setting zone id of inlet to 5.
+ Setting zone id of wall-cross-freeparts to 1.
+ Setting zone id of interior-cross-freeparts to 2.
+ Setting zone id of outlet to 6.
+ Setting zone id of ball to 8.
+Done.
+Setting cross-freeparts (mixture) ... Done.
+Setting inlet (mixture) ... Done.
+Setting wall-cross-freeparts (mixture) ... Done.
+Setting interior-cross-freeparts (mixture) ... Done.
+Setting outlet (mixture) ... Done.
+Setting ball (mixture) ... Done.
+
+     parallel,
+Done.
+
+Preparing mesh for display...
+Done.
+
+Setting Post Processing and Surfaces information ...	 Done.
+WB->Fluent:Parameter name:Mach, value:1
+WB->Fluent:Parameter name:attack, value:1
+"Updating Setup cell..."
+WB->Fluent:Parameter name:Mach, value:1
+WB->Fluent:Parameter name:attack, value:1
+"Updating Solution cell..."
+
+Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp4\FFF\Fluent\FFF-16-00900.dat.h5" in NODE0 mode ...
+
+
+  Reading results.
+Parallel variables...
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17299 cells 
+Done.
+WB->Fluent:Parameter name:Mach, value:1
+WB->Fluent:Parameter name:attack, value:1
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   900  1.0380e+07  1.5560e+10  2.5043e+11  1.1255e+11  1.0684e+13  2.0062e-03  4.1535e-05 -5.8280e+02 -4.7967e+01  0:00:00  300
+
+Divergence detected - temporarily reducing Courant number to 0.5
+ and trying again...
+
+Divergence detected - temporarily reducing Courant number to 0.05
+ and trying again...
+
+ time step reduced in 142 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 163 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 249 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 219 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12257 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17306 cells 
+   901  1.0381e+07  1.5560e+10  2.5044e+11  1.1255e+11  1.0684e+13  1.2186e-02  2.4777e-04 -5.8304e+02 -4.7969e+01  0:04:59  299
+
+ time step reduced in 146 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 167 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 255 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 223 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12408 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17314 cells 
+   902  1.0382e+07  1.5560e+10  2.5043e+11  1.1255e+11  1.0684e+13  1.1915e-02  2.3977e-04 -5.8329e+02 -4.7973e+01  0:04:58  298
+
+ time step reduced in 152 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 170 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 257 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 226 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12448 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17316 cells 
+   903  1.0382e+07  1.5560e+10  2.5043e+11  1.1255e+11  1.0684e+13  1.4380e-02  2.8417e-04 -5.8360e+02 -4.7977e+01  0:04:57  297
+
+ time step reduced in 159 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 171 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 257 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 226 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12488 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17311 cells 
+   904  1.0382e+07  1.5560e+10  2.5043e+11  1.1255e+11  1.0684e+13  1.7196e-02  3.3566e-04 -5.8398e+02 -4.7982e+01  0:04:56  296
+
+Divergence detected - temporarily reducing Courant number to 0.00976563
+ and trying again...
+
+ time step reduced in 89 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 162 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 253 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 220 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12255 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17312 cells 
+   905  1.0383e+07  1.5560e+10  2.5043e+11  1.1255e+11  1.0684e+13  2.2093e-03  4.5431e-05 -5.8406e+02 -4.7982e+01  0:04:55  295
+
+ time step reduced in 92 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 163 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 253 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 222 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12256 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17313 cells 
+   906  1.0383e+07  1.5560e+10  2.5043e+11  1.1255e+11  1.0684e+13  2.1981e-03  4.5451e-05 -5.8410e+02 -4.7983e+01  0:03:55  294
+
+ time step reduced in 101 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 163 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 253 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 223 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12262 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17314 cells 
+   907  1.0383e+07  1.5560e+10  2.5043e+11  1.1255e+11  1.0684e+13  2.7373e-03  5.7151e-05 -5.8416e+02 -4.7983e+01  0:04:06  293
+
+ time step reduced in 109 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 164 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 253 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 224 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12277 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17315 cells 
+   908  1.0384e+07  1.5559e+10  2.5043e+11  1.1255e+11  1.0683e+13  3.4046e-03  7.1719e-05 -5.8423e+02 -4.7984e+01  0:04:15  292
+
+ time step reduced in 119 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 254 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 226 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12279 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17320 cells 
+   909  1.0384e+07  1.5559e+10  2.5043e+11  1.1255e+11  1.0683e+13  4.2265e-03  8.8586e-05 -5.8432e+02 -4.7985e+01  0:03:23  291
+
+ time step reduced in 122 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 166 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 254 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 230 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12299 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17322 cells 
+   910  1.0385e+07  1.5559e+10  2.5043e+11  1.1255e+11  1.0683e+13  5.2414e-03  1.1393e-04 -5.8444e+02 -4.7986e+01  0:03:40  290
+Temperature limited to 1.000000e+00 in 2893 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 136567 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2332 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 2805 cells during the last 11 iterations
+
+ time step reduced in 129 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 255 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 230 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12313 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17333 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   911  1.0383e+07  1.5559e+10  2.5042e+11  1.1255e+11  1.0683e+13  6.4783e-03  1.4281e-04 -5.8458e+02 -4.7988e+01  0:03:53  289
+
+ time step reduced in 139 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 167 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 255 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 231 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12343 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17335 cells 
+   912  1.0383e+07  1.5559e+10  2.5041e+11  1.1254e+11  1.0683e+13  7.9890e-03  1.7373e-04 -5.8475e+02 -4.7990e+01  0:03:06  288
+
+ time step reduced in 148 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 169 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 256 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 232 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12379 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17349 cells 
+   913  1.0383e+07  1.5559e+10  2.5041e+11  1.1254e+11  1.0683e+13  9.8150e-03  2.0892e-04 -5.8497e+02 -4.7992e+01  0:03:26  287
+
+ time step reduced in 151 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 169 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 256 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 232 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12416 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17363 cells 
+   914  1.0384e+07  1.5558e+10  2.5041e+11  1.1254e+11  1.0682e+13  1.1998e-02  2.4985e-04 -5.8525e+02 -4.7996e+01  0:02:44  286
+
+ time step reduced in 180 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 169 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 258 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 231 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12440 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17381 cells 
+   915  1.0384e+07  1.5558e+10  2.5040e+11  1.1254e+11  1.0682e+13  1.4550e-02  2.9574e-04 -5.8557e+02 -4.8001e+01  0:03:08  285
+
+ time step reduced in 204 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 166 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 255 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 220 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12440 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17394 cells 
+   916  1.0385e+07  1.5558e+10  2.5040e+11  1.1254e+11  1.0682e+13  1.7534e-02  3.4966e-04 -5.8597e+02 -4.8007e+01  0:03:26  284
+
+ time step reduced in 231 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 255 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 208 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12455 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17418 cells 
+   917  1.0385e+07  1.5558e+10  2.5040e+11  1.1253e+11  1.0682e+13  2.1047e-02  3.9889e-04 -5.8644e+02 -4.8016e+01  0:02:45  283
+
+Divergence detected - temporarily reducing Courant number to 0.0142109
+ and trying again...
+
+ time step reduced in 98 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 164 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 257 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 201 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12228 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17415 cells 
+   918  1.0385e+07  1.5558e+10  2.5040e+11  1.1253e+11  1.0682e+13  2.8476e-03  5.4628e-05 -5.8653e+02 -4.8017e+01  0:03:08  282
+
+ time step reduced in 102 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 257 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 202 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12236 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17418 cells 
+   919  1.0385e+07  1.5558e+10  2.5040e+11  1.1253e+11  1.0682e+13  2.8363e-03  5.4204e-05 -5.8659e+02 -4.8017e+01  0:03:26  281
+
+ time step reduced in 109 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 260 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 202 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12251 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17415 cells 
+   920  1.0386e+07  1.5558e+10  2.5039e+11  1.1253e+11  1.0682e+13  3.5224e-03  6.6857e-05 -5.8665e+02 -4.8019e+01  0:03:40  280
+
+ time step reduced in 122 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 166 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 260 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 202 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12273 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17422 cells 
+   921  1.0386e+07  1.5558e+10  2.5039e+11  1.1253e+11  1.0682e+13  4.3648e-03  8.2248e-05 -5.8674e+02 -4.8020e+01  0:02:55  279
+Temperature limited to 1.000000e+00 in 2935 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 136854 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2327 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 2846 cells during the last 11 iterations
+
+ time step reduced in 129 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 260 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 204 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12289 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17423 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   922  1.0386e+07  1.5558e+10  2.5039e+11  1.1253e+11  1.0682e+13  5.3949e-03  1.0393e-04 -5.8685e+02 -4.8022e+01  0:03:15  278
+
+ time step reduced in 140 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 168 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 261 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 204 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12314 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17420 cells 
+   923  1.0385e+07  1.5558e+10  2.5039e+11  1.1253e+11  1.0682e+13  6.6457e-03  1.2744e-04 -5.8699e+02 -4.8024e+01  0:02:36  277
+
+ time step reduced in 145 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 169 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 262 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 204 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12361 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17442 cells 
+   924  1.0385e+07  1.5558e+10  2.5039e+11  1.1253e+11  1.0682e+13  8.1506e-03  1.5578e-04 -5.8716e+02 -4.8027e+01  0:02:59  276
+
+ time step reduced in 176 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 170 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 263 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 208 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12400 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17465 cells 
+   925  1.0384e+07  1.5558e+10  2.5039e+11  1.1253e+11  1.0682e+13  9.9439e-03  1.8596e-04 -5.8737e+02 -4.8030e+01  0:02:23  275
+
+ time step reduced in 170 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 264 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 208 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12452 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17467 cells 
+   926  1.0384e+07  1.5557e+10  2.5038e+11  1.1253e+11  1.0681e+13  1.2034e-02  2.1998e-04 -5.8764e+02 -4.8035e+01  0:02:49  274
+
+ time step reduced in 186 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 265 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 209 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12519 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17491 cells 
+   927  1.0384e+07  1.5557e+10  2.5038e+11  1.1252e+11  1.0681e+13  1.4446e-02  2.5899e-04 -5.8797e+02 -4.8041e+01  0:02:15  273
+
+Divergence detected - temporarily reducing Courant number to 0.0105879
+ and trying again...
+
+ time step reduced in 89 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 175 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 260 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 205 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12248 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17493 cells 
+   928  1.0385e+07  1.5557e+10  2.5038e+11  1.1252e+11  1.0681e+13  1.9040e-03  3.5131e-05 -5.8803e+02 -4.8042e+01  0:02:42  272
+
+ time step reduced in 97 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 177 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 260 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 206 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12255 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17500 cells 
+   929  1.0385e+07  1.5557e+10  2.5038e+11  1.1252e+11  1.0681e+13  1.8989e-03  3.5019e-05 -5.8807e+02 -4.8042e+01  0:03:03  271
+
+ time step reduced in 106 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 179 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 260 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 208 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12260 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17501 cells 
+   930  1.0385e+07  1.5557e+10  2.5038e+11  1.1252e+11  1.0681e+13  2.3637e-03  4.3810e-05 -5.8812e+02 -4.8043e+01  0:02:26  270
+
+ time step reduced in 114 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 181 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 261 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 207 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12276 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17504 cells 
+   931  1.0385e+07  1.5557e+10  2.5038e+11  1.1252e+11  1.0681e+13  2.9402e-03  5.4595e-05 -5.8818e+02 -4.8044e+01  0:02:50  269
+
+ time step reduced in 121 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 181 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 261 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 207 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12282 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17507 cells 
+   932  1.0385e+07  1.5557e+10  2.5037e+11  1.1252e+11  1.0681e+13  3.6515e-03  6.7069e-05 -5.8826e+02 -4.8045e+01  0:03:09  268
+Temperature limited to 1.000000e+00 in 2971 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 136681 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2279 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 2883 cells during the last 11 iterations
+
+ time step reduced in 136 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 182 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 261 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 209 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12301 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17518 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   933  1.0385e+07  1.5557e+10  2.5037e+11  1.1252e+11  1.0681e+13  4.5263e-03  8.2491e-05 -5.8836e+02 -4.8046e+01  0:03:24  267
+
+ time step reduced in 133 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 184 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 261 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 210 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12336 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17526 cells 
+   934  1.0385e+07  1.5557e+10  2.5037e+11  1.1252e+11  1.0681e+13  5.5982e-03  1.0104e-04 -5.8849e+02 -4.8048e+01  0:02:43  266
+
+ time step reduced in 138 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 186 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 263 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 212 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12367 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17534 cells 
+   935  1.0384e+07  1.5556e+10  2.5037e+11  1.1252e+11  1.0681e+13  5.5845e-03  9.9466e-05 -5.8861e+02 -4.8050e+01  0:03:03  265
+
+ time step reduced in 146 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 185 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 263 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 212 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12401 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17540 cells 
+   936  1.0384e+07  1.5556e+10  2.5037e+11  1.1252e+11  1.0681e+13  6.9075e-03  1.2032e-04 -5.8877e+02 -4.8053e+01  0:03:18  264
+
+ time step reduced in 155 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 187 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 264 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 211 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12444 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17552 cells 
+   937  1.0384e+07  1.5556e+10  2.5037e+11  1.1252e+11  1.0681e+13  8.5060e-03  1.4607e-04 -5.8896e+02 -4.8056e+01  0:02:38  263
+
+ time step reduced in 164 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 188 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 265 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 211 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12499 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17580 cells 
+   938  1.0385e+07  1.5556e+10  2.5036e+11  1.1252e+11  1.0681e+13  1.0409e-02  1.7329e-04 -5.8919e+02 -4.8061e+01  0:02:58  262
+
+ time step reduced in 185 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 188 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 267 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 212 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12546 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17601 cells 
+   939  1.0385e+07  1.5556e+10  2.5036e+11  1.1251e+11  1.0681e+13  1.2669e-02  2.0476e-04 -5.8949e+02 -4.8067e+01  0:02:22  261
+
+ time step reduced in 192 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 189 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 269 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 214 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12571 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17636 cells 
+   940  1.0385e+07  1.5556e+10  2.5036e+11  1.1251e+11  1.0681e+13  1.5301e-02  2.4076e-04 -5.8987e+02 -4.8076e+01  0:02:45  260
+
+ time step reduced in 213 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 186 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 268 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 210 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12603 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17657 cells 
+   941  1.0386e+07  1.5556e+10  2.5036e+11  1.1251e+11  1.0680e+13  1.8303e-02  2.8060e-04 -5.9034e+02 -4.8087e+01  0:02:12  259
+
+ time step reduced in 188 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 179 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 272 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 199 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12614 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17704 cells 
+   942  1.0388e+07  1.5555e+10  2.5035e+11  1.1251e+11  1.0680e+13  2.1668e-02  3.3154e-04 -5.9092e+02 -4.8101e+01  0:02:37  258
+
+ time step reduced in 257 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 176 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 274 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 185 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12608 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17742 cells 
+   943  1.0389e+07  1.5555e+10  2.5035e+11  1.1251e+11  1.0680e+13  2.5268e-02  4.0714e-04 -5.9163e+02 -4.8121e+01  0:02:56  257
+
+Divergence detected - temporarily reducing Courant number to 0.0240741
+ and trying again...
+Temperature limited to 1.000000e+00 in 3152 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138555 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2497 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 2960 cells during the last 11 iterations
+
+ time step reduced in 99 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 171 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 271 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 180 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12301 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17751 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   944  1.0394e+07  1.5555e+10  2.5035e+11  1.1250e+11  1.0680e+13  3.5854e-03  5.9967e-05 -5.9177e+02 -4.8125e+01  0:03:12  256
+
+ time step reduced in 102 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 177 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 274 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 180 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12313 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17749 cells 
+   945  1.0394e+07  1.5555e+10  2.5035e+11  1.1250e+11  1.0680e+13  3.5486e-03  5.9060e-05 -5.9185e+02 -4.8127e+01  0:02:33  255
+
+ time step reduced in 115 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 178 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 274 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 182 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12330 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17750 cells 
+   946  1.0394e+07  1.5555e+10  2.5034e+11  1.1250e+11  1.0680e+13  4.3741e-03  7.2294e-05 -5.9194e+02 -4.8129e+01  0:02:52  254
+
+ time step reduced in 129 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 177 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 275 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 179 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12369 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17760 cells 
+   947  1.0393e+07  1.5555e+10  2.5034e+11  1.1250e+11  1.0680e+13  5.3788e-03  8.7246e-05 -5.9206e+02 -4.8133e+01  0:02:17  253
+
+ time step reduced in 162 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 175 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 273 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 179 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12384 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17793 cells 
+   948  1.0393e+07  1.5555e+10  2.5034e+11  1.1250e+11  1.0680e+13  6.5880e-03  1.0648e-04 -5.9221e+02 -4.8137e+01  0:02:40  252
+
+ time step reduced in 162 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 175 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 274 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 178 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12420 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17830 cells 
+   949  1.0393e+07  1.5555e+10  2.5034e+11  1.1260e+11  1.0680e+13  8.0400e-03  1.3959e-04 -5.9239e+02 -4.8143e+01  0:02:58  251
+
+ time step reduced in 185 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 178 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 276 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 180 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12497 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17839 cells 
+   950  1.0393e+07  1.5554e+10  2.5034e+11  1.1259e+11  1.0680e+13  9.7459e-03  1.6386e-04 -5.9261e+02 -4.8151e+01  0:02:22  250
+
+Divergence detected - temporarily reducing Courant number to 0.00918355
+ and trying again...
+
+ time step reduced in 85 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 175 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 270 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 176 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12246 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17839 cells 
+   951  1.0392e+07  1.5554e+10  2.5033e+11  1.1259e+11  1.0680e+13  1.2733e-03  2.1888e-05 -5.9266e+02 -4.8153e+01  0:02:43  249
+
+ time step reduced in 89 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 270 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 176 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12246 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17839 cells 
+   952  1.0392e+07  1.5554e+10  2.5033e+11  1.1259e+11  1.0680e+13  1.2688e-03  2.1814e-05 -5.9269e+02 -4.8154e+01  0:02:59  248
+
+ time step reduced in 102 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 174 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 270 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 177 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12254 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17851 cells 
+   953  1.0392e+07  1.5554e+10  2.5033e+11  1.1259e+11  1.0680e+13  1.5783e-03  2.7119e-05 -5.9272e+02 -4.8155e+01  0:02:23  247
+
+ time step reduced in 107 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 175 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 270 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 179 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12263 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17854 cells 
+   954  1.0392e+07  1.5554e+10  2.5033e+11  1.1258e+11  1.0680e+13  1.9622e-03  3.3803e-05 -5.9276e+02 -4.8156e+01  0:02:43  246
+Temperature limited to 1.000000e+00 in 2650 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 136486 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2078 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3004 cells during the last 11 iterations
+
+ time step reduced in 117 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 172 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 271 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 181 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12279 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17867 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   955  1.0392e+07  1.5554e+10  2.5033e+11  1.1258e+11  1.0680e+13  2.4325e-03  4.1906e-05 -5.9281e+02 -4.8158e+01  0:02:10  245
+
+ time step reduced in 126 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 175 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 271 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 182 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12301 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17871 cells 
+   956  1.0392e+07  1.5554e+10  2.5033e+11  1.1258e+11  1.0680e+13  3.0130e-03  5.1472e-05 -5.9287e+02 -4.8160e+01  0:02:32  244
+
+ time step reduced in 138 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 271 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 183 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12327 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17877 cells 
+   957  1.0392e+07  1.5554e+10  2.5033e+11  1.1258e+11  1.0680e+13  3.7226e-03  6.4015e-05 -5.9294e+02 -4.8163e+01  0:02:01  243
+
+ time step reduced in 152 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 172 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 273 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 183 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12362 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17883 cells 
+   958  1.0392e+07  1.5554e+10  2.5033e+11  1.1258e+11  1.0679e+13  4.5820e-03  7.8393e-05 -5.9304e+02 -4.8167e+01  0:02:25  242
+
+ time step reduced in 163 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 274 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 183 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12408 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17897 cells 
+   959  1.0392e+07  1.5554e+10  2.5033e+11  1.1258e+11  1.0679e+13  5.6236e-03  9.4682e-05 -5.9315e+02 -4.8173e+01  0:02:44  241
+
+ time step reduced in 178 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 175 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 275 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 188 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12456 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17911 cells 
+   960  1.0393e+07  1.5554e+10  2.5033e+11  1.1258e+11  1.0679e+13  6.8707e-03  1.1454e-04 -5.9330e+02 -4.8179e+01  0:02:10  240
+
+ time step reduced in 196 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 176 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 278 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 190 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12510 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17928 cells 
+   961  1.0393e+07  1.5553e+10  2.5032e+11  1.1257e+11  1.0679e+13  8.3504e-03  1.3599e-04 -5.9349e+02 -4.8187e+01  0:02:32  239
+
+ time step reduced in 197 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 179 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 278 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 189 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12556 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17946 cells 
+   962  1.0397e+07  1.5553e+10  2.5032e+11  1.1257e+11  1.0679e+13  1.0084e-02  1.6282e-04 -5.9371e+02 -4.8197e+01  0:02:01  238
+
+ time step reduced in 197 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 177 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 279 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 188 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12589 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17954 cells 
+   963  1.0400e+07  1.5553e+10  2.5032e+11  1.1257e+11  1.0679e+13  1.2098e-02  1.9468e-04 -5.9399e+02 -4.8211e+01  0:02:24  237
+
+ time step reduced in 256 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 179 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 282 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 189 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12605 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 17997 cells 
+   964  1.0400e+07  1.5553e+10  2.5032e+11  1.1257e+11  1.0679e+13  1.4428e-02  2.3337e-04 -5.9434e+02 -4.8228e+01  0:01:54  236
+
+ time step reduced in 216 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 178 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 282 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 188 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12691 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18061 cells 
+   965  1.0403e+07  1.5553e+10  2.5033e+11  1.1256e+11  1.0679e+13  1.7143e-02  2.9957e-04 -5.9475e+02 -4.8249e+01  0:02:18  235
+Temperature limited to 1.000000e+00 in 3288 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138978 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2447 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3071 cells during the last 11 iterations
+
+ time step reduced in 246 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 171 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 287 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 181 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12765 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18122 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   966  1.0406e+07  1.5553e+10  2.5033e+11  1.1256e+11  1.0679e+13  2.0351e-02  3.7711e-04 -5.9524e+02 -4.8276e+01  0:02:37  234
+
+Divergence detected - temporarily reducing Courant number to 0.0261012
+ and trying again...
+
+ time step reduced in 120 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 283 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 174 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12432 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18130 cells 
+   967  1.0405e+07  1.5553e+10  2.5036e+11  1.1255e+11  1.0679e+13  2.8665e-03  5.7690e-05 -5.9534e+02 -4.8279e+01  0:02:52  233
+
+ time step reduced in 126 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 167 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 284 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 175 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12448 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18140 cells 
+   968  1.0405e+07  1.5553e+10  2.5038e+11  1.1256e+11  1.0679e+13  2.8361e-03  6.7177e-05 -5.9539e+02 -4.8282e+01  0:03:03  232
+
+ time step reduced in 138 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 171 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 285 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 179 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12457 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18148 cells 
+   969  1.0401e+07  1.5552e+10  2.5040e+11  1.1256e+11  1.0679e+13  3.4778e-03  8.9621e-05 -5.9546e+02 -4.8285e+01  0:02:26  231
+
+ time step reduced in 147 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 286 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 180 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12475 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18165 cells 
+   970  1.0398e+07  1.5553e+10  2.5049e+11  1.1256e+11  1.0679e+13  4.2723e-03  1.1650e-04 -5.9554e+02 -4.8290e+01  0:02:42  230
+
+ time step reduced in 162 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 174 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 183 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12501 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18177 cells 
+   971  1.0394e+07  1.5553e+10  2.5074e+11  1.1256e+11  1.0681e+13  5.2299e-03  2.0476e-04 -5.9564e+02 -4.8296e+01  0:02:55  229
+
+ time step reduced in 176 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 182 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12544 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18173 cells 
+   972  1.0378e+07  1.5557e+10  2.5194e+11  1.1259e+11  1.0692e+13  6.4077e-03  4.3921e-04 -5.9578e+02 -4.8305e+01  0:02:19  228
+
+ time step reduced in 201 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 174 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 290 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 182 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12596 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18203 cells 
+   973  1.0371e+07  1.5559e+10  2.5252e+11  1.1261e+11  1.0697e+13  7.8204e-03  5.6498e-04 -5.9596e+02 -4.8316e+01  0:02:36  227
+
+ time step reduced in 205 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 169 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 290 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 181 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12660 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18243 cells 
+   974  1.0371e+07  1.5559e+10  2.5252e+11  1.1260e+11  1.0697e+13  9.5176e-03  6.0107e-04 -5.9620e+02 -4.8331e+01  0:02:05  226
+
+Divergence detected - temporarily reducing Courant number to 0.012446
+ and trying again...
+
+ time step reduced in 104 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 163 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 281 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 180 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12345 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18249 cells 
+   975  1.0371e+07  1.5559e+10  2.5251e+11  1.1260e+11  1.0697e+13  1.2650e-03  9.8895e-05 -5.9625e+02 -4.8333e+01  0:03:09  225
+
+ time step reduced in 112 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 164 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 281 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 184 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12350 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18252 cells 
+   976  1.0371e+07  1.5559e+10  2.5251e+11  1.1260e+11  1.0696e+13  1.2633e-03  1.0095e-04 -5.9627e+02 -4.8334e+01  0:03:15  224
+Temperature limited to 1.000000e+00 in 2796 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138107 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2153 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3149 cells during the last 11 iterations
+
+ time step reduced in 123 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 165 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 281 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 186 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12359 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18263 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   977  1.0372e+07  1.5559e+10  2.5251e+11  1.1260e+11  1.0696e+13  1.5744e-03  1.2784e-04 -5.9630e+02 -4.8336e+01  0:02:36  223
+
+ time step reduced in 128 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 170 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 282 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 188 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12370 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18268 cells 
+   978  1.0372e+07  1.5559e+10  2.5251e+11  1.1260e+11  1.0696e+13  1.9563e-03  1.6166e-04 -5.9634e+02 -4.8339e+01  0:02:48  222
+
+ time step reduced in 136 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 172 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 284 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 189 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12384 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18275 cells 
+   979  1.0372e+07  1.5559e+10  2.5251e+11  1.1259e+11  1.0696e+13  2.4320e-03  2.0445e-04 -5.9638e+02 -4.8342e+01  0:02:58  221
+
+ time step reduced in 148 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 173 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 285 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 191 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12420 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18295 cells 
+   980  1.0372e+07  1.5559e+10  2.5251e+11  1.1259e+11  1.0696e+13  3.0191e-03  2.5984e-04 -5.9644e+02 -4.8346e+01  0:02:22  220
+
+ time step reduced in 152 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 174 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 287 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 194 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12448 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18315 cells 
+   981  1.0364e+07  1.5558e+10  2.5250e+11  1.1259e+11  1.0696e+13  3.7340e-03  3.2871e-04 -5.9652e+02 -4.8351e+01  0:02:37  219
+
+ time step reduced in 167 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 178 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 198 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12479 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18317 cells 
+   982  1.0363e+07  1.5558e+10  2.5250e+11  1.1259e+11  1.0696e+13  4.6223e-03  4.1305e-04 -5.9662e+02 -4.8358e+01  0:02:49  218
+
+ time step reduced in 173 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 180 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 290 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 199 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12534 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18329 cells 
+   983  1.0363e+07  1.5558e+10  2.5249e+11  1.1259e+11  1.0696e+13  5.6445e-03  5.1672e-04 -5.9674e+02 -4.8367e+01  0:02:14  217
+
+ time step reduced in 188 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 180 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 292 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 196 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12603 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18355 cells 
+   984  1.0363e+07  1.5558e+10  2.5249e+11  1.1258e+11  1.0696e+13  6.8376e-03  6.3987e-04 -5.9690e+02 -4.8377e+01  0:02:30  216
+
+ time step reduced in 258 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 178 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 293 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 195 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12566 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18397 cells 
+   985  1.0363e+07  1.5558e+10  2.5248e+11  1.1258e+11  1.0696e+13  6.6826e-03  6.4092e-04 -5.9707e+02 -4.8388e+01  0:02:00  215
+
+ time step reduced in 225 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 180 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 294 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 197 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12590 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18420 cells 
+   986  1.0363e+07  1.5558e+10  2.5248e+11  1.1258e+11  1.0696e+13  8.0534e-03  7.7358e-04 -5.9729e+02 -4.8402e+01  0:02:18  214
+
+ time step reduced in 212 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 183 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 295 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 200 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12648 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18467 cells 
+   987  1.0362e+07  1.5558e+10  2.5247e+11  1.1258e+11  1.0696e+13  9.5975e-03  9.1527e-04 -5.9757e+02 -4.8421e+01  0:02:32  213
+
+Divergence detected - temporarily reducing Courant number to 0.0144891
+ and trying again...
+Temperature limited to 1.000000e+00 in 3257 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138537 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2326 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3192 cells during the last 11 iterations
+
+ time step reduced in 120 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 177 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 285 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 201 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12347 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18473 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   988  1.0368e+07  1.5557e+10  2.5245e+11  1.1257e+11  1.0695e+13  1.2793e-03  1.2958e-04 -5.9764e+02 -4.8423e+01  0:02:44  212
+
+ time step reduced in 120 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 178 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 286 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 205 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12358 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18478 cells 
+   989  1.0369e+07  1.5557e+10  2.5244e+11  1.1257e+11  1.0695e+13  1.2769e-03  1.2882e-04 -5.9767e+02 -4.8425e+01  0:02:53  211
+
+ time step reduced in 131 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 179 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 286 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 205 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12367 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18485 cells 
+   990  1.0369e+07  1.5557e+10  2.5244e+11  1.1257e+11  1.0695e+13  1.5911e-03  1.5907e-04 -5.9770e+02 -4.8428e+01  0:02:59  210
+
+ time step reduced in 146 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 181 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 206 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12392 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18500 cells 
+   991  1.0369e+07  1.5557e+10  2.5244e+11  1.1257e+11  1.0695e+13  1.9783e-03  1.9571e-04 -5.9775e+02 -4.8431e+01  0:02:23  209
+
+ time step reduced in 150 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 180 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 207 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12410 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18510 cells 
+   992  1.0369e+07  1.5557e+10  2.5244e+11  1.1257e+11  1.0695e+13  2.4546e-03  2.4168e-04 -5.9780e+02 -4.8436e+01  0:02:35  208
+
+ time step reduced in 157 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 183 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 290 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 211 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12442 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18517 cells 
+   993  1.0363e+07  1.5557e+10  2.5243e+11  1.1257e+11  1.0695e+13  3.0340e-03  2.9602e-04 -5.9788e+02 -4.8442e+01  0:02:04  207
+
+ time step reduced in 163 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 184 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 291 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 214 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12477 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18526 cells 
+   994  1.0359e+07  1.5556e+10  2.5243e+11  1.1257e+11  1.0695e+13  3.7266e-03  3.5948e-04 -5.9797e+02 -4.8449e+01  0:02:20  206
+
+ time step reduced in 173 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 187 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 293 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 216 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12525 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18529 cells 
+   995  1.0359e+07  1.5556e+10  2.5242e+11  1.1256e+11  1.0695e+13  4.5694e-03  4.3099e-04 -5.9809e+02 -4.8459e+01  0:02:32  205
+
+ time step reduced in 193 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 185 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 294 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 217 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12562 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18548 cells 
+   996  1.0358e+07  1.5556e+10  2.5241e+11  1.1256e+11  1.0695e+13  5.5972e-03  5.1120e-04 -5.9824e+02 -4.8471e+01  0:02:42  204
+
+ time step reduced in 201 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 186 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 293 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 215 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12636 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18581 cells 
+   997  1.0358e+07  1.5556e+10  2.5240e+11  1.1256e+11  1.0694e+13  6.8136e-03  6.0262e-04 -5.9843e+02 -4.8487e+01  0:02:09  203
+
+ time step reduced in 220 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 186 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 290 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 216 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12671 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18610 cells 
+   998  1.0365e+07  1.5556e+10  2.5240e+11  1.1256e+11  1.0694e+13  8.1148e-03  7.3200e-04 -5.9867e+02 -4.8508e+01  0:02:23  202
+Temperature limited to 1.000000e+00 in 3336 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138706 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2535 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3208 cells during the last 11 iterations
+
+ time step reduced in 220 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 185 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 292 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 213 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12692 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18642 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   999  1.0368e+07  1.5555e+10  2.5239e+11  1.1255e+11  1.0694e+13  9.9375e-03  8.9352e-04 -5.9897e+02 -4.8534e+01  0:02:34  201
+
+Divergence detected - temporarily reducing Courant number to 0.0168675
+ and trying again...
+
+ time step reduced in 113 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 179 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 205 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12359 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18640 cells 
+  1000  1.0370e+07  1.5555e+10  2.5239e+11  1.1255e+11  1.0694e+13  1.3540e-03  1.3365e-04 -5.9904e+02 -4.8537e+01  0:02:43  200
+
+ time step reduced in 117 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 180 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 290 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 208 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12366 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18645 cells 
+  1001  1.0370e+07  1.5555e+10  2.5239e+11  1.1255e+11  1.0694e+13  1.3508e-03  1.3387e-04 -5.9907e+02 -4.8540e+01  0:02:49  199
+
+ time step reduced in 128 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 180 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 291 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 208 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12387 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18647 cells 
+  1002  1.0368e+07  1.5555e+10  2.5239e+11  1.1255e+11  1.0694e+13  1.6875e-03  1.6651e-04 -5.9911e+02 -4.8544e+01  0:02:15  198
+
+ time step reduced in 139 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 183 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 291 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 209 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12413 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18654 cells 
+  1003  1.0367e+07  1.5555e+10  2.5239e+11  1.1255e+11  1.0694e+13  2.1083e-03  2.0686e-04 -5.9916e+02 -4.8549e+01  0:02:27  197
+
+ time step reduced in 152 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 185 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 293 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 217 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12437 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18665 cells 
+  1004  1.0365e+07  1.5555e+10  2.5239e+11  1.1255e+11  1.0694e+13  2.6261e-03  2.5665e-04 -5.9923e+02 -4.8555e+01  0:02:36  196
+
+ time step reduced in 160 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 187 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 295 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 229 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12475 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18687 cells 
+  1005  1.0362e+07  1.5555e+10  2.5238e+11  1.1255e+11  1.0694e+13  3.2582e-03  3.1736e-04 -5.9932e+02 -4.8564e+01  0:02:04  195
+
+ time step reduced in 165 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 190 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 295 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 233 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12512 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18709 cells 
+  1006  1.0362e+07  1.5555e+10  2.5238e+11  1.1255e+11  1.0694e+13  4.0305e-03  3.9111e-04 -5.9943e+02 -4.8575e+01  0:02:18  194
+
+ time step reduced in 178 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 195 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 296 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 234 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12569 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18722 cells 
+  1007  1.0363e+07  1.5554e+10  2.5237e+11  1.1254e+11  1.0694e+13  4.9760e-03  4.7839e-04 -5.9957e+02 -4.8588e+01  0:02:28  193
+
+ time step reduced in 182 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 198 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 297 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 231 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12640 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18742 cells 
+  1008  1.0363e+07  1.5554e+10  2.5237e+11  1.1254e+11  1.0694e+13  6.1132e-03  5.8201e-04 -5.9973e+02 -4.8604e+01  0:01:58  192
+
+ time step reduced in 199 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 199 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 298 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 231 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12711 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18782 cells 
+  1009  1.0363e+07  1.5554e+10  2.5237e+11  1.1254e+11  1.0694e+13  7.4122e-03  6.9898e-04 -5.9993e+02 -4.8625e+01  0:02:12  191
+
+Divergence detected - temporarily reducing Courant number to 0.0125673
+ and trying again...
+Temperature limited to 1.000000e+00 in 3183 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138371 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2506 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3234 cells during the last 11 iterations
+
+ time step reduced in 113 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 195 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 226 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12417 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18779 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1010  1.0365e+07  1.5554e+10  2.5237e+11  1.1254e+11  1.0694e+13  9.8303e-04  9.9517e-05 -5.9997e+02 -4.8627e+01  0:02:23  190
+
+ time step reduced in 110 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 198 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 227 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12415 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18782 cells 
+  1011  1.0364e+07  1.5554e+10  2.5237e+11  1.1254e+11  1.0694e+13  9.8300e-04  9.9771e-05 -5.9999e+02 -4.8630e+01  0:02:32  189
+
+ time step reduced in 122 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 202 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 234 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12422 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18780 cells 
+  1012  1.0363e+07  1.5554e+10  2.5237e+11  1.1254e+11  1.0693e+13  1.2292e-03  1.2448e-04 -6.0001e+02 -4.8633e+01  0:02:38  188
+
+ time step reduced in 132 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 202 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 237 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12434 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18774 cells 
+  1013  1.0362e+07  1.5554e+10  2.5237e+11  1.1254e+11  1.0693e+13  1.5399e-03  1.5488e-04 -6.0004e+02 -4.8637e+01  0:02:06  187
+
+ time step reduced in 135 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 203 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 291 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 239 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12459 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18785 cells 
+  1014  1.0361e+07  1.5554e+10  2.5237e+11  1.1253e+11  1.0693e+13  1.9305e-03  1.9251e-04 -6.0008e+02 -4.8641e+01  0:02:17  186
+
+ time step reduced in 145 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 205 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 292 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 242 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12486 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18802 cells 
+  1015  1.0360e+07  1.5554e+10  2.5237e+11  1.1253e+11  1.0693e+13  2.4214e-03  2.3951e-04 -6.0013e+02 -4.8648e+01  0:02:26  185
+
+ time step reduced in 149 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 206 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 294 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12515 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18815 cells 
+  1016  1.0358e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  3.0192e-03  2.9666e-04 -6.0020e+02 -4.8656e+01  0:01:56  184
+
+ time step reduced in 160 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 207 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 298 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 245 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12559 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18833 cells 
+  1017  1.0357e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  3.7475e-03  3.6522e-04 -6.0027e+02 -4.8667e+01  0:02:09  183
+
+Divergence detected - temporarily reducing Courant number to 0.00599255
+ and trying again...
+
+ time step reduced in 93 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 199 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 284 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 237 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12389 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18835 cells 
+  1018  1.0357e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  4.8695e-04  4.9036e-05 -6.0029e+02 -4.8668e+01  0:02:56  182
+
+ time step reduced in 90 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 200 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 284 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12386 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18835 cells 
+  1019  1.0356e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  4.8741e-04  4.9101e-05 -6.0030e+02 -4.8669e+01  0:02:20  181
+
+ time step reduced in 94 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 201 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 284 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 244 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12387 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18832 cells 
+  1020  1.0356e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  6.0977e-04  6.1284e-05 -6.0031e+02 -4.8671e+01  0:02:27  180
+Temperature limited to 1.000000e+00 in 3325 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 137623 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2481 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3189 cells during the last 11 iterations
+
+ time step reduced in 91 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 202 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 285 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 251 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12391 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18838 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1021  1.0355e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  7.6388e-04  7.6468e-05 -6.0033e+02 -4.8673e+01  0:02:33  179
+
+ time step reduced in 99 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 206 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 285 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 254 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12401 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18837 cells 
+  1022  1.0355e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  9.5611e-04  9.5313e-05 -6.0034e+02 -4.8675e+01  0:02:02  178
+
+ time step reduced in 103 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 207 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 285 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 258 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12411 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18836 cells 
+  1023  1.0354e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  1.1950e-03  1.1919e-04 -6.0036e+02 -4.8678e+01  0:02:12  177
+
+ time step reduced in 111 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 209 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 285 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 260 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12428 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18841 cells 
+  1024  1.0354e+07  1.5554e+10  2.5236e+11  1.1253e+11  1.0693e+13  1.4913e-03  1.4902e-04 -6.0039e+02 -4.8682e+01  0:02:20  176
+
+ time step reduced in 119 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 208 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 286 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 261 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12453 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18842 cells 
+  1025  1.0353e+07  1.5553e+10  2.5236e+11  1.1253e+11  1.0693e+13  1.8541e-03  1.8457e-04 -6.0042e+02 -4.8687e+01  0:01:52  175
+
+ time step reduced in 130 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 209 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 262 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12476 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18845 cells 
+  1026  1.0352e+07  1.5553e+10  2.5236e+11  1.1253e+11  1.0693e+13  2.3055e-03  2.2769e-04 -6.0047e+02 -4.8693e+01  0:02:04  174
+
+ time step reduced in 142 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 209 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 293 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 263 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12497 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18863 cells 
+  1027  1.0351e+07  1.5553e+10  2.5235e+11  1.1252e+11  1.0693e+13  2.8611e-03  2.8104e-04 -6.0053e+02 -4.8702e+01  0:02:13  173
+
+ time step reduced in 143 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 212 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 295 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 263 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12534 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18872 cells 
+  1028  1.0349e+07  1.5553e+10  2.5235e+11  1.1252e+11  1.0693e+13  3.5455e-03  3.4425e-04 -6.0060e+02 -4.8712e+01  0:01:46  172
+
+ time step reduced in 152 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 217 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 296 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 263 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12581 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18896 cells 
+  1029  1.0349e+07  1.5553e+10  2.5235e+11  1.1252e+11  1.0693e+13  4.3638e-03  4.1907e-04 -6.0070e+02 -4.8724e+01  0:01:58  171
+
+ time step reduced in 171 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 218 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 298 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 258 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12626 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18924 cells 
+  1030  1.0350e+07  1.5553e+10  2.5234e+11  1.1252e+11  1.0692e+13  5.3690e-03  5.0935e-04 -6.0081e+02 -4.8739e+01  0:02:08  170
+
+Divergence detected - temporarily reducing Courant number to 0.0087203
+ and trying again...
+
+ time step reduced in 84 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 214 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 256 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12406 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18925 cells 
+  1031  1.0349e+07  1.5553e+10  2.5234e+11  1.1252e+11  1.0692e+13  6.9669e-04  6.9662e-05 -6.0084e+02 -4.8742e+01  0:02:16  169
+Temperature limited to 1.000000e+00 in 3508 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138227 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2717 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3203 cells during the last 11 iterations
+
+ time step reduced in 89 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 213 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 259 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12407 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18923 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1032  1.0349e+07  1.5553e+10  2.5234e+11  1.1252e+11  1.0692e+13  6.9564e-04  6.9704e-05 -6.0085e+02 -4.8744e+01  0:01:48  168
+
+ time step reduced in 97 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 214 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 288 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 262 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12405 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18926 cells 
+  1033  1.0348e+07  1.5553e+10  2.5234e+11  1.1252e+11  1.0692e+13  8.6638e-04  8.6847e-05 -6.0087e+02 -4.8746e+01  0:01:59  167
+
+ time step reduced in 105 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 214 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 263 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12419 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18920 cells 
+  1034  1.0348e+07  1.5553e+10  2.5234e+11  1.1252e+11  1.0692e+13  1.0800e-03  1.0808e-04 -6.0089e+02 -4.8749e+01  0:02:08  166
+
+ time step reduced in 114 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 214 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 267 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12422 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18924 cells 
+  1035  1.0347e+07  1.5553e+10  2.5234e+11  1.1252e+11  1.0692e+13  1.3450e-03  1.3449e-04 -6.0091e+02 -4.8752e+01  0:01:42  165
+
+ time step reduced in 133 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 215 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 290 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 271 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12451 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18931 cells 
+  1036  1.0347e+07  1.5552e+10  2.5234e+11  1.1252e+11  1.0692e+13  1.6740e-03  1.6687e-04 -6.0094e+02 -4.8757e+01  0:01:54  164
+
+ time step reduced in 140 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 216 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 293 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 272 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12476 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18943 cells 
+  1037  1.0346e+07  1.5552e+10  2.5234e+11  1.1252e+11  1.0692e+13  2.0784e-03  2.0634e-04 -6.0098e+02 -4.8763e+01  0:02:03  163
+
+ time step reduced in 155 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 216 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 294 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 275 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12498 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18959 cells 
+  1038  1.0346e+07  1.5552e+10  2.5234e+11  1.1251e+11  1.0692e+13  2.5770e-03  2.5608e-04 -6.0103e+02 -4.8770e+01  0:01:38  162
+
+ time step reduced in 150 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 215 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 297 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 274 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12540 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 18991 cells 
+  1039  1.0343e+07  1.5552e+10  2.5233e+11  1.1251e+11  1.0692e+13  3.1894e-03  3.1448e-04 -6.0109e+02 -4.8779e+01  0:01:50  161
+
+ time step reduced in 152 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 224 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 299 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 279 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12576 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19005 cells 
+  1040  1.0343e+07  1.5552e+10  2.5233e+11  1.1251e+11  1.0692e+13  3.9262e-03  3.8132e-04 -6.0117e+02 -4.8791e+01  0:01:59  160
+
+ time step reduced in 165 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 228 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 302 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 278 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12626 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19021 cells 
+  1041  1.0344e+07  1.5551e+10  2.5232e+11  1.1251e+11  1.0692e+13  4.8638e-03  4.6455e-04 -6.0127e+02 -4.8805e+01  0:01:35  159
+
+Divergence detected - temporarily reducing Courant number to 0.00812141
+ and trying again...
+
+ time step reduced in 87 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 223 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 291 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 270 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12423 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19026 cells 
+  1042  1.0344e+07  1.5551e+10  2.5232e+11  1.1251e+11  1.0692e+13  6.3667e-04  6.3012e-05 -6.0129e+02 -4.8807e+01  0:02:19  158
+
+Divergence detected - temporarily reducing Courant number to 0.000812141
+ and trying again...
+Temperature limited to 1.000000e+00 in 3511 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138175 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2834 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3228 cells during the last 11 iterations
+
+ time step reduced in 37 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 211 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 279 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 258 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12334 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19028 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1043  1.0343e+07  1.5551e+10  2.5232e+11  1.1251e+11  1.0692e+13  6.3938e-05  6.3988e-06 -6.0129e+02 -4.8807e+01  0:02:22  157
+
+ time step reduced in 38 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 211 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 279 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 260 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12336 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19029 cells 
+  1044  1.0343e+07  1.5551e+10  2.5232e+11  1.1251e+11  1.0692e+13  6.3785e-05  6.4455e-06 -6.0129e+02 -4.8807e+01  0:02:24  156
+
+ time step reduced in 40 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 211 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 279 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 260 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12338 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19029 cells 
+  1045  1.0342e+07  1.5551e+10  2.5232e+11  1.1251e+11  1.0692e+13  7.9659e-05  8.0823e-06 -6.0130e+02 -4.8807e+01  0:01:54  155
+
+ time step reduced in 43 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 212 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 279 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 262 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12339 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19029 cells 
+  1046  1.0342e+07  1.5551e+10  2.5231e+11  1.1251e+11  1.0691e+13  9.9543e-05  1.0143e-05 -6.0130e+02 -4.8807e+01  0:02:02  154
+
+ time step reduced in 48 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 213 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 279 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 265 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12341 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19029 cells 
+  1047  1.0341e+07  1.5551e+10  2.5231e+11  1.1250e+11  1.0691e+13  1.2449e-04  1.2713e-05 -6.0130e+02 -4.8808e+01  0:02:07  153
+
+ time step reduced in 52 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 215 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 280 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 270 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12342 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19031 cells 
+  1048  1.0341e+07  1.5551e+10  2.5231e+11  1.1250e+11  1.0691e+13  1.5590e-04  1.6484e-05 -6.0130e+02 -4.8808e+01  0:01:41  152
+
+ time step reduced in 52 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 217 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 280 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 273 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12342 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19031 cells 
+  1049  1.0327e+07  1.5551e+10  2.5231e+11  1.1250e+11  1.0691e+13  1.5644e-04  1.7058e-05 -6.0130e+02 -4.8809e+01  0:01:51  151
+
+ time step reduced in 57 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 217 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 280 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 275 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12342 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19031 cells 
+  1050  1.0318e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  1.9609e-04  2.1810e-05 -6.0131e+02 -4.8809e+01  0:01:58  150
+
+ time step reduced in 58 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 218 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 282 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 278 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12341 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19034 cells 
+  1051  1.0313e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  2.4560e-04  2.7732e-05 -6.0131e+02 -4.8810e+01  0:01:34  149
+
+ time step reduced in 63 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 219 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 283 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 283 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12344 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19035 cells 
+  1052  1.0311e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  3.0738e-04  3.5095e-05 -6.0132e+02 -4.8811e+01  0:01:44  148
+
+ time step reduced in 67 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 223 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 283 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 288 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12347 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19032 cells 
+  1053  1.0310e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  3.8441e-04  4.4235e-05 -6.0132e+02 -4.8812e+01  0:01:52  147
+Temperature limited to 1.000000e+00 in 3218 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 136092 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2555 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3103 cells during the last 11 iterations
+
+ time step reduced in 69 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 223 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 283 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 292 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12360 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19033 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1054  1.0309e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  4.8039e-04  5.5568e-05 -6.0133e+02 -4.8813e+01  0:01:29  146
+
+ time step reduced in 74 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 223 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 283 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 292 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12369 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19030 cells 
+  1055  1.0309e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  5.9984e-04  6.9622e-05 -6.0134e+02 -4.8815e+01  0:01:40  145
+
+ time step reduced in 93 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 224 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 283 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 293 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12378 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19036 cells 
+  1056  1.0309e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  7.4825e-04  8.6626e-05 -6.0136e+02 -4.8817e+01  0:01:48  144
+
+ time step reduced in 102 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 226 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 283 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 294 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12390 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19044 cells 
+  1057  1.0309e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  9.3287e-04  1.0836e-04 -6.0137e+02 -4.8819e+01  0:01:54  143
+
+ time step reduced in 110 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 284 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 295 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12407 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19046 cells 
+  1058  1.0309e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  1.1611e-03  1.3492e-04 -6.0139e+02 -4.8822e+01  0:01:59  142
+
+ time step reduced in 117 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 286 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 298 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12436 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19060 cells 
+  1059  1.0310e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  1.4433e-03  1.6770e-04 -6.0142e+02 -4.8827e+01  0:01:35  141
+
+ time step reduced in 125 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 297 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12449 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19068 cells 
+  1060  1.0310e+07  1.5550e+10  2.5231e+11  1.1250e+11  1.0691e+13  1.7850e-03  2.0776e-04 -6.0146e+02 -4.8832e+01  0:01:43  140
+
+ time step reduced in 134 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 289 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 296 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12479 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19085 cells 
+  1061  1.0309e+07  1.5550e+10  2.5230e+11  1.1250e+11  1.0691e+13  2.2102e-03  2.5596e-04 -6.0150e+02 -4.8839e+01  0:01:50  139
+
+ time step reduced in 145 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 292 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 296 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12505 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19093 cells 
+  1062  1.0310e+07  1.5550e+10  2.5230e+11  1.1250e+11  1.0691e+13  2.7289e-03  3.1529e-04 -6.0155e+02 -4.8848e+01  0:01:27  138
+
+ time step reduced in 139 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 296 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 297 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12536 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19108 cells 
+  1063  1.0310e+07  1.5550e+10  2.5230e+11  1.1250e+11  1.0691e+13  2.7124e-03  3.1266e-04 -6.0160e+02 -4.8856e+01  0:01:37  137
+
+ time step reduced in 145 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 232 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 298 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 295 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12550 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19115 cells 
+  1064  1.0310e+07  1.5550e+10  2.5230e+11  1.1249e+11  1.0691e+13  3.3381e-03  3.8128e-04 -6.0168e+02 -4.8867e+01  0:01:17  136
+Temperature limited to 1.000000e+00 in 3687 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 137981 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2944 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3202 cells during the last 11 iterations
+
+ time step reduced in 141 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 233 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 300 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 290 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12588 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19117 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1065  1.0310e+07  1.5549e+10  2.5230e+11  1.1249e+11  1.0691e+13  4.0928e-03  4.6080e-04 -6.0177e+02 -4.8881e+01  0:01:28  135
+
+ time step reduced in 147 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 234 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 302 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 287 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12633 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19130 cells 
+  1066  1.0311e+07  1.5549e+10  2.5229e+11  1.1249e+11  1.0691e+13  5.0288e-03  5.5430e-04 -6.0188e+02 -4.8897e+01  0:01:37  134
+
+ time step reduced in 161 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 235 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 301 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 280 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12668 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19153 cells 
+  1067  1.0311e+07  1.5549e+10  2.5229e+11  1.1249e+11  1.0691e+13  6.0352e-03  6.5788e-04 -6.0201e+02 -4.8917e+01  0:01:17  133
+
+ time step reduced in 192 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 302 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 263 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12672 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19178 cells 
+  1068  1.0310e+07  1.5549e+10  2.5229e+11  1.1249e+11  1.0691e+13  7.4272e-03  7.7430e-04 -6.0218e+02 -4.8942e+01  0:01:27  132
+
+Divergence detected - temporarily reducing Courant number to 0.0137582
+ and trying again...
+
+ time step reduced in 82 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 225 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 295 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 256 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12454 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19181 cells 
+  1069  1.0310e+07  1.5549e+10  2.5229e+11  1.1249e+11  1.0691e+13  9.6845e-04  1.0788e-04 -6.0222e+02 -4.8945e+01  0:01:36  131
+
+ time step reduced in 84 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 225 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 295 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 256 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12465 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19182 cells 
+  1070  1.0310e+07  1.5549e+10  2.5229e+11  1.1249e+11  1.0691e+13  9.6646e-04  1.0754e-04 -6.0224e+02 -4.8948e+01  0:01:42  130
+
+ time step reduced in 96 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 296 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 257 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12470 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19194 cells 
+  1071  1.0309e+07  1.5549e+10  2.5229e+11  1.1248e+11  1.0691e+13  1.2013e-03  1.3321e-04 -6.0227e+02 -4.8952e+01  0:01:21  129
+
+ time step reduced in 114 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 297 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 260 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12479 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19205 cells 
+  1072  1.0308e+07  1.5549e+10  2.5228e+11  1.1248e+11  1.0690e+13  1.5024e-03  1.6444e-04 -6.0230e+02 -4.8957e+01  0:01:30  128
+
+ time step reduced in 123 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 299 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 263 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12492 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19218 cells 
+  1073  1.0308e+07  1.5549e+10  2.5228e+11  1.1248e+11  1.0690e+13  1.8728e-03  2.0256e-04 -6.0234e+02 -4.8963e+01  0:01:37  127
+
+ time step reduced in 135 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 300 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 265 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12521 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19229 cells 
+  1074  1.0308e+07  1.5549e+10  2.5228e+11  1.1248e+11  1.0690e+13  2.3284e-03  2.5282e-04 -6.0240e+02 -4.8970e+01  0:01:17  126
+
+ time step reduced in 146 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 302 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 265 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12550 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19256 cells 
+  1075  1.0306e+07  1.5548e+10  2.5227e+11  1.1248e+11  1.0690e+13  2.9076e-03  3.1101e-04 -6.0247e+02 -4.8979e+01  0:01:26  125
+Temperature limited to 1.000000e+00 in 3422 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138816 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2852 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3306 cells during the last 11 iterations
+
+ time step reduced in 152 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 231 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 303 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 265 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12583 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19275 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1076  1.0306e+07  1.5548e+10  2.5227e+11  1.1248e+11  1.0690e+13  3.6101e-03  3.7502e-04 -6.0255e+02 -4.8990e+01  0:01:08  124
+
+ time step reduced in 167 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 235 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 267 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12626 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19294 cells 
+  1077  1.0306e+07  1.5548e+10  2.5226e+11  1.1248e+11  1.0690e+13  4.4768e-03  4.5249e-04 -6.0266e+02 -4.9004e+01  0:01:19  123
+
+ time step reduced in 175 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 237 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 267 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12684 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19320 cells 
+  1078  1.0306e+07  1.5547e+10  2.5226e+11  1.1248e+11  1.0690e+13  5.4580e-03  5.3745e-04 -6.0279e+02 -4.9017e+01  0:01:27  122
+
+ time step reduced in 189 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 241 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 266 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12717 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19364 cells 
+  1079  1.0306e+07  1.5547e+10  2.5226e+11  1.1248e+11  1.0690e+13  6.5768e-03  6.2764e-04 -6.0295e+02 -4.9039e+01  0:01:09  121
+
+ time step reduced in 210 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 240 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 306 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 254 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12731 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19400 cells 
+  1080  1.0306e+07  1.5547e+10  2.5225e+11  1.1247e+11  1.0689e+13  7.8145e-03  7.2145e-04 -6.0313e+02 -4.9068e+01  0:01:19  120
+
+ time step reduced in 236 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 224 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 307 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 233 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12690 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19473 cells 
+  1081  1.0306e+07  1.5547e+10  2.5225e+11  1.1247e+11  1.0689e+13  9.3560e-03  8.0709e-04 -6.0332e+02 -4.9103e+01  0:01:26  119
+
+Divergence detected - temporarily reducing Courant number to 0.0200208
+ and trying again...
+
+ time step reduced in 100 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 219 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 232 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12428 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19483 cells 
+  1082  1.0306e+07  1.5547e+10  2.5225e+11  1.1247e+11  1.0689e+13  1.2947e-03  1.1822e-04 -6.0334e+02 -4.9108e+01  0:01:32  118
+
+ time step reduced in 102 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 222 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 235 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12446 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19491 cells 
+  1083  1.0306e+07  1.5547e+10  2.5225e+11  1.1247e+11  1.0689e+13  1.2912e-03  1.1734e-04 -6.0336e+02 -4.9112e+01  0:01:13  117
+
+ time step reduced in 114 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 224 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 235 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12464 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19497 cells 
+  1084  1.0306e+07  1.5547e+10  2.5225e+11  1.1247e+11  1.0689e+13  1.6040e-03  1.4437e-04 -6.0338e+02 -4.9117e+01  0:01:21  116
+
+ time step reduced in 129 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 226 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 241 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12479 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19502 cells 
+  1085  1.0306e+07  1.5547e+10  2.5225e+11  1.1247e+11  1.0689e+13  1.9971e-03  1.7699e-04 -6.0341e+02 -4.9124e+01  0:01:27  115
+
+ time step reduced in 139 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 226 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 242 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12502 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19521 cells 
+  1086  1.0306e+07  1.5547e+10  2.5224e+11  1.1246e+11  1.0689e+13  2.4838e-03  2.1655e-04 -6.0343e+02 -4.9132e+01  0:01:09  114
+Temperature limited to 1.000000e+00 in 3431 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 139184 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2807 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3361 cells during the last 11 iterations
+
+ time step reduced in 147 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 242 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12542 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19550 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1087  1.0306e+07  1.5547e+10  2.5224e+11  1.1246e+11  1.0689e+13  3.0906e-03  2.6297e-04 -6.0347e+02 -4.9142e+01  0:01:18  113
+
+ time step reduced in 164 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 307 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 242 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12587 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19560 cells 
+  1088  1.0306e+07  1.5546e+10  2.5224e+11  1.1246e+11  1.0689e+13  3.8161e-03  3.1558e-04 -6.0351e+02 -4.9155e+01  0:01:24  112
+
+ time step reduced in 183 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 309 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 244 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12636 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19592 cells 
+  1089  1.0306e+07  1.5546e+10  2.5224e+11  1.1246e+11  1.0689e+13  4.6641e-03  3.7535e-04 -6.0355e+02 -4.9170e+01  0:01:06  111
+
+ time step reduced in 186 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 235 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 310 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12692 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19604 cells 
+  1090  1.0306e+07  1.5546e+10  2.5224e+11  1.1246e+11  1.0689e+13  4.5903e-03  3.6197e-04 -6.0360e+02 -4.9185e+01  0:01:15  110
+
+ time step reduced in 218 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 233 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 309 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 242 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12703 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19613 cells 
+  1091  1.0306e+07  1.5546e+10  2.5223e+11  1.1246e+11  1.0689e+13  5.5570e-03  4.2393e-04 -6.0366e+02 -4.9203e+01  0:01:21  109
+
+ time step reduced in 222 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 234 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 309 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12733 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19642 cells 
+  1092  1.0306e+07  1.5546e+10  2.5222e+11  1.1246e+11  1.0689e+13  6.6417e-03  4.8963e-04 -6.0373e+02 -4.9224e+01  0:01:04  108
+
+Divergence detected - temporarily reducing Courant number to 0.0149167
+ and trying again...
+
+ time step reduced in 104 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 220 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 301 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 237 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12417 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19637 cells 
+  1093  1.0303e+07  1.5546e+10  2.5222e+11  1.1245e+11  1.0689e+13  8.9591e-04  6.8660e-05 -6.0375e+02 -4.9227e+01  0:01:12  107
+
+ time step reduced in 107 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 220 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 302 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12426 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19644 cells 
+  1094  1.0301e+07  1.5546e+10  2.5222e+11  1.1245e+11  1.0688e+13  8.9535e-04  6.8559e-05 -6.0375e+02 -4.9229e+01  0:01:19  106
+
+ time step reduced in 114 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 221 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 302 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 239 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12436 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19656 cells 
+  1095  1.0300e+07  1.5546e+10  2.5222e+11  1.1245e+11  1.0688e+13  1.1204e-03  8.4922e-05 -6.0376e+02 -4.9232e+01  0:01:23  105
+
+ time step reduced in 116 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 223 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12457 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19656 cells 
+  1096  1.0299e+07  1.5545e+10  2.5222e+11  1.1245e+11  1.0688e+13  1.1255e-03  8.4572e-05 -6.0377e+02 -4.9236e+01  0:01:06  104
+
+ time step reduced in 130 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 225 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 306 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 244 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12466 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19669 cells 
+  1097  1.0298e+07  1.5545e+10  2.5222e+11  1.1245e+11  1.0688e+13  1.4070e-03  1.0437e-04 -6.0378e+02 -4.9240e+01  0:01:13  103
+Temperature limited to 1.000000e+00 in 3541 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 138924 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2712 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3375 cells during the last 11 iterations
+
+ time step reduced in 140 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 225 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 306 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 246 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12483 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19668 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1098  1.0297e+07  1.5545e+10  2.5221e+11  1.1245e+11  1.0688e+13  1.7566e-03  1.2885e-04 -6.0379e+02 -4.9245e+01  0:01:18  102
+
+ time step reduced in 153 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 226 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 307 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 246 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12508 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19687 cells 
+  1099  1.0297e+07  1.5545e+10  2.5221e+11  1.1245e+11  1.0688e+13  2.1872e-03  1.5988e-04 -6.0380e+02 -4.9252e+01  0:01:02  101
+
+ time step reduced in 161 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 309 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 248 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12534 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19701 cells 
+  1100  1.0297e+07  1.5545e+10  2.5221e+11  1.1245e+11  1.0688e+13  2.7208e-03  1.9496e-04 -6.0380e+02 -4.9261e+01  0:01:09  100
+
+ time step reduced in 166 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 231 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 309 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 250 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12583 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19714 cells 
+  1101  1.0297e+07  1.5545e+10  2.5221e+11  1.1245e+11  1.0688e+13  3.3717e-03  2.3420e-04 -6.0383e+02 -4.9271e+01  0:01:14   99
+
+ time step reduced in 163 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 236 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 311 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 254 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12632 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19745 cells 
+  1102  1.0298e+07  1.5544e+10  2.5220e+11  1.1245e+11  1.0688e+13  4.1159e-03  2.7976e-04 -6.0385e+02 -4.9284e+01  0:00:59   98
+
+ time step reduced in 180 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 238 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 255 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12680 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19763 cells 
+  1103  1.0299e+07  1.5544e+10  2.5220e+11  1.1244e+11  1.0688e+13  5.0162e-03  3.2976e-04 -6.0387e+02 -4.9301e+01  0:01:06   97
+
+ time step reduced in 206 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 236 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 315 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 252 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12721 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19779 cells 
+  1104  1.0299e+07  1.5544e+10  2.5220e+11  1.1244e+11  1.0688e+13  6.0281e-03  3.8201e-04 -6.0388e+02 -4.9322e+01  0:01:12   96
+
+ time step reduced in 251 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 315 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 244 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12701 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19834 cells 
+  1105  1.0300e+07  1.5544e+10  2.5220e+11  1.1244e+11  1.0688e+13  7.2217e-03  4.5257e-04 -6.0388e+02 -4.9346e+01  0:00:57   95
+
+ time step reduced in 241 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 221 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 315 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 232 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12767 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19908 cells 
+  1106  1.0300e+07  1.5544e+10  2.5219e+11  1.1244e+11  1.0688e+13  8.5899e-03  6.2971e-04 -6.0387e+02 -4.9374e+01  0:01:04   94
+
+Divergence detected - temporarily reducing Courant number to 0.0217066
+ and trying again...
+
+ time step reduced in 105 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 216 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 311 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 229 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12460 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19914 cells 
+  1107  1.0276e+07  1.5540e+10  2.5219e+11  1.1237e+11  1.0687e+13  1.2646e-03  9.8292e-05 -6.0388e+02 -4.9377e+01  0:01:09   93
+
+ time step reduced in 107 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 218 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 231 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12478 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19925 cells 
+  1108  1.0282e+07  1.5541e+10  2.5219e+11  1.1240e+11  1.0687e+13  1.2617e-03  9.6319e-05 -6.0387e+02 -4.9380e+01  0:01:13   92
+Temperature limited to 1.000000e+00 in 3561 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 139678 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2877 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3442 cells during the last 11 iterations
+
+ time step reduced in 125 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 220 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 313 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 231 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12496 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19935 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1109  1.0298e+07  1.5543e+10  2.5219e+11  1.1243e+11  1.0687e+13  1.5720e-03  1.1705e-04 -6.0386e+02 -4.9384e+01  0:01:16   91
+
+ time step reduced in 135 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 219 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 313 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 231 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12517 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19951 cells 
+  1110  1.0298e+07  1.5543e+10  2.5219e+11  1.1243e+11  1.0687e+13  1.9567e-03  1.4258e-04 -6.0385e+02 -4.9389e+01  0:01:00   90
+
+ time step reduced in 148 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 218 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 313 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 233 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12552 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19951 cells 
+  1111  1.0298e+07  1.5543e+10  2.5218e+11  1.1243e+11  1.0687e+13  2.4272e-03  1.7258e-04 -6.0383e+02 -4.9395e+01  0:01:05   89
+
+ time step reduced in 158 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 219 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 314 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 235 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12601 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19973 cells 
+  1112  1.0299e+07  1.5543e+10  2.5218e+11  1.1243e+11  1.0687e+13  2.9984e-03  2.0399e-04 -6.0381e+02 -4.9402e+01  0:00:52   88
+
+ time step reduced in 165 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 219 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 317 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 237 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12650 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 19986 cells 
+  1113  1.0299e+07  1.5542e+10  2.5217e+11  1.1243e+11  1.0687e+13  3.6467e-03  2.4638e-04 -6.0378e+02 -4.9411e+01  0:00:58   87
+
+ time step reduced in 173 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 220 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 320 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12692 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20011 cells 
+  1114  1.0299e+07  1.5542e+10  2.5217e+11  1.1242e+11  1.0687e+13  3.6061e-03  2.3707e-04 -6.0374e+02 -4.9419e+01  0:01:03   86
+
+ time step reduced in 198 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 219 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12746 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20049 cells 
+  1115  1.0299e+07  1.5542e+10  2.5216e+11  1.1242e+11  1.0687e+13  4.3945e-03  2.7812e-04 -6.0370e+02 -4.9430e+01  0:00:50   85
+
+ time step reduced in 234 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 215 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 318 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 236 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12775 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20086 cells 
+  1116  1.0299e+07  1.5542e+10  2.5216e+11  1.1242e+11  1.0687e+13  5.3154e-03  3.2099e-04 -6.0365e+02 -4.9443e+01  0:00:56   84
+
+ time step reduced in 230 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 217 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 318 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12808 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20128 cells 
+  1117  1.0300e+07  1.5542e+10  2.5216e+11  1.1242e+11  1.0687e+13  6.4733e-03  3.7211e-04 -6.0355e+02 -4.9458e+01  0:01:01   83
+
+ time step reduced in 297 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 215 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 320 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12796 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20153 cells 
+  1118  1.0300e+07  1.5542e+10  2.5216e+11  1.1242e+11  1.0687e+13  7.6748e-03  5.2705e-04 -6.0337e+02 -4.9474e+01  0:01:05   82
+
+Divergence detected - temporarily reducing Courant number to 0.0202159
+ and trying again...
+
+ time step reduced in 112 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 211 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 317 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 237 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12444 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20146 cells 
+  1119  1.0303e+07  1.5542e+10  2.5216e+11  1.1241e+11  1.0686e+13  1.0786e-03  7.8112e-05 -6.0334e+02 -4.9475e+01  0:01:07   81
+Temperature limited to 1.000000e+00 in 3574 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 140081 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2719 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3510 cells during the last 11 iterations
+
+ time step reduced in 117 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 210 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 317 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12453 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20159 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1120  1.0303e+07  1.5542e+10  2.5216e+11  1.1241e+11  1.0686e+13  1.0805e-03  7.6802e-05 -6.0330e+02 -4.9477e+01  0:01:09   80
+
+ time step reduced in 133 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 214 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 317 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 240 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12478 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20166 cells 
+  1121  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  1.3482e-03  9.3643e-05 -6.0326e+02 -4.9479e+01  0:01:10   79
+
+ time step reduced in 141 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 216 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 320 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12498 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20178 cells 
+  1122  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  1.6804e-03  1.1371e-04 -6.0321e+02 -4.9481e+01  0:00:56   78
+
+ time step reduced in 147 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 220 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 323 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12536 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20194 cells 
+  1123  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  2.0897e-03  1.3797e-04 -6.0314e+02 -4.9484e+01  0:00:59   77
+
+Divergence detected - temporarily reducing Courant number to 0.00493552
+ and trying again...
+
+ time step reduced in 80 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 206 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 303 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 236 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12383 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20193 cells 
+  1124  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  2.6906e-04  1.7735e-05 -6.0305e+02 -4.9478e+01  0:01:02   76
+
+ time step reduced in 81 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 206 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 303 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 235 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12384 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20198 cells 
+  1125  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  2.6972e-04  1.7694e-05 -6.0304e+02 -4.9479e+01  0:00:49   75
+
+ time step reduced in 84 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 207 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 303 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 235 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12387 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20200 cells 
+  1126  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  3.3841e-04  2.2028e-05 -6.0303e+02 -4.9479e+01  0:00:53   74
+
+ time step reduced in 97 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 209 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 303 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 237 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12387 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20208 cells 
+  1127  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  4.2435e-04  2.7384e-05 -6.0302e+02 -4.9479e+01  0:00:57   73
+
+ time step reduced in 103 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 210 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 303 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 240 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12391 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20209 cells 
+  1128  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  5.3190e-04  3.3989e-05 -6.0300e+02 -4.9480e+01  0:00:45   72
+
+ time step reduced in 108 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 211 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12400 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20212 cells 
+  1129  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  6.6651e-04  4.2123e-05 -6.0298e+02 -4.9481e+01  0:00:50   71
+
+ time step reduced in 114 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 212 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 245 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12409 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20220 cells 
+  1130  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  8.3462e-04  5.2142e-05 -6.0296e+02 -4.9481e+01  0:00:53   70
+Temperature limited to 1.000000e+00 in 3322 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 137347 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2477 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3406 cells during the last 11 iterations
+
+ time step reduced in 121 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 213 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 306 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 245 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12441 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20222 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1131  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  1.0442e-03  6.4533e-05 -6.0293e+02 -4.9482e+01  0:00:42   69
+
+ time step reduced in 131 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 214 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 308 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 248 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12461 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20224 cells 
+  1132  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  1.2927e-03  7.9414e-05 -6.0289e+02 -4.9484e+01  0:00:47   68
+
+ time step reduced in 136 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 217 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 309 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 255 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12490 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20240 cells 
+  1133  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  1.6128e-03  9.6797e-05 -6.0284e+02 -4.9485e+01  0:00:50   67
+
+ time step reduced in 144 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 219 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 260 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12528 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20253 cells 
+  1134  1.0303e+07  1.5541e+10  2.5215e+11  1.1241e+11  1.0686e+13  2.0047e-03  1.2230e-04 -6.0277e+02 -4.9487e+01  0:00:40   66
+
+Divergence detected - temporarily reducing Courant number to 0.00459656
+ and trying again...
+
+ time step reduced in 78 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 210 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 251 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12414 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20256 cells 
+  1135  1.0303e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  2.5796e-04  1.5712e-05 -6.0277e+02 -4.9487e+01  0:00:44   65
+
+ time step reduced in 79 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 211 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 256 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12418 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20255 cells 
+  1136  1.0303e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  2.5790e-04  1.5701e-05 -6.0276e+02 -4.9487e+01  0:00:48   64
+
+ time step reduced in 85 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 212 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 256 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12425 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20258 cells 
+  1137  1.0302e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  3.2264e-04  1.9571e-05 -6.0274e+02 -4.9488e+01  0:00:37   63
+
+ time step reduced in 88 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 212 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 257 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12431 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20260 cells 
+  1138  1.0302e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  4.0429e-04  2.4369e-05 -6.0273e+02 -4.9488e+01  0:00:42   62
+
+ time step reduced in 94 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 216 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 264 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12435 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20267 cells 
+  1139  1.0302e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  5.0605e-04  3.0287e-05 -6.0271e+02 -4.9488e+01  0:00:45   61
+
+ time step reduced in 94 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 216 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 268 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12443 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20271 cells 
+  1140  1.0302e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  5.0718e-04  3.0161e-05 -6.0269e+02 -4.9489e+01  0:00:48   60
+
+ time step reduced in 100 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 218 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 266 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12449 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20278 cells 
+  1141  1.0302e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  6.3374e-04  3.7441e-05 -6.0267e+02 -4.9489e+01  0:00:37   59
+Temperature limited to 1.000000e+00 in 3557 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 137641 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2603 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3376 cells during the last 11 iterations
+
+ time step reduced in 112 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 221 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 304 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 267 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12453 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20282 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1142  1.0302e+07  1.5540e+10  2.5214e+11  1.1240e+11  1.0685e+13  7.9091e-04  4.6480e-05 -6.0264e+02 -4.9490e+01  0:00:41   58
+
+ time step reduced in 113 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 224 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 306 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 273 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12473 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20285 cells 
+  1143  1.0302e+07  1.5540e+10  2.5213e+11  1.1240e+11  1.0685e+13  9.8564e-04  5.8085e-05 -6.0261e+02 -4.9490e+01  0:00:32   57
+
+ time step reduced in 115 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 226 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 307 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 274 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12494 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20297 cells 
+  1144  1.0302e+07  1.5540e+10  2.5213e+11  1.1240e+11  1.0685e+13  1.2165e-03  7.2389e-05 -6.0257e+02 -4.9491e+01  0:00:37   56
+
+ time step reduced in 125 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 308 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 281 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12524 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20303 cells 
+  1145  1.0302e+07  1.5540e+10  2.5213e+11  1.1240e+11  1.0685e+13  1.5102e-03  8.8827e-05 -6.0251e+02 -4.9492e+01  0:00:40   55
+
+ time step reduced in 139 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 228 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 310 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 282 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12555 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20312 cells 
+  1146  1.0302e+07  1.5540e+10  2.5213e+11  1.1240e+11  1.0685e+13  1.8707e-03  1.0793e-04 -6.0245e+02 -4.9493e+01  0:00:31   54
+
+ time step reduced in 141 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 282 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12586 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20312 cells 
+  1147  1.0303e+07  1.5540e+10  2.5213e+11  1.1240e+11  1.0685e+13  1.8638e-03  1.0572e-04 -6.0238e+02 -4.9494e+01  0:00:35   53
+
+ time step reduced in 147 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 231 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 315 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 286 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12607 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20307 cells 
+  1148  1.0303e+07  1.5540e+10  2.5213e+11  1.1240e+11  1.0685e+13  2.3027e-03  1.2894e-04 -6.0230e+02 -4.9495e+01  0:00:38   52
+
+ time step reduced in 157 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 231 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 317 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 281 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12627 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20321 cells 
+  1149  1.0303e+07  1.5540e+10  2.5213e+11  1.1240e+11  1.0685e+13  2.8317e-03  1.5864e-04 -6.0219e+02 -4.9496e+01  0:00:30   51
+
+ time step reduced in 163 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 235 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 318 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 277 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12654 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20352 cells 
+  1150  1.0304e+07  1.5538e+10  2.5211e+11  1.1240e+11  1.0684e+13  3.4513e-03  1.9521e-04 -6.0204e+02 -4.9497e+01  0:00:33   50
+
+ time step reduced in 172 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 237 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 320 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 278 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12685 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20373 cells 
+  1151  1.0304e+07  1.5538e+10  2.5210e+11  1.1239e+11  1.0684e+13  4.2335e-03  2.3053e-04 -6.0183e+02 -4.9499e+01  0:00:36   49
+
+ time step reduced in 186 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 238 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 275 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12727 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20406 cells 
+  1152  1.0304e+07  1.5538e+10  2.5210e+11  1.1239e+11  1.0684e+13  5.1335e-03  2.6818e-04 -6.0159e+02 -4.9499e+01  0:00:28   48
+Temperature limited to 1.000000e+00 in 3825 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 139564 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 3065 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3481 cells during the last 11 iterations
+
+ time step reduced in 202 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 238 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 325 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 270 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12757 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20436 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1153  1.0304e+07  1.5538e+10  2.5210e+11  1.1239e+11  1.0684e+13  6.0976e-03  3.0757e-04 -6.0126e+02 -4.9499e+01  0:00:31   47
+
+ time step reduced in 227 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 234 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 326 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 257 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12794 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20483 cells 
+  1154  1.0305e+07  1.5538e+10  2.5210e+11  1.1239e+11  1.0684e+13  7.2416e-03  4.8174e-04 -6.0080e+02 -4.9499e+01  0:00:34   46
+
+Divergence detected - temporarily reducing Courant number to 0.0204128
+ and trying again...
+
+ time step reduced in 99 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 249 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12553 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20484 cells 
+  1155  1.0326e+07  1.5540e+10  2.5210e+11  1.1224e+11  1.0685e+13  1.0169e-03  7.1282e-05 -6.0073e+02 -4.9501e+01  0:00:35   45
+
+ time step reduced in 106 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 225 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 324 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 250 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12555 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20488 cells 
+  1156  1.0327e+07  1.5538e+10  2.5210e+11  1.1240e+11  1.0684e+13  1.0164e-03  6.9048e-05 -6.0067e+02 -4.9501e+01  0:00:28   44
+
+ time step reduced in 122 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 324 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 251 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12567 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20494 cells 
+  1157  1.0326e+07  1.5538e+10  2.5210e+11  1.1240e+11  1.0684e+13  1.2710e-03  8.4459e-05 -6.0059e+02 -4.9501e+01  0:00:30   43
+
+ time step reduced in 137 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 328 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 251 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12589 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20500 cells 
+  1158  1.0326e+07  1.5538e+10  2.5210e+11  1.1240e+11  1.0684e+13  1.5871e-03  1.0284e-04 -6.0049e+02 -4.9500e+01  0:00:32   42
+
+ time step reduced in 146 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 232 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 328 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 255 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12613 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20510 cells 
+  1159  1.0326e+07  1.5538e+10  2.5209e+11  1.1240e+11  1.0684e+13  1.9779e-03  1.2874e-04 -6.0036e+02 -4.9499e+01  0:00:25   41
+
+ time step reduced in 167 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 233 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 328 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 254 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12645 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20536 cells 
+  1160  1.0326e+07  1.5537e+10  2.5208e+11  1.1240e+11  1.0683e+13  2.4581e-03  1.5203e-04 -6.0020e+02 -4.9499e+01  0:00:28   40
+
+ time step reduced in 180 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 329 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 250 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12677 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20550 cells 
+  1161  1.0326e+07  1.5537e+10  2.5208e+11  1.1240e+11  1.0683e+13  3.0399e-03  1.7903e-04 -6.0000e+02 -4.9498e+01  0:00:21   39
+
+ time step reduced in 196 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 330 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 251 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12732 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20579 cells 
+  1162  1.0326e+07  1.5537e+10  2.5208e+11  1.1240e+11  1.0683e+13  3.7076e-03  2.1579e-04 -5.9974e+02 -4.9496e+01  0:00:24   38
+
+ time step reduced in 209 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 228 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 330 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 251 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12782 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20614 cells 
+  1163  1.0326e+07  1.5537e+10  2.5208e+11  1.1239e+11  1.0683e+13  4.5085e-03  2.5213e-04 -5.9940e+02 -4.9494e+01  0:00:19   37
+Temperature limited to 1.000000e+00 in 3563 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 140338 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2841 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3616 cells during the last 11 iterations
+
+ time step reduced in 241 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 331 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 248 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12819 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20656 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1164  1.0326e+07  1.5537e+10  2.5208e+11  1.1239e+11  1.0683e+13  5.4361e-03  2.9172e-04 -5.9898e+02 -4.9491e+01  0:00:22   36
+
+ time step reduced in 233 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 225 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 333 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 244 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12843 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20705 cells 
+  1165  1.0326e+07  1.5537e+10  2.5208e+11  1.1239e+11  1.0683e+13  6.5283e-03  3.4533e-04 -5.9843e+02 -4.9486e+01  0:00:24   35
+
+Divergence detected - temporarily reducing Courant number to 0.0152087
+ and trying again...
+
+ time step reduced in 105 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 221 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 236 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12497 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20709 cells 
+  1166  1.0331e+07  1.5537e+10  2.5207e+11  1.1239e+11  1.0683e+13  7.3436e-04  4.0520e-05 -5.9838e+02 -4.9486e+01  0:00:26   34
+
+ time step reduced in 108 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 222 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 238 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12506 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20709 cells 
+  1167  1.0331e+07  1.5537e+10  2.5207e+11  1.1239e+11  1.0683e+13  7.3805e-04  4.0544e-05 -5.9832e+02 -4.9485e+01  0:00:20   33
+
+ time step reduced in 125 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 223 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 242 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12519 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20722 cells 
+  1168  1.0331e+07  1.5537e+10  2.5207e+11  1.1239e+11  1.0683e+13  9.2514e-04  5.0395e-05 -5.9825e+02 -4.9484e+01  0:00:22   32
+
+ time step reduced in 124 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 220 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12538 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20731 cells 
+  1169  1.0331e+07  1.5536e+10  2.5207e+11  1.1239e+11  1.0683e+13  9.2538e-04  5.0104e-05 -5.9817e+02 -4.9483e+01  0:00:23   31
+
+ time step reduced in 135 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 220 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 243 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12558 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20738 cells 
+  1170  1.0330e+07  1.5536e+10  2.5207e+11  1.1239e+11  1.0683e+13  1.1573e-03  6.1731e-05 -5.9808e+02 -4.9482e+01  0:00:18   30
+
+ time step reduced in 144 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 223 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 322 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 246 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12588 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20739 cells 
+  1171  1.0330e+07  1.5536e+10  2.5207e+11  1.1238e+11  1.0683e+13  1.4455e-03  7.5764e-05 -5.9796e+02 -4.9481e+01  0:00:20   29
+
+ time step reduced in 156 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 324 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 245 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12619 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20752 cells 
+  1172  1.0330e+07  1.5536e+10  2.5207e+11  1.1238e+11  1.0683e+13  1.8026e-03  9.2833e-05 -5.9782e+02 -4.9479e+01  0:00:21   28
+
+ time step reduced in 173 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 328 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 247 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12656 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20772 cells 
+  1173  1.0330e+07  1.5536e+10  2.5207e+11  1.1238e+11  1.0683e+13  2.2433e-03  1.1329e-04 -5.9763e+02 -4.9477e+01  0:00:16   27
+
+ time step reduced in 192 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 232 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 329 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 250 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12704 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20811 cells 
+  1174  1.0330e+07  1.5536e+10  2.5206e+11  1.1238e+11  1.0683e+13  2.7703e-03  1.3741e-04 -5.9740e+02 -4.9474e+01  0:00:18   26
+
+Divergence detected - temporarily reducing Courant number to 0.00725209
+ and trying again...
+Temperature limited to 1.000000e+00 in 3463 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 139446 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2711 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3569 cells during the last 11 iterations
+
+ time step reduced in 89 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 226 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 245 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12495 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20816 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1175  1.0330e+07  1.5536e+10  2.5206e+11  1.1238e+11  1.0683e+13  3.5862e-04  1.8342e-05 -5.9736e+02 -4.9474e+01  0:00:18   25
+
+ time step reduced in 90 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 253 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12498 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20814 cells 
+  1176  1.0330e+07  1.5536e+10  2.5206e+11  1.1238e+11  1.0683e+13  3.5891e-04  1.8338e-05 -5.9733e+02 -4.9474e+01  0:00:19   24
+
+ time step reduced in 101 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 254 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12502 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20812 cells 
+  1177  1.0330e+07  1.5536e+10  2.5206e+11  1.1238e+11  1.0682e+13  4.5092e-04  2.2853e-05 -5.9729e+02 -4.9473e+01  0:00:15   23
+
+ time step reduced in 110 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 314 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 257 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12506 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20808 cells 
+  1178  1.0330e+07  1.5536e+10  2.5206e+11  1.1238e+11  1.0682e+13  5.6611e-04  2.8446e-05 -5.9724e+02 -4.9473e+01  0:00:16   22
+
+ time step reduced in 120 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 232 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 314 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 260 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12516 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20811 cells 
+  1179  1.0330e+07  1.5536e+10  2.5206e+11  1.1238e+11  1.0682e+13  7.0973e-04  3.5344e-05 -5.9718e+02 -4.9472e+01  0:00:16   21
+
+ time step reduced in 131 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 232 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 315 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 264 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12529 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20821 cells 
+  1180  1.0330e+07  1.5536e+10  2.5206e+11  1.1238e+11  1.0682e+13  8.8830e-04  4.4276e-05 -5.9711e+02 -4.9471e+01  0:00:12   20
+
+Divergence detected - temporarily reducing Courant number to 0.00221316
+ and trying again...
+
+ time step reduced in 70 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 226 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 255 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12466 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20821 cells 
+  1181  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.1203e-04  5.7162e-06 -5.9710e+02 -4.9471e+01  0:00:17   19
+
+ time step reduced in 70 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 227 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 259 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12469 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20824 cells 
+  1182  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.1249e-04  5.7192e-06 -5.9709e+02 -4.9471e+01  0:00:16   18
+
+ time step reduced in 68 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 229 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 261 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12474 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20826 cells 
+  1183  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.4118e-04  7.1463e-06 -5.9707e+02 -4.9470e+01  0:00:16   17
+
+ time step reduced in 74 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 266 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12480 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20827 cells 
+  1184  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.7711e-04  8.9265e-06 -5.9706e+02 -4.9470e+01  0:00:12   16
+
+ time step reduced in 79 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 268 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12479 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20827 cells 
+  1185  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  2.2202e-04  1.1143e-05 -5.9704e+02 -4.9470e+01  0:00:12   15
+Temperature limited to 1.000000e+00 in 3505 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 137936 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 2634 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3407 cells during the last 11 iterations
+
+ time step reduced in 84 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 230 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 305 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 272 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12483 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20829 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1186  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  2.7810e-04  1.3900e-05 -5.9702e+02 -4.9470e+01  0:00:12   14
+
+ time step reduced in 88 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 231 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 306 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 276 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12487 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20830 cells 
+  1187  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  3.4809e-04  1.7319e-05 -5.9699e+02 -4.9469e+01  0:00:09   13
+
+ time step reduced in 95 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 233 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 307 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 283 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12500 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20836 cells 
+  1188  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  4.3533e-04  2.1557e-05 -5.9695e+02 -4.9468e+01  0:00:09   12
+
+ time step reduced in 100 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 234 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 307 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 283 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12504 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20839 cells 
+  1189  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  5.4396e-04  2.6794e-05 -5.9690e+02 -4.9468e+01  0:00:09   11
+
+ time step reduced in 105 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 235 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 307 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 285 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12521 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20843 cells 
+  1190  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  6.7901e-04  3.3240e-05 -5.9684e+02 -4.9467e+01  0:00:06   10
+
+ time step reduced in 116 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 236 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 308 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 291 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12542 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20852 cells 
+  1191  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  8.4659e-04  4.1167e-05 -5.9677e+02 -4.9466e+01  0:00:06    9
+
+ time step reduced in 126 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 240 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 309 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 294 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12561 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20870 cells 
+  1192  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.0541e-03  5.1178e-05 -5.9667e+02 -4.9464e+01  0:00:06    8
+
+ time step reduced in 134 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 242 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 311 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 295 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12585 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20876 cells 
+  1193  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.2943e-03  6.2904e-05 -5.9656e+02 -4.9462e+01  0:00:04    7
+
+ time step reduced in 150 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 244 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 312 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 297 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12612 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20883 cells 
+  1194  1.0329e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.6059e-03  7.6968e-05 -5.9641e+02 -4.9460e+01  0:00:04    6
+
+ time step reduced in 146 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 246 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 315 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 296 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12649 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20900 cells 
+  1195  1.0330e+07  1.5535e+10  2.5205e+11  1.1238e+11  1.0682e+13  1.9870e-03  9.6978e-05 -5.9622e+02 -4.9458e+01  0:00:04    5
+
+ time step reduced in 157 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 246 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 319 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 291 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12699 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20922 cells 
+  1196  1.0329e+07  1.5535e+10  2.5204e+11  1.1237e+11  1.0682e+13  2.4402e-03  1.1636e-04 -5.9597e+02 -4.9455e+01  0:00:02    4
+Temperature limited to 1.000000e+00 in 3941 cells during the last 11 iterations
+Temperature limited to 5.000000e+03 in 139376 cells during the last 11 iterations
+Absolute pressure limited to 1.000000e+00 in 3007 cells during the last 11 iterations
+Absolute pressure limited to 5.000000e+10 in 3452 cells during the last 11 iterations
+
+ time step reduced in 165 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 245 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 324 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 295 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12733 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20944 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1197  1.0329e+07  1.5534e+10  2.5204e+11  1.1237e+11  1.0682e+13  2.9976e-03  1.4103e-04 -5.9565e+02 -4.9451e+01  0:00:02    3
+
+ time step reduced in 169 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 251 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 327 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 297 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12771 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20955 cells 
+  1198  1.0329e+07  1.5534e+10  2.5204e+11  1.1237e+11  1.0681e+13  2.9445e-03  1.3820e-04 -5.9532e+02 -4.9448e+01  0:00:01    2
+
+ time step reduced in 185 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 251 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 328 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 296 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12797 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 20987 cells 
+  1199  1.0329e+07  1.5534e+10  2.5204e+11  1.1237e+11  1.0681e+13  3.6059e-03  1.6537e-04 -5.9491e+02 -4.9444e+01  0:00:01    1
+
+ time step reduced in 191 cells due to excessive temperature change
+
+ absolute pressure limited to 1.000000e+00 in 251 cells on zone 3 
+
+ absolute pressure limited to 5.000000e+10 in 328 cells on zone 3 
+
+ temperature limited to 1.000000e+00 in 295 cells on zone 3 
+
+ temperature limited to 5.000000e+03 in 12821 cells on zone 3 
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 21024 cells 
+  1200  1.0330e+07  1.5534e+10  2.5203e+11  1.1237e+11  1.0681e+13  4.3701e-03  1.9659e-04 -5.9439e+02 -4.9439e+01  0:00:00    0
+Registering ReportDefFiles, ("E:\UniFlight\ansys\aero_files\dp4\FFF\Fluent\.\\cx-rfile.out" "E:\UniFlight\ansys\aero_files\dp4\FFF\Fluent\.\\cy-rfile.out")
+Writing "| gzip -2cf > SolutionMonitor.gz"...
+Writing temporary file C:\\Users\\VEDCF~1.SME\\AppData\\Local\\Temp\\flntgz-224562 ...
+Done.
+
+Writing data to E:\\UniFlight\\ansys\\aero_files\\dp4\\FFF\\Fluent\\FFF.ip ...
+	x-coord
+	y-coord
+	z-coord
+	pressure
+	x-velocity
+	y-velocity
+	z-velocity
+	temperature
+	k
+	omega
+Done.
+
+Performance Timer for 300 iterations on 4 compute nodes
+  Average wall-clock time per iteration:                0.575 sec
+  Global reductions per iteration:                        112 ops
+  Global reductions time per iteration:                 0.000 sec (0.0%)
+  Message count per iteration:                           3945 messages
+  Data transfer per iteration:                         22.779 MB
+  LE solves per iteration:                                  3 solves
+  LE wall-clock time per iteration:                     0.267 sec (46.5%)
+  LE global solves per iteration:                           2 solves
+  LE global wall-clock time per iteration:              0.000 sec (0.1%)
+  LE global matrix maximum size:                           23
+  AMG cycles per iteration:                             4.080 cycles
+  Relaxation sweeps per iteration:                        533 sweeps
+  Relaxation exchanges per iteration:                       0 exchanges
+  LE early protections (stall) per iteration:           0.063 times
+  LE early protections (divergence) per iteration:      0.040 times
+  Total SVARS touched:                                    398
+
+  Total wall-clock time:                              172.460 sec
+
+Transcript Stop Time:  22:20:46, 13 May 2026 RTZ 2 (зима) 
+Total Transcript Time: 4 Minute 12 Second.

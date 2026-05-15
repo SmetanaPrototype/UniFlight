@@ -1,17 +1,17 @@
-import constants
+import basis
 import matplotlib.pyplot as plt
 import numpy as np
 import atmosphere as atmo
 
 # flight_file = "output/falcon_ball_data.csv"
 flight_file = "output/falcon_ball_data.csv"
-v_time =       np.array(constants.read_array_from_csv(flight_file, "time"))
-v_tetta =      np.array(constants.read_array_from_csv(flight_file, "tetta"))
-v_dypressure = np.array(constants.read_array_from_csv(flight_file, "q"))
-v_accel      = np.array(constants.read_array_from_csv(flight_file, "acceleration"))
-v_thrust =     np.array(constants.read_array_from_csv(flight_file, "thrust"))
-v_mass =       np.array(constants.read_array_from_csv(flight_file, "mass"))
-v_aog =        np.array(constants.read_array_from_csv(flight_file, "g"))
+v_time =       np.array(basis.read_array_from_csv(flight_file, "time"))
+v_tetta =      np.array(basis.read_array_from_csv(flight_file, "tetta"))
+v_dypressure = np.array(basis.read_array_from_csv(flight_file, "q"))
+v_accel      = np.array(basis.read_array_from_csv(flight_file, "acceleration"))
+v_thrust =     np.array(basis.read_array_from_csv(flight_file, "thrust"))
+v_mass =       np.array(basis.read_array_from_csv(flight_file, "mass"))
+v_aog =        np.array(basis.read_array_from_csv(flight_file, "g"))
 
 S = 10.75
 

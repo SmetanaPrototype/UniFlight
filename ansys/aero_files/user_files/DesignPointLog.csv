@@ -1,0 +1,132 @@
+﻿# 
+# This file contains the parameter values of the Design Points successfully updated by Ansys Workbench.
+# Project name: wbnew
+# Creation date: 05/12/2026 12:47:09
+# 
+# 05/12/2026 12:47:09
+# The parameters defined in the project are:
+# ,P1 - report-def-0-op [N],P3 - Mach
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P1,P3
+DP 0,2.0690785,0.2
+DP 1,8.5131936,0.4
+DP 2,20.627855,0.6
+DP 3,215.82184,0.8
+DP 4,543.43764,1
+DP 5,678.19438,1.1
+DP 6,46350.617,1.5
+DP 7,-18331319,2
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/12/2026 14:24:52
+# 
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/12/2026 16:31:28
+# 
+# 
+# 05/13/2026 20:40:00
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P1 - report-def-0-op [N],P4 - report-def-1-op [N],P3 - Mach,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P1,P4,P3,P5
+DP 0,86818.382,50091.201,0.3,0
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/13/2026 20:42:57
+# 
+# 
+# 05/13/2026 20:51:15
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P6 - cx-op,P7 - cy-op,P3 - Mach,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P6,P7,P3,P5
+DP 0,2.2705557,0.0073253638,0.3,0
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/13/2026 20:55:33
+# 
+# 
+# 05/13/2026 21:07:27
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P6 - cx-op,P3 - Mach,P7 - cy-op,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P6,P3,P7,P5
+DP 1,1.0007528,0.3,0.034956364,1
+DP 2,1.0071076,0.3,0.042162249,3
+DP 3,11.90582,1,0.072576695,0
+DP 4,13.008433,1,0.49708244,1
+DP 5,12.722603,1,0.16228858,3
+DP 6,26.242471,1.3,0.071703129,0
+DP 7,30.451555,1.3,-2.1556893,1
+# 
+# 05/13/2026 21:33:39
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P6 - cx-op,P7 - cy-op,P3 - Mach,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P6,P7,P3,P5
+DP 8,31.244424,-4.9840272,1.3,3
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/13/2026 21:38:57
+# 
+# 
+# 05/13/2026 21:50:14
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P6 - cx-op,P3 - Mach,P7 - cy-op,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P6,P3,P7,P5
+DP 3,13.090468,1,0.026161307,0
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/13/2026 21:54:20
+# 
+DP 3,1.1667755,1,0.022109794,0
+DP 1,-44.888708,0.3,-411.95729,1
+DP 2,-47.966612,0.3,-582.79925,3
+DP 4,-49.439249,1,-594.38954,1
+DP 5,-50.766038,1,-425.23345,3
+DP 6,-47.811566,1.3,-235.63614,0
+DP 7,-105.80777,1.3,-969.14328,1
+# 
+# 05/13/2026 22:40:07
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P6 - cx-op,P7 - cy-op,P3 - Mach,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P6,P7,P3,P5
+DP 8,-2400.9272,-48539.226,1.3,3
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/13/2026 23:28:11
+# 
+# 
+# 05/13/2026 23:33:32
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P6 - cx-op,P7 - cy-op,P3 - Mach,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P6,P7,P3,P5
+DP 0,-3188.268,-162739.09,1,0
+DP 0,-0.60760187,0.077492454,0.1,0
+DP 0,-0.60760187,0.077492454,0.3,0
+DP 0,-0.60760187,0.077492454,0.3,0
+# 
+# 05/13/2026 23:49:16
+# Parameters have been added and/or removed. The parameters now defined in the project are:
+# ,P6 - cx-op,P3 - Mach,P7 - cy-op,P5 - attack
+# 
+# The following header line defines the name of the columns by reference to the parameters.
+Name,P6,P3,P7,P5
+DP 1,-0.60760187,0.3,0.077492454,1
+DP 2,-0.60760187,0.3,0.077492454,3
+# 
+# A non parametric change occurred and invalidated design point results.
+# 05/14/2026 00:06:20
+# 

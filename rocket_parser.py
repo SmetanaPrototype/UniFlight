@@ -325,15 +325,15 @@ class rocket_parser:
         }
         self.rocket_length = raised_length[-1]
 
-        # print(len(numeric))
-        # print(len(Length_final_vector))
-        # print(len(raised_length))
-        # print(len(Diameter_final_vector))
-        # print(len(Area_final_vector))
-        # print(len(Mass_final_vector))
-        # print(len(Stiffness_final_vetor))
-        # print(len(Class_final_vector))
-        # print(len(Stage_final_vector))
+        print(len(self.numeric))
+        print(len(Length_final_vector))
+        print(len(raised_length))
+        print(len(Diameter_final_vector))
+        print(len(Area_final_vector))
+        print(len(Mass_final_vector))
+        print(len(Stiffness_final_vetor))
+        print(len(Class_final_vector))
+        print(len(Stage_final_vector))
 
         df_result = pd.DataFrame(new_data)
         df_result.to_csv("output/rocket_data.csv", index=False, encoding="utf-8")

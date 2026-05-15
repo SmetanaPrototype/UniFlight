@@ -1,7 +1,7 @@
 {
   "name": "titan2",
   "block_number": 2,
-  "payload_mass": 3600,
+  "payload_mass": 3.6,
   "block_mass": [
     117000,
     29000
