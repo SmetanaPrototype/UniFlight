@@ -23,7 +23,7 @@
   "fuel": "HTPB",
   "oxidizer": "AP",
   "attack_coefs": [
-    3.3,
-    0.24
+    3.1,
+    0.3
   ]
 }

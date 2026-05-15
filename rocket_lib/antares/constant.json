@@ -24,6 +24,6 @@
   "oxidizer": "LOX",
   "attack_coefs": [
     1.32,
-    0.3
+    0.5
   ]
 }

@@ -1,29 +1,29 @@
 {
   "name": "mlv",
   "block_number": 2,
-  "payload_mass": 0.02,
+  "payload_mass": 16000,
   "block_mass": [
-    15000,
-    3000
+    340000,
+    29000
   ],
   "components_ratio": 2.4,
   "thrust_ratio": 0.7,
   "exhaust_velocity": [
-    2850,
-    3100
+    2992,
+    3218
   ],
   "thrust": [
-    280000,
-    40000
+    7161000,
+    890000
   ],
   "structural_values": [
-    17,
-    14
+    12.1,
+    13.1
   ],
   "fuel": "RP_1",
   "oxidizer": "LOX",
   "attack_coefs": [
-    3.5,
-    0.26
+    4.0,
+    0.3
   ]
 }

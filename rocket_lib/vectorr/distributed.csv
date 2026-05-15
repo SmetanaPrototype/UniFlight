@@ -1,6 +1,6 @@
 L,D,Class,Stage
-1.2,0,Head,Payload
-1.0,1.0,Head,Payload
+0.0,0,Head,Payload
+2.2,1.0,Head,Payload
 0.3,1.0,Construction,Second
 1.2,1.0,Fuel,Second
 1.0,1.0,Oxidizer,Second

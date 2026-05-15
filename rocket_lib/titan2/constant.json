@@ -23,7 +23,7 @@
   "fuel": "UDMH",
   "oxidizer": "N2O4",
   "attack_coefs": [
-    3.5,
-    0.22
+    2.7,
+    0.3
   ]
 }
