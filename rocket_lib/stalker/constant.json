@@ -1,0 +1,29 @@
+{
+  "name": "stalker",
+  "block_number": 2,
+  "payload_mass": 1700,
+  "block_mass": [
+    55000,
+    5000
+  ],
+  "components_ratio": 3.2,
+  "thrust_ratio": 1.4,
+  "exhaust_velocity": [
+    3250,
+    3480
+  ],
+  "thrust": [
+    846000,
+    108000
+  ],
+  "structural_values": [
+    14,
+    12
+  ],
+  "fuel": "CH4",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    1.5,
+    0.2
+  ]
+}

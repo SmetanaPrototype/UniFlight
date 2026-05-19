@@ -46,8 +46,8 @@ def read_rocket(rocket):
 
 # Загружаем данные всех ракет
 rockets_list = ["amur", "falcon", "cz2c", "fireflyalpha", "electron", "antares", "zenit", "titan2", "isa",
-                "vectorr", "angara12", "blackarrow", "epsilon", "starship", "soyuz21v", "cyclone2",
-                "terran1", "soyuz5", "cosmos3m", "kinetika2"]
+                "angara12", "blackarrow", "starship", "soyuz21v", "cyclone2",
+                "terran1", "soyuz5", "cosmos3m", "kinetika2", "stalker", "vectorr"]
 
 results = [read_rocket(rocket) for rocket in rockets_list]
 

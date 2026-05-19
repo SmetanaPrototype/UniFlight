@@ -39,18 +39,20 @@ for rocket in rockets_list:
 
 print("\n" + "="*100)
 print("🚀 ЗАПУСК КРОСС-ВАЛИДАЦИИ (Leave-One-Out)")
+print("📊 МОДЕЛЬ: ТОЛЬКО s1 и N1 (без s2 и N2)")
 print("="*100)
 
 # --- Кросс-валидация ---
 results = []
 for rocket_held_out in rockets_list:
     # 1. Формируем обучающую выборку (все, кроме текущей ракеты)
+    # 🔥 ИСПРАВЛЕНИЕ: Используем ТОЛЬКО s1 и N1
     X_train = []
     y_train = []
     for rocket, data in rocket_data.items():
         if rocket == rocket_held_out:
             continue
-        X_train.append([data["s1"], data["s2"], data["N1"], data["N2"]])
+        X_train.append([data["s1"], data["N1"]])  # Только s1 и N1
         y_train.append(data["k1_actual"])
     
     X_train = np.array(X_train)
@@ -65,8 +67,7 @@ for rocket_held_out in rockets_list:
     
     # 3. Предсказываем для исключенной ракеты
     held_out_data = rocket_data[rocket_held_out]
-    X_test = np.array([[held_out_data["s1"], held_out_data["s2"], 
-                        held_out_data["N1"], held_out_data["N2"]]])
+    X_test = np.array([[held_out_data["s1"], held_out_data["N1"]]])  # Только s1 и N1
     predicted_k1 = pipeline.predict(X_test)[0]
     
     # Ограничения для предсказания
@@ -82,22 +83,20 @@ for rocket_held_out in rockets_list:
     results.append({
         "rocket": rocket_held_out,
         "s1": held_out_data["s1"],
-        "s2": held_out_data["s2"],
         "N1": held_out_data["N1"],
-        "N2": held_out_data["N2"],
         "actual_k1": actual_k1,
         "predicted_k1": predicted_k1,
         "error": error,
         "abs_error": abs_error
     })
     
-    # Красивый вывод для каждой ракеты (с исходными данными)
+    # Красивый вывод для каждой ракеты
     status = "✅" if abs_error < 0.5 else "⚠️"
-    print(f"{status} {rocket_held_out:15s} | s1={held_out_data['s1']:5.1f} s2={held_out_data['s2']:5.1f} | N1={held_out_data['N1']:5.3f} N2={held_out_data['N2']:5.3f} | actual={actual_k1:4.2f} pred={predicted_k1:4.2f} | err={error:+.2f}")
+    print(f"{status} {rocket_held_out:15s} | s1={held_out_data['s1']:5.1f} N1={held_out_data['N1']:5.3f} | actual={actual_k1:4.2f} pred={predicted_k1:4.2f} | err={error:+.2f}")
 
 # --- Итоговая статистика ---
 print("\n" + "="*100)
-print("📊 ИТОГОВАЯ СТАТИСТИКА")
+print("📊 ИТОГОВАЯ СТАТИСТИКА (модель: s1 + N1)")
 print("="*100)
 
 df_results = pd.DataFrame(results)
@@ -113,18 +112,25 @@ print(f"Стандартное отклонение ошибки:    {std_abs_er
 print(f"Предсказаний с ошибкой < 0.5:     {within_05} из {len(rockets_list)} ({within_05/len(rockets_list)*100:.1f}%)")
 print(f"Предсказаний с ошибкой < 1.0:     {within_10} из {len(rockets_list)} ({within_10/len(rockets_list)*100:.1f}%)")
 
+# Сравнение с предыдущей моделью (4 параметра)
+print("\n" + "-"*80)
+print("📊 СРАВНЕНИЕ С ПРЕДЫДУЩЕЙ МОДЕЛЬЮ (4 параметра: s1,s2,N1,N2)")
+print("-"*80)
+print(f"4 параметра -> MAE: 0.457, <0.5: 50.0% (10/20), <1.0: 90.0% (18/20)")
+print(f"2 параметра -> MAE: {mean_abs_error:.3f}, <0.5: {within_05/len(rockets_list)*100:.1f}% ({within_05}/{len(rockets_list)}), <1.0: {within_10/len(rockets_list)*100:.1f}% ({within_10}/{len(rockets_list)})")
+
 # Самые плохие предсказания
 print("\n🔴 ХУДШИЕ ПРЕДСКАЗАНИЯ (max ошибка):")
 worst = df_results.nlargest(3, "abs_error")
 for _, row in worst.iterrows():
-    print(f"   {row['rocket']:15s} | s1={row['s1']:5.1f} s2={row['s2']:5.1f} | N1={row['N1']:5.3f} N2={row['N2']:5.3f} | actual={row['actual_k1']:4.2f} pred={row['predicted_k1']:4.2f} | err={row['error']:+.2f}")
+    print(f"   {row['rocket']:15s} | s1={row['s1']:5.1f} N1={row['N1']:5.3f} | actual={row['actual_k1']:4.2f} pred={row['predicted_k1']:4.2f} | err={row['error']:+.2f}")
 
 # Самые хорошие предсказания
 print("\n🟢 ЛУЧШИЕ ПРЕДСКАЗАНИЯ (min ошибка):")
 best = df_results.nsmallest(3, "abs_error")
 for _, row in best.iterrows():
-    print(f"   {row['rocket']:15s} | s1={row['s1']:5.1f} s2={row['s2']:5.1f} | N1={row['N1']:5.3f} N2={row['N2']:5.3f} | actual={row['actual_k1']:4.2f} pred={row['predicted_k1']:4.2f} | err={row['error']:+.2f}")
+    print(f"   {row['rocket']:15s} | s1={row['s1']:5.1f} N1={row['N1']:5.3f} | actual={row['actual_k1']:4.2f} pred={row['predicted_k1']:4.2f} | err={row['error']:+.2f}")
 
 # --- Сохранение полной таблицы в CSV ---
-df_results.to_csv("loocv_results.csv", index=False)
-print("\n📁 Полная таблица результатов сохранена в 'loocv_results.csv'")
+df_results.to_csv("loocv_results_2params.csv", index=False)
+print("\n📁 Полная таблица результатов сохранена в 'loocv_results_2params.csv'")
