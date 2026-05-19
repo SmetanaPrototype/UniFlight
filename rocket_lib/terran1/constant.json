@@ -1,0 +1,29 @@
+{
+  "name": "terran1",
+  "block_number": 2,
+  "payload_mass": 1250,
+  "block_mass": [
+    92800,
+    11800
+  ],
+  "components_ratio": 2.5,
+  "thrust_ratio": 1.35,
+  "exhaust_velocity": [
+    3450,
+    3600
+  ],
+  "thrust": [
+    1420000,
+    126000
+  ],
+  "structural_values": [
+    12.1,
+    9.5
+  ],
+  "fuel": "CH4",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    1.17,
+    0.3
+  ]
+}

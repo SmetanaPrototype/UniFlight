@@ -4,7 +4,7 @@
   "payload_mass": 3500,
   "block_mass": [
     139000,
-    28500
+    25200
   ],
   "components_ratio": 2.6,
   "thrust_ratio": 0.5,
@@ -23,7 +23,7 @@
   "fuel": "RP_1",
   "oxidizer": "LOX",
   "attack_coefs": [
-    2.71,
+    0.3,
     0.15
   ]
 }

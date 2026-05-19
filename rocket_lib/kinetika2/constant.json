@@ -1,0 +1,29 @@
+{
+  "name": "kinetica2",
+  "block_number": 2,
+  "payload_mass": 12000,
+  "block_mass": [
+    613000,
+    42000
+  ],
+  "components_ratio": 2.7,
+  "thrust_ratio": 1.22,
+  "exhaust_velocity": [
+    3250,
+    3450
+  ],
+  "thrust": [
+    7510000,
+    490000
+  ],
+  "structural_values": [
+    13.0,
+    11.5
+  ],
+  "fuel": "RP_1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    0.33,
+    0.2
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "cyclone2",
+  "block_number": 2,
+  "payload_mass": 2820,
+  "block_mass": [
+    122000,
+    51000
+  ],
+  "components_ratio": 2.35,
+  "thrust_ratio": 0.65,
+  "exhaust_velocity": [
+    2950,
+    3100
+  ],
+  "thrust": [
+    2640000,
+    940000
+  ],
+  "structural_values": [
+    19,
+    13.8
+  ],
+  "fuel": "UDMH",
+  "oxidizer": "N2O4",
+  "attack_coefs": [
+    2.7,
+    0.25
+  ]
+}

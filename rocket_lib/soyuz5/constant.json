@@ -1,0 +1,29 @@
+{
+  "name": "soyuz5",
+  "block_number": 2,
+  "payload_mass": 17000,
+  "block_mass": [
+    475000,
+    40000
+  ],
+  "components_ratio": 2.7,
+  "thrust_ratio": 1.26,
+  "exhaust_velocity": [
+    3210,
+    3570
+  ],
+  "thrust": [
+    7860000,
+    588000
+  ],
+  "structural_values": [
+    12.5,
+    11.0
+  ],
+  "fuel": "Naphthyl",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    2.75,
+    0.2
+  ]
+}

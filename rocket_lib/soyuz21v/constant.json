@@ -1,13 +1,13 @@
 {
   "name": "soyuz_2-1v",
   "block_number": 2,
-  "payload_mass": 3000,
+  "payload_mass": 2800,
   "block_mass": [
-    158000,
+    157800,
     25380
   ],
   "components_ratio": 2.6,
-  "thrust_ratio": 0.0,
+  "thrust_ratio": 1.3,
   "exhaust_velocity": [
     3100,
     3520
@@ -20,10 +20,10 @@
     12,
     10
   ],
-  "fuel": "RP-1",
+  "fuel": "RP_1",
   "oxidizer": "LOX",
   "attack_coefs": [
-    3.68880768,
-    0.21378464
+    0.2,
+    0.2
   ]
 }

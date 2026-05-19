@@ -852,3 +852,4 @@ setup1.SendCommand(Command='(cx-gui-do cx-set-toggle-button2 "Dynamic Mesh Zones
 setup1.SendCommand(Command='(cx-gui-do cx-activate-item "Dynamic Mesh Zones*PanelButtons*PushButton2(Cancel)")')
 setup1.SendCommand(Command="(cx-gui-do cx-set-list-selections \"Dynamic Mesh*Table1*Table1*Table2*List4(Dynamic Mesh Zones)\" '( 0))(cx-gui-do cx-activate-item \"Dynamic Mesh*Table1*Table1*Table2*List4(Dynamic Mesh Zones)\")")
 setup1.SendCommand(Command='(cx-gui-do cx-activate-item "MenuBar*FileMenu*Close Fluent")')
+Save(Overwrite=True)
