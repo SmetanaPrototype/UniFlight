@@ -1,0 +1,16 @@
+echo off
+set LOCALHOST=%COMPUTERNAME%
+set KILL_CMD="C:\PROGRA~1\ANSYSI~1\v242\fluent/ntbin/win64/winkill.exe"
+
+start "tell.exe" /B "C:\PROGRA~1\ANSYSI~1\v242\fluent\ntbin\win64\tell.exe" DESKTOP-Q5AGLJJ 52678 CLEANUP_EXITING
+timeout /t 1
+"C:\PROGRA~1\ANSYSI~1\v242\fluent\ntbin\win64\kill.exe" tell.exe
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 10268) 
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 13068) 
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 14440) 
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 13384) 
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 25012) 
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 20984) 
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 26580) 
+if /i "%LOCALHOST%"=="DESKTOP-Q5AGLJJ" (%KILL_CMD% 17420)
+del "E:\UniFlight\ansys\cleanup-fluent-DESKTOP-Q5AGLJJ-26580.bat"

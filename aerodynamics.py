@@ -5,6 +5,7 @@ import rocket_parser as rp
 import numpy as np
 import basis
 import atmosphere as atmo
+import aeroelasticity
 
 class Element:
     def __init__(self):
@@ -612,14 +613,15 @@ def main():
     G.set_diameter(parser.get_part_diameters())
     G.set_length(parser.get_part_length())
 
-    arrayVelocity = np.linspace(10, 3000, 100)
-    altitudes = [0, 40, 80]
+    arrayVelocity = [96,118,187]
+    altitudes = [1, 1.5, 3]
 
     def get_machvec(altit):
         at = atmo.atmosphere(altit)
         res = []
         for v in arrayVelocity:
             res.append(v/at.get_SV())
+            print(v, "+", altit, "+", v/at.get_SV())
         return res
 
     red_colors = Reds(np.linspace(0.2, 1.0, len(arrayVelocity)))
@@ -650,6 +652,10 @@ def main():
             G.calculate_CXY(vel, alt * 1000, 0)
             CX_list.append(G.CX)
             CY_list.append(G.CYY)
+            print(alt * 1000)
+            print(vel)
+            print(G.CX)
+            print(G.CYY)
             focus_positions.append(G.focus_position)
             focus_relative_list.append(G.focus_relative)
 

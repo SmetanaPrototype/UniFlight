@@ -1,0 +1,17 @@
+Node 5 Fatal signal raised sig = Segmentation fault
+ 113e47c0 CX_Primitive_Error
+ 9b550cc0 seh_filter_exe
+ 1148cb10 logical_right_shift
+ 8172f3e0 _C_specific_handler
+ 9d892850 _chkstk
+ 9d8420d0 RtlRaiseException
+ 9d891450 KiUserExceptionDispatcher
+ 113eb6b0 CX_Surface_Centroid_Normal
+ e038eb0 HC_Set_Marker_Symbol
+ 11476aa0 eval
+ e152be0 PRF_Command_Start
+ e155310 PRF_Node_repl
+ e1612a0 Delay_Error
+ 1148cb10 logical_right_shift
+ 9c367360 BaseThreadInitThunk
+ 9d83cc70 RtlUserThreadStart

@@ -32,34 +32,17 @@ freqmass[0] = basis.read_array_from_csv(freq_file, "freq_mass_1")
 freqmass[1] = basis.read_array_from_csv(freq_file, "freq_mass_2")
 freqmass[2] = basis.read_array_from_csv(freq_file, "freq_mass_3")
 
-
 def freq_per_time(time, mode):
-    for k in range(len(freq_time)):
-        if abs(freq_time[k] - time) < basis.timestep:
-            return freq[mode][k]
-    return None
-
+    return basis.get_y(time, freq_time, freq[mode])
 
 def freqmass_per_time(time, mode):
-    for k in range(len(freq_time)):
-        if abs(freq_time[k] - time) < basis.timestep:
-            return freqmass[mode][k]
-    return None
-
+    return basis.get_y(time, freq_time, freqmass[mode])
 
 def form_per_len(mode, len_):
-    for k in range(len(f_len)):
-        if abs(f_len[k] - len_) < basis.lenstep:
-            return f_stiffness[mode][k]
-    return None
-
+    return basis.get_y(len_, f_len, f_stiffness[mode])
 
 def deform_per_len(mode, len_):
-    for k in range(len(f_len)):
-        if abs(f_len[k] - len_) < basis.lenstep:
-            return f_stiffness_diff[mode][k]
-    return None
-
+    return basis.get_y(len_, f_len, f_stiffness_diff[mode])
 
 def intform(mode):
     return f_stiffness_integral[mode][0]
@@ -71,9 +54,9 @@ cx_ = [0.33445, 0.51079, 0.46371]
 cya = [0.035, 0.035, 0.035]
 xf_ = [26.2, 26.2, 26.2]
 p = 1.29
-vel = [200, 1000, 2000]
-alt = [5, 25, 45]
-time = [10, 40, 80]
+vel = [200, 1000, 1500]
+alt = [5, 25, 35]
+time = [10, 40, 60]
 Qt = []
 for i,a in enumerate(alt):
     atm = atmosphere.atmosphere(a*1000)
@@ -118,6 +101,7 @@ def aeroelastic_corrections(index, len_):
     delta_alpha_rad = -dypress * integral_alpha * area * alpha_flight_rad * cyy_rad
     delta_alpha_deg = delta_alpha_rad * rad_to_deg
     delta_alpha_per = (delta_alpha_deg / alpha_flight_deg) * 100
+    k_alpha = delta_alpha_rad - alpha_flight_rad * cyy_rad
 
     # 2. Изменение производной подъемной силы
     delta_cy_rel = -dypress * integral_cy * area * cyy_rad
@@ -132,7 +116,7 @@ def aeroelastic_corrections(index, len_):
     delta_cx_from_alpha = 2 * A * cy_initial * delta_cy_abs_rad * alpha_flight_rad
     k_cx = 0.04
     delta_cx_from_deform = k_cx * abs(delta_alpha_rad)
-    delta_cx = delta_cx_from_alpha + delta_cx_from_deform
+    delta_cx = np.abs(delta_cx_from_alpha + delta_cx_from_deform)
     cx_elastic = cx + delta_cx
     delta_cx_per = (delta_cx / cx) * 100
 

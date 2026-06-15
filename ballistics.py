@@ -3,19 +3,11 @@ import basis
 import atmosphere as atmo
 import aerodynamics as aero
 import attack
-import json
-import warnings
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import solve_ivp
-from scipy.optimize import differential_evolution, Bounds, minimize
-
-# Глобальные переменные для хранения лучших коэффициентов
-best_coefficients = None
-best_score = float("inf")
-best_simulation_data = None
-optimization_history = []
-target_achieved = False  # Флаг достижения цели
+import scipy.constants as earth
+import aeroelasticity2
 
 # Глобальные списки для записи данных
 Cbs_list = []
@@ -30,9 +22,15 @@ traj_list = []
 alt_list = []
 time_list = []
 wind_list = []
+Q_list = []
+thrust_list = []
+aog_list = []
+mass_list = []
+acceleration_list = []
 CswQ_list = []
 CsyQ_list = []
 CssQ_list = []
+mach_list = []
 
 Csw_list = [[] for _ in range(basis.mode_num)]
 Csy_list = [[] for _ in range(basis.mode_num)]
@@ -41,712 +39,39 @@ Csb_list = [[] for _ in range(basis.mode_num)]
 parser = rp.rocket_parser()
 rocketname = basis.current_rocket
 
-# Диапазоны коэффициентов согласно требованиям
-COEF1_RANGE = (0.1, 4.5)  # Первый коэффициент: 0.1 - 4.5
-COEF2_RANGE = (0.02, 2.0)  # Второй коэффициент: 0.02 - 2.0
-
-# Целевые параметры
-TARGET_VELOCITY = 7780
-TARGET_ALTITUDE_MIN = 198000
-TARGET_ALTITUDE_MAX = 210000
-TARGET_ANGLE_RANGE = 6
-TARGET_FINAL_ATTACK_MIN = 1  # Минимальный финальный угол атаки
-
-f_stiffness = [0] * basis.mode_num
-f_stiffness_diff = [0] * basis.mode_num
-
-oscillations_file = "output/"+rocketname+"_oscillations.csv"
-f_stiffness[0]      = basis.read_array_from_csv(oscillations_file, "form_1")
-f_stiffness[1]      = basis.read_array_from_csv(oscillations_file, "form_2")
-f_stiffness[2]      = basis.read_array_from_csv(oscillations_file, "form_3")
-f_stiffness_diff[0] = basis.read_array_from_csv(oscillations_file, "difform_1")
-f_stiffness_diff[1] = basis.read_array_from_csv(oscillations_file, "difform_2")
-f_stiffness_diff[2] = basis.read_array_from_csv(oscillations_file, "difform_3")
-coord_stiffness     = basis.read_array_from_csv(oscillations_file, "length")
-
-freq_file = "output/"+rocketname+"_frequency.csv"
-freq_time = basis.read_array_from_csv(freq_file, "time")
-freq_mass  = basis.read_array_from_csv(freq_file, "freq_mass_1")
-
-def check_target_achieved(final_velocity, final_altitude, final_angle, final_attack):
-    """Проверяет, достигнуты ли целевые параметры"""
-    velocity_ok = final_velocity >= TARGET_VELOCITY
-    altitude_ok = TARGET_ALTITUDE_MIN <= final_altitude <= TARGET_ALTITUDE_MAX
-    angle_ok = abs(final_angle) <= TARGET_ANGLE_RANGE
-    attack_ok = abs(final_attack) >= TARGET_FINAL_ATTACK_MIN
-
-    return velocity_ok and altitude_ok and angle_ok and attack_ok
-
-
-def update_rocket_json(new_coefficients):
-    """Обновляет коэффициенты в JSON файле ракеты"""
-    json_path = "rocket_lib/" + rocketname + ".json"
-
-    try:
-        with open(json_path, "r", encoding="utf-8") as file:
-            data = json.load(file)
-
-        data["attack_coefs"] = new_coefficients
-
-        with open(json_path, "w", encoding="utf-8") as file:
-            json.dump(data, file, indent=2, ensure_ascii=False)
-
-        print(f"✅ Коэффициенты успешно обновлены в файле: {json_path}")
-        print(f"✅ Новые коэффициенты: {new_coefficients}")
-
-        return True
-
-    except Exception as e:
-        print(f"❌ Ошибка при обновлении JSON файла: {e}")
-        return False
-
-
-def improved_objective_function(coefs):
-    """Улучшенная функция стоимости с проверкой достижения цели и требованием к финальному углу атаки"""
-    global best_score, best_coefficients, best_simulation_data, target_achieved
-
-    # Если цель уже достигнута, возвращаем наилучший score
-    if target_achieved:
-        return best_score
-
-    # Проверка границ коэффициентов
-    if not (
-        COEF1_RANGE[0] <= coefs[0] <= COEF1_RANGE[1]
-        and COEF2_RANGE[0] <= coefs[1] <= COEF2_RANGE[1]
-    ):
-        return 1000.0
-
-    try:
-        # Запускаем симуляцию
-        score, final_params, simulation_data = run_simulation_and_evaluate_detailed(
-            coefs
-        )
-
-        if final_params:
-            final_velocity, final_altitude, final_angle, max_attack, final_attack = (
-                final_params
-            )
-
-            # Проверяем, достигнута ли цель
-            if check_target_achieved(
-                final_velocity, final_altitude, final_angle, final_attack
-            ):
-                target_achieved = True
-                best_score = 0
-                best_coefficients = coefs.copy()
-                best_simulation_data = simulation_data
-
-                print(f"\n🎯 ЦЕЛЕВЫЕ ПАРАМЕТРЫ ДОСТИГНУТЫ!")
-                print(f"Коэффициенты: {coefs}")
-                print(f"Скорость: {final_velocity:.1f} м/с")
-                print(f"Высота: {final_altitude/1000:.1f} км")
-                print(f"Угол траектории: {final_angle:.1f}°")
-                print(f"Финальный угол атаки: {final_attack:.1f}°")
-
-                # Немедленно обновляем JSON файл
-                update_rocket_json(
-                    coefs.tolist() if hasattr(coefs, "tolist") else coefs
-                )
-
-                return 0  # Идеальный score
-
-            # Целевые параметры
-            target_velocity = TARGET_VELOCITY
-            target_altitude = 200000
-            target_angle = 0
-
-            # Базовые ошибки (нормализованные)
-            # ОШИБКА СКОРОСТИ: строгий штраф за скорости ниже целевой, НО НЕТ ШТРАФА за скорости выше целевой
-            if final_velocity < target_velocity:
-                velocity_error = (target_velocity - final_velocity) / target_velocity
-            else:
-                velocity_error = 0  # Нет ошибки если скорость выше целевой
-
-            # ОШИБКА ВЫСОТЫ: штраф за отклонение от целевого диапазона
-            if final_altitude < TARGET_ALTITUDE_MIN:
-                altitude_error = (
-                    TARGET_ALTITUDE_MIN - final_altitude
-                ) / TARGET_ALTITUDE_MIN
-            elif final_altitude > TARGET_ALTITUDE_MAX:
-                altitude_error = (
-                    final_altitude - TARGET_ALTITUDE_MAX
-                ) / TARGET_ALTITUDE_MAX
-            else:
-                altitude_error = 0
-
-            # Ошибка угла траектории
-            angle_error = (
-                min(
-                    abs(final_angle - target_angle),
-                    abs(final_angle - target_angle + 360),
-                )
-                / 180
-            )
-
-            # ОШИБКА ПО ФИНАЛЬНОМУ УГЛУ АТАКИ:
-            # - Штраф за углы меньше минимального
-            # - НУЛЕВАЯ ошибка для углов >= минимального
-            if abs(final_attack) < TARGET_FINAL_ATTACK_MIN:
-                attack_error = (
-                    TARGET_FINAL_ATTACK_MIN - abs(final_attack)
-                ) / TARGET_FINAL_ATTACK_MIN
-            else:
-                attack_error = 0  # Нет ошибки если достигнут минимум
-
-            # Умные веса в зависимости от прогресса
-            base_score = (
-                velocity_error
-                + 2.0 * altitude_error
-                + 1.5 * angle_error
-                + 0.8 * attack_error
-            )
-
-            # Дополнительные штрафы
-            penalties = 0
-
-            # Штраф за превышение высоты (очень строгий)
-            if final_altitude > target_altitude + 50000:  # >250 км
-                penalties += 5.0 * (
-                    (final_altitude - target_altitude) / target_altitude
-                )
-
-            # Штраф за слишком большой угол (строгий)
-            if abs(final_angle) > 45:  # Слишком вертикальный полет
-                penalties += 3.0 * (abs(final_angle) / 90)
-
-            # Штраф за слишком маленькую скорость (очень строгий)
-            if final_velocity < 5000:
-                penalties += 20.0
-
-            # Штраф за слишком большую атаку (но менее строгий, так как хотим большую финальную атаку)
-            if abs(max_attack) > 30:
-                penalties += 1.0 * (abs(max_attack) / 30)
-
-            # Штраф за падение
-            if final_altitude < 0:
-                penalties += 100.0
-
-            # Штраф за выход за границы коэффициентов
-            if not (COEF1_RANGE[0] <= coefs[0] <= COEF1_RANGE[1]):
-                penalties += 50.0
-            if not (COEF2_RANGE[0] <= coefs[1] <= COEF2_RANGE[1]):
-                penalties += 50.0
-
-            total_score = base_score + penalties
-
-            # Сохраняем лучший результат
-            if total_score < best_score:
-                best_score = total_score
-                best_coefficients = coefs.copy()
-                best_simulation_data = simulation_data
-
-                # Записываем в историю
-                optimization_history.append(
-                    {
-                        "coefs": coefs.copy(),
-                        "score": total_score,
-                        "velocity": final_velocity,
-                        "altitude": final_altitude,
-                        "angle": final_angle,
-                        "max_attack": max_attack,
-                        "final_attack": final_attack,
-                    }
-                )
-
-                print(
-                    f"🎯 УЛУЧШЕНИЕ: coefs={coefs}, v={final_velocity:.1f} м/с, "
-                    f"h={final_altitude/1000:.1f} км, angle={final_angle:.1f}°, "
-                    f"final_α={final_attack:.1f}°, score={total_score:.4f}"
-                )
-
-            return total_score
-        else:
-            return 1000.0  # Большой штраф за неудачную симуляцию
-
-    except Exception as e:
-        print(f"❌ Ошибка в функции стоимости: {e}")
-        return 1000.0
-
-
-def run_simulation_and_evaluate_detailed(coefs):
-    """Запускает симуляцию и возвращает детальные результаты"""
-    try:
-        alpha_obj = attack.alpha(coefs[0], coefs[1], parser.work_time[0], False)
-
-        def get_attack(vel, time):
-            alpha_val = alpha_obj.calculate_alpha(vel, time)
-            return max(
-                -30, min(30, alpha_val)
-            )  # Увеличил допустимый диапазон атаки для больших финальных значений
-
-        # Функция события падения
-        def fall_event(t, y, parser, get_attack_func):
-            return y[3]  # Высота
-
-        fall_event.terminal = True
-        fall_event.direction = -1
-
-        ft = parser.get_full_time()
-        h = basis.timestep
-        t_span = (0, min(ft - 1, 800))  # Увеличил максимальное время
-
-        # Улучшенные начальные условия
-        y0 = [0, np.pi / 2, 1.0, 1.0, 0.1]
-
-        # Временные списки для этой симуляции
-        temp_attack_list = []
-
-        def system_with_tracking(t, vars, parser, get_attack_func):
-            # Сохраняем угол атаки для анализа
-            alpha_val = get_attack_func(vars[2], t)
-            temp_attack_list.append(alpha_val)
-            return system(t, vars, parser, get_attack_func)
-
-        sol = solve_ivp(
-            system_with_tracking,
-            t_span,
-            y0,
-            method="RK45",
-            max_step=h,
-            args=(parser, get_attack),
-            events=fall_event,
-            rtol=1e-6,
-            atol=1e-8,
-        )
-
-        if sol.success and len(sol.y[2]) > 0:
-            final_velocity = sol.y[2][-1]
-            final_altitude = sol.y[3][-1]
-            final_angle = sol.y[1][-1] * 180 / np.pi
-            max_attack = max(temp_attack_list) if temp_attack_list else 0
-            final_attack = temp_attack_list[-1] if temp_attack_list else 0
-
-            simulation_data = {
-                "time": sol.t,
-                "velocity": sol.y[2],
-                "altitude": sol.y[3],
-                "angle": sol.y[1] * 180 / np.pi,
-                "attack": temp_attack_list,
-            }
-
-            return (
-                0,
-                (final_velocity, final_altitude, final_angle, max_attack, final_attack),
-                simulation_data,
-            )
-        else:
-            return 1000.0, None, None
-
-    except Exception as e:
-        import traceback
-        import sys
-
-        print(f"\n❌ ПОДРОБНАЯ ИНФОРМАЦИЯ ОБ ОШИБКЕ:")
-        print(f"   Тип ошибки: {type(e).__name__}")
-        print(f"   Сообщение: {str(e)}")
-        print(f"   Коэффициенты: {coefs}")
-
-        print(f"\n   Трассировка стека:")
-        exc_type, exc_value, exc_traceback = sys.exc_info()
-        traceback_details = traceback.extract_tb(exc_traceback)
-
-        for i, frame in enumerate(traceback_details):
-            filename = frame.filename.split('\\')[-1]
-            print(f"   {i+1}. Файл: {filename}, строка: {frame.lineno}, функция: {frame.name}")
-            if frame.line:
-                print(f"      Код: {frame.line}")
-
-        print(f"\n   Контекст ошибки:")
-        try:
-            if 't' in locals():
-                print(f"      t (время): {t}")
-            if 'vars' in locals():
-                print(f"      vars (состояние): {vars}")
-            if 'self' in locals() and hasattr(locals()['self'], 'mass'):
-                print(f"      масса: {locals()['self'].mass}")
-            if 'self' in locals() and hasattr(locals()['self'], 'vel'):
-                print(f"      скорость: {locals()['self'].vel}")
-            if 'self' in locals() and hasattr(locals()['self'], 'alt'):
-                print(f"      высота: {locals()['self'].alt}")
-        except:
-            pass
-        return 1000.0, None, None
-
-
-def check_current_coefficients():
-    """Проверяет, обеспечивают ли текущие коэффициенты целевые параметры"""
-    print("Проверка текущих коэффициентов из парсера...")
-    print(f"Текущие коэффициенты: {parser.attack_coefs}")
-
-    score, final_params, _ = run_simulation_and_evaluate_detailed(parser.attack_coefs)
-
-    if final_params:
-        final_velocity, final_altitude, final_angle, max_attack, final_attack = (
-            final_params
-        )
-
-        velocity_ok = final_velocity >= TARGET_VELOCITY
-        altitude_ok = TARGET_ALTITUDE_MIN <= final_altitude <= TARGET_ALTITUDE_MAX
-        angle_ok = abs(final_angle) <= TARGET_ANGLE_RANGE
-        attack_ok = abs(final_attack) >= TARGET_FINAL_ATTACK_MIN
-
-        print(f"\nПроверка целевых параметров с коэффициентами {parser.attack_coefs}:")
-        print(f"Скорость: {final_velocity:.1f} м/с {'✅' if velocity_ok else '❌'}")
-        print(f"Высота: {final_altitude/1000:.1f} км {'✅' if altitude_ok else '❌'}")
-        print(f"Угол траектории: {final_angle:.1f}° {'✅' if angle_ok else '❌'}")
-        print(
-            f"Финальный угол атаки: {final_attack:.1f}° {'✅' if attack_ok else '❌'}"
-        )
-        print(f"Макс. атака: {max_attack:.1f}°")
-
-        # Проверка границ коэффициентов
-        coefs_in_range = (
-            COEF1_RANGE[0] <= parser.attack_coefs[0] <= COEF1_RANGE[1]
-            and COEF2_RANGE[0] <= parser.attack_coefs[1] <= COEF2_RANGE[1]
-        )
-        print(
-            f"Коэффициенты в допустимом диапазоне: {'✅' if coefs_in_range else '❌'}"
-        )
-
-        if velocity_ok and altitude_ok and angle_ok and attack_ok and coefs_in_range:
-            print("\n✅ Текущие коэффициенты УЖЕ обеспечивают целевые параметры!")
-            global target_achieved, best_coefficients, best_score
-            target_achieved = True
-            best_coefficients = parser.attack_coefs
-            best_score = 0
-            return True, parser.attack_coefs
-        else:
-            print("\n❌ Текущие коэффициенты НЕ обеспечивают целевые параметры.")
-            return False, parser.attack_coefs
-    else:
-        print("❌ Ошибка при проверке текущих коэффициентов.")
-        return False, parser.attack_coefs
-
-
-def multi_stage_optimization():
-    """Многостадийная оптимизация с возможностью ранней остановки"""
-    global best_score, best_coefficients, target_achieved
-
-    print("\n" + "=" * 60)
-    print("🚀 ЗАПУСК МНОГОСТАДИЙНОЙ ОПТИМИЗАЦИИ...")
-    print("=" * 60)
-    print(f"Диапазон коэффициентов: coef1={COEF1_RANGE}, coef2={COEF2_RANGE}")
-
-    # Стадия 1: Глобальный поиск
-    print("\n--- СТАДИЯ 1: Глобальный поиск (differential_evolution) ---")
-    bounds = Bounds([COEF1_RANGE[0], COEF2_RANGE[0]], [COEF1_RANGE[1], COEF2_RANGE[1]])
-
-    def callback_de(xk, convergence):
-        """Callback для отслеживания прогресса в differential_evolution"""
-        return target_achieved
-
-    with warnings.catch_warnings():
-        warnings.simplefilter("ignore")
-        result_stage1 = differential_evolution(
-            improved_objective_function,
-            bounds,
-            strategy="best1bin",
-            maxiter=30,
-            popsize=15,
-            tol=0.001,
-            disp=True,
-            seed=42,
-            mutation=(0.5, 1.0),
-            recombination=0.7,
-            callback=callback_de,
-        )
-
-    # Проверяем, не достигнута ли цель
-    if target_achieved:
-        print("🎯 Цель достигнута на стадии глобального поиска!")
-        return best_coefficients
-
-    print(
-        f"Результат глобального поиска: {result_stage1.x}, score={result_stage1.fun:.4f}"
+# Загрузка данных жесткости
+# f_stiffness = [0] * basis.mode_num
+# f_stiffness_diff = [0] * basis.mode_num
+
+# oscillations_file = "output/"+rocketname+"_oscillations.csv"
+# f_stiffness[0] = basis.read_array_from_csv(oscillations_file, "form_1")
+# f_stiffness[1] = basis.read_array_from_csv(oscillations_file, "form_2")
+# f_stiffness[2] = basis.read_array_from_csv(oscillations_file, "form_3")
+# f_stiffness_diff[0] = basis.read_array_from_csv(oscillations_file, "difform_1")
+# f_stiffness_diff[1] = basis.read_array_from_csv(oscillations_file, "difform_2")
+# f_stiffness_diff[2] = basis.read_array_from_csv(oscillations_file, "difform_3")
+# coord_stiffness = basis.read_array_from_csv(oscillations_file, "length")
+
+# freq_file = "output/"+rocketname+"_frequency.csv"
+# freq_time = basis.read_array_from_csv(freq_file, "time")
+# freq_mass = basis.read_array_from_csv(freq_file, "freq_mass_1")
+
+
+def get_attack_from_coefs(vel, time):
+    """Получение угла атаки по коэффициентам из парсера"""
+    alpha_obj = attack.alpha(
+        parser.attack_coefs[0], parser.attack_coefs[1], parser.work_time[0], False
     )
-
-    # Стадия 2: Локальная оптимизация
-    print("\n--- СТАДИЯ 2: Локальная оптимизация (SLSQP) ---")
-
-    def callback_local(xk):
-        """Callback для отслеживания прогресса в локальной оптимизации"""
-        return target_achieved
-
-    result_stage2 = minimize(
-        improved_objective_function,
-        result_stage1.x,
-        method="SLSQP",
-        bounds=[COEF1_RANGE, COEF2_RANGE],
-        options={"maxiter": 50, "disp": True, "ftol": 1e-8, "eps": 1e-4},
-        callback=callback_local,
-    )
-
-    # Проверяем, не достигнута ли цель
-    if target_achieved:
-        print("🎯 Цель достигнута на стадии локальной оптимизации!")
-        return best_coefficients
-
-    print(
-        f"Результат локальной оптимизации: {result_stage2.x}, score={result_stage2.fun:.4f}"
-    )
-
-    # Стадия 3: Финальная тонкая настройка (только если цель еще не достигнута)
-    print("\n--- СТАДИЯ 3: Тонкая настройка (Nelder-Mead) ---")
-    result_stage3 = minimize(
-        improved_objective_function,
-        result_stage2.x,
-        method="Nelder-Mead",
-        options={"maxiter": 30, "disp": True, "xatol": 1e-5, "fatol": 1e-5},
-        callback=callback_local,
-    )
-
-    print(f"Финальный результат: {result_stage3.x}, score={result_stage3.fun:.4f}")
-
-    return result_stage3.x
+    alpha_val = alpha_obj.calculate_alpha(vel, time)
+    return max(-30, min(30, alpha_val))
 
 
-def optimize_coefficients_if_needed():
-    """Оптимизирует коэффициенты только если это необходимо"""
-    global best_coefficients, best_score, target_achieved
-
-    # Сначала проверяем текущие коэффициенты
-    coefficients_ok, current_coefs = check_current_coefficients()
-
-    if coefficients_ok:
-        best_coefficients = current_coefs
-        best_score = 0
-        target_achieved = True
-        print(f"\n✅ Используем текущие коэффициенты: {best_coefficients}")
-        return best_coefficients
-
-    # Если нужна оптимизация, запускаем многостадийный процесс
-    print(f"\n🔄 Запуск оптимизации коэффициентов в диапазонах:")
-    print(f"   coef1: {COEF1_RANGE[0]} - {COEF1_RANGE[1]}")
-    print(f"   coef2: {COEF2_RANGE[0]} - {COEF2_RANGE[1]}")
-
-    best_coefficients = multi_stage_optimization()
-
-    if target_achieved:
-        print(f"\n🎉 ОПТИМИЗАЦИЯ ЗАВЕРШЕНА - ЦЕЛЬ ДОСТИГНУТА!")
-        print(f"Лучшие коэффициенты: {best_coefficients}")
-    else:
-        print(f"\n🎉 ОПТИМИЗАЦИЯ ЗАВЕРШЕНА!")
-        print(f"Лучшие коэффициенты: {best_coefficients}")
-        print(f"Лучший score: {best_score:.6f}")
-
-    # Проверяем, что коэффициенты в нужных диапазонах
-    coef1_ok = COEF1_RANGE[0] <= best_coefficients[0] <= COEF1_RANGE[1]
-    coef2_ok = COEF2_RANGE[0] <= best_coefficients[1] <= COEF2_RANGE[1]
-
-    if not coef1_ok or not coef2_ok:
-        print(f"⚠️  ВНИМАНИЕ: коэффициенты вышли за допустимые границы!")
-        if not coef1_ok:
-            print(
-                f"   coef1={best_coefficients[0]} должен быть в диапазоне {COEF1_RANGE}"
-            )
-        if not coef2_ok:
-            print(
-                f"   coef2={best_coefficients[1]} должен быть в диапазоне {COEF2_RANGE}"
-            )
-
-        # Обрезаем коэффициенты до допустимых значений
-        best_coefficients[0] = max(
-            COEF1_RANGE[0], min(COEF1_RANGE[1], best_coefficients[0])
-        )
-        best_coefficients[1] = max(
-            COEF2_RANGE[0], min(COEF2_RANGE[1], best_coefficients[1])
-        )
-        print(f"   Обрезанные коэффициенты: {best_coefficients}")
-
-    # Выводим историю лучших результатов
-    if optimization_history:
-        print(f"\n📊 ИСТОРИЯ ОПТИМИЗАЦИИ (топ-5):")
-        sorted_history = sorted(optimization_history, key=lambda x: x["score"])[:5]
-        for i, result in enumerate(sorted_history):
-            print(
-                f"{i+1}. coefs={result['coefs']}, v={result['velocity']:.1f} м/с, "
-                f"h={result['altitude']/1000:.1f} км, angle={result['angle']:.1f}°, "
-                f"final_α={result['final_attack']:.1f}°, score={result['score']:.4f}"
-            )
-
-    return best_coefficients
+def fall_event(t, y, parser, get_attack_func):
+    return y[3]
 
 
-def analyze_trajectory(sol, coefs):
-    """Анализирует траекторию и дает рекомендации"""
-    if not sol or len(sol.y[2]) == 0:
-        return
-
-    final_velocity = sol.y[2][-1]
-    final_altitude = sol.y[3][-1]
-    final_angle = sol.y[1][-1] * 180 / np.pi
-    final_attack = attack_list[-1] if attack_list else 0
-
-    print(f"\n📈 АНАЛИЗ ТРАЕКТОРИИ:")
-    print(f"Финальная скорость: {final_velocity:.1f} м/с")
-    print(f"Финальная высота: {final_altitude/1000:.1f} км")
-    print(f"Финальный угол траектории: {final_angle:.1f}°")
-    print(f"Финальный угол атаки: {final_attack:.1f}°")
-
-    # Анализ угла атаки
-    if abs(final_attack) < TARGET_FINAL_ATTACK_MIN:
-        print("❌ ПРОБЛЕМА: Слишком маленький финальный угол атаки")
-        print("   Рекомендация: Увеличить коэффициенты управления углом атаки")
-    else:
-        print("✅ Финальный угол атаки достиг цели")
-
-    # Остальной анализ проблем
-    target_altitude = 200000
-    if final_altitude > target_altitude + 100000:
-        print("❌ ПРОБЛЕМА: Слишком большая высота")
-        print("   Рекомендация: Увеличить коэффициент наклона траектории")
-    elif final_altitude < target_altitude - 50000:
-        print("❌ ПРОБЛЕМА: Слишком малая высота")
-        print("   Рекомендация: Уменьшить коэффициент наклона траектории")
-
-    if abs(final_angle) > 45:
-        print("❌ ПРОБЛЕМА: Слишком большой угол траектории")
-        print("   Рекомендация: Настроить коэффициенты управления углом")
-
-
-def final_simulation_with_coefficients(coefs, description=""):
-    """Запускает финальную симуляцию с заданными коэффициентами"""
-    global Cbs_list, Cyw_list, Cww_list, Cyy_list, Cwy_list, Cwb_list, Csb_list
-    global attack_list, time_list, wind_list
-    global vel_list, traj_list, alt_list
-
-    # Очищаем глобальные списки
-    lists_to_clear = [attack_list, time_list, wind_list, vel_list, traj_list, alt_list]
-    for lst in lists_to_clear:
-        lst.clear()
-
-    print(f"\n{description}")
-    print(f"Коэффициенты: {coefs}")
-
-    # Проверяем границы коэффициентов
-    coef1_ok = COEF1_RANGE[0] <= coefs[0] <= COEF1_RANGE[1]
-    coef2_ok = COEF2_RANGE[0] <= coefs[1] <= COEF2_RANGE[1]
-
-    if not coef1_ok or not coef2_ok:
-        print(f"⚠️  ВНИМАНИЕ: коэффициенты вне допустимых диапазонов!")
-        print(f"   coef1 должен быть в {COEF1_RANGE}, сейчас {coefs[0]}")
-        print(f"   coef2 должен быть в {COEF2_RANGE}, сейчас {coefs[1]}")
-        return None
-
-    alpha_obj = attack.alpha(coefs[0], coefs[1], parser.work_time[0], False)
-
-    def get_attack(vel, time):
-        alpha_val = alpha_obj.calculate_alpha(vel, time)
-        return alpha_val
-
-    def fall_event(t, y, parser, get_attack_func):
-        return y[3]
-
-    fall_event.terminal = True
-    fall_event.direction = -1
-
-    ft = parser.get_full_time()
-    h = basis.timestep
-    t_span = (0, min(ft - 1, 800))
-    y0 = [0, np.pi / 2, 10.0, 100.0, 0.1]
-
-    try:
-        sol = solve_ivp(
-            system,
-            t_span,
-            y0,
-            method="RK45",
-            max_step=h,
-            args=(parser, get_attack),
-            events=fall_event,
-            rtol=1e-6,
-            atol=1e-8,
-        )
-
-        if sol.success:
-            # Анализ траектории
-            analyze_trajectory(sol, coefs)
-
-            fall_detected = sol.t_events and len(sol.t_events[0]) > 0
-
-            print("\n=== РЕЗУЛЬТАТЫ ===")
-            if fall_detected:
-                fall_time = sol.t_events[0][0]
-                print(f"❌ ПАДЕНИЕ на {fall_time:.1f} секунде")
-            else:
-                final_velocity = sol.y[2][-1]
-                final_altitude = sol.y[3][-1]
-                final_angle = sol.y[1][-1] * 180 / np.pi
-                final_attack = attack_list[-1] if attack_list else 0
-
-                print(f"Конечная скорость: {final_velocity:.2f} м/с")
-                print(f"Конечная высота: {final_altitude/1000:.2f} км")
-                print(f"Конечный угол траектории: {final_angle:.2f}°")
-                print(f"Конечный угол атаки: {final_attack:.2f}°")
-
-            if attack_list:
-                print(f"Максимальная атака: {max(attack_list):.2f}°")
-                print(f"Атака в конце: {attack_list[-1]:.2f}°")
-
-            # Проверка целевых параметров
-            if not fall_detected:
-                target_velocity = TARGET_VELOCITY
-                target_altitude_min = TARGET_ALTITUDE_MIN
-                target_altitude_max = TARGET_ALTITUDE_MAX
-                target_angle_range = TARGET_ANGLE_RANGE
-
-                final_velocity = sol.y[2][-1]
-                final_altitude = sol.y[3][-1]
-                final_angle = sol.y[1][-1] * 180 / np.pi
-                final_attack = attack_list[-1] if attack_list else 0
-                print(f"\n=== ПРОВЕРКА ЦЕЛЕВЫХ ПАРАМЕТРОВ ===")
-                print(f"Целевая скорость: > {target_velocity} м/с")
-                print(
-                    f"Достигнутая скорость: {final_velocity:.2f} м/с - {'✅' if final_velocity >= target_velocity else '❌'}"
-                )
-
-                print(
-                    f"Целевая высота: {target_altitude_min/1000:.1f}-{target_altitude_max/1000:.1f} км"
-                )
-                print(
-                    f"Достигнутая высота: {final_altitude/1000:.2f} км - "
-                    f"{'✅' if target_altitude_min <= final_altitude <= target_altitude_max else '❌'}"
-                )
-
-                print(f"Целевой угол траектории: 0±{target_angle_range}°")
-                print(
-                    f"Достигнутый угол траектории: {final_angle:.2f}° - "
-                    f"{'✅' if abs(final_angle) <= target_angle_range else '❌'}"
-                )
-
-                print(f"Целевой финальный угол атаки: > {TARGET_FINAL_ATTACK_MIN}°")
-                print(
-                    f"Достигнутый финальный угол атаки: {final_attack:.2f}° - "
-                    f"{'✅' if abs(final_attack) >= TARGET_FINAL_ATTACK_MIN else '❌'}"
-                )
-
-                velocity_ok = final_velocity >= target_velocity
-                altitude_ok = (
-                    target_altitude_min <= final_altitude <= target_altitude_max
-                )
-                angle_ok = abs(final_angle) <= target_angle_range
-                attack_ok = abs(final_attack) >= TARGET_FINAL_ATTACK_MIN
-
-                if velocity_ok and altitude_ok and angle_ok and attack_ok:
-                    print(f"\n🎯 ВСЕ ЦЕЛЕВЫЕ ПАРАМЕТРЫ ДОСТИГНУТЫ!")
-                    update_rocket_json(
-                        coefs.tolist() if hasattr(coefs, "tolist") else coefs
-                    )
-                else:
-                    print(
-                        f"\n⚠️  Не все целевые параметры достигнуты. Необходима дальнейшая оптимизация."
-                    )
-
-        return sol
-
-    except Exception as e:
-        print(f"❌ Ошибка при финальной симуляции: {e}")
-        return None
+fall_event.terminal = True
+fall_event.direction = -1
 
 
 def system(t, vars, parser, get_attack_func):
@@ -772,7 +97,6 @@ class ballistics:
         self.get_attack_func = get_attack_func
 
         self.G = aero.UnionStream()
-        #TODO: parts, no sections
         self.G.set_elnumber(parser.get_block_number() + 1)
         self.G.set_diameter(parser.get_part_diameters())
         self.G.set_length(parser.get_part_length())
@@ -789,13 +113,13 @@ class ballistics:
         self.last_time = None
 
     def update_params(self, time):
+        print(round(time / parser.full_time * 100), "%", end="\r")
         if self.last_time != time:
-            self.thrust  = self.parser.get_thrust_from_time(time)
-            self.mass    = self.parser.get_mass_from_time(time)
+            self.thrust = self.parser.get_thrust_from_time(time)
+            self.mass = self.parser.get_mass_from_time(time)
             self.inertia = self.parser.get_inertia_from_time(time)
-            self.center  = self.parser.get_center_from_time(time)
+            self.center = self.parser.get_center_from_time(time)
 
-            # Проверка на None значения
             if self.center is None:
                 self.center = 0.0
             if self.thrust is None:
@@ -805,18 +129,24 @@ class ballistics:
             if self.inertia is None:
                 self.inertia = 0.1
 
-            self.attack = self.get_attack_func(self.vel, time) * np.pi / 180
+            self.attack = np.radians(self.get_attack_func(self.vel, time))
             self.G.calculate_CXY(self.vel, self.alt, self.attack)
-
+            self.attack += aeroelasticity2.aero_attack(self.G.CY, self.dypressure, time)
+            self.G.calculate_CXY(self.vel, self.alt, self.attack)
             self.atm = atmo.atmosphere(self.alt)
             self.dencity = self.atm.get_density()
             self.wind = self.atm.get_wind()
 
-            if not hasattr(self.G, "focus_position") or self.G.focus_position is None:
-                focus_pos = 0.0
-            else:
-                focus_pos = self.G.focus_position
+            if self.alt < 100:
+                sv = self.atm.get_SV()
+                mach_list.append(self.vel / sv)
 
+            focus_pos = (
+                self.G.focus_position
+                if hasattr(self.G, "focus_position")
+                and self.G.focus_position is not None
+                else 0.0
+            )
             self.first_point = abs(focus_pos - self.center)
             self.second_point = abs(self.parser.rocket_length - self.center)
 
@@ -831,95 +161,54 @@ class ballistics:
             self.last_time = time
             self.dypressure = self.dencity * self.vel**2 / 2
 
-            # Записываем данные для вывода
-            # ballistics data
+            # Запись данных
             attack_list.append(self.attack * 180 / np.pi)
             vel_list.append(self.vel)
             traj_list.append(self.Y * 180 / np.pi)
             alt_list.append(self.alt)
             time_list.append(time)
             wind_list.append(self.wind)
-            # common dynamics data
-            Cbs_list.append(- self.thrust * self.parser.thrust_ratio / self.mass)
-            Cyw_list.append(
-                -(self.thrust + self.G.CY * self.dypressure * self.parser.maximum_area)
-                / self.mass
-            )
-            Cww_list.append(
-                (
-                    -self.G.CY
-                    * self.dypressure
-                    * self.parser.maximum_area
-                    * self.first_point
-                )
-                / self.inertia
-            )
-            Cyy_list.append(
-                (self.G.CY * self.dypressure * self.parser.maximum_area)
-                / (self.mass * self.vel)
-            )
-            Cwy_list.append(
-                (
-                    self.G.CY
-                    * self.dypressure
-                    * self.parser.maximum_area
-                    * self.first_point
-                )
-                / self.inertia
-                / self.vel
-            )
-            Cwb_list.append(
-                self.thrust
-                * self.parser.thrust_ratio
-                * self.second_point
-                / self.inertia
-            )
-            # stiffness data
-            for k in range(basis.mode_num):
-                Csw_list[k].append(
-                    self.thrust
-                    * self.parser.thrust_ratio
-                    / self.inertia
-                    * (
-                        (self.second_point - self.parser.rocket_length)
-                        * f_stiffness_diff[k][-1]
-                        + f_stiffness[k][-1]
-                    )
-                )
-                Csy_list[k].append(
-                    self.thrust
-                    * self.parser.thrust_ratio
-                    * f_stiffness_diff[k][-1]
-                    / self.mass
-                )
-                Csb_list[k].append(
-                    self.thrust
-                    * self.parser.thrust_ratio
-                    / self.inertia
-                    * f_stiffness[k][-1]
-                )
-            # aerostiffness data
-            stream_ratio = - self.parser.maximum_area*self.dypressure
-            cy_integral = [0,0,0]
+            Q_list.append(self.dypressure)
+            thrust_list.append(self.thrust)
+            aog_list.append(self.atm.get_AOG())
+            mass_list.append(self.mass)
+            # mach_list.append(self.mach)
 
-            delta_stiffness = 1
-            mass_s = basis.get_y(time, freq_time, freq_mass)
+            # Cbs_list.append(-self.thrust * self.parser.thrust_ratio / self.mass)
+            # Cyw_list.append(-(self.thrust + self.G.CY * self.dypressure * self.parser.maximum_area) / self.mass)
+            # Cww_list.append((-self.G.CY * self.dypressure * self.parser.maximum_area * self.first_point) / self.inertia)
+            # Cyy_list.append((self.G.CY * self.dypressure * self.parser.maximum_area) / (self.mass * self.vel))
+            # Cwy_list.append((self.G.CY * self.dypressure * self.parser.maximum_area * self.first_point) / self.inertia / self.vel)
+            # Cwb_list.append(self.thrust * self.parser.thrust_ratio * self.second_point / self.inertia)
 
-            for f, scoord in enumerate(coord_stiffness):
-                dcy = self.G.get_cya_from_coord(scoord)
-                cy_integral[0]+=dcy*f_stiffness_diff[0][f]*(scoord-self.second_point)/delta_stiffness
-                cy_integral[1]+=dcy*f_stiffness_diff[0][f]/delta_stiffness
-                cy_integral[2]+=dcy*f_stiffness[0][f]*f_stiffness_diff[0][f]/delta_stiffness
+            # for k in range(basis.mode_num):
+            #     Csw_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia *
+            #                       ((self.second_point - self.parser.rocket_length) * f_stiffness_diff[k][-1] + f_stiffness[k][-1]))
+            #     Csy_list[k].append(self.thrust * self.parser.thrust_ratio * f_stiffness_diff[k][-1] / self.mass)
+            #     Csb_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia * f_stiffness[k][-1])
 
-            CswQ_list.append(stream_ratio/self.inertia*cy_integral[0])
-            CsyQ_list.append(stream_ratio/self.mass*cy_integral[1])
-            CssQ_list.append(stream_ratio/mass_s*cy_integral[2])
+            # stream_ratio = -self.parser.maximum_area * self.dypressure
+            # cy_integral = [0, 0, 0]
+            # delta_stiffness = 1
+            # mass_s = basis.get_y(time, freq_time, freq_mass)
+
+            # for f, scoord in enumerate(coord_stiffness):
+            #     dcy = self.G.get_cya_from_coord(scoord)
+            #     cy_integral[0] += dcy * f_stiffness_diff[0][f] * (scoord - self.second_point) / delta_stiffness
+            #     cy_integral[1] += dcy * f_stiffness_diff[0][f] / delta_stiffness
+            #     cy_integral[2] += dcy * f_stiffness[0][f] * f_stiffness_diff[0][f] / delta_stiffness
+
+            # CswQ_list.append(stream_ratio / self.inertia * cy_integral[0])
+            # CsyQ_list.append(stream_ratio / self.mass * cy_integral[1])
+            # CssQ_list.append(stream_ratio / mass_s * cy_integral[2])
 
     def delta_velocity(self, time):
         self.update_params(time)
         F_P = self.thrust * np.cos(self.attack)
         F_X = self.G.CX * self.dypressure * self.parser.maximum_area
-        return (F_P - F_X) / self.mass - self.atm.get_AOG() * np.sin(self.Y)
+        res = (F_P - F_X) / self.mass - self.atm.get_AOG() * np.sin(self.Y)
+        acceleration_list.append(res)
+        return res
 
     def delta_trajangle(self, time):
         self.update_params(time)
@@ -974,102 +263,144 @@ def output(parser):
         Csb3=Csb_list[2],
         CswQ=CswQ_list,
         CsyQ=CsyQ_list,
-        CssQ=CssQ_list
+        CssQ=CssQ_list,
     )
 
 
-def update_rocket_json(new_coefficients):
-    """Обновляет коэффициенты в JSON файле ракеты"""
-    json_path = "rocket_lib/" + rocketname + "constant.json"
+def to_reverse(parser):
+    """Сохранение результатов в файл с интервалом ~1 секунда"""
+    rocketname = parser.name
 
-    try:
-        with open(json_path, "r", encoding="utf-8") as file:
-            data = json.load(file)
+    # Прореживание массивов до ~1 секунды
+    time_reduced = []
+    mass_reduced = []
+    acceleration_reduced = []
+    thrust_reduced = []
+    q_reduced = []
+    g_reduced = []
+    tetta_reduced = []
+    vel_reduced = []
 
-        data["attack_coefs"] = new_coefficients
+    # Интервал округления (секунды)
+    interval = 1.0
 
-        with open(json_path, "w", encoding="utf-8") as file:
-            json.dump(data, file, indent=2, ensure_ascii=False)
+    last_saved_time = -interval  # чтобы первая точка сохранилась
 
-        print(f"✅ Коэффициенты успешно обновлены в файле: {json_path}")
-        print(f"✅ Новые коэффициенты: {new_coefficients}")
+    for i in range(len(time_list)):
+        current_time = time_list[i]
 
-        return True
+        # Сохраняем, если прошло достаточно времени или это последняя точка
+        if current_time - last_saved_time >= interval - 1e-9 or i == len(time_list) - 1:
+            time_reduced.append(current_time)
+            mass_reduced.append(mass_list[i])
+            acceleration_reduced.append(acceleration_list[i])
+            thrust_reduced.append(thrust_list[i])
+            q_reduced.append(Q_list[i])
+            g_reduced.append(aog_list[i])
+            tetta_reduced.append(traj_list[i])
+            vel_reduced.append(vel_list[i])
+            last_saved_time = current_time
 
-    except Exception as e:
-        print(f"❌ Ошибка при обновлении JSON файла: {e}")
-        return False
+    basis.write_arrays_to_csv(
+        "output/" + rocketname + "_ball_data.csv",
+        time=time_reduced,
+        vel=vel_reduced,
+        mass=mass_reduced,
+        acceleration=acceleration_reduced,
+        thrust=thrust_reduced,
+        q=q_reduced,
+        g=g_reduced,
+        tetta=tetta_reduced,
+    )
+
+    print(f"Сжатие данных: {len(time_list)} -> {len(time_reduced)} точек")
 
 
 def main():
-    """Основная функция"""
-    global target_achieved
-
     print("ЗАПУСК БАЛЛИСТИЧЕСКОГО РАСЧЕТА")
     print("=" * 60)
-    print("Целевые параметры:")
-    print(f"- Скорость > {TARGET_VELOCITY} м/с (первая космическая)")
-    print(f"- Высота: {TARGET_ALTITUDE_MIN/1000}-{TARGET_ALTITUDE_MAX/1000} км")
-    print(f"- Угол наклона траектории: 0±{TARGET_ANGLE_RANGE}°")
-    print(f"- Финальный угол атаки: > {TARGET_FINAL_ATTACK_MIN}°")
-    print("=" * 60)
-    print(f"Диапазоны коэффициентов:")
-    print(f"- coef1: {COEF1_RANGE[0]} - {COEF1_RANGE[1]}")
-    print(f"- coef2: {COEF2_RANGE[0]} - {COEF2_RANGE[1]}")
+    print(f"Ракета: {rocketname}")
+    print(f"Коэффициенты управления: {parser.attack_coefs}")
     print("=" * 60)
 
-    # Проверяем текущие коэффициенты и оптимизируем только если нужно
-    final_coefficients = optimize_coefficients_if_needed()
+    # Начальные условия
+    ft = parser.get_full_time()
+    h = basis.timestep
+    t_span = (0, min(ft - 1, 800))
+    y0 = [0, np.pi / 2, 10.0, 100.0, 0.1]
 
-    # Запускаем финальную симуляцию только если цель не была достигнута ранее
-    if not target_achieved and best_coefficients is not None:
-        final_simulation_with_coefficients(final_coefficients, "ФИНАЛЬНАЯ СИМУЛЯЦИЯ:")
-    elif target_achieved:
-        print(f"\n✅ Оптимизация не требуется - целевые параметры уже достигнуты!")
-        print(f"Используемые коэффициенты: {best_coefficients}")
+    # Запуск симуляции
+    sol = solve_ivp(
+        system,
+        t_span,
+        y0,
+        method="RK45",
+        max_step=h,
+        args=(parser, get_attack_from_coefs),
+        events=fall_event,
+        rtol=1e-6,
+        atol=1e-8,
+    )
+
+    if sol.success:
+        final_velocity = sol.y[2][-1]
+        final_altitude = sol.y[3][-1]
+        final_angle = sol.y[1][-1] * 180 / np.pi
+        final_attack = attack_list[-1] if attack_list else 0
+
+        print("\n=== РЕЗУЛЬТАТЫ РАСЧЕТА ===")
+        print(f"Конечная скорость: {final_velocity:.2f} м/с")
+        print(f"Конечная высота: {final_altitude/1000:.2f} км")
+        print(f"Конечный угол траектории: {final_angle:.2f}°")
+        print(f"Конечный угол атаки: {final_attack:.2f}°")
+        print(f"Максимальный угол атаки: {max(attack_list):.2f}°")
+
         output(parser)
+        to_reverse(parser)
+    else:
+        print("❌ Ошибка при расчете траектории")
+
+    return sol
 
 
-from scipy.optimize import differential_evolution, Bounds
-from scipy.optimize import minimize
-from scipy.integrate import solve_ivp
-import math
+# Запуск расчета
+sol = main()
 
-main()
+# Построение графиков
+if time_list:
+    plt.figure(figsize=(15, 10))
 
-plt.figure(figsize=(15, 10))
+    plt.subplot(2, 2, 1)
+    plt.plot(time_list, attack_list, label="Угол атаки α(t)", color="red")
+    plt.xlabel("Время, с")
+    plt.ylabel("Угол атаки, градусы")
+    plt.title("Угол атаки по времени")
+    plt.legend()
+    plt.grid(True)
 
-plt.subplot(2, 2, 1)
-plt.plot(time_list, attack_list, label="Угол атаки α(t)", color="red")
-plt.xlabel("Время, с")
-plt.ylabel("Угол атаки, градусы")
-plt.title("Угол атаки по времени")
-plt.legend()
-plt.grid(True)
+    plt.subplot(2, 2, 2)
+    plt.plot(time_list, alt_list, label="Высота h(t)", color="blue")
+    plt.xlabel("Время, с")
+    plt.ylabel("Высота, м")
+    plt.title("Высота по времени")
+    plt.legend()
+    plt.grid(True)
 
-plt.subplot(2, 2, 2)
-plt.plot(time_list, alt_list, label="Высота h(t)", color="blue")
-plt.xlabel("Время, с")
-plt.ylabel("Высота, м")
-plt.title("Высота по времени")
-plt.legend()
-plt.grid(True)
+    plt.subplot(2, 2, 3)
+    plt.plot(time_list, vel_list, label="Скорость v(t)", color="green")
+    plt.xlabel("Время, с")
+    plt.ylabel("Скорость, м/с")
+    plt.title("Скорость по времени")
+    plt.legend()
+    plt.grid(True)
 
-plt.subplot(2, 2, 3)
-plt.plot(time_list, vel_list, label="Скорость v(t)", color="green")
-plt.xlabel("Время, с")
-plt.ylabel("Скорость, м/с")
-plt.title("Скорость по времени")
-plt.legend()
-plt.grid(True)
+    plt.subplot(2, 2, 4)
+    plt.plot(time_list, traj_list, label="Угол траектории θ(t)", color="purple")
+    plt.xlabel("Время, с")
+    plt.ylabel("Угол траектории, градусы")
+    plt.title("Угол траектории по времени")
+    plt.legend()
+    plt.grid(True)
 
-plt.subplot(2, 2, 4)
-plt.plot(time_list, traj_list, label="Угол траектории θ(t)", color="purple")
-plt.xlabel("Время, с")
-plt.ylabel("Угол траектории, градусы")
-plt.title("Угол траектории по времени")
-plt.legend()
-plt.grid(True)
-
-plt.tight_layout()
-plt.show()
+    plt.tight_layout()
+    plt.show()

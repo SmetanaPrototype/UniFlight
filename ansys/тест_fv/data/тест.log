@@ -1,0 +1,3405 @@
+ Start: ComputeIntegralCharacteristics
+ End:   ComputeIntegralCharacteristics; Timer: cpu0=0.000 wall=0.002 
+RESTART SOLUTION
+
+Project name: тест
+Project path: E:\UniFlight\ansys\тест_fv\data\тест.fvproj
+Current node: 0 (step=0, time=0)
+
+Current input data
+------------------
+Region:
+   LocalFrameRef=(none)
+   Rotation=(none)
+   GeneralSettings:
+      RefValue:
+         Temp=273
+         Pres=101000
+      Gravity:
+         x=9.81
+         y=0
+         z=0
+      GPOINT:
+         x=0
+         y=0
+         z=0
+      g_density=0
+   Substances[0l]:
+      UIName=Substance #0
+      Type=standart
+      State=gas
+      Properties[0l]:
+         Dimension=kg/mole
+         Value=0.029
+      Properties[1l]:
+         Dimension=kg/m^3
+         Value=Ideal gas law
+         dRodP=0
+         dRodT=0
+      Properties[2l]:
+         Dimension=kg/(m*s)
+         Value=2e-05
+      Properties[3l]:
+         Dimension=W/(m*K)
+         Value=0.022
+      Properties[4l]:
+         Dimension=J/(kg*K)
+         Value=1000
+      Properties[5l]:
+         Dimension=J/kg
+         Value=0
+      Properties[6l]:
+         Dimension=J/kg
+         Value=Linear function
+      Properties[7l]:
+         Dimension=Pa
+         Value=0
+      Properties[8l]:
+         Dimension=A
+         Value=0
+      Properties[9l]:
+         Dimension=K
+         Value=0
+      Properties[10l]:
+         Dimension=1/(Ohm*m)
+         Value=0
+      Properties[11l]:
+         Dimension=Relative
+         Value=0
+      Properties[12l]:
+         Dimension=Relative
+         Value=0
+   Phases[0l]:
+      UIName=Phase #0
+      Type=Continuum
+      MuMixingModel=MODEL2_MU
+      LbMixingModel=MODEL2_LB
+      Substances[0l]=Region.Substances[0]
+      Equations:
+         EquationClasses[0l]=(none)
+         EquationClasses[1l]=(none)
+         EquationClasses[2l]=CNavierStokesEqSys
+         EquationClasses[3l]=(none)
+         EquationClasses[4l]=(none)
+         EquationClasses[5l]=(none)
+         EquationClasses[6l]=(none)
+      Diam_Groups_Number_D=1
+   Models[0l]:
+      UIName=Model #0
+      Phases[0l]=Region.Phases[0]
+      InitialData[0l]:
+         UIName=Init. data #0
+         IniVars[0l]:
+            Value:
+               x=34
+               y=1.2
+               z=0
+         IniVars[1l]:
+            Value=0
+      GapModel=(none)
+      GapModelType=(none)
+      Averaging:
+         AveragingStartTime=0
+   VisObjects[0l]:
+      Users[0l]:
+         Settings:
+            MIndex=0
+         Constraints=(none)
+         normal:
+            x=0
+            y=0
+            z=0
+         IceSurface=False
+         EnclaveAnalysis:
+            Enabled=False
+            SmallPolicy=KEEP
+            VolThreshold=0
+      Users[1l]:
+         UIName=Init. condition #0
+         Constraints=(none)
+         ViewObject=Region.VisObjects[0]
+         IniData=Region.Models[0].InitialData[0]
+         Type=WholeCell
+   VisObjects[1l]:
+      UIName=Тело 1
+      Users[0l]:
+         UIName=Тело 1
+         Object=Region.VisObjects[1]
+         Constraints=(none)
+         MarkCellsMode=BY_BOX
+         Activation:
+            Kind=PERMANENT
+            TimeStart=0
+            TimeDuration=0
+            TimePeriod=0
+            IterStart=1
+            IterDuration=1
+            IterPeriod=1
+         Update:
+            Kind=NON
+            Time=0
+            Iteration=1
+         MassProperty:
+            Mass=0
+            CenterInertia:
+               x=0
+               y=0
+               z=0
+            MomentInertia0:
+               x=0
+               y=0
+               z=0
+            MomentInertia1:
+               x=0
+               y=0
+               z=0
+            MomentInertia2:
+               x=0
+               y=0
+               z=0
+         Movement:
+            TimeVel:
+               x=0
+               y=0
+               z=0
+            Velocity:
+               x=0
+               y=0
+               z=0
+            TimeForce:
+               x=0
+               y=0
+               z=0
+            Force:
+               x=0
+               y=0
+               z=0
+            HydroForce:
+               x=True
+               y=True
+               z=True
+            Omega=1
+         Rotation:
+            UseCenterInertia=True
+            Center:
+               x=0
+               y=0
+               z=0
+            TimeVel:
+               x=0
+               y=0
+               z=0
+            Velocity:
+               x=0
+               y=0
+               z=0
+            TimeMoment:
+               x=0
+               y=0
+               z=0
+            Moment:
+               x=0
+               y=0
+               z=0
+            HydroMoment:
+               x=True
+               y=True
+               z=True
+            Omega=1
+         Location:
+            Origin:
+               x=0
+               y=0
+               z=0
+            Def=CUSTOM_AXIS
+            Angle=0
+            Axis:
+               x=1
+               y=0
+               z=0
+            DefEuler=AVIA_RUS_ANGLES
+            DefUser=THREE_AXES_XYZ
+            Gamma=0
+            Alpha=0
+            Beta=0
+            VIS_Ort0:
+               x=1
+               y=0
+               z=0
+            VIS_Ort1:
+               x=0
+               y=1
+               z=0
+            VIS_Ort2:
+               x=0
+               y=0
+               z=1
+            VIS_Scale=1
+         Limitation:
+            LimiterClass=CNoPositionLimiter
+            Limiter=Region.VisObjects[1].Users[0].Limitation.Limiter
+         DOF:
+            Type=NO_LIMITS
+            Point1:
+               x=0
+               y=0
+               z=0
+            Point2:
+               x=1
+               y=1
+               z=1
+            Translation=True
+            Rotation=True
+         FsiParams:
+            ArtCompres=False
+            MB_flexibility=0
+            MB_mobility=0
+         InsideOut=False
+      Location:
+         Origin:
+            x=0
+            y=0
+            z=0
+         Ort0:
+            x=1
+            y=0
+            z=0
+         Ort1:
+            x=0
+            y=1
+            z=0
+         Ort2:
+            x=0
+            y=0
+            z=1
+         Scale=1
+      Source=E:\UniFlight\ansys\\тест_fv\data/Тело 1.vtk
+      Information:
+         NumGroups=0
+         NumFacets=0
+         NumPoints=0
+         Dim:
+            Center:
+               x=0
+               y=0
+               z=0
+            Size:
+               x=0
+               y=0
+               z=0
+            BoxMin:
+               x=0
+               y=0
+               z=0
+            BoxMax:
+               x=0
+               y=0
+               z=0
+      MinLengthOfEdge=0.135292
+   VisObjects[2l]:
+      UIName=Смещенная плоскость:1
+      center:
+         x=0.0005
+         y=0.0005
+         z=0.01
+      normal:
+         x=0
+         y=0
+         z=1
+      shiftAlongNormal=0
+      planePoint:
+         x=0.0005
+         y=0.0005
+         z=0.01
+      Distance=0.01
+   VisObjects[3l]:
+      UIName=Supergroup #0
+      Users[0l]:
+         UIName=Характеристика Результат #1
+         Object=Region.VisObjects[3]
+         Settings:
+            MIndex=0
+         Constraints=(none)
+         SubRegion=Region.VisObjects[3].Users[0].SubRegion
+         MomentPt:
+            x=0
+            y=0
+            z=0
+         normal:
+            x=0
+            y=0
+            z=0
+         Var:
+            Comp=SOURCE
+         IceSurface=False
+         ExtendedData=False
+         EnclaveAnalysis:
+            Enabled=False
+            SmallPolicy=KEEP
+            VolThreshold=0
+   VisObjects[4l]:
+      UIName=Supergroup #1
+      Users[0l]:
+         UIName=Характеристика Результат #2
+         Object=Region.VisObjects[4]
+         Settings:
+            MIndex=0
+         Constraints=(none)
+         SubRegion=Region.VisObjects[3].Users[0].SubRegion
+         MomentPt:
+            x=0
+            y=0
+            z=0
+         normal:
+            x=0
+            y=0
+            z=0
+         Var:
+            Comp=SOURCE
+         IceSurface=False
+         ExtendedData=False
+         EnclaveAnalysis:
+            Enabled=False
+            SmallPolicy=KEEP
+            VolThreshold=0
+   VisCharacteristics[0l]:
+      Settings:
+         MIndex=0
+      Constraints=(none)
+      normal:
+         x=0
+         y=0
+         z=0
+      IceSurface=False
+      EnclaveAnalysis:
+         Enabled=False
+         SmallPolicy=KEEP
+         VolThreshold=0
+   VisCharacteristics[1l]:
+      UIName=Характеристика Результат #1
+      Object=Region.VisObjects[3]
+      Settings:
+         MIndex=0
+      Constraints=(none)
+      SubRegion=Region.VisObjects[3].Users[0].SubRegion
+      MomentPt:
+         x=0
+         y=0
+         z=0
+      normal:
+         x=0
+         y=0
+         z=0
+      Var:
+         Comp=SOURCE
+      IceSurface=False
+      ExtendedData=False
+      EnclaveAnalysis:
+         Enabled=False
+         SmallPolicy=KEEP
+         VolThreshold=0
+   VisCharacteristics[2l]:
+      UIName=Характеристика Результат #2
+      Object=Region.VisObjects[4]
+      Settings:
+         MIndex=0
+      Constraints=(none)
+      SubRegion=Region.VisObjects[3].Users[0].SubRegion
+      MomentPt:
+         x=0
+         y=0
+         z=0
+      normal:
+         x=0
+         y=0
+         z=0
+      Var:
+         Comp=SOURCE
+      IceSurface=False
+      ExtendedData=False
+      EnclaveAnalysis:
+         Enabled=False
+         SmallPolicy=KEEP
+         VolThreshold=0
+   VisibleSubRegs[0l]:
+      UIName=SubRegion #0
+      Model=Region.Models[0]
+      Volume=348399
+      LocalFrameRef=(none)
+      Rotation=(none)
+      BConditions[0l]:
+         UIName=Граничное условие
+         Type=WALL
+         WallTypes[0l]=WALLFUNC_EQUIL
+         Roughness=0
+         Wetangle=90
+         GapSealing=-1
+         AlphaWall=-1
+         GapThermalConductance=-1
+         LocalFrameRef=(none)
+         Rotation=(none)
+         Translation=(none)
+         VarConditions[0l]:
+            PhaseName=Phase #0
+            Type=CBVelWallNonSlip
+         Color=0x00ff0000
+         Area=794.797
+         VarTypes[0l]=CBVelWallNonSlip
+         NumberOfSectors=0
+         BinderCondition=(none)
+         Binder=(none)
+      BConditions[1l]:
+         UIName=EXTENDED_INLET
+         Type=INLETOUTLET
+         WallTypes[0l]=WALLFUNC_EQUIL
+         Roughness=0
+         Wetangle=90
+         GapSealing=-1
+         AlphaWall=-1
+         GapThermalConductance=-1
+         LocalFrameRef=(none)
+         Rotation=(none)
+         Translation=(none)
+         VarConditions[0l]:
+            PhaseName=Phase #0
+            Type=CBVelVectorPres
+            VelVector:
+               x=34
+               y=1.2
+               z=0
+            VIS_Pres=0
+         Color=0x00ff0000
+         Area=0
+         VarTypes[0l]=CBVelVectorPres
+         NumberOfSectors=0
+         BinderCondition=(none)
+         Binder=(none)
+      BConditions[2l]:
+         UIName=EXTENDED_OUTLET
+         Type=FREEOUTLET
+         WallTypes[0l]=WALLFUNC_EQUIL
+         Roughness=0
+         Wetangle=90
+         GapSealing=-1
+         AlphaWall=-1
+         GapThermalConductance=-1
+         LocalFrameRef=(none)
+         Rotation=(none)
+         Translation=(none)
+         VarConditions[0l]:
+            PhaseName=Phase #0
+            Type=CBVelOutlet
+            Pressure=0
+         Color=0x00ff0000
+         Area=0
+         VarTypes[0l]=CBVelOutlet
+         NumberOfSectors=0
+         BinderCondition=(none)
+         Binder=(none)
+      BConditions[3l]:
+         UIName=EXTENDED_NONREFLECT
+         Type=NONREFLECT
+         WallTypes[0l]=WALLFUNC_EQUIL
+         Roughness=0
+         Wetangle=90
+         GapSealing=-1
+         AlphaWall=-1
+         GapThermalConductance=-1
+         LocalFrameRef=(none)
+         Rotation=(none)
+         Translation=(none)
+         VarConditions[0l]:
+            PhaseName=Phase #0
+            Type=CBVelRiemann
+            VelInf:
+               x=34
+               y=1.2
+               z=0
+            PresInf=0
+         Color=0x00ff0000
+         Area=37532.4
+         VarTypes[0l]=CBVelRiemann
+         NumberOfSectors=0
+         BinderCondition=(none)
+         Binder=(none)
+      Filters[0l]:
+         UIName=Тело 1
+         Object=Region.VisObjects[1]
+         Constraints=(none)
+         MarkCellsMode=BY_BOX
+         Activation:
+            Kind=PERMANENT
+            TimeStart=0
+            TimeDuration=0
+            TimePeriod=0
+            IterStart=1
+            IterDuration=1
+            IterPeriod=1
+         Update:
+            Kind=NON
+            Time=0
+            Iteration=1
+         MassProperty:
+            Mass=0
+            CenterInertia:
+               x=0
+               y=0
+               z=0
+            MomentInertia0:
+               x=0
+               y=0
+               z=0
+            MomentInertia1:
+               x=0
+               y=0
+               z=0
+            MomentInertia2:
+               x=0
+               y=0
+               z=0
+         Movement:
+            TimeVel:
+               x=0
+               y=0
+               z=0
+            Velocity:
+               x=0
+               y=0
+               z=0
+            TimeForce:
+               x=0
+               y=0
+               z=0
+            Force:
+               x=0
+               y=0
+               z=0
+            HydroForce:
+               x=True
+               y=True
+               z=True
+            Omega=1
+         Rotation:
+            UseCenterInertia=True
+            Center:
+               x=0
+               y=0
+               z=0
+            TimeVel:
+               x=0
+               y=0
+               z=0
+            Velocity:
+               x=0
+               y=0
+               z=0
+            TimeMoment:
+               x=0
+               y=0
+               z=0
+            Moment:
+               x=0
+               y=0
+               z=0
+            HydroMoment:
+               x=True
+               y=True
+               z=True
+            Omega=1
+         Location:
+            Origin:
+               x=0
+               y=0
+               z=0
+            Def=CUSTOM_AXIS
+            Angle=0
+            Axis:
+               x=1
+               y=0
+               z=0
+            DefEuler=AVIA_RUS_ANGLES
+            DefUser=THREE_AXES_XYZ
+            Gamma=0
+            Alpha=0
+            Beta=0
+            VIS_Ort0:
+               x=1
+               y=0
+               z=0
+            VIS_Ort1:
+               x=0
+               y=1
+               z=0
+            VIS_Ort2:
+               x=0
+               y=0
+               z=1
+            VIS_Scale=1
+         Limitation:
+            LimiterClass=CNoPositionLimiter
+            Limiter=Region.VisObjects[1].Users[0].Limitation.Limiter
+         DOF:
+            Type=NO_LIMITS
+            Point1:
+               x=0
+               y=0
+               z=0
+            Point2:
+               x=1
+               y=1
+               z=1
+            Translation=True
+            Rotation=True
+         FsiParams:
+            ArtCompres=False
+            MB_flexibility=0
+            MB_mobility=0
+         InsideOut=False
+      InitialData[0l]:
+         UIName=Init. condition #0
+         Constraints=(none)
+         ViewObject=Region.VisObjects[0]
+         IniData=Region.Models[0].InitialData[0]
+         Type=WholeCell
+   BinderLinks:
+   ExtInteractions:
+      ExchangeTime:
+         Type=Region.ExtInteractions.ExchangeTime.Type
+         UserStep=0.01
+         UndefStep=0.001
+         StepCoef=1
+      OldOffsetMethod=True
+      SaveAfterReceive=False
+   GridParameters:
+      InitialGrid:
+         GridStruct=GRID_3D
+         GridPlane=PLANE_XY
+         GridDirect=DIRECT_X
+         nx=10
+         X[0l]=-70.6627
+         X[1l]=-49.6627
+         X[2l]=-28.6627
+         X[3l]=-7.66267
+         X[4l]=13.3373
+         X[5l]=34.3373
+         X[6l]=55.3373
+         X[7l]=76.3373
+         X[8l]=97.3373
+         X[9l]=118.337
+         X[10l]=139.337
+         ny=10
+         Y[0l]=-20.3657
+         Y[1l]=-16.2925
+         Y[2l]=-12.2194
+         Y[3l]=-8.14627
+         Y[4l]=-4.07313
+         Y[5l]=0
+         Y[6l]=4.07313
+         Y[7l]=8.14627
+         Y[8l]=12.2194
+         Y[9l]=16.2925
+         Y[10l]=20.3657
+         nz=10
+         Z[0l]=-20.3657
+         Z[1l]=-16.2925
+         Z[2l]=-12.2194
+         Z[3l]=-8.14627
+         Z[4l]=-4.07313
+         Z[5l]=2.4869e-14
+         Z[6l]=4.07313
+         Z[7l]=8.14627
+         Z[8l]=12.2194
+         Z[9l]=16.2925
+         Z[10l]=20.3657
+      Adaptation:
+         Activation:
+            Kind=BYITER
+            TimeStart=0
+            TimeDuration=0
+            TimePeriod=0
+            IterStart=-1
+            IterDuration=2
+            IterPeriod=1000000
+         Criteria[0l]:
+            UIName=Adaptation #0
+            Activation=True
+            maxLevel=0
+            subregArray[0l]=Region.VisObjects[3].Users[0].SubRegion
+            placeArray[0l]:
+               Place=Region.VisObjects[0]
+               Settings:
+                  MIndex=0
+            AdpStatType=MERGE
+            TwoChips=True
+            Concavity=True
+            OpSameBC=True
+            OpDiffConj=True
+            AdpToCurvParams:
+               IsActive=False
+               AddLevels=2
+               SurfCurvMaxAngle=15
+               SurfCurvUpperLimit=120
+            AdpToEdgeParams:
+               IsActive=False
+               AddLevels=2
+               SharpEdgeAngle=60
+            layerCounts[0l]=1
+         Criteria[1l]:
+            UIName=Адаптация #1
+            Activation=True
+            maxLevel=2
+            subregArray[0l]=Region.VisObjects[3].Users[0].SubRegion
+            placeArray[0l]:
+               Place=Region.VisibleSubRegs[0].BConditions[0]
+               Settings:
+                  MIndex=0
+            AdpStatType=DIVIDE
+            TwoChips=True
+            Concavity=True
+            OpSameBC=True
+            OpDiffConj=True
+            AdpToCurvParams:
+               IsActive=False
+               AddLevels=2
+               SurfCurvMaxAngle=15
+               SurfCurvUpperLimit=120
+            AdpToEdgeParams:
+               IsActive=False
+               AddLevels=2
+               SharpEdgeAngle=60
+            layerCounts[0l]=3
+            layerCounts[1l]=3
+      AdaptationToCond:
+         Activation:
+            Kind=PERMANENT
+            TimeStart=0
+            TimeDuration=0
+            TimePeriod=0
+            IterStart=1
+            IterDuration=1
+            IterPeriod=1
+      AdaptationToSolution:
+         Activation:
+            Kind=BYITER
+            TimeStart=0
+            TimeDuration=0
+            TimePeriod=0
+            IterStart=10
+            IterDuration=2
+            IterPeriod=10
+         Criteria[0l]:
+            UIName=Adaptation to solution #0
+            Activation=True
+            maxLevel=2
+            subregArray[0l]=Region.VisObjects[3].Users[0].SubRegion
+            placeArray[0l]:
+               Place=Region.VisObjects[0]
+               Settings:
+                  MIndex=0
+            varArray[0l]:
+               Variable:
+                  Comp=SOURCE
+               Type=GRADIENT
+               Value=0
+               Weight=1
+         cellCount=100000
+      OBLGrids:
+         Activation:
+            Type=PERMANENT
+            IterStart=0
+            TimeStart=0
+   DllManager:
+   Source=E:\UniFlight\ansys\\тест_fv\data/тест.vtk
+   Information:
+      NumGroups=6
+      NumFacets=12
+      NumPoints=8
+      Dim:
+         Center:
+            x=34.3373
+            y=0
+            z=2.4869e-14
+         Size:
+            x=210
+            y=40.7313
+            z=40.7313
+         BoxMin:
+            x=-70.6627
+            y=-20.3657
+            z=-20.3657
+         BoxMax:
+            x=139.337
+            y=20.3657
+            z=20.3657
+   Tolerance=1e-08
+   MinLengthOfEdge=40.7313
+
+
+
+Current controls data
+------------------
+Controls:
+   TimeStep:
+      Type=CFL
+      Step=0.001
+      CFL=30
+      CFLSURF=1e+20
+      CFLDIFF=1e+20
+      CFLSLIDE=1
+      CFLFILM=5
+      Maximum=0.1
+      Minimum=1e-20
+      DisConvergenceLimit=1e-10
+      GradP_use=True
+      ImplicitMotion:
+         MassCorrectionCoeff=1
+         Enabled=False
+         MaxIterations=10
+         IterDuration=5
+         MaxResidual=0.01
+         Relaxation=0.5
+         ArtCompressCoeff=0.75
+   Advanced:
+      Scheme:
+         Type=Smooth
+         Skew=False
+         SchemeType=Implicit
+         TimeStepping:
+            Method=Standard
+            NumCoupling=1
+         SideGradAppr=True
+         PresGrad=Simple
+         PresTotal=PtotSimple
+         OffSpeed=False
+         densDependendConc=False
+         AddSmoothByAdapt=False
+         JointSol=False
+      LES:
+         SolverType=AST
+         RelTol=1e-10
+         UseA=True
+         MaxIterA=100
+         UseS=True
+         MaxIterS=250
+         FinalizeSQD=False
+         UseT=True
+         MaxIterT=400
+      LimValue:
+         StresMax=1e+20
+         PresMin=-1e+20
+         PresMax=1e+20
+         Extrapolation=False
+         FluxMax=1e+20
+      MHDParameters:
+         iterationsnumber=1
+         useMHDtimestep=False
+         diffaktor=0
+      VOFParameters:
+         conservative_VOF=True
+         relaxation_VOF=1
+         VOF_CFL=0
+         useVOFtimestep=True
+         useVOFSRCtimestep=False
+         usedroplets=False
+         vof_LEV=0.0001
+         useConservativeVelocity=False
+         useSigmaSurfGradCalc=False
+      DISPERSEDparam:
+         Type=Upwind
+         FitaDmin=0.001
+         useFilmTimeStep=False
+         IcingActivation:
+            Type=OFF
+            IterStart=0
+            TimeStart=0
+      CheckGrid=False
+      AdaptThroughGap=True
+      Balancing:
+         Kind=NON
+         TimeStart=0
+         TimeDuration=0
+         TimePeriod=0
+         IterStart=1
+         IterDuration=1
+         IterPeriod=1
+      TurbulenceParameters:
+         DistViaPotential=True
+         StandardWF=False
+         Fr_background=0.09
+         T_profile=3
+         T_Kader=False
+         T_variation=False
+      ChemistryParameters:
+         MatrixSolver=False
+      ExportLoadings:
+         SaveData:
+            Kind=NON
+            Time=0
+            Iteration=1
+            Filename=loadings.glo
+            Mode=APPEND
+            UpdateOnStop=False
+            Format=(none)
+         Subject=NODE_LOADINGS
+      MainLog:
+         WriteMainLog=True
+         MainLogDepth=1
+      SlideSurface:
+         Type=Sliding
+      SmoothDiffFluxes=False
+   Limiters:
+      CalcLimiters:
+         CommonCalcLims:
+            K_volumedata=0.5
+         PhaseCalcLims[0l]:
+            EditValues[0l]=1e-10
+            EditValues[1l]=1e+20
+            EditValues[2l]=-1e+20
+            EditValues[3l]=1e+20
+            SmallCellParameters:
+               Type=ABSOLUTE
+               Criteria=0.2
+               DynamicCriteria=0.2
+            VeryViscouseFlow=False
+   AutoSave:
+      NonStationary=False
+      Frequency:
+         Kind=BYITER
+         Time=0
+         Iteration=50
+      SaveVTK:
+         Enabled=False
+         Binary=True
+      EnSight:
+         Enabled=False
+         Binary=True
+   LayerAutoSave:
+      NonStationary=False
+      Frequency:
+         Kind=NON
+         Time=0
+         Iteration=50
+      SaveSolids=True
+   TortAutoSave:
+      Enabled=False
+      AdaptLevel=3
+      Method=Multiply
+   ExportLMS:
+      SubRegion=(none)
+      OnSurface:
+         Enabled=False
+         SplitSources=False
+      InVolume:
+         Enabled=False
+         Box=(none)
+         Grid:
+            LocalSystem=True
+            Nodes1_i=101
+            Nodes2_i=101
+            Nodes3_i=101
+            Nodes1_s=101
+            Nodes2_s=101
+            Nodes3_s=101
+      Start:
+         Kind=BYTIME
+         TimeStart=0
+         IterStart=1
+      Transformation:
+         Origin:
+            x=0
+            y=0
+            z=0
+         Ort0:
+            x=1
+            y=0
+            z=0
+         Ort1:
+            x=0
+            y=1
+            z=0
+         Ort2:
+            x=0
+            y=0
+            z=1
+         Scale=1
+   Stoppers:
+      TimeSpan:
+         begin=0
+         end=5
+      Iterations:
+         Number=1000000
+      StopperResidual[0l]:
+         Level=0
+         Averaging=COMMON
+         AveragingSettings:
+            Kind=BYTIME
+            Time=0
+            Iteration=1
+         Color=0x00006312
+      StopperResidual[1l]:
+         Level=0
+         Averaging=COMMON
+         AveragingSettings:
+            Kind=BYTIME
+            Time=0
+            Iteration=1
+         Color=0x004b4bf4
+      StopperUser[0l]:
+         UIName=Результат #1
+         Level=0
+         Averaging=COMMON
+         AveragingSettings:
+            Kind=BYTIME
+            Time=0
+            Iteration=1
+         Color=0x00006312
+         Object=Controls.Stoppers.StopperUser[0].Object
+         Group=0
+         UGV=14
+         Comp=X
+      StopperUser[1l]:
+         UIName=Результат #2
+         Level=0
+         Averaging=COMMON
+         AveragingSettings:
+            Kind=BYTIME
+            Time=0
+            Iteration=1
+         Color=0x004b4bf4
+         Object=Controls.Stoppers.StopperUser[1].Object
+         Group=0
+         UGV=14
+         Comp=Y
+      Update:
+         Kind=BYTIME
+         Time=0
+         Iteration=1
+      StopIterations=5
+      StartSettings:
+         CheckMode=CHECKITER
+         StartTime=0
+         StartIter=0
+
+
+------------------
+
+SOLUTION STARTED
+FlowVision Solver, version 3.13.01-W64 build 20240822 changeset 0.
+
+13.06.26 16:17:14  ===== PreSolve Step =====
+ Grid rebuild type:  1
+ Start: DistributeGridOnProcessors
+ End:   DistributeGridOnProcessors, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: DistributeFacet
+ End:   DistributeFacet, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: DistributeGridOnProcessors
+ End:   DistributeGridOnProcessors, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: DistributeFacet
+ End:   DistributeFacet, res= 0; Timer: cpu0=0.000 wall=0.000 
+ Start: BuildRealCells
+ End:   BuildRealCells, res= 0; Timer: cpu0=0.078 wall=0.013 
+ Start: SetNeiHyperCells
+ End:   SetNeiHyperCells, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: SetNeiHyperCells
+ End:   SetNeiHyperCells, res= 0; Timer: cpu0=0.156 wall=0.001 
+ Start: TransferSubregs
+ End:   TransferSubregs, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: CreateData
+ End:   CreateData, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 1000 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: DistributeGridOnProcessors
+ End:   DistributeGridOnProcessors, res= 0; Timer: cpu0=0.000 wall=0.009 
+ Start: SetNeiHyperCells
+ End:   SetNeiHyperCells, res= 0; Timer: cpu0=0.000 wall=0.000 
+ Start: DataInitialization
+ End:   DataInitialization; Timer: cpu0=0.000 wall=0.003 
+ End:   ===== PreSolve Step =====; Timer: cpu0=0.234 wall=0.064 
+13.06.26 16:17:15  ===== Processing Layers =====
+13.06.26 16:17:15    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.001 
+13.06.26 16:17:15    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:15    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:15    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.010 
+
+13.06.26 16:17:15  ===== New Time Step =====, Iter number =  0
+ Start: SolidFiltersProcess
+ End:   SolidFiltersProcess, res= 0; Timer: cpu0=0.000 wall=0.004 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.001 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.000 
+ Start: Adaptation, TotalRealCellsCount= 1016 
+ End:   Adaptation; Timer: cpu0=0.375 wall=0.068 
+ Start: DistributeGridOnProcessors
+ End:   DistributeGridOnProcessors, res= 0; Timer: cpu0=0.000 wall=0.009 
+ Start: SetNeiHyperCells
+ End:   SetNeiHyperCells, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: BuildFacetDistribution
+ End:   BuildFacetDistribution; Timer: cpu0=0.000 wall=0.000 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 6.03678e-15, cell= 655:4:4
+ Start: Remove Small Cells
+ End:   Remove Small Cells; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 6.03678e-15, cell= 655:4:4
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: Modify Chip Data
+ End:   Modify Chip Data; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.001 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.312 wall=0.045 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  0; Timer: cpu0=0.688 wall=0.170 
+
+13.06.26 16:17:16  ===== Processing Layers =====
+13.06.26 16:17:16    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.000 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:16    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:16    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:16    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.010 
+
+13.06.26 16:17:16  ===== New Time Step =====, Iter number =  1
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.078 wall=0.002 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.391 wall=0.045 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  1; Timer: cpu0=0.469 wall=0.075 
+
+13.06.26 16:17:17  ===== Processing Layers =====
+13.06.26 16:17:17    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.001 
+13.06.26 16:17:17    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:17    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:17    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.020 
+
+13.06.26 16:17:17  ===== New Time Step =====, Iter number =  2
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.001 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.078 wall=0.043 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.003 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.057 
+ End:   ===== Time Step =====, Iter number =  2; Timer: cpu0=0.078 wall=0.145 
+
+13.06.26 16:17:17  ===== Processing Layers =====
+13.06.26 16:17:17    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.000 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:17    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:18    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:18    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.010 
+
+13.06.26 16:17:18  ===== New Time Step =====, Iter number =  3
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.001 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.312 wall=0.044 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  3; Timer: cpu0=0.312 wall=0.075 
+
+13.06.26 16:17:18  ===== Processing Layers =====
+13.06.26 16:17:18    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.000 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:18    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:18    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:18    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.010 
+
+13.06.26 16:17:18  ===== New Time Step =====, Iter number =  4
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.001 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.001 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.219 wall=0.044 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.003 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  4; Timer: cpu0=0.234 wall=0.073 
+
+13.06.26 16:17:19  ===== Processing Layers =====
+13.06.26 16:17:19    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:19    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:19    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:19    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.012 
+
+13.06.26 16:17:19  ===== New Time Step =====, Iter number =  5
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.001 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.344 wall=0.040 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  5; Timer: cpu0=0.344 wall=0.070 
+
+13.06.26 16:17:19  ===== Processing Layers =====
+13.06.26 16:17:19    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:19    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:19    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:19    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.013 
+
+13.06.26 16:17:19  ===== New Time Step =====, Iter number =  6
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.016 wall=0.002 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.188 wall=0.041 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.003 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  6; Timer: cpu0=0.203 wall=0.071 
+
+13.06.26 16:17:20  ===== Processing Layers =====
+13.06.26 16:17:20    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.172 wall=0.002 
+13.06.26 16:17:20    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:20    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:20    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.012 
+
+13.06.26 16:17:20  ===== New Time Step =====, Iter number =  7
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.001 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.359 wall=0.041 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.003 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.004 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  7; Timer: cpu0=0.359 wall=0.080 
+
+13.06.26 16:17:20  ===== Processing Layers =====
+13.06.26 16:17:20    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:20    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:20    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:20    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.011 
+
+13.06.26 16:17:20  ===== New Time Step =====, Iter number =  8
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.000 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.001 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.359 wall=0.045 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  8; Timer: cpu0=0.359 wall=0.076 
+
+13.06.26 16:17:21  ===== Processing Layers =====
+13.06.26 16:17:21    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:21    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:21    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:21    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.013 
+
+13.06.26 16:17:21  ===== New Time Step =====, Iter number =  9
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.002 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.000 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.078 wall=0.003 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.001 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=0.141 wall=0.041 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.002 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  9; Timer: cpu0=0.219 wall=0.073 
+
+13.06.26 16:17:21  ===== Processing Layers =====
+13.06.26 16:17:21    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.002 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.002 
+13.06.26 16:17:21    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:21    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:21    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.013 
+
+13.06.26 16:17:21  ===== New Time Step =====, Iter number =  10
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.001 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 3472 
+ End:   Adaptation; Timer: cpu0=0.562 wall=0.121 
+ Start: DistributeGridOnProcessors
+ End:   DistributeGridOnProcessors, res= 0; Timer: cpu0=0.016 wall=0.029 
+ Start: SetNeiHyperCells
+ End:   SetNeiHyperCells, res= 0; Timer: cpu0=0.109 wall=0.002 
+ Start: BuildFacetDistribution
+ End:   BuildFacetDistribution; Timer: cpu0=0.000 wall=0.001 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 1.23999e-14, cell= 981:6:0
+ Start: Remove Small Cells
+ End:   Remove Small Cells; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 5.35356e-15, cell= 655:4:1:1:0
+  ***** Maximum MovingSurf  Gauss = 1.23999e-14, cell= 981:6:0
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: Modify Chip Data
+ End:   Modify Chip Data; Timer: cpu0=0.000 wall=0.005 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.000 wall=0.009 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.000 wall=0.007 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=1.219 wall=0.191 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.156 wall=0.006 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  10; Timer: cpu0=2.141 wall=0.418 
+
+13.06.26 16:17:22  ===== Processing Layers =====
+13.06.26 16:17:22    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.001 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.004 
+13.06.26 16:17:22    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:22    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:22    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.156 wall=0.016 
+
+13.06.26 16:17:22  ===== New Time Step =====, Iter number =  11
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.125 wall=0.008 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 17584 
+ End:   Adaptation; Timer: cpu0=3.141 wall=0.556 
+ Start: DistributeGridOnProcessors
+ End:   DistributeGridOnProcessors, res= 0; Timer: cpu0=0.297 wall=0.105 
+ Start: SetNeiHyperCells
+ End:   SetNeiHyperCells, res= 0; Timer: cpu0=0.000 wall=0.005 
+ Start: BuildFacetDistribution
+ End:   BuildFacetDistribution; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 6.15099e-14, cell= 906:4:5:0
+ Start: Remove Small Cells
+ End:   Remove Small Cells; Timer: cpu0=0.156 wall=0.009 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 6.15099e-14, cell= 906:4:5:0
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: Modify Chip Data
+ End:   Modify Chip Data; Timer: cpu0=0.000 wall=0.011 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.328 wall=0.033 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.219 wall=0.051 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=7.016 wall=0.802 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.156 wall=0.021 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  11; Timer: cpu0=11.609 wall=1.675 
+
+13.06.26 16:17:24  ===== Processing Layers =====
+13.06.26 16:17:24    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:17:24    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:24    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:24    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.023 
+
+13.06.26 16:17:24  ===== New Time Step =====, Iter number =  12
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.328 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.003 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.328 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.045 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.641 wall=0.791 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.344 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  12; Timer: cpu0=7.688 wall=0.971 
+
+13.06.26 16:17:25  ===== Processing Layers =====
+13.06.26 16:17:25    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:25    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:25    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:25    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.125 wall=0.022 
+
+13.06.26 16:17:25  ===== New Time Step =====, Iter number =  13
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.328 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.004 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.172 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.023 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.053 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.484 wall=0.813 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.029 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  13; Timer: cpu0=7.547 wall=1.006 
+
+13.06.26 16:17:27  ===== Processing Layers =====
+13.06.26 16:17:27    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:27    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:27    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:27    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.023 
+
+13.06.26 16:17:27  ===== New Time Step =====, Iter number =  14
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.297 wall=0.028 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.026 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.040 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.266 wall=0.810 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.003 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.021 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  14; Timer: cpu0=7.078 wall=0.977 
+
+13.06.26 16:17:28  ===== Processing Layers =====
+13.06.26 16:17:28    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.016 wall=0.005 
+13.06.26 16:17:28    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:28    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:28    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.025 
+
+13.06.26 16:17:28  ===== New Time Step =====, Iter number =  15
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.003 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.044 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.578 wall=0.818 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.344 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  15; Timer: cpu0=7.484 wall=0.997 
+
+13.06.26 16:17:29  ===== Processing Layers =====
+13.06.26 16:17:29    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.172 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:17:29    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:29    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:29    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.022 
+
+13.06.26 16:17:29  ===== New Time Step =====, Iter number =  16
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.312 wall=0.027 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.031 wall=0.810 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.156 wall=0.023 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  16; Timer: cpu0=7.219 wall=0.979 
+
+13.06.26 16:17:30  ===== Processing Layers =====
+13.06.26 16:17:30    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:30    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:30    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:30    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.023 
+
+13.06.26 16:17:30  ===== New Time Step =====, Iter number =  17
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.188 wall=0.782 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.016 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.027 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  17; Timer: cpu0=7.109 wall=0.959 
+
+13.06.26 16:17:32  ===== Processing Layers =====
+13.06.26 16:17:32    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.141 wall=0.005 
+13.06.26 16:17:32    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:32    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:32    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.141 wall=0.021 
+
+13.06.26 16:17:32  ===== New Time Step =====, Iter number =  18
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.156 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.016 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.027 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.859 wall=0.809 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.156 wall=0.023 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  18; Timer: cpu0=7.578 wall=0.981 
+
+13.06.26 16:17:33  ===== Processing Layers =====
+13.06.26 16:17:33    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.007 
+13.06.26 16:17:33    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:33    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:33    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.156 wall=0.026 
+
+13.06.26 16:17:33  ===== New Time Step =====, Iter number =  19
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.023 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.040 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=5.859 wall=0.808 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.156 wall=0.026 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  19; Timer: cpu0=6.969 wall=0.981 
+
+13.06.26 16:17:34  ===== Processing Layers =====
+13.06.26 16:17:34    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:17:34    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:34    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:34    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.021 
+
+13.06.26 16:17:34  ===== New Time Step =====, Iter number =  20
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.328 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64169 
+ End:   Adaptation; Timer: cpu0=1.188 wall=0.141 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 3.29575e-14, cell= 990:7:7:0
+ Start: Remove Small Cells
+ End:   Remove Small Cells; Timer: cpu0=0.047 wall=0.010 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 3.29575e-14, cell= 990:7:7:0
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: Modify Chip Data
+ End:   Modify Chip Data; Timer: cpu0=0.156 wall=0.020 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.281 wall=0.036 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.062 wall=0.060 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.484 wall=0.805 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.344 wall=0.023 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  20; Timer: cpu0=9.203 wall=1.209 
+
+13.06.26 16:17:36  ===== Processing Layers =====
+13.06.26 16:17:36    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.094 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:36    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:36    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:36    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.094 wall=0.023 
+
+13.06.26 16:17:36  ===== New Time Step =====, Iter number =  21
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.328 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.656 wall=0.104 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.312 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.052 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.812 wall=0.783 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.344 wall=0.022 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  21; Timer: cpu0=8.500 wall=1.069 
+
+13.06.26 16:17:37  ===== Processing Layers =====
+13.06.26 16:17:37    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:17:37    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:37    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:37    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.023 
+
+13.06.26 16:17:37  ===== New Time Step =====, Iter number =  22
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.750 wall=0.794 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.188 wall=0.028 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  22; Timer: cpu0=7.500 wall=0.969 
+
+13.06.26 16:17:38  ===== Processing Layers =====
+13.06.26 16:17:38    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.016 wall=0.006 
+13.06.26 16:17:38    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:38    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:38    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.023 
+
+13.06.26 16:17:38  ===== New Time Step =====, Iter number =  23
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.297 wall=0.028 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.026 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.041 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.312 wall=0.795 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.328 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  23; Timer: cpu0=7.328 wall=0.969 
+
+13.06.26 16:17:40  ===== Processing Layers =====
+13.06.26 16:17:40    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.002 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:17:40    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:40    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:40    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.022 
+
+13.06.26 16:17:40  ===== New Time Step =====, Iter number =  24
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.094 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.203 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.041 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=5.781 wall=0.772 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.125 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  24; Timer: cpu0=6.766 wall=0.948 
+
+13.06.26 16:17:41  ===== Processing Layers =====
+13.06.26 16:17:41    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:41    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:41    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:41    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.078 wall=0.023 
+
+13.06.26 16:17:41  ===== New Time Step =====, Iter number =  25
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.023 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.043 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.766 wall=0.777 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.021 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  25; Timer: cpu0=7.828 wall=0.949 
+
+13.06.26 16:17:42  ===== Processing Layers =====
+13.06.26 16:17:42    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:42    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:42    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:42    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.024 
+
+13.06.26 16:17:42  ===== New Time Step =====, Iter number =  26
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.046 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.188 wall=0.791 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.141 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.141 wall=0.026 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  26; Timer: cpu0=7.453 wall=0.967 
+
+13.06.26 16:17:43  ===== Processing Layers =====
+13.06.26 16:17:43    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:17:43    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:43    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:43    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.021 
+
+13.06.26 16:17:43  ===== New Time Step =====, Iter number =  27
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.027 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.219 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.045 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.531 wall=0.791 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  27; Timer: cpu0=7.484 wall=0.963 
+
+13.06.26 16:17:45  ===== Processing Layers =====
+13.06.26 16:17:45    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:45    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:45    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:45    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.020 
+
+13.06.26 16:17:45  ===== New Time Step =====, Iter number =  28
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.250 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.043 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.516 wall=0.791 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.026 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.016 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  28; Timer: cpu0=7.328 wall=0.965 
+
+13.06.26 16:17:46  ===== Processing Layers =====
+13.06.26 16:17:46    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.172 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:46    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:46    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:46    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.023 
+
+13.06.26 16:17:46  ===== New Time Step =====, Iter number =  29
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.027 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.203 wall=0.042 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.312 wall=0.794 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.078 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  29; Timer: cpu0=7.109 wall=0.967 
+
+13.06.26 16:17:47  ===== Processing Layers =====
+13.06.26 16:17:47    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:47    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:47    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:47    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.023 
+
+13.06.26 16:17:47  ===== New Time Step =====, Iter number =  30
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.688 wall=0.091 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.050 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.000 wall=0.778 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.328 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  30; Timer: cpu0=7.750 wall=1.051 
+
+13.06.26 16:17:48  ===== Processing Layers =====
+13.06.26 16:17:48    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.172 wall=0.002 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.009 
+13.06.26 16:17:48    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:49    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:49    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.028 
+
+13.06.26 16:17:49  ===== New Time Step =====, Iter number =  31
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.312 wall=0.028 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.578 wall=0.099 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.188 wall=0.022 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.048 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.375 wall=0.791 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.016 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  31; Timer: cpu0=7.750 wall=1.076 
+
+13.06.26 16:17:50  ===== Processing Layers =====
+13.06.26 16:17:50    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:50    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:50    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:50    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.022 
+
+13.06.26 16:17:50  ===== New Time Step =====, Iter number =  32
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.003 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.094 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.042 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.844 wall=0.806 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.328 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  32; Timer: cpu0=7.812 wall=0.981 
+
+13.06.26 16:17:51  ===== Processing Layers =====
+13.06.26 16:17:51    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.172 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:51    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:51    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:51    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.024 
+
+13.06.26 16:17:51  ===== New Time Step =====, Iter number =  33
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.281 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.043 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.766 wall=0.782 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.026 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  33; Timer: cpu0=7.594 wall=0.957 
+
+13.06.26 16:17:52  ===== Processing Layers =====
+13.06.26 16:17:52    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.016 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:52    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:52    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:52    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.022 
+
+13.06.26 16:17:52  ===== New Time Step =====, Iter number =  34
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.234 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.203 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.281 wall=0.803 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.219 wall=0.027 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  34; Timer: cpu0=7.281 wall=0.974 
+
+13.06.26 16:17:54  ===== Processing Layers =====
+13.06.26 16:17:54    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:54    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:54    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:54    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.021 
+
+13.06.26 16:17:54  ===== New Time Step =====, Iter number =  35
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.094 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.203 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.422 wall=0.805 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  35; Timer: cpu0=7.359 wall=0.975 
+
+13.06.26 16:17:55  ===== Processing Layers =====
+13.06.26 16:17:55    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.172 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:17:55    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:55    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:55    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.021 
+
+13.06.26 16:17:55  ===== New Time Step =====, Iter number =  36
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.188 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.172 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.003 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.026 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.042 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.625 wall=0.804 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.000 wall=0.022 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  36; Timer: cpu0=7.359 wall=0.978 
+
+13.06.26 16:17:56  ===== Processing Layers =====
+13.06.26 16:17:56    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.172 wall=0.005 
+13.06.26 16:17:56    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:56    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:56    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.022 
+
+13.06.26 16:17:56  ===== New Time Step =====, Iter number =  37
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.027 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.026 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.203 wall=0.037 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=5.609 wall=0.774 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.027 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  37; Timer: cpu0=6.656 wall=0.950 
+
+13.06.26 16:17:57  ===== Processing Layers =====
+13.06.26 16:17:57    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.016 wall=0.006 
+13.06.26 16:17:57    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:57    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:57    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.021 
+
+13.06.26 16:17:57  ===== New Time Step =====, Iter number =  38
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.156 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.003 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.027 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.041 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.391 wall=0.764 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.021 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.002 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  38; Timer: cpu0=7.141 wall=0.940 
+
+13.06.26 16:17:59  ===== Processing Layers =====
+13.06.26 16:17:59    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.172 wall=0.005 
+13.06.26 16:17:59    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:17:59    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:17:59    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.024 
+
+13.06.26 16:17:59  ===== New Time Step =====, Iter number =  39
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.024 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.040 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.188 wall=0.773 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.023 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  39; Timer: cpu0=6.922 wall=0.944 
+
+13.06.26 16:18:00  ===== Processing Layers =====
+13.06.26 16:18:00    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:18:00    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:00    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:00    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.141 wall=0.025 
+
+13.06.26 16:18:00  ===== New Time Step =====, Iter number =  40
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.297 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.703 wall=0.104 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.172 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.028 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.047 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.625 wall=0.777 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  40; Timer: cpu0=8.359 wall=1.062 
+
+13.06.26 16:18:01  ===== Processing Layers =====
+13.06.26 16:18:01    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:18:01    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:01    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:01    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.022 
+
+13.06.26 16:18:01  ===== New Time Step =====, Iter number =  41
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.703 wall=0.101 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.312 wall=0.032 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.046 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.359 wall=0.780 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.219 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  41; Timer: cpu0=8.141 wall=1.063 
+
+13.06.26 16:18:03  ===== Processing Layers =====
+13.06.26 16:18:03    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:18:03    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:03    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:03    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.021 
+
+13.06.26 16:18:03  ===== New Time Step =====, Iter number =  42
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.026 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.219 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.042 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=5.750 wall=0.771 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.026 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.003 
+ End:   ===== Time Step =====, Iter number =  42; Timer: cpu0=6.375 wall=0.946 
+
+13.06.26 16:18:04  ===== Processing Layers =====
+13.06.26 16:18:04    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.006 
+13.06.26 16:18:04    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:04    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:04    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.023 
+
+13.06.26 16:18:04  ===== New Time Step =====, Iter number =  43
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.297 wall=0.027 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.004 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.172 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.250 wall=0.027 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.000 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.797 wall=0.793 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.022 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  43; Timer: cpu0=7.766 wall=0.965 
+
+13.06.26 16:18:05  ===== Processing Layers =====
+13.06.26 16:18:05    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.016 wall=0.007 
+13.06.26 16:18:05    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:05    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:05    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.026 
+
+13.06.26 16:18:05  ===== New Time Step =====, Iter number =  44
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.025 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.156 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.040 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.344 wall=0.778 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.125 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  44; Timer: cpu0=7.141 wall=0.949 
+
+13.06.26 16:18:06  ===== Processing Layers =====
+13.06.26 16:18:06    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.004 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:18:06    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:06    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:06    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.022 
+
+13.06.26 16:18:06  ===== New Time Step =====, Iter number =  45
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.022 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.156 wall=0.028 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.038 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.391 wall=0.775 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.328 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.002 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  45; Timer: cpu0=7.375 wall=0.949 
+
+13.06.26 16:18:08  ===== Processing Layers =====
+13.06.26 16:18:08    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.016 wall=0.005 
+13.06.26 16:18:08    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:08    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:08    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.021 
+
+13.06.26 16:18:08  ===== New Time Step =====, Iter number =  46
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.004 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.025 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.039 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.125 wall=0.775 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.027 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  46; Timer: cpu0=6.859 wall=0.945 
+
+13.06.26 16:18:09  ===== Processing Layers =====
+13.06.26 16:18:09    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.172 wall=0.006 
+13.06.26 16:18:09    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:09    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:09    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.021 
+
+13.06.26 16:18:09  ===== New Time Step =====, Iter number =  47
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.172 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.002 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.003 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.172 wall=0.002 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.026 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.041 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=5.953 wall=0.785 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.001 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.172 wall=0.025 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.016 wall=0.000 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.001 
+ End:   ===== Time Step =====, Iter number =  47; Timer: cpu0=6.875 wall=0.959 
+
+13.06.26 16:18:10  ===== Processing Layers =====
+13.06.26 16:18:10    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:18:10    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:10    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:10    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.000 wall=0.022 
+
+13.06.26 16:18:10  ===== New Time Step =====, Iter number =  48
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.344 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.004 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.002 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.234 wall=0.026 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.031 wall=0.040 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.469 wall=0.790 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.094 wall=0.024 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.001 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  48; Timer: cpu0=7.344 wall=0.960 
+
+13.06.26 16:18:11  ===== Processing Layers =====
+13.06.26 16:18:11    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.000 wall=0.005 
+13.06.26 16:18:11    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:11    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:11    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.172 wall=0.022 
+
+13.06.26 16:18:11  ===== New Time Step =====, Iter number =  49
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.312 wall=0.024 
+ Start: User modules' functions BeforeTimeStep() are calling
+ End:   User modules' functions BeforeTimeStep() are calling; Timer: cpu0=0.000 wall=0.001 
+ Start: Adaptation, TotalRealCellsCount= 64177 
+ End:   Adaptation; Timer: cpu0=0.000 wall=0.002 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+  ***** Maximum Geometrical Gauss = 8.63924e-15, cell= 969:7:7:0
+  ***** Maximum MovingSurf  Gauss = 0, cell= 
+ Start: Initialize data arrays on chips
+ End:   Initialize data arrays on chips, res= 0; Timer: cpu0=0.000 wall=0.001 
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.234 wall=0.027 
+ Start: FindEnclaves
+ End:   FindEnclaves; Timer: cpu0=0.047 wall=0.043 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: SolvePhaseEquation 
+ End:   SolvePhaseEquation ; Timer: cpu0=6.094 wall=0.767 
+ Start: SolidFiltersProcess: calculate forces and moments
+ End:   SolidFiltersProcess: calculate forces and moments; Timer: cpu0=0.000 wall=0.002 
+ Start: PrepareDataForNextStep
+ End:   PrepareDataForNextStep; Timer: cpu0=0.328 wall=0.023 
+ Start: VarValueService
+ End:   VarValueService; Timer: cpu0=0.000 wall=0.001 
+ Start: UpdateStopperData
+ End:   UpdateStopperData; Timer: cpu0=0.000 wall=0.000 
+ Start: Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status
+ End:   Saving text status in E:\UniFlight\ansys\тест_fv\data\тест.status; Timer: cpu0=0.000 wall=0.002 
+ End:   ===== Time Step =====, Iter number =  49; Timer: cpu0=7.344 wall=0.942 
+
+Simulation time end is reached, stopping solution.
+SOLUTION STOPPED (TIME=57.952s, MPITIME=57.952s)
+
+ Start: Saving values
+ End:   Saving values, res= 0; Timer: cpu0=0.500 wall=0.057 
+ Start: Saving grid
+ End:   Saving grid, res= 0; Timer: cpu0=0.516 wall=0.055 
+ Start: Saving grid index
+ End:   Saving grid index, res= 0; Timer: cpu0=0.000 wall=0.001 
+13.06.26 16:18:13  ===== Processing Layers =====
+13.06.26 16:18:13    *SEND* for CScalarLayer, GUID=024EE8C9-770B-4B91-B355-D3A8BA3419A0
+ Start: ComputeVolumeCharacteristics
+ End:   ComputeVolumeCharacteristics; Timer: cpu0=0.000 wall=0.003 
+ Start: GetValueOnFacets
+ End:   GetValueOnFacets; Timer: cpu0=0.016 wall=0.006 
+13.06.26 16:18:13    *SEND* for CIntegralCharsLayer, GUID=4E090A0C-544B-E4A2-4242-BEC451D7CD2B
+13.06.26 16:18:13    *SEND* for CIntegralCharsLayer, GUID=5DB1A5EF-9945-98D6-2008-9B24055F0193
+13.06.26 16:18:13    *SEND* for CIntegralCharsLayer, GUID=21224A00-BD51-2E67-8DDD-34411CAB050E
+ End:   ===== Processing Layers =====; Timer: cpu0=0.016 wall=0.023 
+SOLUTION STARTED
+FlowVision Solver, version 3.13.01-W64 build 20240822 changeset 0.
+
+13.06.26 16:20:04  ===== PreSolve Step =====
+ Grid rebuild type:  0
+ Start: DataInitialization
+ End:   DataInitialization; Timer: cpu0=0.125 wall=0.019 
+ End:   ===== PreSolve Step =====; Timer: cpu0=0.125 wall=0.021 
+
+13.06.26 16:20:04  ===== New Time Step =====, Iter number =  50
+ Start: TimeServis
+ End:   TimeServis; Timer: cpu0=0.188 wall=0.028 
+ End:   ===== Time Step =====, Iter number =  50; Timer: cpu0=0.188 wall=0.031 
+
+Simulation time end is reached, stopping solution.
+SOLUTION STOPPED (TIME=0.064s, MPITIME=0.064s)
+

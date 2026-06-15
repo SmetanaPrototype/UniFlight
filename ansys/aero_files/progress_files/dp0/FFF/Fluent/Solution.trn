@@ -1,6 +1,4 @@
-
-Transcript file has been opened in append mode. Time stamp=23:47:16, 13 May 2026 RTZ 2 (çèìà).
-Transcript Start Time:  23:47:16, 13 May 2026 RTZ 2 (çèìà) 
+Transcript Start Time:  10:16:27, 24 May 2026 RTZ 2 (çèìà) 
 Current Directory: "E:\UniFlight\ansys"
 
 Build Time: May 13 2024 11:21:01 EST 
@@ -9,58 +7,76 @@ Executable Path: C:/PROGRA~1/ANSYSI~1/v242/fluent/ntbin/win64/fluent.exe
 --------------------------------------------------------------------------------------------------
 ID    Hostname         Core  O.S.         PID    Vendor                                          
 --------------------------------------------------------------------------------------------------
-n3    DESKTOP-Q5AGLJJ  4/12  Windows-x64  2628   11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
-n2    DESKTOP-Q5AGLJJ  3/12  Windows-x64  21140  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
-n1    DESKTOP-Q5AGLJJ  2/12  Windows-x64  24840  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
-n0*   DESKTOP-Q5AGLJJ  1/12  Windows-x64  22208  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
-host  DESKTOP-Q5AGLJJ        Windows-x64  284    11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n5    DESKTOP-Q5AGLJJ  6/12  Windows-x64  4104   11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n4    DESKTOP-Q5AGLJJ  5/12  Windows-x64  21392  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n3    DESKTOP-Q5AGLJJ  4/12  Windows-x64  13984  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n2    DESKTOP-Q5AGLJJ  3/12  Windows-x64  8288   11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n1    DESKTOP-Q5AGLJJ  2/12  Windows-x64  11724  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n0*   DESKTOP-Q5AGLJJ  1/12  Windows-x64  21764  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+host  DESKTOP-Q5AGLJJ        Windows-x64  6992   11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
 
 MPI Option Selected: intel
 Selected system interconnect: default
 --------------------------------------------------------------------------------------------------
 
-Cortex Process ID: 25436 
+Cortex Process ID: 10376 
 License Server Path: 1055@localhost 
 Fast-loading "C:\PROGRA~1\ANSYSI~1\v242\fluent\fluent24.2.0\\addons\afd\lib\hdfio.bin"
 Done.
 Multicore SMT processors detected. Processor affinity set!
+Reading setting file in cache: "E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF.1.set"
 
-Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF-23.cas.h5" in NODE0 mode ...
+Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF.1-Setup-Output.cas.h5" in NODE0 mode ...
   Reading mesh ...
-      138131 cells,     1 cell zone  ...
-         138131 tetrahedral cells,  zone id: 3
-      279088 faces,     5 face zones ...
-           1198 triangular wall faces,  zone id: 1
-         273436 triangular interior faces,  zone id: 2
-            288 triangular pressure-far-field faces,  zone id: 5
-            290 triangular pressure-outlet faces,  zone id: 6
-           3876 triangular wall faces,  zone id: 8
-       24333 nodes,     1 node zone  ...
+      198570 cells,     1 cell zone  ...
+         198570 tetrahedral cells,  zone id: 2
+      400799 faces,     5 face zones ...
+         393481 triangular interior faces,  zone id: 1
+            292 triangular pressure-far-field faces,  zone id: 5
+            308 triangular pressure-outlet faces,  zone id: 6
+           1206 triangular wall faces,  zone id: 7
+           5512 triangular wall faces,  zone id: 8
+       34753 nodes,     1 node zone  ...
   Done.
+
 
 
 Building...
      mesh
 	distributing mesh
-		parts....,
-		faces....,
-		nodes....,
-		cells....,
-        bandwidth reduction using Reverse Cuthill-McKee: 34437/1043 = 33.0173
+		parts......,
+		faces......,
+		nodes......,
+		cells......,
+        bandwidth reduction using Reverse Cuthill-McKee: 33040/1098 = 30.0911
      materials,
      interface,
      domains,
 	mixture
      zones,
 	ball
+	outer
 	outlet
-	interior-cross-freeparts
-	wall-cross-freeparts
+	interior-falcon-freeparts
 	inlet
-	cross-freeparts
+	falcon-freeparts
  Warning: For compressible (ideal and real) gas models with buoyancy,
  it is recommended that you use a specified operating density value of zero:
  define/operating-conditions/operating-density? yes 0.
+Setting falcon-freeparts (mixture) ... Done.
+ Setting zone id of falcon-freeparts to 2.
+ Setting zone id of inlet to 5.
+ Setting zone id of interior-falcon-freeparts to 1.
+ Setting zone id of outlet to 6.
+ Setting zone id of outer to 7.
+ Setting zone id of ball to 8.
+Done.
+Setting falcon-freeparts (mixture) ... Done.
+Setting inlet (mixture) ... Done.
+Setting interior-falcon-freeparts (mixture) ... Done.
+Setting outlet (mixture) ... Done.
+Setting outer (mixture) ... Done.
+Setting ball (mixture) ... Done.
 
      parallel,
 Done.
@@ -69,84 +85,2729 @@ Preparing mesh for display...
 Done.
 
 Setting Post Processing and Surfaces information ...	 Done.
+WB->Fluent:Parameter name:mach, value:0.3
+WB->Fluent:Parameter name:attack, value:1
+"Updating Setup cell..."
+WB->Fluent:Parameter name:mach, value:0.3
+WB->Fluent:Parameter name:attack, value:1
+"Updating Solution cell..."
 
-Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF-23-00321.dat.h5" in NODE0 mode ...
+Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF.1-5-03900.dat.h5" in NODE0 mode ...
 
 
   Reading results.
 Parallel variables...
 
- turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 406 cells 
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3601 cells 
 Done.
+WB->Fluent:Parameter name:mach, value:0.3
+WB->Fluent:Parameter name:attack, value:1
 
   iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
-   321  1.5526e+08  1.2617e+13  4.1696e+14  1.0114e+14  1.6465e+19  9.9117e-01  4.9908e-01  3.2078e-01 -6.1858e-01  0:00:00 1679
+  3900  2.2616e-02  1.6704e-02  8.2647e-03  8.3350e-03  2.1140e-02  2.1055e-04  1.7195e-04  8.6981e-04  8.8499e-01  0:00:00  600
 
-===============Message from the Cortex Process================================
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3595 cells 
+  3901  2.9641e-02  4.4957e-02  8.2194e-03  8.2797e-03  3.1715e-02  1.0020e-01  3.5916e-01  9.3406e-04  8.9224e-01  0:09:59  599
 
-Compute processes interrupted. Processing can be resumed.
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3592 cells 
+  3902  2.4666e-02  2.8077e-02  8.2201e-03  8.2817e-03  2.4554e-02  1.0136e-02  2.5045e-01  9.6751e-04  8.9871e-01  0:09:58  598
 
-==============================================================================
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3583 cells 
+  3903  2.3067e-02  2.2387e-02  8.1760e-03  8.2679e-03  2.2253e-02  1.6957e-02  1.0425e-01  9.6301e-04  9.0453e-01  0:07:58  597
 
-Error at Node 2: Divergence detected in AMG solver
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3572 cells 
+  3904  2.2610e-02  2.1260e-02  8.1292e-03  8.2936e-03  2.1654e-02  1.5777e-02  3.8588e-03  8.7906e-04  9.0978e-01  0:08:21  596
 
-Error at Node 1: Divergence detected in AMG solver
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3557 cells 
+  3905  2.2565e-02  2.1498e-02  8.1401e-03  8.3740e-03  2.1653e-02  1.0847e-02  2.8961e-02  6.3746e-04  9.1441e-01  0:08:39  595
 
-Error at Node 3: Divergence detected in AMG solver
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3535 cells 
+  3906  2.2674e-02  2.2231e-02  8.1967e-03  8.5230e-03  2.1880e-02  7.0051e-03  1.9456e-02  2.7024e-04  9.1856e-01  0:06:54  594
 
- Reversed flow on 64 faces (21.7% area) of pressure-outlet 6.
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3524 cells 
+  3907  2.2869e-02  2.3298e-02  8.3005e-03  8.7332e-03  2.2243e-02  7.3341e-03  5.8752e-03 -1.3696e-04  9.2209e-01  0:07:30  593
 
-Divergence detected - temporarily reducing Courant number to 0.5
- and trying again...
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3508 cells 
+  3908  2.3103e-02  2.4665e-02  8.4418e-03  8.9583e-03  2.2686e-02  7.8465e-03  3.1546e-03 -6.0692e-04  9.2512e-01  0:07:57  592
 
-Divergence detected - temporarily reducing Courant number to 0.05
- and trying again...
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3491 cells 
+  3909  2.3517e-02  2.6433e-02  8.6840e-03  9.2636e-03  2.3366e-02  8.0710e-03  6.6650e-03 -1.0686e-03  9.2767e-01  0:06:21  591
 
-Divergence detected - temporarily reducing Courant number to 0.005
- and trying again...
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3482 cells 
+  3910  2.4159e-02  2.8652e-02  9.1171e-03  9.7122e-03  2.4344e-02  8.1456e-03  8.0144e-03 -1.4231e-03  9.2960e-01  0:07:03  590
 
-Divergence detected - temporarily reducing Courant number to 0.0005
- and trying again...
-        Stabilizing Coupled to enhance linear solver robustness.
-        Stabilizing Coupled using GMRES to enhance linear solver robustness.
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3466 cells 
 
-Divergence detected - temporarily reducing Courant number to 5e-05
- and trying again...
-        Stabilizing Coupled to enhance linear solver robustness.
-        Stabilizing Coupled using GMRES to enhance linear solver robustness.
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3911  2.4982e-02  3.1400e-02  9.6848e-03  1.0279e-02  2.5577e-02  8.3243e-03  7.8508e-03 -1.6830e-03  9.3093e-01  0:07:35  589
 
-Error at Node 0: Divergence detected in AMG solver
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3451 cells 
+  3912  2.6275e-02  3.4778e-02  1.0488e-02  1.1036e-02  2.7370e-02  8.4910e-03  6.8508e-03 -1.9598e-03  9.3168e-01  0:08:01  588
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3440 cells 
+  3913  2.8061e-02  3.8876e-02  1.1465e-02  1.2065e-02  2.9746e-02  8.7335e-03  5.5726e-03 -2.1402e-03  9.3165e-01  0:06:24  587
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3424 cells 
+  3914  3.0412e-02  4.3780e-02  1.2714e-02  1.3343e-02  3.2770e-02  8.9682e-03  4.3487e-03 -2.2610e-03  9.3083e-01  0:07:04  586
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3405 cells 
+  3915  3.3378e-02  4.9548e-02  1.4237e-02  1.4944e-02  3.6486e-02  9.2497e-03  3.3234e-03 -2.3636e-03  9.2913e-01  0:07:36  585
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3385 cells 
+  3916  3.7093e-02  5.6317e-02  1.6085e-02  1.6943e-02  4.1022e-02  9.4764e-03  2.5329e-03 -2.3742e-03  9.2623e-01  0:06:04  584
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3369 cells 
+  3917  4.1636e-02  6.4176e-02  1.8284e-02  1.9369e-02  4.6444e-02  9.7286e-03  1.9676e-03 -2.2539e-03  9.2180e-01  0:06:47  583
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3344 cells 
+  3918  4.7148e-02  7.3175e-02  2.0901e-02  2.2247e-02  5.2879e-02  9.8941e-03  1.5769e-03 -1.9576e-03  9.1539e-01  0:07:22  582
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3329 cells 
+  3919  5.3668e-02  8.3345e-02  2.3953e-02  2.5545e-02  6.0355e-02  1.0061e-02  1.3155e-03 -1.4459e-03  9.0642e-01  0:07:49  581
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3316 cells 
+  3920  6.1235e-02  9.4688e-02  2.7436e-02  2.9265e-02  6.8900e-02  1.0134e-02  1.1423e-03 -6.6903e-04  8.9418e-01  0:06:14  580
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3308 cells 
+  3921  6.9924e-02  1.0720e-01  3.1322e-02  3.3413e-02  7.8566e-02  1.0196e-02  1.0293e-03  4.7549e-04  8.7780e-01  0:06:55  579
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3291 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3922  7.9768e-02  1.2082e-01  3.5537e-02  3.7919e-02  8.9361e-02  1.0159e-02  9.5309e-04  2.2662e-03  8.5647e-01  0:07:27  578
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3278 cells 
+  3923  9.0778e-02  1.3544e-01  4.0000e-02  4.2705e-02  1.0127e-01  1.0099e-02  9.0266e-04  4.7955e-03  8.2920e-01  0:05:57  577
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3267 cells 
+  3924  1.0295e-01  1.5091e-01  4.4613e-02  4.7643e-02  1.1424e-01  9.9481e-03  8.6938e-04  8.1096e-03  7.9500e-01  0:06:40  576
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3251 cells 
+  3925  1.1627e-01  1.6707e-01  4.9287e-02  5.2624e-02  1.2821e-01  9.7776e-03  8.4572e-04  1.2537e-02  7.5304e-01  0:07:15  575
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3244 cells 
+  3926  1.3063e-01  1.8360e-01  5.3903e-02  5.7499e-02  1.4304e-01  9.5332e-03  8.3016e-04  1.8507e-02  7.0252e-01  0:05:47  574
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3224 cells 
+  3927  1.4591e-01  2.0018e-01  5.8348e-02  6.2161e-02  1.5854e-01  9.2804e-03  8.1978e-04  2.6053e-02  6.4264e-01  0:06:32  573
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3213 cells 
+  3928  1.6189e-01  2.1639e-01  6.2506e-02  6.6495e-02  1.7444e-01  8.9747e-03  8.1600e-04  3.5215e-02  5.7330e-01  0:07:07  572
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3207 cells 
+  3929  1.7835e-01  2.3190e-01  6.6330e-02  7.0479e-02  1.9048e-01  8.6678e-03  8.2471e-04  4.6684e-02  4.9477e-01  0:05:41  571
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3197 cells 
+  3930  1.9502e-01  2.4638e-01  6.9778e-02  7.4052e-02  2.0635e-01  8.3162e-03  8.3903e-04  6.0100e-02  4.0708e-01  0:06:27  570
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3186 cells 
+  3931  2.1158e-01  2.5950e-01  7.2892e-02  7.7272e-02  2.2171e-01  7.9711e-03  8.5409e-04  7.6014e-02  3.1090e-01  0:07:02  569
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3178 cells 
+  3932  2.2772e-01  2.7101e-01  7.5780e-02  8.0221e-02  2.3625e-01  7.6104e-03  8.6789e-04  9.4366e-02  2.0674e-01  0:05:37  568
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3165 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3933  2.4309e-01  2.8055e-01  7.8535e-02  8.2988e-02  2.4964e-01  7.2854e-03  8.8090e-04  1.1456e-01  9.6141e-02  0:06:23  567
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3156 cells 
+  3934  2.5739e-01  2.8813e-01  8.1210e-02  8.5763e-02  2.6163e-01  7.0285e-03  8.9228e-04  1.3672e-01 -1.9406e-02  0:06:59  566
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3155 cells 
+  3935  2.7029e-01  2.9363e-01  8.3958e-02  8.8591e-02  2.7196e-01  6.8497e-03  9.0215e-04  1.6115e-01 -1.3832e-01  0:05:35  565
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3143 cells 
+  3936  2.8152e-01  2.9716e-01  8.6760e-02  9.1549e-02  2.8045e-01  6.7499e-03  9.1097e-04  1.8644e-01 -2.5812e-01  0:06:20  564
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3132 cells 
+  3937  2.9093e-01  2.9889e-01  8.9698e-02  9.4587e-02  2.8708e-01  6.7275e-03  9.1868e-04  2.1189e-01 -3.7789e-01  0:06:56  563
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3123 cells 
+  3938  2.9844e-01  2.9903e-01  9.2770e-02  9.7706e-02  2.9186e-01  6.7662e-03  9.2545e-04  2.3654e-01 -4.9538e-01  0:05:32  562
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3117 cells 
+  3939  3.0397e-01  2.9790e-01  9.5859e-02  1.0067e-01  2.9486e-01  6.8510e-03  9.3123e-04  2.5993e-01 -6.0936e-01  0:06:18  561
+
+ Reversed flow on 1 face (0.4% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3100 cells 
+  3940  3.0751e-01  2.9581e-01  9.8814e-02  1.0357e-01  2.9617e-01  6.9982e-03  9.3615e-04  2.8314e-01 -7.1771e-01  0:06:53  560
+
+ Reversed flow on 2 faces (0.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3119 cells 
+  3941  3.0912e-01  2.9316e-01  1.0157e-01  1.0626e-01  2.9592e-01  7.1980e-03  9.4089e-04  3.0524e-01 -8.1873e-01  0:05:30  559
+
+ Reversed flow on 2 faces (0.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3145 cells 
+  3942  3.0888e-01  2.9029e-01  1.0406e-01  1.0871e-01  2.9424e-01  7.3875e-03  9.4571e-04  3.2466e-01 -9.1026e-01  0:08:07  558
+
+ Reversed flow on 4 faces (1.4% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3173 cells 
+  3943  3.0682e-01  2.8732e-01  1.0608e-01  1.1080e-01  2.9123e-01  7.5770e-03  9.5044e-04  3.4150e-01 -9.9046e-01  0:06:29  557
+
+ Reversed flow on 6 faces (2.2% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3213 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3944  3.0356e-01  2.8459e-01  1.0773e-01  1.1245e-01  2.8741e-01  7.8626e-03  9.5886e-04  3.5556e-01 -1.0573e+00  0:07:02  556
+
+ Reversed flow on 9 faces (3.2% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3251 cells 
+  3945  2.9946e-01  2.8215e-01  1.0908e-01  1.1394e-01  2.8305e-01  8.4859e-03  9.7457e-04  3.6621e-01 -1.1094e+00  0:07:28  555
+
+ Reversed flow on 16 faces (5.6% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3287 cells 
+  3946  2.9486e-01  2.8002e-01  1.1021e-01  1.1515e-01  2.7835e-01  8.7319e-03  1.0493e-03  3.7349e-01 -1.1450e+00  0:05:58  554
+
+ Reversed flow on 20 faces (7.1% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3317 cells 
+  3947  2.9020e-01  2.7822e-01  1.1103e-01  1.1610e-01  2.7363e-01  9.5397e-03  1.0527e-03  3.7678e-01 -1.1631e+00  0:06:36  553
+
+ Reversed flow on 23 faces (8.2% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3356 cells 
+  3948  2.8580e-01  2.7653e-01  1.1145e-01  1.1663e-01  2.6905e-01  1.0407e-02  1.1121e-03  3.7747e-01 -1.1624e+00  0:07:07  552
+
+ Reversed flow on 28 faces (9.9% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3358 cells 
+  3949  2.8197e-01  2.7479e-01  1.1144e-01  1.1673e-01  2.6480e-01  1.0663e-02  1.1128e-03  3.7468e-01 -1.1409e+00  0:05:41  551
+
+ Reversed flow on 31 faces (10.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3341 cells 
+  3950  2.7886e-01  2.7297e-01  1.1106e-01  1.1644e-01  2.6094e-01  1.1572e-02  1.2838e-03  3.6792e-01 -1.0985e+00  0:06:22  550
+
+ Reversed flow on 34 faces (11.6% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3292 cells 
+  3951  2.7643e-01  2.7093e-01  1.1050e-01  1.1595e-01  2.5746e-01  1.0488e-02  1.1543e-03  3.5858e-01 -1.0353e+00  0:06:55  549
+
+ Reversed flow on 40 faces (13.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3274 cells 
+  3952  2.7441e-01  2.6825e-01  1.0987e-01  1.1536e-01  2.5418e-01  1.1799e-02  1.4086e-03  3.4513e-01 -9.5126e-01  0:05:31  548
+
+ Reversed flow on 44 faces (15.1% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3270 cells 
+  3953  2.7244e-01  2.6462e-01  1.0956e-01  1.1502e-01  2.5086e-01  1.0911e-02  2.2360e-03  3.2739e-01 -8.4710e-01  0:06:14  547
+
+ Reversed flow on 46 faces (15.8% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3271 cells 
+  3954  2.7008e-01  2.5977e-01  1.1014e-01  1.1556e-01  2.4725e-01  3.5604e-02  4.1626e-02  3.0517e-01 -7.2444e-01  0:06:48  546
+
+ Reversed flow on 49 faces (16.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3272 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3955  2.6682e-01  2.5341e-01  1.1206e-01  1.1754e-01  2.4295e-01  1.6897e-02  1.9080e-02  2.7862e-01 -5.8637e-01  0:05:26  545
+
+ Reversed flow on 48 faces (16.5% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3303 cells 
+  3956  2.6228e-01  2.4545e-01  1.1579e-01  1.2147e-01  2.3767e-01  1.4076e-02  8.5496e-03  2.4608e-01 -4.3580e-01  0:06:09  544
+
+ Reversed flow on 49 faces (16.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3329 cells 
+  3957  2.5634e-01  2.3598e-01  1.2140e-01  1.2743e-01  2.3129e-01  1.1812e-02  4.1660e-03  2.0731e-01 -2.7712e-01  0:06:43  543
+
+ Reversed flow on 48 faces (16.2% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3347 cells 
+  3958  2.4925e-01  2.2558e-01  1.2865e-01  1.3523e-01  2.2400e-01  1.0808e-02  2.5338e-03  1.5976e-01 -1.1543e-01  0:05:22  542
+
+ Reversed flow on 47 faces (16.1% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3316 cells 
+  3959  2.4156e-01  2.1482e-01  1.3712e-01  1.4429e-01  2.1627e-01  1.0775e-02  2.0199e-03  1.0295e-01  4.4342e-02  0:06:05  541
+
+ Reversed flow on 48 faces (16.5% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3309 cells 
+  3960  2.3403e-01  2.0448e-01  1.4605e-01  1.5379e-01  2.0877e-01  1.0821e-02  1.9439e-03  3.5636e-02  1.9784e-01  0:06:40  540
+
+ Reversed flow on 49 faces (16.8% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3332 cells 
+  3961  2.2789e-01  1.9595e-01  1.5487e-01  1.6310e-01  2.0270e-01  1.1081e-02  2.1164e-03 -4.0489e-02  3.4293e-01  0:05:19  539
+
+ Reversed flow on 47 faces (16.0% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3401 cells 
+  3962  2.2445e-01  1.9056e-01  1.6291e-01  1.7170e-01  1.9944e-01  1.2161e-02  2.8000e-03 -1.2481e-01  4.7827e-01  0:06:02  538
+
+ Reversed flow on 43 faces (14.6% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3454 cells 
+  3963  2.2437e-01  1.8929e-01  1.6978e-01  1.7890e-01  1.9982e-01  1.1660e-02  2.7759e-03 -2.1445e-01  6.0289e-01  0:06:37  537
+
+ Reversed flow on 41 faces (13.9% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3523 cells 
+  3964  2.2740e-01  1.9223e-01  1.7530e-01  1.8467e-01  2.0379e-01  1.2293e-02  3.0396e-03 -3.0516e-01  7.1665e-01  0:05:17  536
+
+ Reversed flow on 38 faces (12.9% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3587 cells 
+  3965  2.3320e-01  1.9972e-01  1.7980e-01  1.8938e-01  2.1148e-01  1.2701e-02  3.4044e-03 -3.9392e-01  8.1938e-01  0:06:00  535
+
+ Reversed flow on 36 faces (12.1% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3655 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3966  2.4098e-01  2.1062e-01  1.8406e-01  1.9377e-01  2.2151e-01  1.3297e-02  3.9257e-03 -4.7742e-01  9.1104e-01  0:06:34  534
+
+ Reversed flow on 35 faces (11.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3735 cells 
+  3967  2.5033e-01  2.2529e-01  1.8900e-01  1.9895e-01  2.3394e-01  1.4325e-02  4.6017e-03 -5.5532e-01  9.9080e-01  0:07:01  533
+
+ Reversed flow on 32 faces (10.8% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3814 cells 
+  3968  2.6088e-01  2.6350e-01  1.9667e-01  2.0786e-01  2.9123e-01  1.7014e-02  1.1040e-02 -6.2917e-01  1.0580e+00  0:05:37  532
+
+ Reversed flow on 31 faces (10.6% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3912 cells 
+  3969  2.7276e-01  2.6543e-01  2.0336e-01  2.1498e-01  2.7111e-01  1.4824e-01  1.1685e-01 -6.9897e-01  1.1127e+00  0:06:15  531
+
+ Reversed flow on 31 faces (10.6% area) of pressure-outlet 6.
+
+ time step reduced in 1 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4011 cells 
+  3970  2.8814e-01  2.8253e-01  2.1304e-01  2.2531e-01  2.8225e-01  3.6604e-02  5.4200e-02 -7.6536e-01  1.1544e+00  0:06:45  530
+
+ Reversed flow on 30 faces (10.3% area) of pressure-outlet 6.
+
+ time step reduced in 1 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4113 cells 
+  3971  3.0677e-01  3.0480e-01  2.2485e-01  2.3823e-01  3.0121e-01  2.1764e-02  2.7300e-02 -8.2473e-01  1.1828e+00  0:05:24  529
+
+ Reversed flow on 30 faces (10.5% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4194 cells 
+  3972  3.3049e-01  3.3105e-01  2.3727e-01  2.5180e-01  3.2595e-01  2.0941e-02  1.7808e-02 -8.7376e-01  1.1979e+00  0:06:04  528
+
+ Reversed flow on 32 faces (11.2% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4294 cells 
+  3973  3.6157e-01  3.6461e-01  2.5042e-01  2.6600e-01  3.6015e-01  2.1847e-02  1.5567e-02 -9.0706e-01  1.1986e+00  0:06:36  527
+
+ Reversed flow on 32 faces (11.2% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4396 cells 
+  3974  3.9717e-01  3.9992e-01  2.6185e-01  2.7793e-01  3.9902e-01  2.3743e-02  1.6312e-02 -9.1792e-01  1.1739e+00  0:05:16  526
+
+ Reversed flow on 30 faces (10.4% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4484 cells 
+  3975  4.3981e-01  4.4317e-01  2.7102e-01  2.8664e-01  4.4713e-01  2.4835e-02  1.7962e-02 -9.0044e-01  1.0486e+00  0:05:58  525
+
+ Reversed flow on 28 faces (9.4% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4562 cells 
+  3976  4.8614e-01  4.8021e-01  2.7516e-01  2.9012e-01  5.0018e-01  2.6367e-02  2.0424e-02 -8.5079e-01  5.0068e-01  0:06:30  524
+
+ Reversed flow on 25 faces (8.3% area) of pressure-outlet 6.
+
+ time step reduced in 2 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4656 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3977  5.3524e-01  5.0593e-01  2.7497e-01  2.8789e-01  5.6658e-01  2.8203e-02  2.3074e-02 -7.7264e-01 -1.7528e-01  0:05:12  523
+
+ Reversed flow on 21 faces (7.1% area) of pressure-outlet 6.
+
+ time step reduced in 1 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4739 cells 
+  3978  5.7939e-01  5.2622e-01  2.6728e-01  2.7831e-01  6.2850e-01  3.0141e-02  2.5825e-02 -6.7231e-01 -8.0883e-01  0:05:53  522
+
+ Reversed flow on 19 faces (6.6% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4781 cells 
+  3979  6.1841e-01  5.4869e-01  2.5237e-01  2.6045e-01  6.8628e-01  3.1837e-02  2.8632e-02 -5.5972e-01 -1.3775e+00  0:06:26  521
+
+ Reversed flow on 19 faces (6.6% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4825 cells 
+  3980  6.5185e-01  5.7044e-01  2.3149e-01  2.3757e-01  7.3990e-01  3.3099e-02  3.1495e-02 -4.4432e-01 -1.8600e+00  0:05:08  520
+
+ Reversed flow on 16 faces (5.4% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4838 cells 
+  3981  6.7801e-01  5.9008e-01  2.0870e-01  2.1387e-01  7.8388e-01  3.4780e-02  3.5003e-02 -3.3164e-01 -2.2525e+00  0:05:50  519
+
+ Reversed flow on 15 faces (4.9% area) of pressure-outlet 6.
+
+ time step reduced in 2 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4866 cells 
+  3982  6.9597e-01  6.0692e-01  1.8826e-01  1.9303e-01  8.1430e-01  3.5053e-02  3.6758e-02 -2.2771e-01 -2.5703e+00  0:06:23  518
+
+ Reversed flow on 15 faces (4.8% area) of pressure-outlet 6.
+
+ time step reduced in 5 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4870 cells 
+  3983  7.0533e-01  6.1762e-01  1.7400e-01  1.7619e-01  8.3422e-01  3.5433e-02  3.8499e-02 -1.2978e-01 -2.8298e+00  0:05:06  517
+
+ Reversed flow on 14 faces (4.6% area) of pressure-outlet 6.
+
+ time step reduced in 1 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4877 cells 
+  3984  7.0649e-01  6.2159e-01  1.6675e-01  1.6869e-01  8.4213e-01  3.5157e-02  3.9918e-02 -3.5298e-02 -3.0355e+00  0:05:47  516
+
+ Reversed flow on 14 faces (4.6% area) of pressure-outlet 6.
+
+ time step reduced in 1 cells due to excessive temperature change
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4867 cells 
+  3985  7.0002e-01  6.1495e-01  1.6909e-01  1.7363e-01  8.3823e-01  3.4770e-02  4.0870e-02  5.4610e-02 -3.1865e+00  0:06:20  515
+
+ Reversed flow on 12 faces (3.8% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4865 cells 
+  3986  6.8733e-01  6.0000e-01  1.8343e-01  1.9137e-01  8.2561e-01  3.3960e-02  4.1300e-02  1.4013e-01 -3.2825e+00  0:05:04  514
+
+ Reversed flow on 10 faces (3.3% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4865 cells 
+  3987  6.6798e-01  5.7732e-01  2.0496e-01  2.1667e-01  8.0295e-01  3.3291e-02  4.2604e-02  2.2082e-01 -3.3198e+00  0:05:45  513
+
+ Reversed flow on 7 faces (2.4% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4878 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3988  6.4408e-01  5.5162e-01  2.3191e-01  2.4559e-01  7.7297e-01  5.3538e-02  9.4553e-02  2.9796e-01 -3.3002e+00  0:06:18  512
+
+ Reversed flow on 6 faces (2.0% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4881 cells 
+  3989  6.1628e-01  5.2180e-01  2.5801e-01  2.7358e-01  7.3653e-01  3.3000e-02  6.1917e-02  3.7324e-01 -3.2218e+00  0:06:44  511
+
+ Reversed flow on 6 faces (2.0% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4841 cells 
+  3990  5.8677e-01  4.9010e-01  2.8329e-01  2.9920e-01  6.9706e-01  2.9220e-02  4.6976e-02  4.4539e-01 -3.0867e+00  0:05:23  510
+
+ Reversed flow on 6 faces (2.0% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4806 cells 
+  3991  5.5704e-01  4.5873e-01  3.0544e-01  3.2089e-01  6.5596e-01  2.7297e-02  3.9783e-02  5.1640e-01 -2.8991e+00  0:05:59  509
+
+ Reversed flow on 5 faces (1.6% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4764 cells 
+  3992  5.2881e-01  4.2869e-01  3.2344e-01  3.3839e-01  6.1568e-01  2.5752e-02  3.5757e-02  5.8589e-01 -2.6636e+00  0:06:29  508
+
+ Reversed flow on 5 faces (1.8% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4740 cells 
+  3993  5.0341e-01  4.0123e-01  3.3743e-01  3.5184e-01  5.7801e-01  2.4246e-02  3.2878e-02  6.5350e-01 -2.3899e+00  0:05:10  507
+
+ Reversed flow on 4 faces (1.3% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4690 cells 
+  3994  4.8231e-01  3.7738e-01  3.4738e-01  3.6145e-01  5.4534e-01  2.2800e-02  3.0430e-02  7.1700e-01 -2.0857e+00  0:05:49  506
+
+ Reversed flow on 3 faces (1.0% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4631 cells 
+  3995  4.6675e-01  3.5821e-01  3.5331e-01  3.6713e-01  5.2017e-01  2.1412e-02  2.8187e-02  7.7476e-01 -1.7630e+00  0:06:20  505
+
+ Reversed flow on 3 faces (1.0% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4572 cells 
+  3996  4.5743e-01  3.4436e-01  3.5551e-01  3.6930e-01  5.0382e-01  2.0224e-02  2.6070e-02  8.2396e-01 -1.4315e+00  0:05:03  504
+
+ Reversed flow on 2 faces (0.7% area) of pressure-outlet 6.
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4502 cells 
+  3997  4.5429e-01  3.3550e-01  3.5443e-01  3.6828e-01  4.9691e-01  1.9145e-02  2.4067e-02  8.6918e-01 -1.1013e+00  0:05:43  503
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4436 cells 
+  3998  4.5661e-01  3.3107e-01  3.5051e-01  3.6478e-01  4.9886e-01  1.8216e-02  2.2180e-02  9.1264e-01 -7.8113e-01  0:06:14  502
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4367 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  3999  4.6304e-01  3.2980e-01  3.4417e-01  3.5882e-01  5.0777e-01  1.7477e-02  2.0423e-02  9.5181e-01 -4.7796e-01  0:04:59  501
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4305 cells 
+  4000  4.7205e-01  3.3026e-01  3.3606e-01  3.5094e-01  5.2162e-01  1.6956e-02  1.8788e-02  9.8355e-01 -1.9876e-01  0:05:38  500
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4238 cells 
+  4001  4.8197e-01  3.3146e-01  3.2696e-01  3.4179e-01  5.3801e-01  1.6652e-02  1.7279e-02  1.0081e+00  4.7985e-02  0:06:10  499
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4176 cells 
+  4002  4.9130e-01  3.3293e-01  3.1752e-01  3.3202e-01  5.5467e-01  1.6513e-02  1.5881e-02  1.0275e+00  2.5903e-01  0:04:55  498
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4111 cells 
+  4003  4.9865e-01  3.3446e-01  3.0815e-01  3.2235e-01  5.6939e-01  1.6478e-02  1.4578e-02  1.0402e+00  4.3207e-01  0:05:35  497
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 4045 cells 
+  4004  5.0298e-01  3.3576e-01  2.9942e-01  3.1327e-01  5.8052e-01  1.6548e-02  1.3367e-02  1.0509e+00  5.6682e-01  0:06:07  496
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3986 cells 
+  4005  5.0382e-01  3.3752e-01  2.9188e-01  3.0513e-01  5.8733e-01  1.6692e-02  1.2238e-02  1.0589e+00  6.6489e-01  0:04:53  495
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3917 cells 
+  4006  5.0092e-01  3.4065e-01  2.8564e-01  2.9834e-01  5.8919e-01  1.6903e-02  1.1186e-02  1.0639e+00  7.2926e-01  0:07:11  494
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3865 cells 
+  4007  4.9476e-01  3.4663e-01  2.8079e-01  2.9294e-01  5.8642e-01  1.7125e-02  1.0203e-02  1.0623e+00  7.6354e-01  0:05:44  493
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3815 cells 
+  4008  4.8636e-01  3.5635e-01  2.7655e-01  2.8818e-01  5.8016e-01  1.7387e-02  9.2833e-03  1.0557e+00  7.7192e-01  0:06:13  492
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3747 cells 
+  4009  4.7717e-01  3.6973e-01  2.7218e-01  2.8329e-01  5.7214e-01  1.7667e-02  8.4208e-03  1.0437e+00  7.5590e-01  0:06:36  491
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3700 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4010  4.6926e-01  3.8662e-01  2.6725e-01  2.7741e-01  5.6474e-01  1.7961e-02  7.6121e-03  1.0244e+00  7.1851e-01  0:05:16  490
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3639 cells 
+  4011  4.6494e-01  4.0579e-01  2.6047e-01  2.6970e-01  5.6073e-01  1.8269e-02  6.8601e-03  9.9858e-01  6.6215e-01  0:05:50  489
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3594 cells 
+  4012  4.6618e-01  4.2605e-01  2.5102e-01  2.5944e-01  5.6264e-01  1.8545e-02  6.1603e-03  9.7010e-01  5.8932e-01  0:06:17  488
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3550 cells 
+  4013  4.7374e-01  4.4609e-01  2.3889e-01  2.4613e-01  5.7118e-01  1.8793e-02  5.5110e-03  9.3953e-01  5.0167e-01  0:05:01  487
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3502 cells 
+  4014  4.8802e-01  4.6419e-01  2.2371e-01  2.2985e-01  5.8698e-01  1.9007e-02  4.9119e-03  9.0523e-01  4.0103e-01  0:05:38  486
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3420 cells 
+  4015  5.0776e-01  4.7892e-01  2.0599e-01  2.1129e-01  6.0846e-01  1.9080e-02  4.3599e-03  8.6864e-01  2.9177e-01  0:06:07  485
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3340 cells 
+  4016  5.3169e-01  4.8978e-01  1.8695e-01  1.9096e-01  6.3401e-01  1.9096e-02  3.8567e-03  8.3075e-01  1.7759e-01  0:04:53  484
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3246 cells 
+  4017  5.5783e-01  4.9615e-01  1.6748e-01  1.7054e-01  6.6116e-01  1.9090e-02  3.3989e-03  7.9065e-01  6.0695e-02  0:05:30  483
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3144 cells 
+  4018  5.8441e-01  4.9782e-01  1.4897e-01  1.5162e-01  6.8773e-01  1.9015e-02  2.9901e-03  7.5000e-01 -5.7018e-02  0:06:00  482
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 3012 cells 
+  4019  6.0983e-01  4.9508e-01  1.3307e-01  1.3589e-01  7.1193e-01  1.8844e-02  2.6263e-03  7.0774e-01 -1.7076e-01  0:04:47  481
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2876 cells 
+  4020  6.3280e-01  4.8792e-01  1.2206e-01  1.2479e-01  7.3229e-01  1.8628e-02  2.3085e-03  6.6477e-01 -2.7401e-01  0:05:25  480
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2752 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4021  6.5194e-01  4.7646e-01  1.1670e-01  1.1935e-01  7.4744e-01  1.8319e-02  2.0357e-03  6.2009e-01 -3.6245e-01  0:05:56  479
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2612 cells 
+  4022  6.6649e-01  4.6143e-01  1.1679e-01  1.1937e-01  7.5674e-01  1.7992e-02  1.8046e-03  5.7559e-01 -4.3267e-01  0:04:44  478
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2407 cells 
+  4023  6.7622e-01  4.4333e-01  1.2113e-01  1.2373e-01  7.6019e-01  1.7783e-02  1.6136e-03  5.2883e-01 -4.8172e-01  0:05:22  477
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2249 cells 
+  4024  6.8054e-01  4.2280e-01  1.2802e-01  1.3056e-01  7.5741e-01  1.7492e-02  1.4613e-03  4.8105e-01 -5.0866e-01  0:05:52  476
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2202 cells 
+  4025  6.7980e-01  4.0073e-01  1.3584e-01  1.3841e-01  7.4911e-01  1.7273e-02  1.3438e-03  4.3272e-01 -5.1473e-01  0:04:41  475
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2170 cells 
+  4026  6.7377e-01  3.7794e-01  1.4337e-01  1.4618e-01  7.3524e-01  1.7105e-02  1.2576e-03  3.8307e-01 -5.0128e-01  0:05:19  474
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2136 cells 
+  4027  6.6317e-01  3.5516e-01  1.5006e-01  1.5328e-01  7.1686e-01  1.7016e-02  1.2020e-03  3.3402e-01 -4.7031e-01  0:05:50  473
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2107 cells 
+  4028  6.4828e-01  3.3277e-01  1.5558e-01  1.5917e-01  6.9443e-01  1.6891e-02  1.1701e-03  2.8385e-01 -4.2450e-01  0:04:39  472
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2086 cells 
+  4029  6.2929e-01  3.1089e-01  1.5981e-01  1.6388e-01  6.6822e-01  1.6759e-02  1.1610e-03  2.3241e-01 -3.6657e-01  0:05:17  471
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2061 cells 
+  4030  6.0747e-01  2.8972e-01  1.6287e-01  1.6753e-01  6.3970e-01  1.6797e-02  1.1736e-03  1.8184e-01 -2.9862e-01  0:05:47  470
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2045 cells 
+  4031  5.8346e-01  2.6925e-01  1.6497e-01  1.7014e-01  6.0953e-01  1.6859e-02  1.2025e-03  1.3383e-01 -2.2272e-01  0:04:37  469
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2043 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4032  5.5831e-01  2.4933e-01  1.6638e-01  1.7194e-01  5.7885e-01  1.6903e-02  1.2499e-03  8.9939e-02 -1.4022e-01  0:05:15  468
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2030 cells 
+  4033  5.3291e-01  2.2997e-01  1.6698e-01  1.7306e-01  5.4860e-01  1.7068e-02  1.3108e-03  4.6583e-02 -5.1604e-02  0:05:45  467
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2018 cells 
+  4034  5.0752e-01  2.1139e-01  1.6707e-01  1.7367e-01  5.1898e-01  1.7574e-02  1.3822e-03  4.6649e-03  4.1728e-02  0:04:35  466
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2019 cells 
+  4035  4.8266e-01  1.9368e-01  1.6675e-01  1.7400e-01  4.9047e-01  1.7513e-02  1.4612e-03 -3.6764e-02  1.4126e-01  0:05:13  465
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2027 cells 
+  4036  4.5861e-01  1.7661e-01  1.6589e-01  1.7402e-01  4.6303e-01  1.7893e-02  1.5473e-03 -7.8182e-02  2.4583e-01  0:05:42  464
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2033 cells 
+  4037  4.3584e-01  1.6075e-01  1.6483e-01  1.7403e-01  4.3732e-01  1.8523e-02  1.6374e-03 -1.2141e-01  3.5429e-01  0:04:33  463
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2034 cells 
+  4038  4.1454e-01  1.4628e-01  1.6404e-01  1.7375e-01  4.1355e-01  1.8825e-02  1.7280e-03 -1.6542e-01  4.6607e-01  0:05:11  462
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2057 cells 
+  4039  3.9448e-01  1.3357e-01  1.6311e-01  1.7377e-01  3.9110e-01  1.8692e-02  1.8148e-03 -2.1277e-01  5.7946e-01  0:05:40  461
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2066 cells 
+  4040  3.7592e-01  1.2340e-01  1.6210e-01  1.7315e-01  3.7023e-01  1.8349e-02  1.8944e-03 -2.6497e-01  6.9247e-01  0:04:32  460
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2088 cells 
+  4041  3.5929e-01  1.1676e-01  1.6089e-01  1.7238e-01  3.5174e-01  1.7443e-02  1.9643e-03 -3.2199e-01  8.0201e-01  0:05:09  459
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2112 cells 
+  4042  3.4424e-01  1.1301e-01  1.5925e-01  1.7146e-01  3.3500e-01  1.7049e-02  2.0198e-03 -3.8309e-01  9.0894e-01  0:05:38  458
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2143 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4043  3.3090e-01  1.1416e-01  1.5790e-01  1.7023e-01  3.2006e-01  1.6756e-02  2.0572e-03 -4.4620e-01  1.0129e+00  0:04:30  457
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2170 cells 
+  4044  3.1947e-01  1.1918e-01  1.5625e-01  1.6859e-01  3.0738e-01  1.6302e-02  2.0712e-03 -5.1187e-01  1.1139e+00  0:05:07  456
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2189 cells 
+  4045  3.0994e-01  1.2701e-01  1.5444e-01  1.6614e-01  2.9670e-01  1.5730e-02  2.0596e-03 -5.8023e-01  1.2118e+00  0:05:36  455
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2206 cells 
+  4046  3.0275e-01  1.3640e-01  1.5179e-01  1.6338e-01  2.8856e-01  1.5362e-02  2.0173e-03 -6.4949e-01  1.3068e+00  0:04:28  454
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2227 cells 
+  4047  2.9733e-01  1.4800e-01  1.4879e-01  1.6002e-01  2.8314e-01  1.5058e-02  1.9409e-03 -7.1788e-01  1.3989e+00  0:05:04  453
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2279 cells 
+  4048  2.9306e-01  1.6035e-01  1.4510e-01  1.5563e-01  2.7910e-01  1.4903e-02  1.8264e-03 -7.8128e-01  1.4883e+00  0:05:33  452
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2299 cells 
+  4049  2.9080e-01  1.7400e-01  1.4193e-01  1.5165e-01  2.7806e-01  1.5029e-02  1.6715e-03 -8.3702e-01  1.5735e+00  0:04:26  451
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2350 cells 
+  4050  2.8923e-01  1.8579e-01  1.3812e-01  1.4712e-01  2.7752e-01  1.5316e-02  1.4745e-03 -8.8242e-01  1.6515e+00  0:05:02  450
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2396 cells 
+  4051  2.8853e-01  1.9814e-01  1.3502e-01  1.4365e-01  2.7901e-01  1.5652e-02  1.2506e-03 -9.1588e-01  1.7079e+00  0:05:31  449
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2423 cells 
+  4052  2.8665e-01  2.0955e-01  1.3117e-01  1.4003e-01  2.7982e-01  1.6006e-02  1.0113e-03 -9.3542e-01  1.7025e+00  0:04:24  448
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2469 cells 
+  4053  2.8644e-01  2.1763e-01  1.2876e-01  1.3756e-01  2.8354e-01  1.6462e-02  7.6728e-04 -9.4081e-01  1.6018e+00  0:05:00  447
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2505 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4054  2.8578e-01  2.2355e-01  1.2877e-01  1.3727e-01  2.8736e-01  1.7040e-02  5.5720e-04 -9.3141e-01  1.4446e+00  0:05:29  446
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2554 cells 
+  4055  2.8583e-01  2.2850e-01  1.3124e-01  1.3918e-01  2.9154e-01  1.7537e-02  5.6753e-04 -9.0643e-01  1.2647e+00  0:04:23  445
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2594 cells 
+  4056  2.8604e-01  2.3100e-01  1.3537e-01  1.4306e-01  2.9565e-01  1.7974e-02  8.2609e-04 -8.6474e-01  1.0776e+00  0:04:58  444
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2637 cells 
+  4057  2.8622e-01  2.3117e-01  1.3945e-01  1.4730e-01  2.9933e-01  1.8437e-02  1.2249e-03 -8.0452e-01  8.8769e-01  0:05:27  443
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2672 cells 
+  4058  2.8686e-01  2.3069e-01  1.4402e-01  1.5165e-01  3.0264e-01  1.8926e-02  1.7097e-03 -7.2764e-01  6.9736e-01  0:05:49  442
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2698 cells 
+  4059  2.8925e-01  2.2910e-01  1.4830e-01  1.5671e-01  3.0629e-01  1.9331e-02  2.2476e-03 -6.3786e-01  5.1394e-01  0:04:39  441
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2709 cells 
+  4060  2.9325e-01  2.2793e-01  1.5012e-01  1.5920e-01  3.0990e-01  1.9539e-02  2.8081e-03 -5.3839e-01  3.4418e-01  0:05:11  440
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2715 cells 
+  4061  3.0017e-01  2.2789e-01  1.5145e-01  1.5969e-01  3.1451e-01  1.9589e-02  3.3769e-03 -4.3167e-01  1.9284e-01  0:05:36  439
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2704 cells 
+  4062  3.1067e-01  2.2882e-01  1.5192e-01  1.5883e-01  3.2151e-01  1.9717e-02  3.9549e-03 -3.1569e-01  5.8444e-02  0:04:28  438
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2704 cells 
+  4063  3.2526e-01  2.3143e-01  1.5138e-01  1.5736e-01  3.3208e-01  1.9954e-02  4.5303e-03 -1.9517e-01 -6.2370e-02  0:05:01  437
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2718 cells 
+  4064  3.4383e-01  2.3491e-01  1.4968e-01  1.5602e-01  3.4723e-01  1.9887e-02  5.0952e-03 -7.1882e-02 -1.7056e-01  0:05:28  436
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2716 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4065  3.6581e-01  2.3793e-01  1.4740e-01  1.5378e-01  3.6667e-01  1.9643e-02  5.6509e-03  5.0080e-02 -2.6674e-01  0:04:22  435
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2721 cells 
+  4066  3.8966e-01  2.4208e-01  1.4455e-01  1.5117e-01  3.8961e-01  1.9549e-02  6.1860e-03  1.6870e-01 -3.5142e-01  0:04:56  434
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2732 cells 
+  4067  4.1376e-01  2.4654e-01  1.4062e-01  1.4730e-01  4.1458e-01  1.9432e-02  6.6960e-03  2.8391e-01 -4.2408e-01  0:05:22  433
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2725 cells 
+  4068  4.3632e-01  2.5013e-01  1.3604e-01  1.4176e-01  4.3959e-01  1.9134e-02  7.1753e-03  3.9183e-01 -4.8465e-01  0:04:17  432
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2716 cells 
+  4069  4.5557e-01  2.5259e-01  1.3042e-01  1.3567e-01  4.6262e-01  1.8792e-02  7.6226e-03  4.9238e-01 -5.3651e-01  0:04:52  431
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2721 cells 
+  4070  4.6983e-01  2.5315e-01  1.2385e-01  1.2899e-01  4.8116e-01  1.8352e-02  8.0282e-03  5.8493e-01 -5.8295e-01  0:05:19  430
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2702 cells 
+  4071  4.7753e-01  2.5135e-01  1.1742e-01  1.2193e-01  4.9340e-01  1.7741e-02  8.3903e-03  6.6850e-01 -6.2691e-01  0:04:14  429
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2682 cells 
+  4072  4.7733e-01  2.4717e-01  1.1147e-01  1.1490e-01  4.9747e-01  1.7031e-02  8.7073e-03  7.4399e-01 -6.7004e-01  0:04:49  428
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2672 cells 
+  4073  4.6904e-01  2.4083e-01  1.0689e-01  1.0953e-01  4.9294e-01  1.6173e-02  8.9748e-03  8.0994e-01 -7.1181e-01  0:05:16  427
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2638 cells 
+  4074  4.5336e-01  2.3233e-01  1.0486e-01  1.0627e-01  4.8013e-01  1.5189e-02  9.1957e-03  8.6451e-01 -7.5434e-01  0:05:37  426
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2624 cells 
+  4075  4.3186e-01  2.2216e-01  1.0533e-01  1.0623e-01  4.6038e-01  1.4243e-02  9.3659e-03  9.0543e-01 -7.9895e-01  0:05:54  425
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2594 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4076  4.0611e-01  2.1096e-01  1.0816e-01  1.0857e-01  4.3535e-01  1.3337e-02  9.4852e-03  9.3306e-01 -8.4590e-01  0:04:43  424
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2580 cells 
+  4077  3.7716e-01  1.9895e-01  1.1251e-01  1.1208e-01  4.0602e-01  1.2566e-02  9.5559e-03  9.4681e-01 -8.9639e-01  0:05:10  423
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2569 cells 
+  4078  3.4647e-01  1.8746e-01  1.1646e-01  1.1545e-01  3.7401e-01  1.2000e-02  9.5778e-03  9.4658e-01 -9.4936e-01  0:05:32  422
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2549 cells 
+  4079  3.1525e-01  1.7700e-01  1.1958e-01  1.1855e-01  3.4061e-01  1.1509e-02  9.5522e-03  9.3278e-01 -1.0039e+00  0:04:25  421
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2519 cells 
+  4080  2.8453e-01  1.6822e-01  1.2128e-01  1.2070e-01  3.0703e-01  1.1045e-02  9.4804e-03  9.0621e-01 -1.0591e+00  0:04:55  420
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2501 cells 
+  4081  2.5646e-01  1.6195e-01  1.2154e-01  1.2128e-01  2.7598e-01  1.0653e-02  9.3643e-03  8.6832e-01 -1.1130e+00  0:05:20  419
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2500 cells 
+  4082  2.3284e-01  1.5807e-01  1.2014e-01  1.2046e-01  2.4990e-01  1.0320e-02  9.2069e-03  8.2020e-01 -1.1643e+00  0:04:15  418
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2490 cells 
+  4083  2.1482e-01  1.5585e-01  1.1724e-01  1.1759e-01  2.2983e-01  1.0031e-02  9.0090e-03  7.6399e-01 -1.2115e+00  0:04:47  417
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2497 cells 
+  4084  2.0441e-01  1.5487e-01  1.1342e-01  1.1415e-01  2.1817e-01  9.7820e-03  8.7735e-03  6.9954e-01 -1.2547e+00  0:05:12  416
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2502 cells 
+  4085  2.0165e-01  1.5490e-01  1.0911e-01  1.1032e-01  2.1505e-01  9.5805e-03  8.5015e-03  6.2802e-01 -1.2931e+00  0:04:09  415
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2489 cells 
+  4086  2.0526e-01  1.5522e-01  1.0491e-01  1.0660e-01  2.1889e-01  9.3919e-03  8.1953e-03  5.5007e-01 -1.3262e+00  0:04:42  414
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2495 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4087  2.1341e-01  1.5506e-01  1.0145e-01  1.0367e-01  2.2763e-01  9.2063e-03  7.8583e-03  4.6736e-01 -1.3528e+00  0:05:07  413
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2516 cells 
+  4088  2.2448e-01  1.5437e-01  9.9039e-02  1.0165e-01  2.3965e-01  8.9826e-03  7.4925e-03  3.8195e-01 -1.3732e+00  0:05:28  412
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2536 cells 
+  4089  2.3669e-01  1.5306e-01  9.7907e-02  1.0069e-01  2.5276e-01  8.7599e-03  7.1012e-03  2.9448e-01 -1.3871e+00  0:04:22  411
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2537 cells 
+  4090  2.4887e-01  1.5123e-01  9.7968e-02  1.0095e-01  2.6570e-01  8.5534e-03  6.6852e-03  2.0710e-01 -1.3931e+00  0:04:51  410
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2546 cells 
+  4091  2.6031e-01  1.4915e-01  9.8657e-02  1.0174e-01  2.7773e-01  8.3748e-03  6.2473e-03  1.2028e-01 -1.3913e+00  0:05:14  409
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2557 cells 
+  4092  2.7066e-01  1.4653e-01  9.9718e-02  1.0284e-01  2.8859e-01  8.2185e-03  5.7899e-03  3.6532e-02 -1.3817e+00  0:04:10  408
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2556 cells 
+  4093  2.8000e-01  1.4389e-01  1.0071e-01  1.0395e-01  2.9846e-01  8.0730e-03  5.3145e-03 -4.3139e-02 -1.3648e+00  0:04:41  407
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2565 cells 
+  4094  2.8821e-01  1.4144e-01  1.0131e-01  1.0461e-01  3.0720e-01  7.9397e-03  4.8207e-03 -1.1736e-01 -1.3409e+00  0:05:06  406
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2572 cells 
+  4095  2.9518e-01  1.3948e-01  1.0136e-01  1.0481e-01  3.1467e-01  7.8463e-03  4.3135e-03 -1.8524e-01 -1.3100e+00  0:04:04  405
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2594 cells 
+  4096  3.0130e-01  1.3790e-01  1.0083e-01  1.0431e-01  3.2129e-01  7.7574e-03  3.7971e-03 -2.4566e-01 -1.2726e+00  0:04:35  404
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2598 cells 
+  4097  3.0672e-01  1.3665e-01  9.9682e-02  1.0321e-01  3.2727e-01  7.6690e-03  3.2730e-03 -2.9920e-01 -1.2285e+00  0:05:00  403
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2607 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4098  3.1135e-01  1.3578e-01  9.7888e-02  1.0162e-01  3.3250e-01  7.5821e-03  2.7444e-03 -3.4509e-01 -1.1783e+00  0:04:00  402
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2619 cells 
+  4099  3.1514e-01  1.3523e-01  9.5599e-02  9.9538e-02  3.3688e-01  7.5175e-03  2.2118e-03 -3.8270e-01 -1.1223e+00  0:04:32  401
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2629 cells 
+  4100  3.1808e-01  1.3483e-01  9.2967e-02  9.7123e-02  3.4045e-01  7.4611e-03  1.6822e-03 -4.1242e-01 -1.0606e+00  0:04:57  400
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2640 cells 
+  4101  3.2007e-01  1.3431e-01  9.0115e-02  9.4426e-02  3.4309e-01  7.3793e-03  1.1549e-03 -4.3411e-01 -9.9376e-01  0:03:57  399
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2647 cells 
+  4102  3.2105e-01  1.3336e-01  8.7223e-02  9.1643e-02  3.4480e-01  7.3133e-03  6.2678e-04 -4.4686e-01 -9.2220e-01  0:04:29  398
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2655 cells 
+  4103  3.2108e-01  1.3193e-01  8.4482e-02  8.8950e-02  3.4567e-01  7.2834e-03  1.9617e-04 -4.5218e-01 -8.4564e-01  0:04:54  397
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2652 cells 
+  4104  3.2014e-01  1.3002e-01  8.2078e-02  8.6703e-02  3.4570e-01  7.2419e-03  4.5725e-04 -4.4989e-01 -7.6372e-01  0:03:54  396
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2634 cells 
+  4105  3.1809e-01  1.2766e-01  8.0217e-02  8.4996e-02  3.4458e-01  7.1644e-03  9.3428e-04 -4.4065e-01 -6.7596e-01  0:04:26  395
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2599 cells 
+  4106  3.1490e-01  1.2470e-01  7.9147e-02  8.3930e-02  3.4226e-01  7.0306e-03  1.4005e-03 -4.2502e-01 -5.8291e-01  0:04:51  394
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2547 cells 
+  4107  3.1068e-01  1.2119e-01  7.8908e-02  8.3731e-02  3.3880e-01  6.8520e-03  1.8554e-03 -4.0337e-01 -4.8474e-01  0:03:52  393
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2493 cells 
+  4108  3.0525e-01  1.1717e-01  7.9483e-02  8.4463e-02  3.3385e-01  6.6749e-03  2.2934e-03 -3.7599e-01 -3.8025e-01  0:04:24  392
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2450 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4109  2.9881e-01  1.1266e-01  8.0968e-02  8.5956e-02  3.2767e-01  6.4992e-03  2.7121e-03 -3.4388e-01 -2.6941e-01  0:04:49  391
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2398 cells 
+  4110  2.9132e-01  1.0768e-01  8.3124e-02  8.8137e-02  3.2013e-01  6.3332e-03  3.1056e-03 -3.0951e-01 -1.5195e-01  0:03:50  390
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2343 cells 
+  4111  2.8301e-01  1.0242e-01  8.5786e-02  9.0925e-02  3.1139e-01  6.2083e-03  3.4772e-03 -2.7293e-01 -2.7552e-02  0:04:22  389
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2293 cells 
+  4112  2.7418e-01  9.6945e-02  8.8754e-02  9.4068e-02  3.0176e-01  6.1394e-03  3.8219e-03 -2.3410e-01  1.0385e-01  0:04:46  388
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2211 cells 
+  4113  2.6521e-01  9.1416e-02  9.1851e-02  9.7370e-02  2.9161e-01  6.1380e-03  4.1372e-03 -1.9524e-01  2.4047e-01  0:03:48  387
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2104 cells 
+  4114  2.5623e-01  8.5935e-02  9.4790e-02  1.0055e-01  2.8096e-01  6.2266e-03  4.4186e-03 -1.5655e-01  3.7997e-01  0:04:20  386
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2063 cells 
+  4115  2.4784e-01  8.0984e-02  9.7522e-02  1.0342e-01  2.7047e-01  6.4068e-03  4.6647e-03 -1.1799e-01  5.1915e-01  0:04:44  385
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2067 cells 
+  4116  2.4024e-01  7.6548e-02  9.9883e-02  1.0585e-01  2.6026e-01  6.6682e-03  4.8721e-03 -8.0193e-02  6.5536e-01  0:03:47  384
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2087 cells 
+  4117  2.3418e-01  7.3042e-02  1.0174e-01  1.0775e-01  2.5113e-01  6.9710e-03  5.0387e-03 -4.4590e-02  7.8612e-01  0:04:17  383
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2111 cells 
+  4118  2.3023e-01  7.0634e-02  1.0300e-01  1.0906e-01  2.4362e-01  7.2984e-03  5.1659e-03 -1.1280e-02  9.0904e-01  0:04:42  382
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2131 cells 
+  4119  2.2912e-01  6.9651e-02  1.0353e-01  1.0973e-01  2.3857e-01  7.6057e-03  5.2537e-03  1.8839e-02  1.0223e+00  0:03:45  381
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2162 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4120  2.3172e-01  7.0541e-02  1.0336e-01  1.0963e-01  2.3711e-01  7.8889e-03  5.3016e-03  4.5295e-02  1.1244e+00  0:04:15  380
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2190 cells 
+  4121  2.3800e-01  7.3430e-02  1.0244e-01  1.0873e-01  2.3931e-01  8.1424e-03  5.3106e-03  6.6384e-02  1.2146e+00  0:04:40  379
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2219 cells 
+  4122  2.4769e-01  7.7977e-02  1.0074e-01  1.0699e-01  2.4511e-01  8.2983e-03  5.2829e-03  8.4053e-02  1.2926e+00  0:03:43  378
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2252 cells 
+  4123  2.6049e-01  8.3868e-02  9.8262e-02  1.0442e-01  2.5453e-01  8.3336e-03  5.2188e-03  9.9881e-02  1.3584e+00  0:04:13  377
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2278 cells 
+  4124  2.7554e-01  9.0620e-02  9.5010e-02  1.0109e-01  2.6690e-01  8.2682e-03  5.1200e-03  1.1366e-01  1.4133e+00  0:04:37  376
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2300 cells 
+  4125  2.9185e-01  9.7819e-02  9.1028e-02  9.6933e-02  2.8136e-01  8.0723e-03  4.9888e-03  1.2546e-01  1.4575e+00  0:03:41  375
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2324 cells 
+  4126  3.0815e-01  1.0480e-01  8.6414e-02  9.2043e-02  2.9671e-01  7.7731e-03  4.8276e-03  1.3574e-01  1.4926e+00  0:04:11  374
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2341 cells 
+  4127  3.2298e-01  1.1119e-01  8.1216e-02  8.6554e-02  3.1140e-01  7.4249e-03  4.6391e-03  1.4422e-01  1.5195e+00  0:04:35  373
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2358 cells 
+  4128  3.3502e-01  1.1664e-01  7.5705e-02  8.0558e-02  3.2401e-01  7.1786e-03  4.4265e-03  1.5103e-01  1.5395e+00  0:03:40  372
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2368 cells 
+  4129  3.4277e-01  1.2070e-01  7.0135e-02  7.4411e-02  3.3290e-01  7.1103e-03  4.1929e-03  1.5607e-01  1.5529e+00  0:04:09  371
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2390 cells 
+  4130  3.4513e-01  1.2324e-01  6.4980e-02  6.8736e-02  3.3677e-01  7.1356e-03  3.9411e-03  1.5914e-01  1.5577e+00  0:04:33  370
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2404 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4131  3.4143e-01  1.2405e-01  6.0986e-02  6.4310e-02  3.3476e-01  7.2863e-03  3.6739e-03  1.6073e-01  1.5455e+00  0:03:38  369
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2424 cells 
+  4132  3.3141e-01  1.2339e-01  5.9076e-02  6.1931e-02  3.2644e-01  7.4847e-03  3.3954e-03  1.6073e-01  1.5050e+00  0:04:07  368
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2431 cells 
+  4133  3.1607e-01  1.2007e-01  5.9659e-02  6.2169e-02  3.1272e-01  7.6918e-03  3.1056e-03  1.5927e-01  1.4308e+00  0:04:31  367
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2440 cells 
+  4134  2.9610e-01  1.1475e-01  6.2321e-02  6.4648e-02  2.9425e-01  7.9170e-03  2.8088e-03  1.5621e-01  1.3292e+00  0:03:36  366
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2443 cells 
+  4135  2.7222e-01  1.0819e-01  6.6785e-02  6.9031e-02  2.7142e-01  8.1489e-03  2.5101e-03  1.5186e-01  1.2087e+00  0:04:05  365
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2445 cells 
+  4136  2.4576e-01  1.0072e-01  7.1423e-02  7.3721e-02  2.4554e-01  8.3785e-03  2.2117e-03  1.4707e-01  1.0807e+00  0:04:29  364
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2446 cells 
+  4137  2.1846e-01  9.3769e-02  7.5531e-02  7.8258e-02  2.1840e-01  8.5599e-03  1.9163e-03  1.4202e-01  9.5348e-01  0:03:34  363
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2440 cells 
+  4138  1.9188e-01  8.7746e-02  7.8682e-02  8.1151e-02  1.9143e-01  8.6454e-03  1.6262e-03  1.3594e-01  8.3353e-01  0:04:03  362
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2426 cells 
+  4139  1.6816e-01  8.3545e-02  7.9942e-02  8.2445e-02  1.6716e-01  8.6598e-03  1.3433e-03  1.2893e-01  7.2300e-01  0:04:26  361
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2421 cells 
+  4140  1.4964e-01  8.1501e-02  7.9441e-02  8.2082e-02  1.4830e-01  8.6525e-03  1.0716e-03  1.2119e-01  6.2285e-01  0:04:44  360
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2408 cells 
+  4141  1.3830e-01  8.1243e-02  7.7211e-02  8.0319e-02  1.3684e-01  8.5873e-03  8.1133e-04  1.1282e-01  5.3285e-01  0:04:59  359
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2406 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4142  1.3530e-01  8.2608e-02  7.4073e-02  7.7274e-02  1.3414e-01  8.4369e-03  5.6357e-04  1.0415e-01  4.5220e-01  0:03:58  358
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2422 cells 
+  4143  1.3979e-01  8.4630e-02  7.0218e-02  7.3714e-02  1.3918e-01  8.1840e-03  3.3274e-04  9.6059e-02  3.8005e-01  0:04:22  357
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2406 cells 
+  4144  1.4962e-01  8.6255e-02  6.6433e-02  6.9886e-02  1.4957e-01  7.8919e-03  1.2465e-04  8.8180e-02  3.1481e-01  0:04:40  356
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2394 cells 
+  4145  1.6245e-01  8.7643e-02  6.2798e-02  6.6086e-02  1.6283e-01  7.6101e-03  1.3293e-04  8.0498e-02  2.5484e-01  0:03:43  355
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2380 cells 
+  4146  1.7626e-01  8.8467e-02  5.9926e-02  6.2672e-02  1.7684e-01  7.3271e-03  3.0277e-04  7.2583e-02  1.9836e-01  0:04:09  354
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2360 cells 
+  4147  1.8955e-01  8.8561e-02  5.7368e-02  5.9747e-02  1.9004e-01  7.1045e-03  4.5921e-04  6.4345e-02  1.4375e-01  0:04:29  353
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2343 cells 
+  4148  2.0172e-01  8.8168e-02  5.5223e-02  5.7515e-02  2.0184e-01  6.8262e-03  5.9706e-04  5.6180e-02  9.0118e-02  0:03:35  352
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2329 cells 
+  4149  2.1227e-01  8.7175e-02  5.3937e-02  5.6140e-02  2.1183e-01  6.5495e-03  7.1904e-04  4.7741e-02  3.6721e-02  0:04:01  351
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2308 cells 
+  4150  2.2098e-01  8.5686e-02  5.3439e-02  5.5491e-02  2.1986e-01  6.2378e-03  8.2327e-04  3.8355e-02 -1.6715e-02  0:04:23  350
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2285 cells 
+  4151  2.2768e-01  8.3847e-02  5.3323e-02  5.5295e-02  2.2581e-01  5.9330e-03  9.0897e-04  2.8641e-02 -7.0455e-02  0:03:30  349
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2264 cells 
+  4152  2.3243e-01  8.2002e-02  5.3489e-02  5.5405e-02  2.2975e-01  5.6560e-03  9.7778e-04  1.8380e-02 -1.2454e-01  0:03:57  348
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2246 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4153  2.3534e-01  8.0286e-02  5.3956e-02  5.5814e-02  2.3183e-01  5.4148e-03  1.0285e-03  7.8910e-03 -1.7876e-01  0:04:18  347
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2233 cells 
+  4154  2.3643e-01  7.8572e-02  5.4569e-02  5.6285e-02  2.3211e-01  5.2057e-03  1.0615e-03 -2.7656e-03 -2.3239e-01  0:03:26  346
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2206 cells 
+  4155  2.3582e-01  7.7149e-02  5.5111e-02  5.6780e-02  2.3079e-01  5.0134e-03  1.0775e-03 -1.3611e-02 -2.8490e-01  0:03:53  345
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2196 cells 
+  4156  2.3372e-01  7.5948e-02  5.5517e-02  5.7213e-02  2.2807e-01  4.8747e-03  1.0773e-03 -2.4867e-02 -3.3530e-01  0:03:06  344
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2182 cells 
+  4157  2.3019e-01  7.4775e-02  5.5750e-02  5.7640e-02  2.2402e-01  4.7719e-03  1.0613e-03 -3.5964e-02 -3.8307e-01  0:03:37  343
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2156 cells 
+  4158  2.2536e-01  7.3768e-02  5.5834e-02  5.7698e-02  2.1879e-01  4.7040e-03  1.0307e-03 -4.6743e-02 -4.2732e-01  0:04:02  342
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2140 cells 
+  4159  2.1928e-01  7.2745e-02  5.5681e-02  5.7570e-02  2.1241e-01  4.6560e-03  9.8622e-04 -5.6959e-02 -4.6689e-01  0:03:13  341
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2124 cells 
+  4160  2.1210e-01  7.1534e-02  5.5256e-02  5.7306e-02  2.0498e-01  4.6206e-03  9.3012e-04 -6.6360e-02 -5.0131e-01  0:03:42  340
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2114 cells 
+  4161  2.0400e-01  7.0172e-02  5.4847e-02  5.7223e-02  1.9671e-01  4.5722e-03  8.6323e-04 -7.5022e-02 -5.2913e-01  0:04:05  339
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2100 cells 
+  4162  1.9506e-01  6.8587e-02  5.4598e-02  5.7229e-02  1.8765e-01  4.5155e-03  7.8781e-04 -8.2712e-02 -5.5028e-01  0:03:15  338
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2096 cells 
+  4163  1.8538e-01  6.6695e-02  5.4677e-02  5.7420e-02  1.7793e-01  4.4499e-03  7.0207e-04 -8.9340e-02 -5.6440e-01  0:03:43  337
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2093 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4164  1.7508e-01  6.4604e-02  5.5284e-02  5.8142e-02  1.6768e-01  4.3691e-03  6.1522e-04 -9.4949e-02 -5.7142e-01  0:04:05  336
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2096 cells 
+  4165  1.6435e-01  6.2110e-02  5.6291e-02  5.9220e-02  1.5706e-01  4.2717e-03  5.2289e-04 -9.9672e-02 -5.7099e-01  0:03:15  335
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2110 cells 
+  4166  1.5345e-01  5.9276e-02  5.7508e-02  6.0607e-02  1.4633e-01  4.1694e-03  4.2790e-04 -1.0272e-01 -5.6363e-01  0:03:43  334
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2109 cells 
+  4167  1.4275e-01  5.6276e-02  5.8880e-02  6.2200e-02  1.3588e-01  4.0609e-03  3.3204e-04 -1.0421e-01 -5.5009e-01  0:04:04  333
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2117 cells 
+  4168  1.3260e-01  5.3154e-02  6.0334e-02  6.3795e-02  1.2608e-01  3.9539e-03  2.3644e-04 -1.0386e-01 -5.3127e-01  0:03:15  332
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2130 cells 
+  4169  1.2356e-01  5.0085e-02  6.1771e-02  6.5245e-02  1.1748e-01  3.8584e-03  1.4411e-04 -1.0231e-01 -5.0697e-01  0:03:42  331
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2149 cells 
+  4170  1.1614e-01  4.7274e-02  6.3034e-02  6.6494e-02  1.1063e-01  3.7749e-03  6.5429e-05 -9.9203e-02 -4.7798e-01  0:04:03  330
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2165 cells 
+  4171  1.1064e-01  4.4869e-02  6.3960e-02  6.7539e-02  1.0581e-01  3.7063e-03  8.5499e-05 -9.4823e-02 -4.4518e-01  0:03:14  329
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2184 cells 
+  4172  1.0764e-01  4.2947e-02  6.4498e-02  6.8286e-02  1.0352e-01  3.6617e-03  1.5438e-04 -8.9033e-02 -4.0945e-01  0:03:40  328
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2200 cells 
+  4173  1.0732e-01  4.1726e-02  6.4590e-02  6.8594e-02  1.0392e-01  3.6305e-03  2.2292e-04 -8.2405e-02 -3.7160e-01  0:04:01  327
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2213 cells 
+  4174  1.0950e-01  4.1282e-02  6.4258e-02  6.8408e-02  1.0672e-01  3.6266e-03  2.8723e-04 -7.4979e-02 -3.3211e-01  0:03:12  326
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2226 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4175  1.1377e-01  4.1722e-02  6.3500e-02  6.7777e-02  1.1148e-01  3.6378e-03  3.4331e-04 -6.6462e-02 -2.9172e-01  0:03:38  325
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2239 cells 
+  4176  1.1964e-01  4.2817e-02  6.2374e-02  6.6755e-02  1.1776e-01  3.6595e-03  3.9084e-04 -5.7469e-02 -2.5076e-01  0:03:59  324
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2255 cells 
+  4177  1.2649e-01  4.4420e-02  6.0912e-02  6.5366e-02  1.2492e-01  3.6878e-03  4.2953e-04 -4.8112e-02 -2.0975e-01  0:04:15  323
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2270 cells 
+  4178  1.3361e-01  4.6382e-02  5.9187e-02  6.3623e-02  1.3226e-01  3.7303e-03  4.5978e-04 -3.8125e-02 -1.6901e-01  0:03:23  322
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2279 cells 
+  4179  1.4045e-01  4.8449e-02  5.7273e-02  6.1622e-02  1.3930e-01  3.7708e-03  4.8132e-04 -2.8022e-02 -1.2862e-01  0:03:46  321
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2298 cells 
+  4180  1.4651e-01  5.0443e-02  5.5173e-02  5.9405e-02  1.4557e-01  3.8105e-03  4.9414e-04 -1.8214e-02 -8.8621e-02  0:04:05  320
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2308 cells 
+  4181  1.5153e-01  5.2134e-02  5.2998e-02  5.7069e-02  1.5091e-01  3.8310e-03  4.9799e-04 -8.8774e-03 -4.9134e-02  0:03:15  319
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2312 cells 
+  4182  1.5533e-01  5.3386e-02  5.0827e-02  5.4669e-02  1.5520e-01  3.8291e-03  4.9357e-04  5.8088e-05 -9.8872e-03  0:03:39  318
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2315 cells 
+  4183  1.5768e-01  5.4131e-02  4.8761e-02  5.2344e-02  1.5821e-01  3.8197e-03  4.8259e-04  8.7154e-03  2.9313e-02  0:03:58  317
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2319 cells 
+  4184  1.5858e-01  5.4375e-02  4.6850e-02  5.0160e-02  1.5991e-01  3.7733e-03  4.6079e-04  1.7091e-02  6.8549e-02  0:03:10  316
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2310 cells 
+  4185  1.5803e-01  5.4170e-02  4.5169e-02  4.8222e-02  1.6026e-01  3.7207e-03  4.3570e-04  2.5012e-02  1.0748e-01  0:03:34  315
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2286 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  4186  1.5611e-01  5.3554e-02  4.3750e-02  4.6582e-02  1.5931e-01  3.6548e-03  4.0324e-04  3.2611e-02  1.4604e-01  0:03:54  314
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2255 cells 
+  4187  1.5302e-01  5.2675e-02  4.2627e-02  4.5279e-02  1.5720e-01  3.5834e-03  3.6582e-04  3.9836e-02  1.8504e-01  0:03:06  313
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2230 cells 
+  4188  1.4895e-01  5.1596e-02  4.1822e-02  4.4282e-02  1.5410e-01  3.5127e-03  3.2396e-04  4.6837e-02  2.2511e-01  0:03:31  312
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2207 cells 
+  4189  1.4415e-01  5.0397e-02  4.1279e-02  4.3561e-02  1.5016e-01  3.4360e-03  2.7820e-04  5.3323e-02  2.6704e-01  0:03:51  311
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2178 cells 
+  4190  1.3880e-01  4.9130e-02  4.0985e-02  4.3097e-02  1.4554e-01  3.3861e-03  2.3001e-04  5.9183e-02  3.1083e-01  0:03:04  310
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2158 cells 
+  4191  1.3304e-01  4.7872e-02  4.0877e-02  4.2814e-02  1.4034e-01  3.3725e-03  1.7836e-04  6.4724e-02  3.5605e-01  0:03:28  309
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2146 cells 
+  4192  1.2714e-01  4.6703e-02  4.0869e-02  4.2649e-02  1.3478e-01  3.4001e-03  1.2655e-04  6.9792e-02  4.0205e-01  0:03:48  308
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2119 cells 
+  4193  1.2130e-01  4.5593e-02  4.0850e-02  4.2540e-02  1.2906e-01  3.4637e-03  9.5027e-05  7.4096e-02  4.4813e-01  0:03:02  307
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2119 cells 
+  4194  1.1572e-01  4.4588e-02  4.0859e-02  4.2466e-02  1.2336e-01  3.5370e-03  9.5600e-05  7.7803e-02  4.9350e-01  0:03:26  306
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 2110 cells 
+  4195  1.1054e-01  4.3690e-02  4.0817e-02  4.2339e-02  1.1788e-01  3.6121e-03  1.1164e-04  8.0775e-02  5.3737e-01  0:03:45  305
+
+Transcript file has been opened in append mode. Time stamp=14:11:51, 01 Jun 2026 RTZ 2 (çèìà).
+Transcript Start Time:  14:11:51, 01 Jun 2026 RTZ 2 (çèìà) 
+Current Directory: "E:\UniFlight\ansys"
+
+Build Time: May 13 2024 11:21:01 EST 
+Executable Path: C:/PROGRA~1/ANSYSI~1/v242/fluent/ntbin/win64/fluent.exe
+
+--------------------------------------------------------------------------------------------------
+ID    Hostname         Core  O.S.         PID    Vendor                                          
+--------------------------------------------------------------------------------------------------
+n5    DESKTOP-Q5AGLJJ  6/12  Windows-x64  9528   11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n4    DESKTOP-Q5AGLJJ  5/12  Windows-x64  19276  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n3    DESKTOP-Q5AGLJJ  4/12  Windows-x64  16284  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n2    DESKTOP-Q5AGLJJ  3/12  Windows-x64  10460  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n1    DESKTOP-Q5AGLJJ  2/12  Windows-x64  20952  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+n0*   DESKTOP-Q5AGLJJ  1/12  Windows-x64  23704  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+host  DESKTOP-Q5AGLJJ        Windows-x64  17744  11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz  
+
+MPI Option Selected: intel
+Selected system interconnect: default
+--------------------------------------------------------------------------------------------------
+
+Cortex Process ID: 22556 
+License Server Path: 1055@localhost 
+Fast-loading "C:\PROGRA~1\ANSYSI~1\v242\fluent\fluent24.2.0\\addons\afd\lib\hdfio.bin"
+Done.
+Multicore SMT processors detected. Processor affinity set!
+Reading setting file in cache: "E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF.1.set"
+
+Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF.1-Setup-Output.cas.h5" in NODE0 mode ...
+  Reading mesh ...
+      198570 cells,     1 cell zone  ...
+         198570 tetrahedral cells,  zone id: 2
+      400799 faces,     5 face zones ...
+         393481 triangular interior faces,  zone id: 1
+            292 triangular pressure-far-field faces,  zone id: 5
+            308 triangular pressure-outlet faces,  zone id: 6
+           1206 triangular wall faces,  zone id: 7
+           5512 triangular wall faces,  zone id: 8
+       34753 nodes,     1 node zone  ...
+  Done.
+
+
+
+Building...
+     mesh
+	distributing mesh
+		parts......,
+		faces......,
+		nodes......,
+		cells......,
+        bandwidth reduction using Reverse Cuthill-McKee: 33040/1098 = 30.0911
+     materials,
+     interface,
+     domains,
+	mixture
+     zones,
+	ball
+	outer
+	outlet
+	interior-falcon-freeparts
+	inlet
+	falcon-freeparts
+ Warning: For compressible (ideal and real) gas models with buoyancy,
+ it is recommended that you use a specified operating density value of zero:
+ define/operating-conditions/operating-density? yes 0.
+Setting falcon-freeparts (mixture) ... Done.
+ Setting zone id of falcon-freeparts to 2.
+ Setting zone id of inlet to 5.
+ Setting zone id of interior-falcon-freeparts to 1.
+ Setting zone id of outlet to 6.
+ Setting zone id of outer to 7.
+ Setting zone id of ball to 8.
+Done.
+Setting falcon-freeparts (mixture) ... Done.
+Setting inlet (mixture) ... Done.
+Setting interior-falcon-freeparts (mixture) ... Done.
+Setting outlet (mixture) ... Done.
+Setting outer (mixture) ... Done.
+Setting ball (mixture) ... Done.
+
+     parallel,
+Done.
+
+Preparing mesh for display...
+Done.
+
+Setting Post Processing and Surfaces information ...	 Done.
+WB->Fluent:Parameter name:mach, value:0.3
+WB->Fluent:Parameter name:attack, value:0.28
+"Updating Setup cell..."
+WB->Fluent:Parameter name:mach, value:0.3
+WB->Fluent:Parameter name:attack, value:0.28
+"Updating Solution cell..."
+
+Reading from DESKTOP-Q5AGLJJ:"E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\FFF.1-18-00953.dat.h5" in NODE0 mode ...
+
+
+  Reading results.
+Parallel variables...
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1831 cells 
+Done.
+WB->Fluent:Parameter name:mach, value:0.3
+WB->Fluent:Parameter name:attack, value:0.28
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   953  4.9440e-03  5.6820e-03  4.3612e-03  3.9507e-03  4.9286e-03  5.2031e-05  1.1104e-05  8.7546e-03  3.2570e-01  0:00:00 1047
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1831 cells 
+   954  5.1981e-03  5.6357e-03  4.4561e-03  4.0124e-03  5.1816e-03  6.9338e-05  4.1062e-05  8.8448e-03  3.2590e-01  0:17:26 1046
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1831 cells 
+   955  5.5067e-03  5.6052e-03  4.4804e-03  4.2290e-03  5.4885e-03  2.1850e-04  2.0828e-04  8.9568e-03  3.2611e-01  0:13:56 1045
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   956  5.5152e-03  5.5831e-03  4.5223e-03  4.3454e-03  5.4959e-03  2.7897e-04  2.1785e-04  9.0714e-03  3.2630e-01  0:14:37 1044
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   957  5.2602e-03  5.5152e-03  4.6023e-03  4.4137e-03  5.2406e-03  3.3653e-04  2.6116e-04  9.1974e-03  3.2647e-01  0:15:09 1043
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   958  5.2452e-03  5.4976e-03  4.6248e-03  4.3436e-03  5.2267e-03  3.6724e-04  2.8967e-04  9.3372e-03  3.2662e-01  0:12:07 1042
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   959  5.0358e-03  5.4080e-03  4.6021e-03  4.1873e-03  5.0183e-03  3.8372e-04  2.9551e-04  9.5540e-03  3.2672e-01  0:13:09 1041
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   960  5.1645e-03  5.3289e-03  4.6025e-03  4.0451e-03  5.1490e-03  3.9506e-04  2.9268e-04  9.7993e-03  3.2681e-01  0:10:31 1040
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1834 cells 
+   961  5.2637e-03  5.2686e-03  4.6154e-03  3.9677e-03  5.2490e-03  4.0207e-04  2.8916e-04  1.0012e-02  3.2697e-01  0:11:52 1039
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1834 cells 
+   962  5.3820e-03  5.2024e-03  4.5704e-03  4.0181e-03  5.3674e-03  4.0633e-04  2.8255e-04  1.0185e-02  3.2717e-01  0:12:57 1038
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1834 cells 
+   963  5.3712e-03  5.1708e-03  4.4732e-03  4.1349e-03  5.3563e-03  4.0676e-04  2.7730e-04  1.0324e-02  3.2741e-01  0:10:21 1037
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1834 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   964  5.1150e-03  5.1400e-03  4.3328e-03  4.2000e-03  5.0997e-03  4.0637e-04  2.7151e-04  1.0421e-02  3.2773e-01  0:11:43 1036
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   965  5.0055e-03  5.1372e-03  4.3228e-03  4.2722e-03  4.9890e-03  4.0454e-04  2.6599e-04  1.0453e-02  3.2810e-01  0:12:49 1035
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1835 cells 
+   966  4.9498e-03  5.2099e-03  4.3159e-03  4.3623e-03  4.9312e-03  4.0194e-04  2.5976e-04  1.0449e-02  3.2854e-01  0:10:15 1034
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   967  5.3009e-03  5.3634e-03  4.2901e-03  4.4857e-03  5.2818e-03  3.9723e-04  2.5257e-04  1.0425e-02  3.2898e-01  0:11:38 1033
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1832 cells 
+   968  5.8196e-03  5.6281e-03  4.3291e-03  4.6336e-03  5.8000e-03  3.9297e-04  2.4560e-04  1.0398e-02  3.2940e-01  0:12:44 1032
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   969  6.1281e-03  5.8967e-03  4.4447e-03  4.7568e-03  6.1074e-03  3.8716e-04  2.3727e-04  1.0385e-02  3.2974e-01  0:10:11 1031
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1835 cells 
+   970  6.3849e-03  6.0954e-03  4.5980e-03  4.8487e-03  6.3638e-03  3.8218e-04  2.2803e-04  1.0374e-02  3.2996e-01  0:11:34 1030
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1834 cells 
+   971  6.6571e-03  6.0881e-03  4.6762e-03  4.8356e-03  6.6366e-03  3.7694e-04  2.1767e-04  1.0298e-02  3.3007e-01  0:12:41 1029
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1835 cells 
+   972  6.5180e-03  6.0254e-03  4.7267e-03  4.9013e-03  6.4989e-03  3.7105e-04  2.0663e-04  1.0253e-02  3.2998e-01  0:10:08 1028
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1834 cells 
+   973  6.4478e-03  5.9725e-03  4.6960e-03  4.9042e-03  6.4273e-03  3.6528e-04  1.9508e-04  1.0247e-02  3.2969e-01  0:11:31 1027
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1832 cells 
+   974  6.8577e-03  5.8216e-03  4.6503e-03  4.8573e-03  6.8358e-03  3.5844e-04  1.8291e-04  1.0228e-02  3.2926e-01  0:12:38 1026
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   975  6.6461e-03  5.6209e-03  4.6574e-03  4.8072e-03  6.6226e-03  3.5210e-04  1.7035e-04  1.0197e-02  3.2875e-01  0:10:06 1025
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   976  6.3706e-03  5.4736e-03  4.7016e-03  4.7897e-03  6.3458e-03  3.4411e-04  1.5770e-04  1.0166e-02  3.2826e-01  0:11:29 1024
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   977  5.9964e-03  5.3481e-03  4.7301e-03  4.7579e-03  5.9726e-03  3.3684e-04  1.4498e-04  1.0189e-02  3.2773e-01  0:12:35 1023
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   978  5.6687e-03  5.2912e-03  4.7213e-03  4.8534e-03  5.6440e-03  3.2823e-04  1.3252e-04  1.0265e-02  3.2721e-01  0:10:03 1022
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1833 cells 
+   979  5.3170e-03  5.2852e-03  4.7588e-03  4.7280e-03  5.2912e-03  3.2101e-04  1.2048e-04  1.0417e-02  3.2681e-01  0:11:26 1021
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1835 cells 
+   980  5.0636e-03  5.3765e-03  4.7216e-03  4.7404e-03  5.0379e-03  3.1266e-04  1.0854e-04  1.0693e-02  3.2650e-01  0:09:09 1020
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1836 cells 
+   981  4.9776e-03  5.4731e-03  4.7734e-03  4.7119e-03  4.9535e-03  3.0434e-04  9.7968e-05  1.1106e-02  3.2629e-01  0:10:42 1019
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1836 cells 
+   982  4.9480e-03  5.6163e-03  4.7856e-03  4.3273e-03  4.9268e-03  2.9542e-04  8.7551e-05  1.1706e-02  3.2616e-01  0:11:57 1018
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1838 cells 
+   983  5.1074e-03  5.6864e-03  4.7732e-03  4.2176e-03  5.0881e-03  2.8810e-04  7.7808e-05  1.2551e-02  3.2606e-01  0:09:33 1017
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1838 cells 
+   984  5.1852e-03  5.6663e-03  4.7438e-03  4.1847e-03  5.1678e-03  2.7851e-04  6.8772e-05  1.3684e-02  3.2603e-01  0:11:01 1016
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1838 cells 
+   985  5.1968e-03  5.6522e-03  4.6676e-03  4.1834e-03  5.1804e-03  2.7076e-04  6.0379e-05  1.5132e-02  3.2604e-01  0:12:11 1015
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1839 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   986  5.0889e-03  5.6838e-03  4.5286e-03  4.1379e-03  5.0720e-03  2.6135e-04  5.2607e-05  1.6977e-02  3.2608e-01  0:09:45 1014
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1840 cells 
+   987  4.9302e-03  5.6630e-03  4.4053e-03  4.0273e-03  4.9132e-03  2.5313e-04  4.5444e-05  1.9307e-02  3.2609e-01  0:11:10 1013
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1842 cells 
+   988  4.7490e-03  5.6632e-03  4.3316e-03  3.9640e-03  4.7319e-03  2.4355e-04  3.8817e-05  2.2172e-02  3.2608e-01  0:12:18 1012
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1842 cells 
+   989  4.6669e-03  5.6850e-03  4.3043e-03  3.8837e-03  4.6504e-03  2.3544e-04  3.2615e-05  2.5565e-02  3.2611e-01  0:09:50 1011
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1842 cells 
+   990  4.8031e-03  5.6594e-03  4.3239e-03  3.8266e-03  4.7887e-03  2.2650e-04  2.6898e-05  2.9534e-02  3.2618e-01  0:11:13 1010
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1844 cells 
+   991  5.0105e-03  5.6295e-03  4.3824e-03  3.7599e-03  4.9973e-03  2.1919e-04  2.1666e-05  3.4105e-02  3.2629e-01  0:12:20 1009
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1845 cells 
+   992  5.2551e-03  5.6738e-03  4.4089e-03  3.7731e-03  5.2413e-03  2.1128e-04  1.7121e-05  3.9245e-02  3.2638e-01  0:13:13 1008
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+   993  5.4910e-03  5.7812e-03  4.4290e-03  3.8623e-03  5.4763e-03  2.0509e-04  1.4159e-05  4.4913e-02  3.2644e-01  0:10:34 1007
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+   994  5.3433e-03  5.7555e-03  4.4505e-03  3.8818e-03  5.3286e-03  1.9879e-04  1.4322e-05  5.1015e-02  3.2645e-01  0:11:48 1006
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1847 cells 
+   995  5.1161e-03  5.6043e-03  4.4692e-03  3.8503e-03  5.1022e-03  1.9329e-04  1.7427e-05  5.7440e-02  3.2642e-01  0:12:47 1005
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+   996  4.8709e-03  5.3566e-03  4.3944e-03  3.8128e-03  4.8575e-03  1.8789e-04  2.0839e-05  6.4123e-02  3.2631e-01  0:13:33 1004
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1847 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+   997  4.7509e-03  5.0850e-03  4.3459e-03  3.7793e-03  4.7385e-03  1.8308e-04  2.4003e-05  7.0869e-02  3.2620e-01  0:10:50 1003
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1847 cells 
+   998  4.8354e-03  4.8941e-03  4.2573e-03  3.8025e-03  4.8236e-03  1.7873e-04  2.6875e-05  7.7446e-02  3.2613e-01  0:12:00 1002
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1845 cells 
+   999  4.8955e-03  4.7534e-03  4.1474e-03  3.8449e-03  4.8833e-03  1.7375e-04  2.9518e-05  8.3673e-02  3.2611e-01  0:12:56 1001
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1845 cells 
+  1000  4.9572e-03  4.6588e-03  4.0884e-03  3.8847e-03  4.9445e-03  1.6918e-04  3.1827e-05  8.9343e-02  3.2612e-01  0:10:20 1000
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1845 cells 
+  1001  4.8202e-03  4.5922e-03  4.0723e-03  3.9476e-03  4.8068e-03  1.6478e-04  3.3872e-05  9.4264e-02  3.2618e-01  0:11:35  999
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1843 cells 
+  1002  4.6667e-03  4.5595e-03  4.0714e-03  4.0054e-03  4.6521e-03  1.6036e-04  3.5712e-05  9.8159e-02  3.2626e-01  0:12:35  998
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1847 cells 
+  1003  4.6837e-03  4.6043e-03  4.1167e-03  4.0820e-03  4.6674e-03  1.5613e-04  3.6953e-05  1.0085e-01  3.2638e-01  0:10:04  997
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+  1004  4.7421e-03  4.6873e-03  4.1976e-03  4.1363e-03  4.7241e-03  1.5152e-04  3.8759e-05  1.0214e-01  3.2658e-01  0:11:22  996
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+  1005  4.8631e-03  4.8511e-03  4.2822e-03  4.2649e-03  4.8449e-03  1.4621e-04  3.9988e-05  1.0191e-01  3.2672e-01  0:12:24  995
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+  1006  5.3045e-03  5.0764e-03  4.3666e-03  4.4724e-03  5.2864e-03  1.4120e-04  4.1012e-05  1.0005e-01  3.2684e-01  0:09:54  994
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+  1007  5.6308e-03  5.3538e-03  4.5062e-03  4.8090e-03  5.6110e-03  1.3616e-04  4.1858e-05  9.6487e-02  3.2693e-01  0:11:14  993
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1008  5.8589e-03  5.5405e-03  4.6640e-03  4.8207e-03  5.8373e-03  1.3130e-04  4.2538e-05  9.1108e-02  3.2694e-01  0:08:58  992
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1848 cells 
+  1009  6.2034e-03  5.5892e-03  4.8140e-03  4.7587e-03  6.1828e-03  1.2664e-04  4.3062e-05  8.3871e-02  3.2701e-01  0:10:28  991
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+  1010  5.9570e-03  5.6823e-03  4.9351e-03  4.9641e-03  5.9366e-03  1.2218e-04  4.3415e-05  7.4905e-02  3.2704e-01  0:11:40  990
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+  1011  6.2101e-03  5.7496e-03  5.0027e-03  4.9768e-03  6.1883e-03  1.1779e-04  4.3623e-05  6.4348e-02  3.2698e-01  0:09:20  989
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+  1012  6.4727e-03  5.7337e-03  5.0846e-03  4.9960e-03  6.4489e-03  1.1362e-04  4.3686e-05  5.2326e-02  3.2689e-01  0:10:45  988
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+  1013  6.2260e-03  5.7532e-03  5.1629e-03  5.0220e-03  6.2017e-03  1.0986e-04  4.3650e-05  3.9061e-02  3.2679e-01  0:11:53  987
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+  1014  6.2050e-03  5.8878e-03  5.2311e-03  5.0131e-03  6.1834e-03  1.0612e-04  4.3436e-05  2.4839e-02  3.2671e-01  0:09:30  986
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+  1015  6.2634e-03  6.0275e-03  5.2388e-03  5.0265e-03  6.2430e-03  1.0285e-04  4.3064e-05  9.9400e-03  3.2657e-01  0:10:52  985
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1849 cells 
+  1016  6.3533e-03  6.1226e-03  5.3069e-03  5.0786e-03  6.3325e-03  9.9928e-05  4.2523e-05 -5.3926e-03  3.2650e-01  0:11:58  984
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1850 cells 
+  1017  6.2017e-03  6.1022e-03  5.3269e-03  5.1534e-03  6.1788e-03  9.8110e-05  4.1859e-05 -2.0847e-02  3.2653e-01  0:09:34  983
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1850 cells 
+  1018  5.9800e-03  6.1540e-03  5.3438e-03  5.2031e-03  5.9572e-03  9.5819e-05  4.1045e-05 -3.6152e-02  3.2671e-01  0:10:55  982
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1851 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1019  5.9805e-03  6.3146e-03  5.3748e-03  5.3139e-03  5.9585e-03  9.3463e-05  4.0089e-05 -5.1035e-02  3.2714e-01  0:08:43  981
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1020  6.4986e-03  6.4744e-03  5.4315e-03  5.3141e-03  6.4767e-03  9.1307e-05  3.9002e-05 -6.5131e-02  3.2760e-01  0:10:14  980
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1021  6.7732e-03  6.6804e-03  5.6890e-03  5.2581e-03  6.7501e-03  8.9274e-05  3.7772e-05 -7.8107e-02  3.2793e-01  0:11:27  979
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1022  6.5398e-03  6.7376e-03  5.8899e-03  5.2088e-03  6.5173e-03  8.7620e-05  3.6401e-05 -8.9798e-02  3.2826e-01  0:09:09  978
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1023  6.7303e-03  6.7634e-03  6.0086e-03  5.3141e-03  6.7098e-03  8.6154e-05  3.4903e-05 -9.9928e-02  3.2852e-01  0:10:34  977
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1024  6.9841e-03  6.7802e-03  6.1271e-03  5.4156e-03  6.9639e-03  8.4490e-05  3.3280e-05 -1.0840e-01  3.2861e-01  0:11:42  976
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1025  6.9343e-03  6.7267e-03  6.1126e-03  5.4923e-03  6.9133e-03  8.3152e-05  3.1529e-05 -1.1501e-01  3.2857e-01  0:09:21  975
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1026  7.0109e-03  6.6951e-03  6.0587e-03  5.5901e-03  6.9885e-03  8.2181e-05  2.9259e-05 -1.1976e-01  3.2855e-01  0:10:43  974
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1027  7.1824e-03  6.6736e-03  5.9560e-03  5.5629e-03  7.1572e-03  8.0849e-05  2.7620e-05 -1.2265e-01  3.2863e-01  0:11:49  973
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1028  7.6581e-03  6.7257e-03  5.9500e-03  5.6044e-03  7.6313e-03  7.9257e-05  2.5508e-05 -1.2361e-01  3.2883e-01  0:09:26  972
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1029  8.0060e-03  6.9602e-03  6.1092e-03  5.8067e-03  7.9746e-03  7.7889e-05  2.3348e-05 -1.2266e-01  3.2905e-01  0:10:47  971
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1030  7.7082e-03  7.1581e-03  6.3165e-03  6.0607e-03  7.6760e-03  7.6311e-05  2.1172e-05 -1.1989e-01  3.2930e-01  0:08:37  970
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1031  7.8355e-03  7.0831e-03  6.4431e-03  6.2629e-03  7.8026e-03  7.4848e-05  1.8988e-05 -1.1541e-01  3.2945e-01  0:10:07  969
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1032  7.6503e-03  6.9359e-03  6.7290e-03  6.0615e-03  7.6174e-03  7.3387e-05  1.6822e-05 -1.0935e-01  3.2958e-01  0:11:19  968
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1033  7.9346e-03  6.8722e-03  6.8054e-03  5.7190e-03  7.9036e-03  7.2466e-05  1.4798e-05 -1.0184e-01  3.2972e-01  0:09:02  967
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1034  7.8002e-03  6.7795e-03  6.7101e-03  5.6604e-03  7.7721e-03  7.1617e-05  1.3279e-05 -9.2977e-02  3.2969e-01  0:10:27  966
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1035  8.3722e-03  7.0094e-03  6.6137e-03  5.4139e-03  8.3500e-03  7.1019e-05  1.3058e-05 -8.2932e-02  3.2962e-01  0:11:34  965
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1036  8.4089e-03  7.3764e-03  6.4728e-03  5.3141e-03  8.3904e-03  7.0503e-05  1.3954e-05 -7.1911e-02  3.2948e-01  0:09:14  964
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1037  8.0198e-03  7.4699e-03  6.2355e-03  5.2173e-03  8.0027e-03  7.0124e-05  1.5690e-05 -6.0121e-02  3.2933e-01  0:10:36  963
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1038  7.8572e-03  7.3237e-03  5.8190e-03  5.0857e-03  7.8377e-03  6.9676e-05  1.7567e-05 -4.7744e-02  3.2912e-01  0:11:40  962
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1039  7.2860e-03  7.0823e-03  5.5020e-03  4.9570e-03  7.2665e-03  6.9241e-05  1.9449e-05 -3.4984e-02  3.2895e-01  0:09:20  961
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1040  6.6379e-03  6.9278e-03  5.4288e-03  4.9248e-03  6.6170e-03  6.8841e-05  2.1271e-05 -2.2013e-02  3.2873e-01  0:10:39  960
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1041  6.3664e-03  6.8014e-03  5.3948e-03  4.9424e-03  6.3432e-03  6.8571e-05  2.2976e-05 -8.9569e-03  3.2843e-01  0:08:31  959
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1042  6.2878e-03  6.6459e-03  5.3550e-03  5.0227e-03  6.2652e-03  6.8396e-05  2.4543e-05  3.9718e-03  3.2813e-01  0:10:00  958
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1043  6.3762e-03  6.5996e-03  5.2938e-03  5.1300e-03  6.3556e-03  6.8118e-05  2.5934e-05  1.6622e-02  3.2786e-01  0:11:11  957
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1044  6.4431e-03  6.7046e-03  5.2589e-03  5.2133e-03  6.4222e-03  6.7972e-05  2.7172e-05  2.8887e-02  3.2753e-01  0:08:56  956
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1045  6.4930e-03  6.8657e-03  5.2955e-03  5.3064e-03  6.4718e-03  6.7523e-05  2.8241e-05  4.0572e-02  3.2711e-01  0:10:19  955
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1046  6.5979e-03  6.9152e-03  5.3179e-03  5.4093e-03  6.5761e-03  6.7087e-05  2.9124e-05  5.1493e-02  3.2676e-01  0:11:26  954
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1047  6.8821e-03  6.9302e-03  5.4251e-03  5.4859e-03  6.8633e-03  6.7297e-05  2.9876e-05  6.1532e-02  3.2650e-01  0:09:08  953
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1851 cells 
+  1048  6.4122e-03  6.9256e-03  5.5047e-03  5.4583e-03  6.3915e-03  6.7368e-05  3.0421e-05  7.0583e-02  3.2630e-01  0:10:28  952
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1049  6.7357e-03  6.9257e-03  5.4791e-03  5.3878e-03  6.7138e-03  6.7744e-05  3.0408e-05  7.8558e-02  3.2608e-01  0:08:22  951
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1050  6.6530e-03  6.7469e-03  5.4556e-03  5.2139e-03  6.6295e-03  6.7347e-05  3.0991e-05  8.5415e-02  3.2581e-01  0:09:51  950
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1852 cells 
+  1051  6.5738e-03  6.7949e-03  5.4551e-03  5.1522e-03  6.5503e-03  6.6947e-05  3.1011e-05  9.1119e-02  3.2557e-01  0:11:02  949
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1052  6.5163e-03  6.8275e-03  5.4945e-03  5.0086e-03  6.4935e-03  6.6743e-05  3.0854e-05  9.5615e-02  3.2528e-01  0:08:49  948
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1053  6.2405e-03  6.9594e-03  5.3298e-03  4.9664e-03  6.2163e-03  6.6740e-05  3.0530e-05  9.8847e-02  3.2495e-01  0:10:12  947
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1054  5.9358e-03  6.9530e-03  5.3302e-03  5.1085e-03  5.9070e-03  6.6850e-05  3.0061e-05  1.0087e-01  3.2465e-01  0:11:19  946
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1055  5.8983e-03  6.7769e-03  5.4525e-03  5.2915e-03  5.8666e-03  6.6851e-05  2.9452e-05  1.0165e-01  3.2443e-01  0:09:02  945
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1056  5.8874e-03  6.6907e-03  5.6034e-03  5.3995e-03  5.8555e-03  6.6799e-05  2.8712e-05  1.0120e-01  3.2432e-01  0:13:31  944
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1057  5.7448e-03  6.6774e-03  5.7050e-03  5.3848e-03  5.7126e-03  6.6765e-05  2.7854e-05  9.9587e-02  3.2429e-01  0:10:48  943
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1058  5.7200e-03  6.7317e-03  5.8082e-03  5.2957e-03  5.6901e-03  6.6601e-05  2.6892e-05  9.6848e-02  3.2431e-01  0:11:46  942
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1059  5.8921e-03  6.6979e-03  5.8076e-03  5.2268e-03  5.8649e-03  6.6264e-05  2.5846e-05  9.3010e-02  3.2447e-01  0:12:33  941
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1060  6.0611e-03  6.5812e-03  5.7470e-03  5.1457e-03  6.0361e-03  6.5630e-05  2.4725e-05  8.8118e-02  3.2473e-01  0:10:01  940
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1061  6.0853e-03  6.4505e-03  5.7071e-03  5.0071e-03  6.0619e-03  6.5845e-05  2.3534e-05  8.2196e-02  3.2519e-01  0:11:08  939
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1062  5.8274e-03  6.3736e-03  5.6195e-03  4.8836e-03  5.8041e-03  6.5386e-05  2.2288e-05  7.5407e-02  3.2568e-01  0:08:54  938
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1063  5.8036e-03  6.4023e-03  5.4704e-03  4.8739e-03  5.7805e-03  6.4369e-05  2.1004e-05  6.7845e-02  3.2624e-01  0:10:14  937
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1064  6.1193e-03  6.4740e-03  5.3274e-03  4.9046e-03  6.0965e-03  6.3455e-05  1.9691e-05  5.9644e-02  3.2682e-01  0:11:18  936
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1065  6.2825e-03  6.5156e-03  5.2393e-03  4.8442e-03  6.2625e-03  6.2452e-05  1.8371e-05  5.0957e-02  3.2736e-01  0:09:02  935
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1066  6.3222e-03  6.5167e-03  5.1800e-03  4.6929e-03  6.3034e-03  6.1682e-05  1.7049e-05  4.1902e-02  3.2784e-01  0:10:20  934
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1067  6.4668e-03  6.5984e-03  5.1205e-03  4.6849e-03  6.4467e-03  6.0859e-05  1.5726e-05  3.2620e-02  3.2827e-01  0:11:22  933
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1068  6.8091e-03  6.7520e-03  5.0788e-03  4.7752e-03  6.7870e-03  5.9950e-05  1.4427e-05  2.3274e-02  3.2864e-01  0:09:05  932
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1069  6.8735e-03  6.7301e-03  5.0876e-03  4.8275e-03  6.8498e-03  5.9233e-05  1.3145e-05  1.3954e-02  3.2886e-01  0:10:22  931
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1070  6.5403e-03  6.6345e-03  5.0085e-03  4.8428e-03  6.5147e-03  5.8619e-05  1.1925e-05  4.8012e-03  3.2887e-01  0:11:23  930
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1071  6.3792e-03  6.4745e-03  4.9382e-03  4.7089e-03  6.3536e-03  5.8368e-05  1.1050e-05 -4.1165e-03  3.2879e-01  0:09:06  929
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1072  6.3036e-03  6.1517e-03  4.8946e-03  4.5824e-03  6.2789e-03  5.8856e-05  1.1020e-05 -1.2697e-02  3.2868e-01  0:10:22  928
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1073  6.2827e-03  5.8879e-03  4.8568e-03  4.5707e-03  6.2576e-03  5.8485e-05  1.2407e-05 -2.0894e-02  3.2857e-01  0:08:17  927
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1074  6.1768e-03  5.7086e-03  4.8287e-03  4.6197e-03  6.1508e-03  5.8037e-05  1.3397e-05 -2.8623e-02  3.2850e-01  0:09:42  926
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1075  6.1026e-03  5.6346e-03  4.8784e-03  4.6320e-03  6.0780e-03  5.7851e-05  1.4331e-05 -3.5780e-02  3.2848e-01  0:10:50  925
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1076  5.9805e-03  5.6842e-03  4.9993e-03  4.7928e-03  5.9569e-03  5.7709e-05  1.5195e-05 -4.2234e-02  3.2849e-01  0:08:40  924
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1859 cells 
+  1077  5.7336e-03  5.6820e-03  5.0188e-03  4.3814e-03  5.7141e-03  5.7665e-05  1.5983e-05 -4.7969e-02  3.2851e-01  0:10:00  923
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1078  5.8147e-03  5.7630e-03  5.0867e-03  4.4198e-03  5.7964e-03  5.7385e-05  1.6688e-05 -5.2946e-02  3.2853e-01  0:11:04  922
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1079  5.7753e-03  5.7683e-03  4.9877e-03  4.5419e-03  5.7582e-03  5.7089e-05  1.7310e-05 -5.7128e-02  3.2855e-01  0:08:50  921
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1080  5.6828e-03  5.7716e-03  4.8833e-03  4.6024e-03  5.6660e-03  5.6877e-05  1.7846e-05 -6.0454e-02  3.2853e-01  0:10:08  920
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1081  5.8531e-03  5.7901e-03  4.7777e-03  4.6248e-03  5.8363e-03  5.6742e-05  1.8293e-05 -6.2893e-02  3.2849e-01  0:11:10  919
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1082  5.9961e-03  5.9114e-03  4.7178e-03  4.7140e-03  5.9787e-03  5.6625e-05  1.8652e-05 -6.4388e-02  3.2839e-01  0:08:55  918
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1083  5.9213e-03  5.9699e-03  4.7095e-03  4.7914e-03  5.9022e-03  5.6583e-05  1.8924e-05 -6.5019e-02  3.2825e-01  0:10:11  917
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1084  5.9730e-03  5.9770e-03  4.7784e-03  4.8479e-03  5.9534e-03  5.6428e-05  1.9112e-05 -6.4851e-02  3.2806e-01  0:08:08  916
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1085  6.2770e-03  5.8634e-03  4.7765e-03  4.7783e-03  6.2595e-03  5.6249e-05  1.9216e-05 -6.3914e-02  3.2784e-01  0:09:33  915
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1086  5.7884e-03  5.8711e-03  4.7961e-03  4.7648e-03  5.7718e-03  5.6047e-05  1.9250e-05 -6.2235e-02  3.2751e-01  0:10:41  914
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1087  5.9409e-03  5.9218e-03  4.6998e-03  4.6374e-03  5.9235e-03  5.5514e-05  1.9214e-05 -5.9880e-02  3.2716e-01  0:08:32  913
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1088  6.1696e-03  5.8820e-03  4.6540e-03  4.5389e-03  6.1509e-03  5.5016e-05  1.9110e-05 -5.6931e-02  3.2681e-01  0:09:52  912
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1089  5.7754e-03  5.7996e-03  4.6239e-03  4.4530e-03  5.7555e-03  5.4591e-05  1.8941e-05 -5.3386e-02  3.2644e-01  0:10:55  911
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1090  5.5446e-03  5.7754e-03  4.6303e-03  4.3415e-03  5.5254e-03  5.4149e-05  1.8714e-05 -4.9304e-02  3.2609e-01  0:08:43  910
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1091  5.3731e-03  5.5683e-03  4.5763e-03  4.2232e-03  5.3550e-03  5.3792e-05  1.8433e-05 -4.4749e-02  3.2570e-01  0:10:00  909
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1092  5.1500e-03  5.3693e-03  4.5236e-03  4.1947e-03  5.1297e-03  5.3151e-05  1.8104e-05 -3.9810e-02  3.2535e-01  0:11:01  908
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1093  4.9298e-03  5.3306e-03  4.4780e-03  4.2211e-03  4.9074e-03  5.2723e-05  1.7730e-05 -3.4580e-02  3.2514e-01  0:08:48  907
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1094  4.7665e-03  5.3332e-03  4.4224e-03  4.2390e-03  4.7434e-03  5.2249e-05  1.7319e-05 -2.9118e-02  3.2500e-01  0:10:03  906
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1095  4.5900e-03  5.3559e-03  4.4186e-03  4.2642e-03  4.5661e-03  5.2564e-05  1.6488e-05 -2.3491e-02  3.2495e-01  0:08:02  905
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1096  4.4873e-03  5.3775e-03  4.4616e-03  4.1745e-03  4.4616e-03  5.2170e-05  1.6400e-05 -1.7730e-02  3.2493e-01  0:09:26  904
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1097  4.5976e-03  5.4218e-03  4.5247e-03  4.2575e-03  4.5716e-03  5.1616e-05  1.5906e-05 -1.1948e-02  3.2497e-01  0:10:33  903
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1098  4.7366e-03  5.4358e-03  4.6195e-03  4.3481e-03  4.7115e-03  5.1496e-05  1.5396e-05 -6.2416e-03  3.2508e-01  0:08:26  902
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1099  4.7148e-03  5.4932e-03  4.6958e-03  4.4158e-03  4.6899e-03  5.1436e-05  1.4874e-05 -6.6169e-04  3.2525e-01  0:09:44  901
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1854 cells 
+  1100  4.6618e-03  5.5469e-03  4.7623e-03  4.4291e-03  4.6375e-03  5.1446e-05  1.4346e-05  4.7772e-03  3.2541e-01  0:10:47  900
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1853 cells 
+  1101  4.6756e-03  5.6471e-03  4.7846e-03  4.4387e-03  4.6527e-03  5.1465e-05  1.3811e-05  9.9974e-03  3.2559e-01  0:08:37  899
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1102  4.7330e-03  5.6784e-03  4.8229e-03  4.3204e-03  4.7121e-03  5.1548e-05  1.3274e-05  1.4939e-02  3.2583e-01  0:09:53  898
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1103  4.9085e-03  5.7272e-03  4.9575e-03  4.2702e-03  4.8904e-03  5.1607e-05  1.2741e-05  1.9552e-02  3.2610e-01  0:10:53  897
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1104  5.1105e-03  5.7989e-03  5.0608e-03  4.2662e-03  5.0945e-03  5.1515e-05  1.2216e-05  2.3795e-02  3.2641e-01  0:08:42  896
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1105  5.4945e-03  5.8462e-03  5.0257e-03  4.3597e-03  5.4793e-03  5.1271e-05  1.1706e-05  2.7670e-02  3.2669e-01  0:09:56  895
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+  1106  6.0298e-03  5.8728e-03  4.9259e-03  4.4753e-03  6.0143e-03  5.0874e-05  1.1219e-05  3.1127e-02  3.2696e-01  0:10:55  894
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1855 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1107  6.1361e-03  5.8287e-03  4.8933e-03  4.5023e-03  6.1200e-03  5.1134e-05  1.0792e-05  3.4132e-02  3.2724e-01  0:08:43  893
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1108  5.8517e-03  5.7361e-03  4.7984e-03  4.4823e-03  5.8356e-03  5.1245e-05  1.0700e-05  3.6714e-02  3.2745e-01  0:09:57  892
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1109  5.7203e-03  5.6830e-03  4.6661e-03  4.4280e-03  5.7032e-03  5.1275e-05  1.0885e-05  3.8838e-02  3.2769e-01  0:10:55  891
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1110  5.9270e-03  5.6606e-03  4.5052e-03  4.4046e-03  5.9085e-03  5.1081e-05  1.1265e-05  4.0459e-02  3.2794e-01  0:08:43  890
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1111  6.2011e-03  5.7074e-03  4.4406e-03  4.4227e-03  6.1830e-03  5.0742e-05  1.1653e-05  4.1587e-02  3.2822e-01  0:09:56  889
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1112  6.1722e-03  5.7304e-03  4.4101e-03  4.3417e-03  6.1542e-03  5.0500e-05  1.2028e-05  4.2240e-02  3.2851e-01  0:10:54  888
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1113  6.0749e-03  5.6867e-03  4.3949e-03  4.2973e-03  6.0577e-03  5.0351e-05  1.2382e-05  4.2440e-02  3.2875e-01  0:08:43  887
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1114  5.8616e-03  5.5762e-03  4.4400e-03  4.3448e-03  5.8443e-03  5.0015e-05  1.2713e-05  4.2262e-02  3.2896e-01  0:09:55  886
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1115  5.9558e-03  5.4915e-03  4.4364e-03  4.4042e-03  5.9375e-03  4.9751e-05  1.3018e-05  4.1672e-02  3.2912e-01  0:10:52  885
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1116  6.0471e-03  5.4348e-03  4.5045e-03  4.4737e-03  6.0270e-03  4.9413e-05  1.3296e-05  4.0704e-02  3.2922e-01  0:08:41  884
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1117  6.0644e-03  5.4130e-03  4.4938e-03  4.5741e-03  6.0425e-03  4.9007e-05  1.3550e-05  3.9390e-02  3.2925e-01  0:09:53  883
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1118  6.1571e-03  5.4517e-03  4.5150e-03  4.7089e-03  6.1326e-03  4.9268e-05  1.3389e-05  3.7776e-02  3.2921e-01  0:07:54  882
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1119  6.0621e-03  5.5226e-03  4.6173e-03  4.8443e-03  6.0370e-03  4.8907e-05  1.3981e-05  3.5904e-02  3.2916e-01  0:09:15  881
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1120  6.0541e-03  5.5797e-03  4.8136e-03  5.0658e-03  6.0306e-03  4.8546e-05  1.4158e-05  3.3790e-02  3.2908e-01  0:10:19  880
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1121  6.2066e-03  5.6863e-03  5.0005e-03  5.0677e-03  6.1848e-03  4.8645e-05  1.4302e-05  3.1438e-02  3.2903e-01  0:08:15  879
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1122  6.0773e-03  5.8528e-03  5.0037e-03  5.0611e-03  6.0559e-03  4.8727e-05  1.4421e-05  2.8883e-02  3.2894e-01  0:09:31  878
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1123  5.9691e-03  6.0545e-03  5.0789e-03  5.3782e-03  5.9467e-03  4.9092e-05  1.4516e-05  2.6178e-02  3.2880e-01  0:10:32  877
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1124  6.6518e-03  6.0756e-03  5.0576e-03  5.1258e-03  6.6340e-03  4.9301e-05  1.4585e-05  2.3362e-02  3.2862e-01  0:11:20  876
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1125  6.4839e-03  6.1063e-03  5.0813e-03  4.7545e-03  6.4691e-03  4.9174e-05  1.4631e-05  2.0460e-02  3.2841e-01  0:11:58  875
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1857 cells 
+  1126  6.5962e-03  6.0951e-03  4.8611e-03  4.6135e-03  6.5820e-03  4.8905e-05  1.4650e-05  1.7506e-02  3.2813e-01  0:09:34  874
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1127  6.6703e-03  5.9867e-03  4.6979e-03  4.5287e-03  6.6554e-03  4.8690e-05  1.4641e-05  1.4548e-02  3.2776e-01  0:10:33  873
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1856 cells 
+  1128  6.1731e-03  5.7944e-03  4.5654e-03  4.5017e-03  6.1564e-03  4.8416e-05  1.4605e-05  1.1628e-02  3.2736e-01  0:11:20  872
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1129  5.8127e-03  5.6524e-03  4.5052e-03  4.3730e-03  5.7952e-03  4.8238e-05  1.4543e-05  8.7740e-03  3.2692e-01  0:09:04  871
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1130  5.4862e-03  5.6011e-03  4.4344e-03  4.2168e-03  5.4685e-03  4.7948e-05  1.4454e-05  6.0290e-03  3.2644e-01  0:10:09  870
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1131  5.1881e-03  5.5478e-03  4.4108e-03  4.1386e-03  5.1684e-03  4.7710e-05  1.4341e-05  3.4006e-03  3.2597e-01  0:08:06  869
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1132  4.8680e-03  5.4745e-03  4.3725e-03  4.1218e-03  4.8471e-03  4.7382e-05  1.4202e-05  9.1611e-04  3.2558e-01  0:09:22  868
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1858 cells 
+  1133  4.8103e-03  5.4744e-03  4.3719e-03  4.1171e-03  4.7892e-03  4.7019e-05  1.4039e-05 -1.3995e-03  3.2526e-01  0:10:23  867
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1859 cells 
+  1134  4.6288e-03  5.5298e-03  4.3897e-03  4.1618e-03  4.6070e-03  4.6673e-05  1.3852e-05 -3.5364e-03  3.2501e-01  0:08:18  866
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1859 cells 
+  1135  4.5348e-03  5.6170e-03  4.4372e-03  4.0927e-03  4.5123e-03  4.6416e-05  1.3644e-05 -5.4894e-03  3.2486e-01  0:09:31  865
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1136  4.6066e-03  5.7523e-03  4.4554e-03  4.0715e-03  4.5845e-03  4.6167e-05  1.3414e-05 -7.2584e-03  3.2478e-01  0:10:29  864
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1137  4.6912e-03  5.9130e-03  4.4699e-03  4.1010e-03  4.6701e-03  4.5917e-05  1.3164e-05 -8.8171e-03  3.2474e-01  0:08:22  863
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1138  4.8496e-03  6.0101e-03  4.4730e-03  4.1171e-03  4.8295e-03  4.5666e-05  1.2894e-05 -1.0178e-02  3.2470e-01  0:09:34  862
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1862 cells 
+  1139  4.8013e-03  5.9504e-03  4.4992e-03  4.1428e-03  4.7817e-03  4.5428e-05  1.2607e-05 -1.1306e-02  3.2470e-01  0:10:31  861
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1861 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1140  4.7364e-03  5.7615e-03  4.4983e-03  4.2235e-03  4.7176e-03  4.5161e-05  1.2305e-05 -1.2199e-02  3.2479e-01  0:08:24  860
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1861 cells 
+  1141  4.5820e-03  5.5796e-03  4.4865e-03  4.2494e-03  4.5650e-03  4.5482e-05  1.1602e-05 -1.2876e-02  3.2494e-01  0:09:35  859
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1862 cells 
+  1142  4.3936e-03  5.4472e-03  4.4646e-03  4.2553e-03  4.3782e-03  4.5034e-05  1.1666e-05 -1.3355e-02  3.2513e-01  0:07:39  858
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1862 cells 
+  1143  4.7861e-03  5.4701e-03  4.5228e-03  4.3280e-03  4.7733e-03  4.4526e-05  1.1330e-05 -1.3602e-02  3.2534e-01  0:08:58  857
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1862 cells 
+  1144  5.1555e-03  5.4892e-03  4.5414e-03  4.4388e-03  5.1429e-03  4.4220e-05  1.0992e-05 -1.3595e-02  3.2552e-01  0:10:01  856
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1861 cells 
+  1145  5.5084e-03  5.4860e-03  4.5570e-03  4.5878e-03  5.4952e-03  4.3905e-05  1.0684e-05 -1.3380e-02  3.2565e-01  0:08:00  855
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1146  5.3792e-03  5.3714e-03  4.5539e-03  4.6832e-03  5.3652e-03  4.3761e-05  1.0477e-05 -1.2947e-02  3.2569e-01  0:09:15  854
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1147  5.2303e-03  5.2258e-03  4.4814e-03  4.6792e-03  5.2160e-03  4.3694e-05  1.0514e-05 -1.2312e-02  3.2569e-01  0:10:14  853
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1148  5.2884e-03  5.0810e-03  4.3806e-03  4.5374e-03  5.2744e-03  4.3476e-05  1.0747e-05 -1.1526e-02  3.2568e-01  0:08:11  852
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1149  5.6056e-03  4.9957e-03  4.2813e-03  4.4270e-03  5.5918e-03  4.3319e-05  1.1054e-05 -1.0600e-02  3.2576e-01  0:09:22  851
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1860 cells 
+  1150  5.7040e-03  4.9395e-03  4.2437e-03  4.3177e-03  5.6898e-03  4.3240e-05  1.1366e-05 -9.5476e-03  3.2577e-01  0:10:19  850
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1862 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1151  5.6746e-03  4.8688e-03  4.1834e-03  4.2566e-03  5.6596e-03  4.3031e-05  1.1666e-05 -8.3828e-03  3.2587e-01  0:08:15  849
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1862 cells 
+  1152  5.4604e-03  4.8752e-03  4.1373e-03  4.1859e-03  5.4445e-03  4.2869e-05  1.1951e-05 -7.1189e-03  3.2598e-01  0:09:25  848
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1862 cells 
+  1153  5.1997e-03  4.9165e-03  4.2310e-03  4.1549e-03  5.1828e-03  4.2810e-05  1.2219e-05 -5.7665e-03  3.2608e-01  0:07:31  847
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1863 cells 
+  1154  5.3665e-03  5.0131e-03  4.4122e-03  4.3147e-03  5.3481e-03  4.2744e-05  1.2464e-05 -4.2989e-03  3.2625e-01  0:08:50  846
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1863 cells 
+  1155  5.6582e-03  5.1426e-03  4.6251e-03  4.6421e-03  5.6383e-03  4.2748e-05  1.2688e-05 -2.7917e-03  3.2651e-01  0:09:52  845
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1863 cells 
+  1156  5.8710e-03  5.3056e-03  4.7798e-03  4.6429e-03  5.8502e-03  4.2748e-05  1.2886e-05 -1.2843e-03  3.2686e-01  0:07:53  844
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1864 cells 
+  1157  6.0001e-03  5.5334e-03  4.8584e-03  4.7834e-03  5.9784e-03  4.2805e-05  1.3058e-05  2.7931e-04  3.2711e-01  0:09:07  843
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1864 cells 
+  1158  6.1801e-03  5.6541e-03  5.0313e-03  4.8847e-03  6.1553e-03  4.3256e-05  1.3202e-05  1.8597e-03  3.2741e-01  0:10:05  842
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1864 cells 
+  1159  6.3601e-03  5.8429e-03  5.3188e-03  4.9947e-03  6.3343e-03  4.3866e-05  1.3316e-05  3.4307e-03  3.2772e-01  0:08:04  841
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1865 cells 
+  1160  6.6032e-03  6.1053e-03  5.4518e-03  5.2696e-03  6.5777e-03  4.4623e-05  1.3401e-05  4.9551e-03  3.2803e-01  0:09:15  840
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1865 cells 
+  1161  6.8271e-03  6.4046e-03  5.4579e-03  5.5340e-03  6.8026e-03  4.5260e-05  1.3454e-05  6.4663e-03  3.2823e-01  0:10:11  839
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1865 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1162  6.5512e-03  6.6654e-03  5.5124e-03  5.8558e-03  6.5268e-03  4.5331e-05  1.3476e-05  7.9459e-03  3.2829e-01  0:08:08  838
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1864 cells 
+  1163  6.4586e-03  6.7351e-03  5.6537e-03  6.0617e-03  6.4361e-03  4.5129e-05  1.3467e-05  9.3649e-03  3.2828e-01  0:09:17  837
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1865 cells 
+  1164  6.7576e-03  6.7266e-03  5.6453e-03  6.0179e-03  6.7387e-03  4.6781e-05  1.3041e-05  1.0678e-02  3.2833e-01  0:07:25  836
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1865 cells 
+  1165  5.9098e-03  6.7816e-03  5.3505e-03  5.8629e-03  5.8877e-03  4.6890e-05  1.3356e-05  1.1899e-02  3.2839e-01  0:08:43  835
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1866 cells 
+  1166  6.2795e-03  6.6475e-03  5.1675e-03  5.6149e-03  6.2580e-03  4.6193e-05  1.3259e-05  1.2998e-02  3.2852e-01  0:09:45  834
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1866 cells 
+  1167  6.1521e-03  6.6057e-03  5.1181e-03  5.3739e-03  6.1299e-03  4.5748e-05  1.3137e-05  1.3976e-02  3.2867e-01  0:07:47  833
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1866 cells 
+  1168  6.1594e-03  6.6235e-03  5.1623e-03  5.2739e-03  6.1378e-03  4.5099e-05  1.2989e-05  1.4804e-02  3.2889e-01  0:09:00  832
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1866 cells 
+  1169  6.1497e-03  6.6090e-03  5.2741e-03  5.2115e-03  6.1291e-03  4.4505e-05  1.2818e-05  1.5561e-02  3.2901e-01  0:09:57  831
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1866 cells 
+  1170  6.1011e-03  6.5908e-03  5.3278e-03  5.1911e-03  6.0797e-03  4.4031e-05  1.2626e-05  1.6198e-02  3.2907e-01  0:07:57  830
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1171  6.2584e-03  6.5402e-03  5.3777e-03  5.1365e-03  6.2355e-03  4.3674e-05  1.2415e-05  1.6707e-02  3.2918e-01  0:09:07  829
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1172  6.6278e-03  6.4952e-03  5.5506e-03  5.2023e-03  6.6061e-03  4.3299e-05  1.2186e-05  1.7041e-02  3.2942e-01  0:10:03  828
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1173  6.8938e-03  6.5432e-03  5.8074e-03  5.3173e-03  6.8728e-03  4.2967e-05  1.1942e-05  1.7241e-02  3.2971e-01  0:08:02  827
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1174  7.1831e-03  6.6901e-03  6.1269e-03  5.4909e-03  7.1622e-03  4.2795e-05  1.1686e-05  1.7385e-02  3.2988e-01  0:09:10  826
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1175  7.1295e-03  6.9777e-03  6.5332e-03  5.5157e-03  7.1078e-03  4.2567e-05  1.1422e-05  1.7410e-02  3.2995e-01  0:10:05  825
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1176  7.5190e-03  7.1899e-03  6.5518e-03  5.6247e-03  7.4985e-03  4.2014e-05  1.1159e-05  1.7312e-02  3.3001e-01  0:08:03  824
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1177  8.0805e-03  7.3661e-03  6.6230e-03  5.6995e-03  8.0616e-03  4.1630e-05  1.0900e-05  1.7140e-02  3.3014e-01  0:09:11  823
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1178  8.2833e-03  7.4360e-03  6.6508e-03  5.8493e-03  8.2612e-03  4.1510e-05  1.0657e-05  1.6807e-02  3.3026e-01  0:10:04  822
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1867 cells 
+  1179  8.9931e-03  7.4621e-03  6.6377e-03  6.1988e-03  8.9694e-03  4.1496e-05  1.0499e-05  1.6367e-02  3.3039e-01  0:08:03  821
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1868 cells 
+  1180  9.6401e-03  7.3642e-03  6.6704e-03  6.4113e-03  9.6148e-03  4.1554e-05  1.0469e-05  1.5797e-02  3.3067e-01  0:09:10  820
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1181  1.0166e-02  7.5550e-03  6.6660e-03  6.5413e-03  1.0141e-02  4.1828e-05  1.0547e-05  1.5165e-02  3.3094e-01  0:10:03  819
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1182  9.6937e-03  7.8571e-03  7.0358e-03  6.7434e-03  9.6638e-03  4.2190e-05  1.0724e-05  1.4438e-02  3.3120e-01  0:08:02  818
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1183  9.3258e-03  8.0291e-03  7.1975e-03  6.9038e-03  9.2915e-03  4.2385e-05  1.0939e-05  1.3729e-02  3.3131e-01  0:09:08  817
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1184  1.0030e-02  8.1666e-03  7.3662e-03  6.9595e-03  9.9933e-03  4.2566e-05  1.1156e-05  1.2935e-02  3.3141e-01  0:10:01  816
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1185  1.0629e-02  8.2917e-03  7.6732e-03  6.9816e-03  1.0592e-02  4.2971e-05  1.1365e-05  1.2199e-02  3.3114e-01  0:08:01  815
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1868 cells 
+  1186  9.9804e-03  8.3719e-03  7.7205e-03  6.8262e-03  9.9448e-03  4.3486e-05  1.1560e-05  1.1390e-02  3.3075e-01  0:09:07  814
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1187  9.1090e-03  8.5940e-03  7.6582e-03  6.6041e-03  9.0774e-03  4.4240e-05  1.1354e-05  1.0578e-02  3.3041e-01  0:09:59  813
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1188  9.2327e-03  8.7439e-03  7.4832e-03  6.3636e-03  9.2081e-03  4.4084e-05  1.1908e-05  9.7983e-03  3.3003e-01  0:07:59  812
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1189  8.9480e-03  8.7446e-03  7.4220e-03  6.1520e-03  8.9225e-03  4.3828e-05  1.2051e-05  9.1063e-03  3.2958e-01  0:09:05  811
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1190  8.0248e-03  8.5337e-03  6.9189e-03  6.0538e-03  7.9973e-03  4.3890e-05  1.2171e-05  8.4704e-03  3.2907e-01  0:09:57  810
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1191  7.1731e-03  8.3559e-03  6.6488e-03  6.0472e-03  7.1452e-03  4.3955e-05  1.2269e-05  7.8487e-03  3.2853e-01  0:10:39  809
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1192  6.7763e-03  8.1845e-03  6.5426e-03  5.9108e-03  6.7493e-03  4.3954e-05  1.2344e-05  7.3008e-03  3.2800e-01  0:08:31  808
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1193  6.9292e-03  8.0829e-03  6.4178e-03  5.6578e-03  6.9034e-03  4.3793e-05  1.2398e-05  6.8106e-03  3.2748e-01  0:09:29  807
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1194  6.5245e-03  7.9205e-03  6.2997e-03  5.5905e-03  6.5013e-03  4.3650e-05  1.2430e-05  6.3684e-03  3.2697e-01  0:10:16  806
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1195  6.2330e-03  7.7748e-03  6.1083e-03  5.6037e-03  6.2118e-03  4.3410e-05  1.2440e-05  5.9551e-03  3.2651e-01  0:08:12  805
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1196  6.1045e-03  7.6441e-03  5.9062e-03  5.6737e-03  6.0839e-03  4.3187e-05  1.2429e-05  5.5358e-03  3.2614e-01  0:09:14  804
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1197  6.1198e-03  7.6106e-03  5.8196e-03  5.6908e-03  6.0978e-03  4.3235e-05  1.2396e-05  5.1776e-03  3.2576e-01  0:10:03  803
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1869 cells 
+  1198  6.2092e-03  7.6687e-03  5.8246e-03  5.7079e-03  6.1856e-03  4.3350e-05  1.2341e-05  4.8385e-03  3.2541e-01  0:08:02  802
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1199  6.5039e-03  7.7108e-03  5.8918e-03  5.8251e-03  6.4803e-03  4.4887e-05  1.1721e-05  4.5473e-03  3.2512e-01  0:09:05  801
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1868 cells 
+  1200  6.8546e-03  7.7269e-03  5.9089e-03  5.8186e-03  6.8311e-03  4.5170e-05  1.2166e-05  4.2803e-03  3.2490e-01  0:07:16  800
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1201  6.4645e-03  7.8268e-03  5.9434e-03  5.7627e-03  6.4398e-03  4.5487e-05  1.1503e-05  4.0098e-03  3.2481e-01  0:08:28  799
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1870 cells 
+  1202  6.2856e-03  7.8087e-03  6.0263e-03  5.6811e-03  6.2610e-03  4.5214e-05  1.1936e-05  3.7813e-03  3.2466e-01  0:09:25  798
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1871 cells 
+  1203  6.9375e-03  7.7964e-03  5.9919e-03  5.5667e-03  6.9167e-03  4.4273e-05  1.1787e-05  3.5879e-03  3.2459e-01  0:07:32  797
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1871 cells 
+  1204  6.5970e-03  7.8989e-03  5.8784e-03  5.4446e-03  6.5740e-03  4.3881e-05  1.1626e-05  3.4479e-03  3.2443e-01  0:08:40  796
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1872 cells 
+  1205  7.3046e-03  7.9923e-03  5.8873e-03  5.3316e-03  7.2805e-03  4.3674e-05  1.1454e-05  3.2929e-03  3.2423e-01  0:09:35  795
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1872 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1206  7.2394e-03  7.9730e-03  5.7371e-03  5.3225e-03  7.2121e-03  4.3674e-05  1.1273e-05  3.1106e-03  3.2400e-01  0:07:39  794
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1872 cells 
+  1207  7.1158e-03  7.9266e-03  5.7222e-03  5.4733e-03  7.0867e-03  4.3733e-05  1.1084e-05  2.9591e-03  3.2377e-01  0:08:45  793
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1872 cells 
+  1208  7.0278e-03  7.8472e-03  5.8476e-03  5.5718e-03  6.9981e-03  4.3969e-05  1.0890e-05  2.8079e-03  3.2360e-01  0:09:38  792
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1871 cells 
+  1209  6.8334e-03  7.7552e-03  5.9577e-03  5.5177e-03  6.8025e-03  4.4204e-05  1.0693e-05  2.6790e-03  3.2351e-01  0:07:42  791
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1872 cells 
+  1210  6.5846e-03  7.6695e-03  5.9867e-03  5.5203e-03  6.5524e-03  4.5139e-05  1.0106e-05  2.5894e-03  3.2350e-01  0:08:47  790
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1211  6.4924e-03  7.6245e-03  5.9694e-03  5.5324e-03  6.4621e-03  4.4957e-05  1.0299e-05  2.5210e-03  3.2359e-01  0:09:39  789
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1212  6.4959e-03  7.5129e-03  5.9386e-03  5.5650e-03  6.4673e-03  4.4552e-05  1.0110e-05  2.4468e-03  3.2387e-01  0:07:43  788
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1213  6.4228e-03  7.2665e-03  5.9606e-03  5.5394e-03  6.3963e-03  4.5212e-05  1.0089e-05  2.3459e-03  3.2431e-01  0:08:47  787
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1214  6.2974e-03  7.1324e-03  5.9907e-03  5.3705e-03  6.2729e-03  4.5313e-05  1.0261e-05  2.1398e-03  3.2500e-01  0:07:01  786
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1215  6.3242e-03  7.1660e-03  5.9505e-03  5.3103e-03  6.3007e-03  4.4804e-05  1.0439e-05  1.9385e-03  3.2576e-01  0:08:13  785
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1216  6.6225e-03  7.2636e-03  5.9426e-03  5.2995e-03  6.5994e-03  4.4257e-05  1.0611e-05  1.7424e-03  3.2650e-01  0:09:11  784
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1217  6.6568e-03  7.2750e-03  5.8836e-03  5.2870e-03  6.6348e-03  4.3602e-05  1.0772e-05  1.6444e-03  3.2712e-01  0:07:20  783
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1872 cells 
+  1218  6.3487e-03  7.2216e-03  5.8096e-03  5.2772e-03  6.3266e-03  4.3178e-05  1.0921e-05  1.6361e-03  3.2765e-01  0:08:28  782
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1219  6.2856e-03  7.1500e-03  5.6588e-03  5.1859e-03  6.2626e-03  4.4262e-05  1.0515e-05  1.6984e-03  3.2812e-01  0:09:22  781
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1872 cells 
+  1220  6.5537e-03  7.2200e-03  5.5729e-03  5.2445e-03  6.5304e-03  4.4247e-05  1.1189e-05  1.8206e-03  3.2854e-01  0:07:29  780
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1873 cells 
+  1221  7.0863e-03  7.4368e-03  5.5934e-03  5.2985e-03  7.0612e-03  4.4514e-05  1.0724e-05  2.0347e-03  3.2886e-01  0:08:35  779
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1874 cells 
+  1222  7.2380e-03  7.5161e-03  5.5153e-03  5.3483e-03  7.2089e-03  4.4157e-05  1.1378e-05  2.3347e-03  3.2908e-01  0:09:27  778
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1874 cells 
+  1223  7.0427e-03  7.3969e-03  5.5059e-03  5.2769e-03  7.0118e-03  4.2927e-05  1.1461e-05  2.7433e-03  3.2918e-01  0:07:33  777
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1875 cells 
+  1224  6.8582e-03  7.2211e-03  5.4936e-03  5.1595e-03  6.8282e-03  4.2436e-05  1.1527e-05  3.2081e-03  3.2914e-01  0:08:37  776
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1875 cells 
+  1225  6.5793e-03  6.9137e-03  5.4355e-03  5.0753e-03  6.5491e-03  4.2042e-05  1.1574e-05  3.6892e-03  3.2906e-01  0:09:28  775
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1875 cells 
+  1226  6.4373e-03  6.6680e-03  5.5219e-03  5.1128e-03  6.4082e-03  4.1792e-05  1.1604e-05  4.1784e-03  3.2899e-01  0:07:34  774
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1227  6.5870e-03  6.4977e-03  5.5978e-03  5.1641e-03  6.5602e-03  4.1559e-05  1.1617e-05  4.6481e-03  3.2896e-01  0:08:37  773
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1228  6.9023e-03  6.5160e-03  5.6940e-03  5.2507e-03  6.8780e-03  4.1545e-05  1.1612e-05  5.1168e-03  3.2894e-01  0:06:53  772
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1229  6.9069e-03  6.4974e-03  5.5867e-03  4.7981e-03  6.8868e-03  4.1648e-05  1.1590e-05  5.6026e-03  3.2888e-01  0:08:04  771
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1230  6.7494e-03  6.5025e-03  5.5016e-03  4.7560e-03  6.7324e-03  4.1646e-05  1.1553e-05  6.0474e-03  3.2882e-01  0:09:01  770
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1231  6.3358e-03  6.4357e-03  5.3078e-03  4.7618e-03  6.3196e-03  4.1458e-05  1.1499e-05  6.4859e-03  3.2878e-01  0:07:12  769
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1875 cells 
+  1232  6.1886e-03  6.3323e-03  5.0456e-03  4.7435e-03  6.1719e-03  4.1178e-05  1.1432e-05  6.9408e-03  3.2879e-01  0:08:19  768
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1233  6.2346e-03  6.2677e-03  4.8571e-03  4.7088e-03  6.2185e-03  4.1534e-05  1.0963e-05  7.4112e-03  3.2877e-01  0:09:12  767
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1234  5.9090e-03  6.1878e-03  4.8128e-03  4.7232e-03  5.8923e-03  4.1093e-05  1.1253e-05  7.8946e-03  3.2877e-01  0:07:21  766
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1235  5.5879e-03  6.1636e-03  4.7928e-03  4.7099e-03  5.5703e-03  4.0527e-05  1.1149e-05  8.3674e-03  3.2872e-01  0:08:25  765
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1236  5.6164e-03  6.0988e-03  4.8329e-03  4.6798e-03  5.5978e-03  4.0388e-05  1.1039e-05  8.8866e-03  3.2861e-01  0:09:17  764
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1877 cells 
+  1237  5.6674e-03  6.0927e-03  4.8883e-03  4.7817e-03  5.6479e-03  4.0384e-05  1.0922e-05  9.3586e-03  3.2851e-01  0:07:25  763
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1876 cells 
+  1238  5.9149e-03  6.0917e-03  4.9262e-03  4.9078e-03  5.8956e-03  4.0389e-05  1.0800e-05  9.7762e-03  3.2839e-01  0:08:28  762
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1877 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1239  6.0062e-03  6.2151e-03  4.8425e-03  4.9028e-03  5.9873e-03  4.1658e-05  1.0129e-05  1.0143e-02  3.2827e-01  0:09:18  761
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1877 cells 
+  1240  5.5276e-03  6.3749e-03  4.7370e-03  4.8904e-03  5.5076e-03  4.1581e-05  1.0555e-05  1.0462e-02  3.2812e-01  0:07:26  760
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1878 cells 
+  1241  5.5611e-03  6.5094e-03  4.7634e-03  4.8386e-03  5.5424e-03  4.1875e-05  9.8702e-06  1.0701e-02  3.2805e-01  0:08:28  759
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1879 cells 
+  1242  6.1959e-03  6.5385e-03  4.8280e-03  4.7687e-03  6.1805e-03  4.1662e-05  1.0323e-05  1.0869e-02  3.2793e-01  0:06:46  758
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1879 cells 
+  1243  5.6430e-03  6.5527e-03  4.7037e-03  4.6500e-03  5.6251e-03  4.0481e-05  1.0244e-05  1.1006e-02  3.2772e-01  0:07:56  757
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1879 cells 
+  1244  6.2401e-03  6.5474e-03  4.6596e-03  4.5874e-03  6.2214e-03  4.0203e-05  1.0234e-05  1.1090e-02  3.2743e-01  0:08:51  756
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1880 cells 
+  1245  6.0514e-03  6.3597e-03  4.6676e-03  4.5696e-03  6.0302e-03  3.9963e-05  1.0268e-05  1.1096e-02  3.2712e-01  0:07:04  755
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1880 cells 
+  1246  5.9545e-03  6.1750e-03  4.7218e-03  4.6465e-03  5.9323e-03  3.9852e-05  1.0326e-05  1.1011e-02  3.2682e-01  0:08:10  754
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1880 cells 
+  1247  5.7414e-03  6.0552e-03  4.8193e-03  4.7807e-03  5.7180e-03  3.9854e-05  1.0401e-05  1.0872e-02  3.2655e-01  0:09:02  753
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1880 cells 
+  1248  5.6513e-03  6.0194e-03  4.9095e-03  4.9569e-03  5.6256e-03  4.0057e-05  1.0489e-05  1.0659e-02  3.2632e-01  0:07:13  752
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1880 cells 
+  1249  5.5869e-03  6.0398e-03  5.0265e-03  5.0961e-03  5.5592e-03  4.0379e-05  1.0581e-05  1.0421e-02  3.2614e-01  0:08:16  751
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1880 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1250  5.3621e-03  6.1087e-03  5.1166e-03  5.0079e-03  5.3349e-03  4.0756e-05  1.0668e-05  1.0160e-02  3.2601e-01  0:09:06  750
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1881 cells 
+  1251  5.2625e-03  6.2143e-03  5.2799e-03  4.9103e-03  5.2377e-03  4.1013e-05  1.0751e-05  9.8510e-03  3.2597e-01  0:07:17  749
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1881 cells 
+  1252  5.2130e-03  6.2389e-03  5.2850e-03  4.8295e-03  5.1901e-03  4.1141e-05  1.0825e-05  9.5104e-03  3.2602e-01  0:08:18  748
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1882 cells 
+  1253  5.2969e-03  6.1817e-03  5.2443e-03  4.7756e-03  5.2753e-03  4.1018e-05  1.0889e-05  9.1023e-03  3.2616e-01  0:06:38  747
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1882 cells 
+  1254  5.4968e-03  6.1199e-03  5.2806e-03  4.7390e-03  5.4762e-03  4.1066e-05  1.0940e-05  8.6065e-03  3.2643e-01  0:07:47  746
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1881 cells 
+  1255  5.4801e-03  6.0527e-03  5.2256e-03  4.6807e-03  5.4597e-03  4.1396e-05  1.0981e-05  8.0684e-03  3.2675e-01  0:08:42  745
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1882 cells 
+  1256  5.3791e-03  5.9970e-03  5.1544e-03  4.6183e-03  5.3578e-03  4.1907e-05  1.0624e-05  7.5285e-03  3.2707e-01  0:09:26  744
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1882 cells 
+  1257  5.4848e-03  6.0184e-03  5.0870e-03  4.6444e-03  5.4631e-03  4.1400e-05  1.1035e-05  6.9932e-03  3.2739e-01  0:10:01  743
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1881 cells 
+  1258  5.5396e-03  6.0657e-03  5.0435e-03  4.6167e-03  5.5180e-03  4.0796e-05  1.1044e-05  6.4238e-03  3.2776e-01  0:08:00  742
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1882 cells 
+  1259  5.6128e-03  6.1697e-03  5.0141e-03  4.4982e-03  5.5924e-03  4.1726e-05  1.0497e-05  5.8703e-03  3.2811e-01  0:08:52  741
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1881 cells 
+  1260  5.9929e-03  6.3439e-03  4.9942e-03  4.5095e-03  5.9736e-03  4.1741e-05  1.1037e-05  5.4061e-03  3.2837e-01  0:09:33  740
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1261  6.2312e-03  6.4807e-03  4.9205e-03  4.5151e-03  6.2117e-03  4.2041e-05  1.0451e-05  4.9969e-03  3.2849e-01  0:07:38  739
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1262  6.3328e-03  6.4653e-03  4.8919e-03  4.5349e-03  6.3123e-03  4.1732e-05  1.0982e-05  4.7282e-03  3.2845e-01  0:08:33  738
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1263  6.1736e-03  6.3100e-03  4.7999e-03  4.5683e-03  6.1519e-03  4.0565e-05  1.0940e-05  4.5440e-03  3.2832e-01  0:09:17  737
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1264  5.7712e-03  6.0380e-03  4.6689e-03  4.5295e-03  5.7492e-03  4.0035e-05  1.0894e-05  4.3950e-03  3.2810e-01  0:07:25  736
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1265  5.6423e-03  5.8178e-03  4.5982e-03  4.4533e-03  5.6200e-03  3.9660e-05  1.0845e-05  4.2767e-03  3.2785e-01  0:08:23  735
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1266  5.6753e-03  5.6770e-03  4.5660e-03  4.4007e-03  5.6536e-03  3.9364e-05  1.0791e-05  4.1683e-03  3.2761e-01  0:09:08  734
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1267  5.6726e-03  5.4998e-03  4.5809e-03  4.4479e-03  5.6509e-03  3.9098e-05  1.0735e-05  4.0872e-03  3.2739e-01  0:07:18  733
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1268  5.5296e-03  5.3853e-03  4.5364e-03  4.4721e-03  5.5078e-03  3.9022e-05  1.0674e-05  4.0104e-03  3.2724e-01  0:08:16  732
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1269  5.3081e-03  5.3630e-03  4.5389e-03  4.5609e-03  5.2870e-03  3.9180e-05  1.0607e-05  3.9169e-03  3.2714e-01  0:06:37  731
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1270  5.0832e-03  5.3093e-03  4.5091e-03  4.4277e-03  5.0641e-03  3.9402e-05  1.0540e-05  3.8401e-03  3.2711e-01  0:07:43  730
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1884 cells 
+  1271  5.3276e-03  5.3640e-03  4.4995e-03  4.1819e-03  5.3113e-03  3.9377e-05  1.0471e-05  3.7735e-03  3.2717e-01  0:08:36  729
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1884 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1272  5.6575e-03  5.4354e-03  4.5375e-03  4.2379e-03  5.6426e-03  3.9182e-05  1.0409e-05  3.7352e-03  3.2724e-01  0:06:52  728
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1884 cells 
+  1273  5.5216e-03  5.4127e-03  4.4962e-03  4.2644e-03  5.5076e-03  3.8936e-05  1.0351e-05  3.7460e-03  3.2729e-01  0:07:54  727
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1884 cells 
+  1274  5.3493e-03  5.4693e-03  4.4362e-03  4.3194e-03  5.3353e-03  3.8868e-05  1.0298e-05  3.7857e-03  3.2731e-01  0:08:44  726
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1884 cells 
+  1275  5.4082e-03  5.5289e-03  4.3842e-03  4.3059e-03  5.3927e-03  3.9062e-05  1.0252e-05  3.9030e-03  3.2728e-01  0:06:59  725
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1884 cells 
+  1276  5.5022e-03  5.5941e-03  4.3970e-03  4.3170e-03  5.4859e-03  3.9242e-05  1.0224e-05  4.0149e-03  3.2726e-01  0:07:59  724
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1277  5.6467e-03  5.6254e-03  4.4465e-03  4.4386e-03  5.6306e-03  3.9410e-05  1.0222e-05  4.1239e-03  3.2724e-01  0:08:48  723
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1883 cells 
+  1278  5.6650e-03  5.7232e-03  4.3651e-03  4.4384e-03  5.6491e-03  3.9381e-05  1.0259e-05  4.2732e-03  3.2713e-01  0:07:01  722
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1279  5.2810e-03  5.8038e-03  4.3138e-03  4.4654e-03  5.2643e-03  4.1116e-05  9.3669e-06  4.4475e-03  3.2692e-01  0:08:01  721
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1884 cells 
+  1280  5.4004e-03  5.8291e-03  4.3610e-03  4.4026e-03  5.3842e-03  4.1030e-05  1.0345e-05  4.6032e-03  3.2669e-01  0:08:48  720
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1281  6.0267e-03  5.8052e-03  4.4150e-03  4.3693e-03  6.0131e-03  4.1086e-05  9.8091e-06  4.7174e-03  3.2648e-01  0:07:02  719
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1282  5.3248e-03  5.8610e-03  4.2337e-03  4.2691e-03  5.3087e-03  4.0591e-05  1.0421e-05  4.8330e-03  3.2617e-01  0:08:01  718
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1283  5.8284e-03  5.8364e-03  4.2078e-03  4.2270e-03  5.8117e-03  3.9251e-05  1.0467e-05  4.9238e-03  3.2581e-01  0:06:24  717
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1284  5.5794e-03  5.7151e-03  4.2330e-03  4.2443e-03  5.5610e-03  3.8657e-05  1.0513e-05  4.9919e-03  3.2547e-01  0:07:30  716
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1285  5.4290e-03  5.4479e-03  4.2817e-03  4.3572e-03  5.4111e-03  3.8314e-05  1.0557e-05  5.0450e-03  3.2517e-01  0:08:22  715
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1286  5.1335e-03  5.2677e-03  4.3164e-03  4.3641e-03  5.1165e-03  3.8065e-05  1.0593e-05  5.0734e-03  3.2494e-01  0:06:41  714
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1287  4.9736e-03  5.2050e-03  4.3432e-03  4.4261e-03  4.9565e-03  3.7734e-05  1.0620e-05  5.0637e-03  3.2477e-01  0:07:43  713
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1288  4.6974e-03  5.1677e-03  4.3589e-03  4.5371e-03  4.6784e-03  3.7535e-05  1.0639e-05  5.0635e-03  3.2465e-01  0:08:33  712
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1289  4.6413e-03  5.1584e-03  4.4109e-03  4.6890e-03  4.6219e-03  3.7329e-05  1.0646e-05  5.0889e-03  3.2457e-01  0:06:49  711
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1290  4.5995e-03  5.1542e-03  4.4592e-03  4.7913e-03  4.5806e-03  3.7266e-05  1.0643e-05  5.1225e-03  3.2454e-01  0:07:49  710
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1291  4.6576e-03  5.1758e-03  4.4590e-03  4.7951e-03  4.6388e-03  3.7138e-05  1.0628e-05  5.1835e-03  3.2456e-01  0:08:37  709
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1292  4.7202e-03  5.2136e-03  4.4870e-03  4.6619e-03  4.7010e-03  3.6972e-05  1.0603e-05  5.2447e-03  3.2463e-01  0:09:14  708
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+  1293  5.0749e-03  5.2675e-03  4.5026e-03  4.6010e-03  5.0555e-03  3.6818e-05  1.0568e-05  5.3103e-03  3.2484e-01  0:07:23  707
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1885 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1294  5.2096e-03  5.3787e-03  4.5352e-03  4.4972e-03  5.1891e-03  3.6747e-05  1.0526e-05  5.3914e-03  3.2501e-01  0:08:15  706
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1886 cells 
+  1295  5.3127e-03  5.5119e-03  4.6761e-03  4.4805e-03  5.2915e-03  3.6661e-05  1.0475e-05  5.5566e-03  3.2504e-01  0:08:56  705
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1296  5.2506e-03  5.6122e-03  4.7711e-03  4.5688e-03  5.2286e-03  3.6660e-05  1.0422e-05  5.7922e-03  3.2512e-01  0:07:08  704
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1297  5.2072e-03  5.6455e-03  4.8243e-03  4.7956e-03  5.1841e-03  3.6718e-05  1.0367e-05  6.0436e-03  3.2527e-01  0:08:03  703
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1886 cells 
+  1298  5.4284e-03  5.7403e-03  4.9408e-03  4.6929e-03  5.4059e-03  3.6909e-05  1.0315e-05  6.2654e-03  3.2551e-01  0:08:46  702
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1299  5.7005e-03  5.9370e-03  5.0819e-03  4.8435e-03  5.6792e-03  3.8524e-05  9.7289e-06  6.5712e-03  3.2576e-01  0:07:00  701
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1886 cells 
+  1300  5.8437e-03  6.0688e-03  5.0897e-03  4.8618e-03  5.8204e-03  3.9153e-05  1.0253e-05  6.9325e-03  3.2600e-01  0:07:56  700
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1886 cells 
+  1301  5.9613e-03  6.0862e-03  5.1450e-03  4.8659e-03  5.9362e-03  4.0018e-05  9.6596e-06  7.3163e-03  3.2630e-01  0:08:40  699
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1302  6.0619e-03  6.1652e-03  5.1083e-03  4.8426e-03  6.0361e-03  4.1090e-05  9.8140e-06  7.7473e-03  3.2658e-01  0:06:55  698
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1303  6.0931e-03  6.1450e-03  5.0861e-03  4.9138e-03  6.0681e-03  4.0276e-05  1.0187e-05  8.1906e-03  3.2685e-01  0:07:51  697
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1304  6.1936e-03  6.2239e-03  5.0880e-03  5.0313e-03  6.1706e-03  3.9854e-05  1.0189e-05  8.6332e-03  3.2713e-01  0:06:16  696
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1305  6.2893e-03  6.1945e-03  5.0764e-03  5.1870e-03  6.2677e-03  3.9600e-05  1.0199e-05  9.0502e-03  3.2742e-01  0:07:20  695
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1306  6.1464e-03  6.2302e-03  5.0644e-03  5.3435e-03  6.1248e-03  4.0748e-05  1.0220e-05  9.4512e-03  3.2775e-01  0:08:10  694
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1307  5.7880e-03  6.2296e-03  4.9679e-03  5.4458e-03  5.7648e-03  4.0902e-05  1.0243e-05  9.7788e-03  3.2817e-01  0:06:31  693
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1308  5.5606e-03  6.2408e-03  4.9446e-03  5.3584e-03  5.5385e-03  4.0665e-05  1.0267e-05  1.0014e-02  3.2865e-01  0:07:31  692
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1309  5.4603e-03  6.2635e-03  4.9938e-03  5.1393e-03  5.4400e-03  4.0359e-05  1.0288e-05  1.0159e-02  3.2926e-01  0:08:19  691
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1310  6.1794e-03  6.3360e-03  5.0848e-03  5.1318e-03  6.1619e-03  3.9892e-05  1.0301e-05  1.0124e-02  3.3014e-01  0:06:38  690
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1311  7.1036e-03  6.5521e-03  5.2506e-03  5.1527e-03  7.0870e-03  3.9410e-05  1.0307e-05  1.0026e-02  3.3089e-01  0:07:36  689
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1312  7.5002e-03  6.7519e-03  5.5262e-03  5.2862e-03  7.4817e-03  3.9108e-05  1.0307e-05  9.9899e-03  3.3137e-01  0:08:22  688
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1313  7.4187e-03  6.8986e-03  5.8432e-03  5.3671e-03  7.3982e-03  3.8861e-05  1.0299e-05  9.9717e-03  3.3155e-01  0:06:41  687
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1314  7.2193e-03  6.9685e-03  5.8241e-03  5.4524e-03  7.1962e-03  3.8833e-05  1.0285e-05  9.9517e-03  3.3166e-01  0:07:37  686
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1315  8.7272e-03  7.0075e-03  6.1163e-03  5.7175e-03  8.7077e-03  3.9048e-05  1.0264e-05  9.8985e-03  3.3168e-01  0:06:05  685
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1316  8.6323e-03  7.1062e-03  6.1891e-03  6.1079e-03  8.6128e-03  3.9194e-05  1.0240e-05  9.7768e-03  3.3174e-01  0:07:09  684
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1317  8.2143e-03  7.1034e-03  6.0141e-03  6.1941e-03  8.1923e-03  3.9189e-05  1.0214e-05  9.5873e-03  3.3175e-01  0:07:59  683
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1886 cells 
+  1318  8.3467e-03  7.2082e-03  5.9829e-03  6.3005e-03  8.3215e-03  3.9062e-05  1.0189e-05  9.3578e-03  3.3166e-01  0:06:23  682
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1319  9.1311e-03  7.2951e-03  5.9991e-03  6.3607e-03  9.1047e-03  4.0432e-05  9.6252e-06  9.0685e-03  3.3154e-01  0:07:22  681
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1886 cells 
+  1320  9.9024e-03  7.5190e-03  6.2798e-03  6.5677e-03  9.8754e-03  4.0839e-05  1.0173e-05  8.6663e-03  3.3152e-01  0:08:09  680
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1321  9.0184e-03  7.8555e-03  6.3559e-03  6.8163e-03  8.9845e-03  4.1252e-05  9.6203e-06  8.1725e-03  3.3149e-01  0:08:46  679
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1322  9.0829e-03  7.6896e-03  6.5008e-03  6.9465e-03  9.0432e-03  4.1194e-05  1.0205e-05  7.6064e-03  3.3132e-01  0:09:16  678
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1323  9.1833e-03  7.5407e-03  6.8976e-03  6.7025e-03  9.1420e-03  4.0066e-05  1.0225e-05  6.9756e-03  3.3102e-01  0:07:24  677
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1886 cells 
+  1324  9.8853e-03  7.6317e-03  7.2053e-03  6.5494e-03  9.8497e-03  4.0097e-05  1.0248e-05  6.3804e-03  3.3054e-01  0:08:10  676
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1325  1.0308e-02  7.9077e-03  7.1615e-03  6.3073e-03  1.0279e-02  4.1010e-05  9.8812e-06  5.8000e-03  3.3007e-01  0:08:46  675
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1887 cells 
+  1326  9.1691e-03  8.2421e-03  7.0752e-03  6.0605e-03  9.1403e-03  4.1029e-05  1.0292e-05  5.2148e-03  3.2954e-01  0:07:01  674
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1888 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1327  8.7395e-03  8.3851e-03  6.8962e-03  5.9750e-03  8.7135e-03  4.0625e-05  1.0309e-05  4.7466e-03  3.2887e-01  0:07:51  673
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1888 cells 
+  1328  8.2084e-03  8.3953e-03  6.6959e-03  5.9598e-03  8.1802e-03  4.0625e-05  1.0321e-05  4.3101e-03  3.2817e-01  0:06:16  672
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1889 cells 
+  1329  7.3262e-03  8.1757e-03  6.4081e-03  5.8997e-03  7.2978e-03  4.0593e-05  1.0327e-05  3.9547e-03  3.2748e-01  0:07:14  671
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1330  6.5000e-03  7.9930e-03  6.3033e-03  5.7270e-03  6.4713e-03  4.0691e-05  1.0329e-05  3.6917e-03  3.2678e-01  0:08:01  670
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1331  6.2771e-03  7.7999e-03  6.2266e-03  5.4454e-03  6.2482e-03  4.0740e-05  1.0325e-05  3.4828e-03  3.2612e-01  0:06:24  669
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1332  6.0636e-03  7.6296e-03  6.1570e-03  5.3085e-03  6.0365e-03  4.0791e-05  1.0313e-05  3.3502e-03  3.2550e-01  0:07:21  668
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1333  5.7896e-03  7.5082e-03  6.0449e-03  5.3243e-03  5.7659e-03  4.0763e-05  1.0293e-05  3.2514e-03  3.2494e-01  0:08:05  667
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1334  5.8529e-03  7.4467e-03  5.8785e-03  5.4087e-03  5.8310e-03  4.0773e-05  1.0263e-05  3.2185e-03  3.2448e-01  0:06:28  666
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1335  5.7793e-03  7.4551e-03  5.7351e-03  5.4368e-03  5.7564e-03  4.0710e-05  1.0226e-05  3.2686e-03  3.2409e-01  0:07:23  665
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1336  5.5542e-03  7.4044e-03  5.6711e-03  5.5275e-03  5.5300e-03  4.0730e-05  1.0181e-05  3.3435e-03  3.2376e-01  0:08:06  664
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1337  5.7615e-03  7.3923e-03  5.6658e-03  5.4875e-03  5.7382e-03  4.0816e-05  1.0130e-05  3.4872e-03  3.2355e-01  0:06:29  663
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1889 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1338  6.3162e-03  7.4314e-03  5.7205e-03  5.3578e-03  6.2944e-03  4.1006e-05  1.0076e-05  3.7039e-03  3.2347e-01  0:07:23  662
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1339  6.5139e-03  7.4979e-03  5.7662e-03  5.2547e-03  6.4917e-03  4.2517e-05  9.4758e-06  3.9314e-03  3.2359e-01  0:08:06  661
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1889 cells 
+  1340  6.4281e-03  7.4104e-03  5.7621e-03  5.1696e-03  6.4055e-03  4.2843e-05  9.9765e-06  4.2849e-03  3.2362e-01  0:06:28  660
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1341  6.5813e-03  7.4093e-03  5.6701e-03  5.1615e-03  6.5591e-03  4.3543e-05  9.3665e-06  4.7494e-03  3.2365e-01  0:07:22  659
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1342  6.5501e-03  7.3290e-03  5.5449e-03  5.0506e-03  6.5273e-03  4.3570e-05  9.9009e-06  5.2454e-03  3.2369e-01  0:08:05  658
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1343  6.5912e-03  7.3587e-03  5.3288e-03  4.9181e-03  6.5682e-03  4.2713e-05  9.8966e-06  5.7184e-03  3.2377e-01  0:06:27  657
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1344  6.6453e-03  7.3979e-03  5.2752e-03  4.9586e-03  6.6212e-03  4.2800e-05  9.9301e-06  6.1675e-03  3.2388e-01  0:07:20  656
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1345  6.7460e-03  7.4533e-03  5.3270e-03  5.0799e-03  6.7203e-03  4.3169e-05  9.9792e-06  6.6254e-03  3.2403e-01  0:05:52  655
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1346  6.6691e-03  7.4053e-03  5.4070e-03  5.1493e-03  6.6419e-03  4.3620e-05  1.0032e-05  7.0470e-03  3.2427e-01  0:06:52  654
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1347  6.4233e-03  7.2754e-03  5.4262e-03  5.0893e-03  6.3956e-03  4.3846e-05  1.0087e-05  7.4318e-03  3.2456e-01  0:07:40  653
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1348  6.2521e-03  7.0672e-03  5.4658e-03  5.0748e-03  6.2256e-03  4.4742e-05  9.7548e-06  7.7643e-03  3.2494e-01  0:06:07  652
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1349  6.4761e-03  6.9789e-03  5.4958e-03  5.1466e-03  6.4523e-03  4.4533e-05  1.0190e-05  8.0595e-03  3.2542e-01  0:07:03  651
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1350  6.6535e-03  6.7627e-03  5.5029e-03  5.2122e-03  6.6308e-03  4.4057e-05  1.0232e-05  8.3208e-03  3.2596e-01  0:07:48  650
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1351  6.6755e-03  6.4949e-03  5.5829e-03  5.2148e-03  6.6545e-03  4.4628e-05  1.0267e-05  8.4628e-03  3.2668e-01  0:06:14  649
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1352  6.5630e-03  6.4559e-03  5.6094e-03  5.1374e-03  6.5429e-03  4.4426e-05  1.0295e-05  8.5148e-03  3.2742e-01  0:07:08  648
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1353  6.8173e-03  6.5685e-03  5.6414e-03  5.2412e-03  6.7963e-03  4.4042e-05  1.0314e-05  8.5417e-03  3.2813e-01  0:07:52  647
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1354  7.0145e-03  6.6596e-03  5.6109e-03  5.3276e-03  6.9930e-03  4.3762e-05  1.0323e-05  8.5088e-03  3.2879e-01  0:06:17  646
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1355  7.0530e-03  6.7069e-03  5.5470e-03  5.4378e-03  7.0330e-03  4.3301e-05  1.0323e-05  8.4620e-03  3.2935e-01  0:07:10  645
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1356  6.7486e-03  6.7493e-03  5.3630e-03  5.3398e-03  6.7281e-03  4.3049e-05  1.0313e-05  8.4424e-03  3.2972e-01  0:07:52  644
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1357  6.5946e-03  6.9457e-03  5.2594e-03  5.4388e-03  6.5726e-03  4.2511e-05  1.0294e-05  8.4357e-03  3.2993e-01  0:06:17  643
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1890 cells 
+  1358  6.9958e-03  7.1082e-03  5.2227e-03  5.4337e-03  6.9728e-03  4.2134e-05  1.0266e-05  8.3828e-03  3.3006e-01  0:07:10  642
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1891 cells 
+  1359  7.5959e-03  7.1616e-03  5.2898e-03  5.4614e-03  7.5714e-03  4.3053e-05  9.6855e-06  8.2736e-03  3.3009e-01  0:07:51  641
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1892 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1360  7.0882e-03  7.1242e-03  5.1403e-03  5.4050e-03  7.0590e-03  4.2869e-05  1.0192e-05  8.1623e-03  3.2996e-01  0:06:17  640
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1893 cells 
+  1361  7.0833e-03  6.9423e-03  5.1294e-03  5.2341e-03  7.0537e-03  4.2845e-05  9.5718e-06  8.0291e-03  3.2970e-01  0:07:09  639
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1893 cells 
+  1362  6.7208e-03  6.6489e-03  5.1641e-03  5.1171e-03  6.6901e-03  4.2291e-05  1.0077e-05  7.8574e-03  3.2933e-01  0:07:50  638
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1893 cells 
+  1363  6.6522e-03  6.4939e-03  5.2897e-03  5.1506e-03  6.6219e-03  4.0864e-05  1.0016e-05  7.6710e-03  3.2890e-01  0:06:15  637
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1893 cells 
+  1364  6.4429e-03  6.2402e-03  5.4561e-03  5.1800e-03  6.4136e-03  4.0468e-05  9.9581e-06  7.4213e-03  3.2853e-01  0:07:07  636
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1894 cells 
+  1365  6.4236e-03  6.1985e-03  5.5700e-03  5.1928e-03  6.3947e-03  4.0193e-05  9.8995e-06  7.1425e-03  3.2818e-01  0:05:41  635
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1895 cells 
+  1366  6.4304e-03  6.3510e-03  5.6718e-03  5.3027e-03  6.4023e-03  4.0195e-05  9.8511e-06  6.8697e-03  3.2788e-01  0:06:39  634
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1896 cells 
+  1367  6.3980e-03  6.3595e-03  5.5873e-03  4.9296e-03  6.3748e-03  3.9845e-05  9.8242e-06  6.6058e-03  3.2755e-01  0:07:25  633
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1896 cells 
+  1368  6.2877e-03  6.4190e-03  5.5293e-03  4.9438e-03  6.2681e-03  3.9729e-05  9.8274e-06  6.3302e-03  3.2724e-01  0:05:56  632
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1896 cells 
+  1369  6.0873e-03  6.3698e-03  5.2844e-03  4.8892e-03  6.0679e-03  3.9283e-05  9.8553e-06  6.0649e-03  3.2700e-01  0:08:57  631
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1895 cells 
+  1370  5.7634e-03  6.3241e-03  5.1005e-03  4.7744e-03  5.7441e-03  3.9073e-05  9.9051e-06  5.8047e-03  3.2680e-01  0:09:15  630
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1896 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1371  5.5879e-03  6.3031e-03  4.9211e-03  4.6963e-03  5.5688e-03  3.9381e-05  9.5764e-06  5.5814e-03  3.2663e-01  0:11:35  629
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1372  5.2235e-03  6.3069e-03  4.8744e-03  4.6535e-03  5.2034e-03  3.9120e-05  1.0024e-05  5.3666e-03  3.2651e-01  0:13:26  628
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1373  5.1556e-03  6.2497e-03  4.9119e-03  4.6024e-03  5.1357e-03  3.8621e-05  1.0075e-05  5.2185e-03  3.2634e-01  0:12:49  627
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1374  5.0862e-03  6.1881e-03  4.8941e-03  4.5852e-03  5.0662e-03  3.8353e-05  1.0117e-05  5.1147e-03  3.2622e-01  0:12:20  626
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1375  4.9435e-03  6.0641e-03  4.8338e-03  4.5297e-03  4.9231e-03  3.8027e-05  1.0150e-05  5.0354e-03  3.2611e-01  0:09:51  625
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1376  5.0874e-03  6.0538e-03  4.8386e-03  4.4212e-03  5.0681e-03  3.7870e-05  1.0174e-05  4.9737e-03  3.2605e-01  0:09:57  624
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1377  5.4375e-03  6.1514e-03  4.8380e-03  4.3860e-03  5.4201e-03  3.7735e-05  1.0189e-05  4.9505e-03  3.2609e-01  0:10:01  623
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1378  5.5344e-03  6.2377e-03  4.7392e-03  4.3430e-03  5.5172e-03  3.7633e-05  1.0195e-05  5.0034e-03  3.2615e-01  0:10:05  622
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1379  5.7185e-03  6.3369e-03  4.7058e-03  4.3466e-03  5.7015e-03  3.8780e-05  9.6467e-06  5.1244e-03  3.2619e-01  0:10:07  621
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1897 cells 
+  1380  5.6191e-03  6.2466e-03  4.6349e-03  4.3297e-03  5.6013e-03  3.8991e-05  1.0188e-05  5.3084e-03  3.2618e-01  0:10:09  620
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1381  5.4476e-03  6.1324e-03  4.5152e-03  4.2554e-03  5.4293e-03  3.9331e-05  9.6013e-06  5.5169e-03  3.2615e-01  0:10:10  619
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1382  5.4485e-03  6.0120e-03  4.4432e-03  4.1892e-03  5.4304e-03  3.9185e-05  1.0133e-05  5.7431e-03  3.2615e-01  0:10:11  618
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1383  5.5533e-03  5.8377e-03  4.3957e-03  4.1681e-03  5.5353e-03  3.8054e-05  1.0087e-05  5.9399e-03  3.2620e-01  0:08:08  617
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1384  5.5790e-03  5.7564e-03  4.3868e-03  4.2315e-03  5.5598e-03  3.7875e-05  1.0038e-05  6.1297e-03  3.2630e-01  0:08:33  616
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1385  5.4332e-03  5.6754e-03  4.3860e-03  4.4400e-03  5.4120e-03  3.8102e-05  9.9872e-06  6.3072e-03  3.2644e-01  0:08:53  615
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1386  5.3651e-03  5.6805e-03  4.4817e-03  4.6852e-03  5.3428e-03  3.8407e-05  9.9412e-06  6.4376e-03  3.2662e-01  0:09:08  614
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1387  5.2249e-03  5.6566e-03  4.6179e-03  4.6950e-03  5.2028e-03  3.8454e-05  9.9024e-06  6.5635e-03  3.2687e-01  0:09:20  613
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1388  5.3805e-03  5.6983e-03  4.8045e-03  4.6256e-03  5.3600e-03  3.8633e-05  9.8711e-06  6.6846e-03  3.2714e-01  0:09:30  612
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1389  5.5600e-03  5.7522e-03  4.9973e-03  4.5925e-03  5.5413e-03  3.8594e-05  9.8544e-06  6.8068e-03  3.2745e-01  0:09:37  611
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1390  5.6017e-03  5.6788e-03  4.9640e-03  4.6258e-03  5.5839e-03  3.8534e-05  9.8531e-06  6.9408e-03  3.2774e-01  0:09:43  610
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1391  5.8528e-03  5.6630e-03  4.9910e-03  4.6749e-03  5.8353e-03  3.8228e-05  9.8673e-06  7.0237e-03  3.2805e-01  0:07:46  609
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1392  5.9625e-03  5.6421e-03  5.0220e-03  4.6984e-03  5.9446e-03  3.8693e-05  9.8949e-06  7.0729e-03  3.2840e-01  0:08:14  608
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1393  6.0249e-03  5.6357e-03  4.9963e-03  4.7821e-03  6.0062e-03  3.9044e-05  9.9288e-06  7.0653e-03  3.2876e-01  0:08:36  607
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1394  6.1068e-03  5.6801e-03  4.9275e-03  4.9023e-03  6.0876e-03  3.9675e-05  9.5759e-06  7.0158e-03  3.2914e-01  0:06:52  606
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1395  6.1310e-03  5.8751e-03  4.8070e-03  4.9336e-03  6.1107e-03  3.9127e-05  1.0001e-05  6.9674e-03  3.2939e-01  0:07:30  605
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1396  5.9417e-03  6.1693e-03  4.8444e-03  4.9899e-03  5.9212e-03  3.8236e-05  1.0030e-05  6.8632e-03  3.2956e-01  0:08:00  604
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1397  6.3086e-03  6.2688e-03  4.7897e-03  4.8302e-03  6.2899e-03  3.7626e-05  1.0052e-05  6.7268e-03  3.2971e-01  0:06:23  603
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1398  6.3737e-03  6.3071e-03  4.8233e-03  4.7751e-03  6.3555e-03  3.7278e-05  1.0066e-05  6.5510e-03  3.2974e-01  0:07:07  602
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1399  6.3730e-03  6.3341e-03  4.6484e-03  4.6960e-03  6.3530e-03  3.8106e-05  9.5303e-06  6.3630e-03  3.2959e-01  0:07:41  601
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1400  6.6243e-03  6.2348e-03  4.6350e-03  4.6855e-03  6.6027e-03  3.7954e-05  1.0085e-05  6.2332e-03  3.2926e-01  0:06:08  600
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1401  6.1752e-03  5.9585e-03  4.5925e-03  4.6711e-03  6.1511e-03  3.7938e-05  9.5046e-06  6.0882e-03  3.2885e-01  0:06:54  599
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1402  6.0296e-03  5.7911e-03  4.6333e-03  4.6665e-03  6.0057e-03  3.7441e-05  1.0049e-05  5.9447e-03  3.2834e-01  0:07:30  598
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1403  5.7778e-03  5.6263e-03  4.6537e-03  4.6111e-03  5.7529e-03  3.5995e-05  1.0018e-05  5.7755e-03  3.2783e-01  0:05:59  597
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1404  5.5341e-03  5.5387e-03  4.7044e-03  4.6494e-03  5.5074e-03  3.5415e-05  9.9875e-06  5.5923e-03  3.2735e-01  0:06:46  596
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1405  5.3110e-03  5.4500e-03  4.7323e-03  4.7522e-03  5.2832e-03  3.5103e-05  9.9543e-06  5.4204e-03  3.2692e-01  0:07:24  595
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1406  5.1471e-03  5.4711e-03  4.7753e-03  4.7589e-03  5.1194e-03  3.4921e-05  9.9239e-06  5.2267e-03  3.2656e-01  0:05:54  594
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1407  4.9830e-03  5.5239e-03  4.8215e-03  4.8959e-03  4.9569e-03  3.4896e-05  9.8992e-06  5.0343e-03  3.2628e-01  0:06:41  593
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1408  4.8605e-03  5.5760e-03  4.8124e-03  4.6193e-03  4.8369e-03  3.4982e-05  9.8830e-06  4.8393e-03  3.2610e-01  0:07:19  592
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1409  4.8667e-03  5.6821e-03  4.8033e-03  4.3389e-03  4.8459e-03  3.4850e-05  9.8715e-06  4.6327e-03  3.2599e-01  0:07:49  591
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1410  5.1633e-03  5.7902e-03  4.7747e-03  4.3225e-03  5.1447e-03  3.4638e-05  9.8651e-06  4.4407e-03  3.2590e-01  0:06:14  590
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1411  5.0640e-03  5.8281e-03  4.7189e-03  4.2836e-03  5.0466e-03  3.4500e-05  9.8629e-06  4.2609e-03  3.2584e-01  0:06:57  589
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1412  5.0617e-03  5.8629e-03  4.6865e-03  4.2934e-03  5.0449e-03  3.4548e-05  9.8706e-06  4.1368e-03  3.2576e-01  0:07:31  588
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1413  4.9638e-03  5.8547e-03  4.5691e-03  4.2477e-03  4.9466e-03  3.4478e-05  9.8917e-06  4.0499e-03  3.2571e-01  0:06:00  587
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1900 cells 
+  1414  4.7373e-03  5.7454e-03  4.4766e-03  4.0746e-03  4.7202e-03  3.4410e-05  9.9199e-06  3.9832e-03  3.2569e-01  0:06:45  586
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1900 cells 
+
+  iter  continuity  x-velocity  y-velocity  z-velocity      energy           k       omega          cy          cx     time/iter
+  1415  4.8401e-03  5.7178e-03  4.4862e-03  3.9933e-03  4.8243e-03  3.4332e-05  9.9497e-06  3.9530e-03  3.2568e-01  0:07:20  585
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1416  5.1934e-03  5.7875e-03  4.5122e-03  3.9720e-03  5.1792e-03  3.4263e-05  9.9774e-06  4.0068e-03  3.2567e-01  0:05:51  584
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1417  5.3769e-03  5.7389e-03  4.4431e-03  3.9366e-03  5.3621e-03  3.4856e-05  9.6124e-06  4.1341e-03  3.2559e-01  0:06:37  583
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1418  5.5550e-03  5.6823e-03  4.4025e-03  3.9430e-03  5.5395e-03  3.4577e-05  1.0017e-05  4.3130e-03  3.2547e-01  0:07:14  582
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1900 cells 
+  1419  5.3352e-03  5.6156e-03  4.2839e-03  3.9649e-03  5.3188e-03  3.5491e-05  9.4808e-06  4.5429e-03  3.2532e-01  0:05:46  581
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1898 cells 
+  1420  5.0616e-03  5.5363e-03  4.1408e-03  3.9155e-03  5.0450e-03  3.5433e-05  1.0037e-05  4.7615e-03  3.2517e-01  0:06:33  580
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1421  5.0495e-03  5.5139e-03  4.0745e-03  3.8422e-03  5.0339e-03  3.5664e-05  9.4617e-06  4.9792e-03  3.2504e-01  0:07:09  579
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1422  5.1749e-03  5.4672e-03  4.0383e-03  3.8525e-03  5.1603e-03  3.5344e-05  1.0017e-05  5.1759e-03  3.2501e-01  0:07:38  578
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+  1423  5.0847e-03  5.2108e-03  3.9735e-03  3.9083e-03  5.0703e-03  3.4178e-05  9.9981e-06  5.3891e-03  3.2505e-01  0:06:06  577
+
+ turbulent viscosity limited to viscosity ratio of 1.000000e+05 in 1899 cells 
+
+Interrupting...
+  1424  4.8291e-03  5.0600e-03  3.9014e-03  3.9768e-03  4.8147e-03  3.3898e-05  9.9820e-06  5.5716e-03  3.2516e-01  0:06:48  576
+Done.
 Registering ReportDefFiles, ("E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\.\\cx-rfile.out" "E:\UniFlight\ansys\aero_files\dp0\FFF\Fluent\.\\cy-rfile.out")
 Writing "| gzip -2cf > SolutionMonitor.gz"...
-Writing temporary file C:\\Users\\VEDCF~1.SME\\AppData\\Local\\Temp\\flntgz-2842 ...
+Writing temporary file C:\\Users\\VEDCF~1.SME\\AppData\\Local\\Temp\\flntgz-177442 ...
 Done.
 
 
-Error: WorkBench Error: Could not handle event: ParameterEvent
-Error Object: #f
-
-Error: WorkBench Error: Could not handle event: ParameterEvent
-Error Object: #f
-
-Performance Timer for 0 iterations on 4 compute nodes
-  Average wall-clock time per iteration:                0.000 sec
-  Global reductions per iteration:                          0 ops
+Performance Timer for 471 iterations on 6 compute nodes
+  Average wall-clock time per iteration:                0.533 sec
+  Global reductions per iteration:                        107 ops
   Global reductions time per iteration:                 0.000 sec (0.0%)
-  Message count per iteration:                              0 messages
-  Data transfer per iteration:                          0.000 MB
-  LE solves per iteration:                                  0 solves
-  LE wall-clock time per iteration:                     0.000 sec (0.0%)
-  LE global solves per iteration:                           0 solves
-  LE global wall-clock time per iteration:              0.000 sec (0.0%)
-  LE global matrix maximum size:                          140
-  AMG cycles per iteration:                             0.000 cycles
-  Relaxation sweeps per iteration:                          0 sweeps
+  Message count per iteration:                           3196 messages
+  Data transfer per iteration:                         29.187 MB
+  LE solves per iteration:                                  3 solves
+  LE wall-clock time per iteration:                     0.223 sec (41.9%)
+  LE global solves per iteration:                           1 solves
+  LE global wall-clock time per iteration:              0.000 sec (0.1%)
+  LE global matrix maximum size:                           58
+  AMG cycles per iteration:                             3.002 cycles
+  Relaxation sweeps per iteration:                        209 sweeps
   Relaxation exchanges per iteration:                       0 exchanges
   LE early protections (stall) per iteration:           0.000 times
   LE early protections (divergence) per iteration:      0.000 times
   Total SVARS touched:                                    397
 
-  Total wall-clock time:                                0.000 sec
+  Total wall-clock time:                              251.003 sec
 
-Transcript Stop Time:  23:47:49, 13 May 2026 RTZ 2 (çèìà) 
-Total Transcript Time: 0 Minute 33 Second.
+Transcript Stop Time:  14:17:56, 01 Jun 2026 RTZ 2 (çèìà) 
+Total Transcript Time: 6 Minute 5 Second.

@@ -39,15 +39,13 @@ Material Properties
 
    Material: air (fluid)
 
-      Property                    Units      Method           Value(s)                     
-      ----------------------------------------------------------------------------------
-      Density                     kg/m^3     ideal-gas        #f                           
-      Cp (Specific Heat)          J/(kg K)   constant         1006.43                      
-      Thermal Conductivity        W/(m K)    kinetic-theory   #f                           
-      Viscosity                   kg/(m s)   sutherland       (1.716e-05 273.11 110.56 )   
-      Molecular Weight            kg/kmol    constant         28.966                       
-      L-J Characteristic Length   Angstrom   constant         3.711                        
-      L-J Energy Parameter        K          constant         78.6                         
+      Property               Units      Method       Value(s)                     
+      -------------------------------------------------------------------------
+      Density                kg/m^3     ideal-gas    #f                           
+      Cp (Specific Heat)     J/(kg K)   constant     1006.43                      
+      Thermal Conductivity   W/(m K)    constant     0.0242                       
+      Viscosity              kg/(m s)   sutherland   (1.716e-05 273.11 110.56 )   
+      Molecular Weight       kg/kmol    constant     28.966                       
 
    Material: aluminum (solid)
 
@@ -65,13 +63,13 @@ Cell Zone Conditions
 
    Zones
 
-      name              id   type    
-      ----------------------------
-      cross-freeparts   3    fluid   
+      name               id   type    
+      -----------------------------
+      falcon-freeparts   2    fluid   
 
    Setup Conditions
 
-      cross-freeparts
+      falcon-freeparts
 
          Condition       Value   
          ---------------------
@@ -86,12 +84,12 @@ Boundary Conditions
 
    Zones
 
-      name                   id   type                 
-      ----------------------------------------------
-      inlet                  5    pressure-far-field   
-      wall-cross-freeparts   1    wall                 
-      outlet                 6    pressure-outlet      
-      ball                   8    wall                 
+      name     id   type                 
+      --------------------------------
+      inlet    5    pressure-far-field   
+      outlet   6    pressure-outlet      
+      outer    7    wall                 
+      ball     8    wall                 
 
    Setup Conditions
 
@@ -99,11 +97,16 @@ Boundary Conditions
 
          Condition                       Value                                 
          -------------------------------------------------------------------
-         Mach Number                     (profile __expr__ Mach)               
+         Mach Number                     (profile __expr__ mach)               
          X-Component of Flow Direction   (profile __expr__ cos(attack/57.3))   
          Y-Component of Flow Direction   (profile __expr__ sin(attack/57.3))   
 
-      wall-cross-freeparts
+      outlet
+
+         Condition   Value   
+         -----------------
+
+      outer
 
          Condition                  Value             
          ------------------------------------------
@@ -111,11 +114,6 @@ Boundary Conditions
          Wall Motion                Stationary Wall   
          Shear Boundary Condition   No Slip           
          Wall Surface Roughness     Standard          
-
-      outlet
-
-         Condition   Value   
-         -----------------
 
       ball
 
@@ -175,7 +173,7 @@ Solver Settings
       Parameter        Value      
       -------------------------
       Solver           Implicit   
-      Courant Number   5          
+      Courant Number   3          
 
    Solution Limits
 
