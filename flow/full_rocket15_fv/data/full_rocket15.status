@@ -1,0 +1,804 @@
+Time=1.00000e-01	StepNumber=1	TimeStep=1.00000e-01	ExplicitTimeStep=1.12942e-02	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	9.44229e-11	1.00000e+00
+Velocity	10	2.07162e-11	1.00000e+00
+
+Time=1.80999e-01	StepNumber=2	TimeStep=8.09986e-02	ExplicitTimeStep=8.09986e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	1.22166e-11	5.66080e-01
+Velocity	9	5.29901e-12	5.27830e-01
+
+Time=2.53181e-01	StepNumber=3	TimeStep=7.21827e-02	ExplicitTimeStep=7.21827e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	1.65291e-11	4.85010e-01
+Velocity	8	1.21462e-11	4.08555e-01
+
+Time=3.20050e-01	StepNumber=4	TimeStep=6.68682e-02	ExplicitTimeStep=6.68682e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	6.47361e-11	3.79361e-01
+Velocity	8	2.72220e-12	3.66674e-01
+
+Time=3.84699e-01	StepNumber=5	TimeStep=6.46493e-02	ExplicitTimeStep=6.46493e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	2.76176e-11	2.76851e-01
+Velocity	7	1.86312e-11	3.06867e-01
+
+Time=4.49287e-01	StepNumber=6	TimeStep=6.45881e-02	ExplicitTimeStep=6.45881e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	2.28592e-11	2.04725e-01
+Velocity	7	1.86351e-11	2.60417e-01
+
+Time=5.13265e-01	StepNumber=7	TimeStep=6.39783e-02	ExplicitTimeStep=6.39783e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	1.49199e-11	1.61819e-01
+Velocity	7	8.61508e-12	2.38727e-01
+
+Time=5.75502e-01	StepNumber=8	TimeStep=6.22370e-02	ExplicitTimeStep=6.22370e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	4.72944e-11	1.42946e-01
+Velocity	7	5.05283e-12	2.21007e-01
+
+Time=6.36531e-01	StepNumber=9	TimeStep=6.10290e-02	ExplicitTimeStep=6.10290e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	3.00308e-11	1.29879e-01
+Velocity	7	2.57850e-12	2.03615e-01
+
+Time=6.96888e-01	StepNumber=10	TimeStep=6.03572e-02	ExplicitTimeStep=6.03572e-03	NumCells=6946
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	3.15182e-11	1.14915e-01
+Velocity	6	1.73727e-11	1.86108e-01
+
+Time=7.56856e-01	StepNumber=11	TimeStep=5.99671e-02	ExplicitTimeStep=5.99671e-03	NumCells=38691
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	2.83477e-11	1.49604e-01
+Velocity	7	4.10185e-11	5.45819e-01
+
+Time=8.16610e-01	StepNumber=12	TimeStep=5.97545e-02	ExplicitTimeStep=5.97545e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	24	5.56781e-11	1.53839e-01
+Velocity	7	3.00843e-12	4.02699e-01
+
+Time=8.76191e-01	StepNumber=13	TimeStep=5.95808e-02	ExplicitTimeStep=5.95808e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	25	6.52273e-11	1.61842e-01
+Velocity	6	2.72746e-11	2.96978e-01
+
+Time=9.35401e-01	StepNumber=14	TimeStep=5.92105e-02	ExplicitTimeStep=5.92105e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	24	6.00471e-11	1.31349e-01
+Velocity	6	2.58710e-11	2.56699e-01
+
+Time=9.94402e-01	StepNumber=15	TimeStep=5.90006e-02	ExplicitTimeStep=5.90006e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	24	4.89167e-11	1.01357e-01
+Velocity	6	2.13130e-11	2.10219e-01
+
+Time=1.05322e+00	StepNumber=16	TimeStep=5.88173e-02	ExplicitTimeStep=5.88173e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	24	4.60687e-11	8.63622e-02
+Velocity	6	1.47439e-11	1.79775e-01
+
+Time=1.11193e+00	StepNumber=17	TimeStep=5.87082e-02	ExplicitTimeStep=5.87082e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	24	3.64435e-11	7.51658e-02
+Velocity	6	1.31668e-11	1.55003e-01
+
+Time=1.17057e+00	StepNumber=18	TimeStep=5.86464e-02	ExplicitTimeStep=5.86464e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	23	5.98933e-11	6.62656e-02
+Velocity	6	1.00883e-11	1.34610e-01
+
+Time=1.22917e+00	StepNumber=19	TimeStep=5.85939e-02	ExplicitTimeStep=5.85939e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	23	3.95542e-11	5.73964e-02
+Velocity	6	1.06429e-11	1.17664e-01
+
+Time=1.28772e+00	StepNumber=20	TimeStep=5.85544e-02	ExplicitTimeStep=5.85544e-03	NumCells=103336
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	23	3.45787e-11	4.90735e-02
+Velocity	6	7.77815e-12	1.05011e-01
+
+Time=1.34627e+00	StepNumber=21	TimeStep=5.85430e-02	ExplicitTimeStep=5.85430e-03	NumCells=108005
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	23	5.87861e-11	5.21442e-02
+Velocity	6	8.79647e-12	1.47736e-01
+
+Time=1.40481e+00	StepNumber=22	TimeStep=5.85413e-02	ExplicitTimeStep=5.85413e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.67734e-11	4.62506e-02
+Velocity	6	1.30524e-11	1.20181e-01
+
+Time=1.46336e+00	StepNumber=23	TimeStep=5.85529e-02	ExplicitTimeStep=5.85529e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	2.57824e-11	4.21550e-02
+Velocity	6	8.28533e-12	9.68884e-02
+
+Time=1.52194e+00	StepNumber=24	TimeStep=5.85766e-02	ExplicitTimeStep=5.85766e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	3.61363e-11	3.64060e-02
+Velocity	6	1.14462e-11	8.42323e-02
+
+Time=1.58055e+00	StepNumber=25	TimeStep=5.86130e-02	ExplicitTimeStep=5.86130e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	3.74342e-11	3.07024e-02
+Velocity	6	1.63068e-11	7.47352e-02
+
+Time=1.63923e+00	StepNumber=26	TimeStep=5.86852e-02	ExplicitTimeStep=5.86852e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	7.59943e-11	2.73816e-02
+Velocity	6	2.37017e-11	6.83446e-02
+
+Time=1.69797e+00	StepNumber=27	TimeStep=5.87331e-02	ExplicitTimeStep=5.87331e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	6.96990e-11	2.59987e-02
+Velocity	6	2.23791e-11	6.31559e-02
+
+Time=1.75676e+00	StepNumber=28	TimeStep=5.87953e-02	ExplicitTimeStep=5.87953e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	6.60104e-11	2.34904e-02
+Velocity	6	1.72357e-11	5.86050e-02
+
+Time=1.81560e+00	StepNumber=29	TimeStep=5.88379e-02	ExplicitTimeStep=5.88379e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.00994e-11	2.19713e-02
+Velocity	6	1.38608e-11	5.42338e-02
+
+Time=1.87449e+00	StepNumber=30	TimeStep=5.88876e-02	ExplicitTimeStep=5.88876e-03	NumCells=95125
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.42672e-11	1.88180e-02
+Velocity	6	1.64253e-11	4.96998e-02
+
+Time=1.93341e+00	StepNumber=31	TimeStep=5.89228e-02	ExplicitTimeStep=5.89228e-03	NumCells=106815
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.61262e-11	2.84095e-02
+Velocity	6	1.70888e-11	9.01847e-02
+
+Time=1.99237e+00	StepNumber=32	TimeStep=5.89627e-02	ExplicitTimeStep=5.89627e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	4.43612e-11	2.38738e-02
+Velocity	6	1.15581e-11	7.53993e-02
+
+Time=2.05136e+00	StepNumber=33	TimeStep=5.89905e-02	ExplicitTimeStep=5.89905e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	4.59386e-11	2.22855e-02
+Velocity	6	9.53315e-12	6.17172e-02
+
+Time=2.11039e+00	StepNumber=34	TimeStep=5.90215e-02	ExplicitTimeStep=5.90215e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.45699e-11	1.94532e-02
+Velocity	6	7.94698e-12	5.38873e-02
+
+Time=2.16943e+00	StepNumber=35	TimeStep=5.90419e-02	ExplicitTimeStep=5.90419e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.71161e-11	1.72230e-02
+Velocity	6	7.56240e-12	4.93903e-02
+
+Time=2.22849e+00	StepNumber=36	TimeStep=5.90654e-02	ExplicitTimeStep=5.90654e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	6.31412e-11	1.68249e-02
+Velocity	6	6.93125e-12	4.60459e-02
+
+Time=2.28757e+00	StepNumber=37	TimeStep=5.90795e-02	ExplicitTimeStep=5.90795e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.90749e-11	1.42695e-02
+Velocity	6	5.82201e-12	4.28155e-02
+
+Time=2.34667e+00	StepNumber=38	TimeStep=5.90980e-02	ExplicitTimeStep=5.90980e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.21545e-11	1.49917e-02
+Velocity	6	6.72947e-12	4.12514e-02
+
+Time=2.40578e+00	StepNumber=39	TimeStep=5.91068e-02	ExplicitTimeStep=5.91068e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.19174e-11	1.21572e-02
+Velocity	6	5.30096e-12	3.91137e-02
+
+Time=2.46490e+00	StepNumber=40	TimeStep=5.91211e-02	ExplicitTimeStep=5.91211e-03	NumCells=95356
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	6.15427e-11	1.18669e-02
+Velocity	6	6.85090e-12	3.73576e-02
+
+Time=2.52402e+00	StepNumber=41	TimeStep=5.91255e-02	ExplicitTimeStep=5.91255e-03	NumCells=108649
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.83828e-11	2.11553e-02
+Velocity	6	2.35215e-11	7.82326e-02
+
+Time=2.58316e+00	StepNumber=42	TimeStep=5.91367e-02	ExplicitTimeStep=5.91367e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.49859e-11	1.86647e-02
+Velocity	6	9.71118e-12	6.72614e-02
+
+Time=2.64230e+00	StepNumber=43	TimeStep=5.91378e-02	ExplicitTimeStep=5.91378e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.95882e-11	1.67735e-02
+Velocity	6	5.76200e-12	5.42290e-02
+
+Time=2.70144e+00	StepNumber=44	TimeStep=5.91462e-02	ExplicitTimeStep=5.91462e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.31251e-11	1.45569e-02
+Velocity	6	6.59653e-12	4.69431e-02
+
+Time=2.76059e+00	StepNumber=45	TimeStep=5.91446e-02	ExplicitTimeStep=5.91446e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	6.37310e-11	1.26034e-02
+Velocity	6	7.82132e-12	4.18589e-02
+
+Time=2.81974e+00	StepNumber=46	TimeStep=5.91507e-02	ExplicitTimeStep=5.91507e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.74209e-11	1.17745e-02
+Velocity	6	5.88229e-12	3.84614e-02
+
+Time=2.87889e+00	StepNumber=47	TimeStep=5.91477e-02	ExplicitTimeStep=5.91477e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	7.00474e-11	1.03233e-02
+Velocity	6	6.63574e-12	3.60530e-02
+
+Time=2.93804e+00	StepNumber=48	TimeStep=5.91526e-02	ExplicitTimeStep=5.91526e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	3.74767e-11	1.01684e-02
+Velocity	6	6.13222e-12	3.36978e-02
+
+Time=2.99719e+00	StepNumber=49	TimeStep=5.91487e-02	ExplicitTimeStep=5.91487e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	2.68325e-11	8.01335e-03
+Velocity	6	5.59601e-12	3.11311e-02
+
+Time=3.05634e+00	StepNumber=50	TimeStep=5.91531e-02	ExplicitTimeStep=5.91531e-03	NumCells=95314
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.87745e-11	8.23517e-03
+Velocity	6	6.22995e-12	3.02617e-02
+
+Time=3.11549e+00	StepNumber=51	TimeStep=5.91484e-02	ExplicitTimeStep=5.91484e-03	NumCells=108194
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.30140e-11	1.78458e-02
+Velocity	6	1.24730e-11	7.08268e-02
+
+Time=3.17464e+00	StepNumber=52	TimeStep=5.91525e-02	ExplicitTimeStep=5.91525e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	5.33226e-11	1.61829e-02
+Velocity	6	8.31345e-12	5.92971e-02
+
+Time=3.23379e+00	StepNumber=53	TimeStep=5.91472e-02	ExplicitTimeStep=5.91472e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.21190e-11	1.47035e-02
+Velocity	6	2.95210e-12	4.81124e-02
+
+Time=3.29294e+00	StepNumber=54	TimeStep=5.91509e-02	ExplicitTimeStep=5.91509e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.91846e-11	1.28532e-02
+Velocity	6	3.42275e-12	4.19656e-02
+
+Time=3.35209e+00	StepNumber=55	TimeStep=5.91453e-02	ExplicitTimeStep=5.91453e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.06573e-11	1.11267e-02
+Velocity	6	2.77877e-12	3.82268e-02
+
+Time=3.41123e+00	StepNumber=56	TimeStep=5.91483e-02	ExplicitTimeStep=5.91483e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.01765e-11	1.14354e-02
+Velocity	6	2.94203e-12	3.57273e-02
+
+Time=3.47038e+00	StepNumber=57	TimeStep=5.91429e-02	ExplicitTimeStep=5.91429e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	5.03970e-11	9.25760e-03
+Velocity	6	2.61523e-12	3.34736e-02
+
+Time=3.52952e+00	StepNumber=58	TimeStep=5.91461e-02	ExplicitTimeStep=5.91461e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	5.74508e-11	1.00913e-02
+Velocity	6	2.94956e-12	3.13625e-02
+
+Time=3.58866e+00	StepNumber=59	TimeStep=5.91413e-02	ExplicitTimeStep=5.91413e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	4.04258e-11	7.68061e-03
+Velocity	6	2.25622e-12	2.99748e-02
+
+Time=3.64781e+00	StepNumber=60	TimeStep=5.91446e-02	ExplicitTimeStep=5.91446e-03	NumCells=94985
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	2.89914e-11	8.43614e-03
+Velocity	6	2.62436e-12	2.98755e-02
+
+Time=3.70695e+00	StepNumber=61	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=107879
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	7.77101e-11	1.79981e-02
+Velocity	6	1.97383e-11	6.91138e-02
+
+Time=3.76609e+00	StepNumber=62	TimeStep=5.91435e-02	ExplicitTimeStep=5.91435e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.39426e-11	1.51991e-02
+Velocity	6	1.16191e-11	5.56153e-02
+
+Time=3.82523e+00	StepNumber=63	TimeStep=5.91391e-02	ExplicitTimeStep=5.91391e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	4.79999e-11	1.47084e-02
+Velocity	6	8.36394e-12	4.46444e-02
+
+Time=3.88437e+00	StepNumber=64	TimeStep=5.91425e-02	ExplicitTimeStep=5.91425e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.35453e-11	1.16461e-02
+Velocity	6	7.76233e-12	3.89166e-02
+
+Time=3.94351e+00	StepNumber=65	TimeStep=5.91379e-02	ExplicitTimeStep=5.91379e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	4.93419e-11	9.69014e-03
+Velocity	6	8.30097e-12	3.43554e-02
+
+Time=4.00265e+00	StepNumber=66	TimeStep=5.91410e-02	ExplicitTimeStep=5.91410e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	7.56885e-11	9.18129e-03
+Velocity	6	8.05885e-12	3.21203e-02
+
+Time=4.06179e+00	StepNumber=67	TimeStep=5.91366e-02	ExplicitTimeStep=5.91366e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.99203e-11	7.98225e-03
+Velocity	6	9.78428e-12	3.04286e-02
+
+Time=4.12093e+00	StepNumber=68	TimeStep=5.91401e-02	ExplicitTimeStep=5.91401e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	8.37143e-11	8.52283e-03
+Velocity	6	1.28659e-11	2.94582e-02
+
+Time=4.18007e+00	StepNumber=69	TimeStep=5.91361e-02	ExplicitTimeStep=5.91361e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	5.75919e-11	7.28313e-03
+Velocity	6	1.07410e-11	2.74031e-02
+
+Time=4.23921e+00	StepNumber=70	TimeStep=5.91397e-02	ExplicitTimeStep=5.91397e-03	NumCells=94901
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.99719e-11	6.73962e-03
+Velocity	6	8.75536e-12	2.69071e-02
+
+Time=4.29834e+00	StepNumber=71	TimeStep=5.91361e-02	ExplicitTimeStep=5.91361e-03	NumCells=108131
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.46869e-11	1.64820e-02
+Velocity	6	5.04658e-12	6.60564e-02
+
+Time=4.35748e+00	StepNumber=72	TimeStep=5.91398e-02	ExplicitTimeStep=5.91398e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.99854e-11	1.42991e-02
+Velocity	6	1.12126e-11	5.34688e-02
+
+Time=4.41662e+00	StepNumber=73	TimeStep=5.91364e-02	ExplicitTimeStep=5.91364e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	3.67186e-11	1.44583e-02
+Velocity	6	1.13688e-11	4.32506e-02
+
+Time=4.47576e+00	StepNumber=74	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	5.38993e-11	1.19007e-02
+Velocity	6	1.19370e-11	3.78196e-02
+
+Time=4.53489e+00	StepNumber=75	TimeStep=5.91361e-02	ExplicitTimeStep=5.91361e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	5.03565e-11	9.97339e-03
+Velocity	6	1.20082e-11	3.37410e-02
+
+Time=4.59403e+00	StepNumber=76	TimeStep=5.91396e-02	ExplicitTimeStep=5.91396e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	3.55680e-11	1.02258e-02
+Velocity	6	1.19916e-11	3.15207e-02
+
+Time=4.65317e+00	StepNumber=77	TimeStep=5.91357e-02	ExplicitTimeStep=5.91357e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	9.22096e-11	8.39162e-03
+Velocity	6	1.19702e-11	2.87689e-02
+
+Time=4.71231e+00	StepNumber=78	TimeStep=5.91394e-02	ExplicitTimeStep=5.91394e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.14950e-11	7.67450e-03
+Velocity	6	1.20987e-11	2.70793e-02
+
+Time=4.77144e+00	StepNumber=79	TimeStep=5.91359e-02	ExplicitTimeStep=5.91359e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	2.50326e-11	6.56556e-03
+Velocity	6	1.19893e-11	2.56755e-02
+
+Time=4.83058e+00	StepNumber=80	TimeStep=5.91395e-02	ExplicitTimeStep=5.91395e-03	NumCells=94754
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	2.42703e-11	5.82369e-03
+Velocity	6	1.18366e-11	2.42823e-02
+
+Time=4.88972e+00	StepNumber=81	TimeStep=5.91361e-02	ExplicitTimeStep=5.91361e-03	NumCells=107123
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.35542e-11	1.52701e-02
+Velocity	6	6.94602e-12	6.25342e-02
+
+Time=4.94886e+00	StepNumber=82	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.48109e-11	1.38177e-02
+Velocity	6	1.52362e-11	5.20289e-02
+
+Time=5.00800e+00	StepNumber=83	TimeStep=5.91365e-02	ExplicitTimeStep=5.91365e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	7.79214e-11	1.27792e-02
+Velocity	6	7.57805e-12	4.08764e-02
+
+Time=5.06714e+00	StepNumber=84	TimeStep=5.91403e-02	ExplicitTimeStep=5.91403e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.29852e-11	1.07842e-02
+Velocity	6	1.31743e-11	3.58266e-02
+
+Time=5.12627e+00	StepNumber=85	TimeStep=5.91363e-02	ExplicitTimeStep=5.91363e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.84809e-11	9.26715e-03
+Velocity	6	1.21540e-11	3.24438e-02
+
+Time=5.18541e+00	StepNumber=86	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	7.98054e-11	9.42562e-03
+Velocity	6	1.31038e-11	3.05199e-02
+
+Time=5.24455e+00	StepNumber=87	TimeStep=5.91360e-02	ExplicitTimeStep=5.91360e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.33454e-11	7.58710e-03
+Velocity	6	1.26585e-11	2.73144e-02
+
+Time=5.30369e+00	StepNumber=88	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	7.18892e-11	7.65755e-03
+Velocity	6	1.08385e-11	2.60619e-02
+
+Time=5.36283e+00	StepNumber=89	TimeStep=5.91360e-02	ExplicitTimeStep=5.91360e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.32817e-11	6.51532e-03
+Velocity	6	1.26662e-11	2.52351e-02
+
+Time=5.42197e+00	StepNumber=90	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	5.10260e-11	6.68198e-03
+Velocity	6	1.25685e-11	2.45922e-02
+
+Time=5.48110e+00	StepNumber=91	TimeStep=5.91361e-02	ExplicitTimeStep=5.91361e-03	NumCells=107921
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	5.99612e-11	1.48549e-02
+Velocity	6	1.11217e-11	6.22031e-02
+
+Time=5.54024e+00	StepNumber=92	TimeStep=5.91403e-02	ExplicitTimeStep=5.91403e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	7.27967e-11	1.45358e-02
+Velocity	6	2.35608e-11	5.20668e-02
+
+Time=5.59938e+00	StepNumber=93	TimeStep=5.91364e-02	ExplicitTimeStep=5.91364e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	5.64319e-11	1.33347e-02
+Velocity	6	2.12253e-11	4.07302e-02
+
+Time=5.65852e+00	StepNumber=94	TimeStep=5.91405e-02	ExplicitTimeStep=5.91405e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.57957e-11	1.11589e-02
+Velocity	6	2.24878e-11	3.56625e-02
+
+Time=5.71765e+00	StepNumber=95	TimeStep=5.91365e-02	ExplicitTimeStep=5.91365e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.11332e-11	9.71907e-03
+Velocity	6	1.78393e-11	3.18880e-02
+
+Time=5.77679e+00	StepNumber=96	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	5.82009e-11	8.67183e-03
+Velocity	6	2.24687e-11	2.97180e-02
+
+Time=5.83593e+00	StepNumber=97	TimeStep=5.91362e-02	ExplicitTimeStep=5.91362e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.54377e-11	8.17072e-03
+Velocity	6	2.27129e-11	2.80796e-02
+
+Time=5.89507e+00	StepNumber=98	TimeStep=5.91399e-02	ExplicitTimeStep=5.91399e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	3.81912e-11	7.46245e-03
+Velocity	6	2.19143e-11	2.59926e-02
+
+Time=5.95421e+00	StepNumber=99	TimeStep=5.91364e-02	ExplicitTimeStep=5.91364e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	4.60255e-11	5.88765e-03
+Velocity	6	1.92025e-11	2.43331e-02
+
+Time=6.01335e+00	StepNumber=100	TimeStep=5.91401e-02	ExplicitTimeStep=5.91401e-03	NumCells=95041
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.42001e-11	5.54558e-03
+Velocity	6	1.97835e-11	2.32639e-02
+
+Time=6.07248e+00	StepNumber=101	TimeStep=5.91366e-02	ExplicitTimeStep=5.91366e-03	NumCells=107963
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	6.25568e-11	1.44807e-02
+Velocity	6	1.20031e-11	6.01061e-02
+
+Time=6.13162e+00	StepNumber=102	TimeStep=5.91404e-02	ExplicitTimeStep=5.91404e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.99031e-11	1.37645e-02
+Velocity	6	1.74220e-11	5.10919e-02
+
+Time=6.19076e+00	StepNumber=103	TimeStep=5.91371e-02	ExplicitTimeStep=5.91371e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.60852e-11	1.38151e-02
+Velocity	6	1.97911e-11	3.92276e-02
+
+Time=6.24990e+00	StepNumber=104	TimeStep=5.91407e-02	ExplicitTimeStep=5.91407e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	9.51436e-11	1.09534e-02
+Velocity	6	2.00067e-11	3.38563e-02
+
+Time=6.30904e+00	StepNumber=105	TimeStep=5.91368e-02	ExplicitTimeStep=5.91368e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	6.78301e-11	9.03906e-03
+Velocity	6	1.88188e-11	3.07905e-02
+
+Time=6.36818e+00	StepNumber=106	TimeStep=5.91401e-02	ExplicitTimeStep=5.91401e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.63846e-11	8.71652e-03
+Velocity	6	1.90117e-11	2.92874e-02
+
+Time=6.42732e+00	StepNumber=107	TimeStep=5.91363e-02	ExplicitTimeStep=5.91363e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	4.10349e-11	7.55745e-03
+Velocity	6	1.64894e-11	2.65372e-02
+
+Time=6.48646e+00	StepNumber=108	TimeStep=5.91400e-02	ExplicitTimeStep=5.91400e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	5.87480e-11	6.54049e-03
+Velocity	6	2.00485e-11	2.53414e-02
+
+Time=6.54559e+00	StepNumber=109	TimeStep=5.91364e-02	ExplicitTimeStep=5.91364e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.89931e-11	6.29429e-03
+Velocity	6	1.78870e-11	2.48765e-02
+
+Time=6.60473e+00	StepNumber=110	TimeStep=5.91402e-02	ExplicitTimeStep=5.91402e-03	NumCells=95370
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	3.49279e-11	6.30345e-03
+Velocity	6	1.92199e-11	2.40105e-02
+
+Time=6.66387e+00	StepNumber=111	TimeStep=5.91365e-02	ExplicitTimeStep=5.91365e-03	NumCells=106556
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	5.80273e-11	1.44448e-02
+Velocity	6	6.42681e-12	5.93553e-02
+
+Time=6.72301e+00	StepNumber=112	TimeStep=5.91407e-02	ExplicitTimeStep=5.91407e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.81753e-11	1.39524e-02
+Velocity	6	8.78015e-12	5.03579e-02
+
+Time=6.78215e+00	StepNumber=113	TimeStep=5.91369e-02	ExplicitTimeStep=5.91369e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.94017e-11	1.40867e-02
+Velocity	6	3.77772e-12	3.95699e-02
+
+Time=6.84129e+00	StepNumber=114	TimeStep=5.91409e-02	ExplicitTimeStep=5.91409e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	2.90129e-11	1.08649e-02
+Velocity	6	3.20929e-12	3.29770e-02
+
+Time=6.90042e+00	StepNumber=115	TimeStep=5.91367e-02	ExplicitTimeStep=5.91367e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	5.22041e-11	9.25776e-03
+Velocity	6	3.04465e-12	2.98928e-02
+
+Time=6.95956e+00	StepNumber=116	TimeStep=5.91404e-02	ExplicitTimeStep=5.91404e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.05402e-11	8.49034e-03
+Velocity	6	2.43803e-12	2.80032e-02
+
+Time=7.01870e+00	StepNumber=117	TimeStep=5.91364e-02	ExplicitTimeStep=5.91364e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	8.39597e-11	7.28476e-03
+Velocity	6	1.63911e-12	2.64778e-02
+
+Time=7.07784e+00	StepNumber=118	TimeStep=5.91403e-02	ExplicitTimeStep=5.91403e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	2.61869e-11	7.36794e-03
+Velocity	6	2.68439e-12	2.52081e-02
+
+Time=7.13698e+00	StepNumber=119	TimeStep=5.91365e-02	ExplicitTimeStep=5.91365e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	3.81042e-11	6.38267e-03
+Velocity	6	2.60680e-12	2.35596e-02
+
+Time=7.19612e+00	StepNumber=120	TimeStep=5.91402e-02	ExplicitTimeStep=5.91402e-03	NumCells=95797
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.31044e-11	5.37389e-03
+Velocity	6	2.62607e-12	2.21409e-02
+
+Time=7.25525e+00	StepNumber=121	TimeStep=5.91365e-02	ExplicitTimeStep=5.91365e-03	NumCells=107928
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	6.10182e-11	1.41884e-02
+Velocity	6	1.18953e-11	5.70314e-02
+
+Time=7.31439e+00	StepNumber=122	TimeStep=5.91404e-02	ExplicitTimeStep=5.91404e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.26984e-11	1.37309e-02
+Velocity	6	1.22566e-11	4.86026e-02
+
+Time=7.37353e+00	StepNumber=123	TimeStep=5.91369e-02	ExplicitTimeStep=5.91369e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.28493e-11	1.26300e-02
+Velocity	6	1.10979e-11	3.82896e-02
+
+Time=7.43267e+00	StepNumber=124	TimeStep=5.91406e-02	ExplicitTimeStep=5.91406e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	2.66064e-11	1.04200e-02
+Velocity	6	5.75500e-12	3.29109e-02
+
+Time=7.49181e+00	StepNumber=125	TimeStep=5.91368e-02	ExplicitTimeStep=5.91368e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	5.35884e-11	8.35761e-03
+Velocity	6	1.09682e-11	2.86288e-02
+
+Time=7.55095e+00	StepNumber=126	TimeStep=5.91401e-02	ExplicitTimeStep=5.91401e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	6.53679e-11	7.70982e-03
+Velocity	6	1.10115e-11	2.64996e-02
+
+Time=7.61009e+00	StepNumber=127	TimeStep=5.91365e-02	ExplicitTimeStep=5.91365e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	8.32563e-11	7.54626e-03
+Velocity	6	1.09021e-11	2.55141e-02
+
+Time=7.66923e+00	StepNumber=128	TimeStep=5.91401e-02	ExplicitTimeStep=5.91401e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.69963e-11	7.01446e-03
+Velocity	6	1.09666e-11	2.39813e-02
+
+Time=7.72836e+00	StepNumber=129	TimeStep=5.91366e-02	ExplicitTimeStep=5.91366e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.42908e-11	5.85033e-03
+Velocity	6	1.08009e-11	2.27297e-02
+
+Time=7.78750e+00	StepNumber=130	TimeStep=5.91404e-02	ExplicitTimeStep=5.91404e-03	NumCells=94572
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	3.41722e-11	5.26234e-03
+Velocity	6	1.09713e-11	2.16682e-02
+
+Time=7.84664e+00	StepNumber=131	TimeStep=5.91367e-02	ExplicitTimeStep=5.91367e-03	NumCells=108068
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	2.80468e-11	1.45334e-02
+Velocity	6	1.25675e-11	5.97743e-02
+
+Time=7.89776e+00	StepNumber=132	TimeStep=5.11203e-02	ExplicitTimeStep=5.91408e-03	NumCells=95650
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	2.36466e-11	1.86433e-02
+Velocity	6	2.32047e-12	5.67349e-02
+
+Time=7.94888e+00	StepNumber=133	TimeStep=5.11203e-02	ExplicitTimeStep=5.91387e-03	NumCells=95650
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.49739e-11	1.56471e-02
+Velocity	6	1.69439e-12	4.08892e-02
+
+Time=8.00000e+00	StepNumber=134	TimeStep=5.11203e-02	ExplicitTimeStep=5.91412e-03	NumCells=95650
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	19	7.83978e-11	1.37551e-02
+Velocity	6	1.41860e-12	3.52235e-02
+

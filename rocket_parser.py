@@ -680,51 +680,51 @@ class rocket_parser:
     def get_propellant_from_time(self, time):
         return basis.get_y(time,self.time_vector,self.thrust_vector)
 
-# import matplotlib.pyplot as plt
-# import numpy as np
-# import matplotlib.cm as cm
-# from matplotlib.colors import Normalize
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.cm as cm
+from matplotlib.colors import Normalize
 
-# # Создаем объект ракеты
-# rp = rocket_parser()
+# Создаем объект ракеты
+rp = rocket_parser()
 
-# # Выбираем моменты времени для анализа
+# Выбираем моменты времени для анализа
 
-# ti = 0
-# time_points = []
-# while ti < rp.work_time[0]:
-#     time_points.append(ti)
-#     ti +=5
-# # time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
+ti = 0
+time_points = []
+while ti < rp.work_time[0]:
+    time_points.append(ti)
+    ti +=5
+# time_points = [0, 10, 20, 30, 40, 50, 90, 100, rp.full_time - 20, rp.full_time - 10, rp.full_time]
 
-# # Создаем цветовую карту (от темного к светлому)
-# colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
+# Создаем цветовую карту (от темного к светлому)
+colors = cm.plasma(np.linspace(0, 0.9, len(time_points)))
 
-# # Создаем фигуру с двумя подграфиками
-# fig, (ax1) = plt.subplots(1, 1, figsize=(10, 5), sharex=True)
+# Создаем фигуру с двумя подграфиками
+fig, (ax1) = plt.subplots(1, 1, figsize=(10, 5), sharex=True)
 
-# # Получаем координаты по длине ракеты
-# x_coords = rp.asc_length
+# Получаем координаты по длине ракеты
+x_coords = rp.asc_length
 
-# color_pairs = [
-#     ([0.68, 0.85, 0.9], [0, 0, 1]),
-#     ([1, 0.68, 0.68], [1, 0, 0]),
-#     ([0.8, 0.8, 0.8], [0, 0, 0])
-# ]
+color_pairs = [
+    ([0.68, 0.85, 0.9], [0, 0, 1]),
+    ([1, 0.68, 0.68], [1, 0, 0]),
+    ([0.8, 0.8, 0.8], [0, 0, 0])
+]
 
-# for i, t in enumerate(time_points):
-#     if t <= rp.full_time + 30:
-#         mass_distribution = rp.effective_mass(t,0)
+for i, t in enumerate(time_points):
+    if t <= rp.full_time + 30:
+        mass_distribution = rp.changed_mass(t)
 
-#         ax1.plot(x_coords, mass_distribution,
-#                 color = basis.interpolate_color(color_pairs[0][0], color_pairs[0][1], i, len(time_points)),
-#                 linewidth=2,
-#                 alpha=0.8,
-#                 label=f't = {t:.1f} с')
+        ax1.plot(x_coords, mass_distribution,
+                color = basis.interpolate_color(color_pairs[0][0], color_pairs[0][1], i, len(time_points)),
+                linewidth=2,
+                alpha=0.8,
+                label=f't = {t:.1f} с')
 
-# ax1.set_xlabel('Длина ракеты, м')
-# ax1.set_ylabel('Масса в сечении, кг')
-# ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
-# ax1.grid(True, alpha=0.3)
+ax1.set_xlabel('Длина ракеты, м')
+ax1.set_ylabel('Масса в сечении, кг')
+ax1.set_title('Распределение массы по длине ракеты в разные моменты времени')
+ax1.grid(True, alpha=0.3)
 
-# plt.show()
+plt.show()

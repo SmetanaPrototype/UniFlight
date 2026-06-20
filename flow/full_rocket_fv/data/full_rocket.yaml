@@ -1,0 +1,193 @@
+APP: FvKompasPlugin
+VERSION: 5.0
+project_version: E4CF7C46-DA89-451C-A320-EC712531FB5F
+geom_version: 3A2BDCC0-0EAE-4AD4-ABC0-12E82EB7A28E
+study_version: yes
+general parameters:
+  import tolerance: 1e-08
+  reference temperature: 273
+  reference pressure: 101000
+  gravity_vector: { x: 0, y: 0, z: 0 }
+  hydrostatics: no
+substance:
+  state: GAS
+  density:
+    type: ideal gas law
+  molar_mass:
+    type: constant
+    value_c: 0.029
+  viscosity:
+    type: constant
+    value_c: 2e-05
+  thermal_conductivity:
+    type: constant
+    value_c: 0.022
+  specific_heat:
+    type: constant
+    value_c: 1000
+phase:
+  motion: NAVIER_STOKES
+  turbulence: KES
+  heat_transfer: NO_ENTHALPY
+  radiation: NO_RADIATION
+moving bodies:
+  -
+    name: "Тело 3"
+    id: 1
+    patches_bc: [0, 0, 0, 0, 0, 0, 0]
+  -
+    name: "Тело 2"
+    id: 2
+    patches_bc: [0, 0, 0]
+boundary_conditions:
+  -
+    name: "Граничное условие"
+    id: 0
+    object_id: EAD3F212-7DCC-49FA-BDE8-A7106E6932FE
+    type: WALL
+    wall_func: yes
+    wall_roughness: 0
+    variables:
+    color: { red: 0, green: 0, blue: 255 }
+  -
+    name: "EXTENDED_INLET"
+    id: 1
+    object_id: E7F17EDD-80F3-4E65-AB34-1DD0C14A2ED6
+    type: INLET
+    variables:
+      -
+        var_type: VAR_VEL
+        bvar:
+          bvar_type: VelVectorPres
+          vel_vec: { x: -515, y: -27, z: 0 }
+          pressure: 0
+    turb_level: LOW
+    color: { red: 0, green: 0, blue: 255 }
+  -
+    name: "EXTENDED_OUTLET"
+    id: 2
+    object_id: 95D03691-60C1-4AC2-AED9-46C88C99A0B2
+    type: FREEOUTLET
+    variables:
+      -
+        var_type: VAR_VEL
+        bvar:
+          bvar_type: Pressure
+          pressure: 0
+    color: { red: 0, green: 0, blue: 255 }
+  -
+    name: "EXTENDED_NONREFLECT"
+    id: 3
+    object_id: 6DC60979-D96F-4C9F-976E-921F86904C47
+    type: NONREFLECT
+    variables:
+      -
+        var_type: VAR_VEL
+        bvar:
+          bvar_type: VelRiemann
+          vel_inf: { x: -515, y: -27, z: 0 }
+          pres_inf: 0
+    color: { red: 0, green: 0, blue: 255 }
+initial_conditions:
+  velocity: { x: -515, y: -27, z: 0 }
+  pressure: 0
+  turb_level: LOW
+  temperature: 0
+initial_grid:
+  num_cells: [10, 10, 10]
+  do_adapt_to_solution: yes
+  start_iter: 10
+  duration: 2
+  period: 10
+  adapt_var: VAR_PRES
+  do_adapt_to_grad: yes
+  adapt_value: 0
+  max_cell_count: 100000
+  max_adapt_level: 2
+  adaptation: 
+    -
+      adp_curv_add_layers: 1
+      adp_curv_max_angle: 15
+      adp_curv_upper_limit: 120
+      adp_edge_add_layers: 1
+      adp_edge_angle: 60
+      bconds: []
+      do_adapt_to_curv: no
+      do_adapt_to_edge: no
+      is_active: yes
+      max_level: 2
+      name: "Адаптация #1"
+      num_layers: [3, 3]
+      object_id: "D0D8253B-609C-45D3-87AD-CB5B0E6E19A1"
+solver_params:
+  time_step_mode: CFL
+  user_step: 0.001
+  cfl: 35
+  max_time_step: 0.1
+  simulation_time: 6
+  data_save_freq: 50
+  log_depth: 1
+  calc_limiters: 
+    -
+      type: "MIN"
+      value: 1e-10
+      variable: "VAR_DENS"
+    -
+      type: "MAX"
+      value: 1e+20
+      variable: "VAR_VEL"
+    -
+      type: "MIN"
+      value: -1e+20
+      variable: "VAR_PRES"
+    -
+      type: "MAX"
+      value: 1e+20
+      variable: "VAR_PRES"
+    -
+      type: "MIN"
+      value: 1e-09
+      variable: "VAR_NUTURB"
+    -
+      type: "MAX"
+      value: 1e+20
+      variable: "VAR_NUTURB"
+geometry:
+# for each patch in region VTK set BC index
+  patches_bc: [3, 3, 3, 3, 3, 3]
+objects:
+  planes:
+    -
+      id: 1
+      name: "Смещенная плоскость:1"
+      normal: { x: 0, y: 0, z: 1 }
+      object_id: "16E25000-D778-4639-95A1-7658D3535144"
+      point: { x: 0.0005, y: 0.0005, z: 0 }
+  points:
+layers:
+  -
+    name: "Слой #1"
+    object: "PLANE_OBJECT"
+    object_id: "5AEC5BFB-10CE-4F3C-B7EC-0A0B5ECD872A"
+    plane_id: 1
+    type: "SCALAR_LAYER"
+    variable: "VAR_PRES"
+result_chars:
+  -
+    GUID_chars: "683F6337-84C4-460C-ACFE-6D66E7ECD5F9"
+    GUID_stopper: "014E213E-89B9-486B-A8AE-A9E48222BEF5"
+    faces: [1, 0, 1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 2, 0, 2, 1, 2, 2]
+    name: "Результат #1"
+    object: "SURFACE"
+    object_id: "BD0AFCBC-07C3-40C4-9FFC-FAECC8F5344F"
+    var: "F_SURFACE"
+    vec_comp: "COMP_X"
+  -
+    GUID_chars: "B6D4C7E7-8D61-40AE-B967-429CDD54AC54"
+    GUID_stopper: "C1C0F207-807D-4358-9C55-1BDDBED464B5"
+    faces: [1, 0, 1, 1, 1, 2, 1, 3, 1, 4, 1, 5, 1, 6, 2, 0, 2, 1, 2, 2]
+    name: "Результат #2"
+    object: "SURFACE"
+    object_id: "03EF3CBE-2122-4B86-B005-EBEFC9B29356"
+    var: "F_SURFACE"
+    vec_comp: "COMP_Y"

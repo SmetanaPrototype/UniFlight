@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<FVINPUT AppVersion="FlowVision Solver, version 3.13.01-W64 build 20240822 changeset 0">
+  <LocalFrameRef>0</LocalFrameRef>
+  <Rotation>0</Rotation>
+  <Substances>
+    <ITEM>*.4</ITEM>
+  </Substances>
+  <Phases>
+    <ITEM>*.5</ITEM>
+  </Phases>
+  <Models>
+    <ITEM>*.6</ITEM>
+  </Models>
+  <localFRArray/>
+  <Modifiers/>
+  <SubRegions>
+    <ITEM>*.1</ITEM>
+    <ITEM>*.2</ITEM>
+  </SubRegions>
+  <Source>E:\UniFlight\flow\\full_rocket20_fv\data/full_rocket20.vtk</Source>
+  <Tolerance>1E-08</Tolerance>
+  <OBJECT class="CFvDllManager" myid="-101"/>
+  <OBJECT class="CRegionCharacteristics" myid="-99" GUID="4703060C-1F05-46F6-A600-FC7A95861AE6" IceSurface="0">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <normal x="0" y="0" z="0"/>
+    <EnclaveAnalysis Enabled="0" SmallPolicy="KEEP" VolThreshold="0"/>
+  </OBJECT>
+  <OBJECT class="CGeneralSettings" myid="-98">
+    <RefValue Temp="273" Pres="101000"/>
+    <Gravity>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </Gravity>
+    <GPOINT x="0" y="0" z="0"/>
+    <g_density>0</g_density>
+    <GLEVEL/>
+    <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+    <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
+  </OBJECT>
+  <OBJECT class="CGridParameters" myid="-97">
+    <OBJECT class="CGridLines" myid="-100" GridStruct="GRID_3D" GridPlane="PLANE_XY" GridDirect="DIRECT_X" Dir2d="NON">
+      <X>
+        <ITEM>-105.056792617764</ITEM>
+        <ITEM>-84.044726143457467</ITEM>
+        <ITEM>-63.032659669150924</ITEM>
+        <ITEM>-42.02059319484438</ITEM>
+        <ITEM>-21.008526720537844</ITEM>
+        <ITEM>0.0035397537686918668</ITEM>
+        <ITEM>21.015606228075242</ITEM>
+        <ITEM>42.027672702381764</ITEM>
+        <ITEM>63.039739176688315</ITEM>
+        <ITEM>84.051805650994865</ITEM>
+        <ITEM>105.0638721253014</ITEM>
+      </X>
+      <Y>
+        <ITEM>-40.044657665878127</ITEM>
+        <ITEM>-31.964056584384291</ITEM>
+        <ITEM>-23.883455502890456</ITEM>
+        <ITEM>-15.802854421396621</ITEM>
+        <ITEM>-7.7222533399027853</ITEM>
+        <ITEM>0.35834774159105365</ITEM>
+        <ITEM>8.4389488230848855</ITEM>
+        <ITEM>16.519549904578717</ITEM>
+        <ITEM>24.600150986072556</ITEM>
+        <ITEM>32.680752067566395</ITEM>
+        <ITEM>40.761353149060241</ITEM>
+      </Y>
+      <Z>
+        <ITEM>-39.000000000000057</ITEM>
+        <ITEM>-31.200000000000045</ITEM>
+        <ITEM>-23.400000000000034</ITEM>
+        <ITEM>-15.600000000000023</ITEM>
+        <ITEM>-7.8000000000000114</ITEM>
+        <ITEM>0</ITEM>
+        <ITEM>7.8000000000000114</ITEM>
+        <ITEM>15.600000000000023</ITEM>
+        <ITEM>23.400000000000034</ITEM>
+        <ITEM>31.200000000000045</ITEM>
+        <ITEM>39.000000000000057</ITEM>
+      </Z>
+      <editorData/>
+      <DivDir x="1" y="1" z="1"/>
+    </OBJECT>
+    <OBJECT class="CAdpArrayToCond" myid="-5">
+      <Activation>
+        <Kind>PERMANENT</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>1</IterStart>
+        <IterDuration>1</IterDuration>
+        <IterPeriod>1</IterPeriod>
+      </Activation>
+      <Criteria/>
+    </OBJECT>
+    <OBJECT class="COBLArray" myid="-4" Debug="0">
+      <Activation>
+        <Type>PERMANENT</Type>
+        <IterStart>0</IterStart>
+        <TimeStart>0</TimeStart>
+      </Activation>
+      <Criteria/>
+    </OBJECT>
+    <OBJECT class="CAdpArrayToSolution" myid="-3">
+      <Activation>
+        <Kind>BYITER</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>10</IterStart>
+        <IterDuration>2</IterDuration>
+        <IterPeriod>10</IterPeriod>
+      </Activation>
+      <Criteria>
+        <ITEM>*-2.-2.-97.0</ITEM>
+      </Criteria>
+      <cellCount Source="*.0"/>
+      <SubWeights>
+        <ITEM>1</ITEM>
+        <ITEM>1</ITEM>
+      </SubWeights>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="100000"/>
+    </OBJECT>
+    <OBJECT class="CAdpArray" myid="-2">
+      <Activation>
+        <Kind>BYITER</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>-1</IterStart>
+        <IterDuration>2</IterDuration>
+        <IterPeriod>1000000</IterPeriod>
+      </Activation>
+      <Criteria>
+        <ITEM>*-2.-2.-97.1</ITEM>
+        <ITEM>*-2.-2.-97.2</ITEM>
+      </Criteria>
+    </OBJECT>
+    <OBJECT class="CAdaptDynamic" myid="0" UIName="Adaptation to solution #0" Activation="1">
+      <maxLevel Source="*.0"/>
+      <subregArray>
+        <ITEM>*-2.-2.2</ITEM>
+      </subregArray>
+      <placeArray>
+        <ITEM>*.2</ITEM>
+      </placeArray>
+      <varArray>
+        <ITEM>*.1</ITEM>
+      </varArray>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="3"/>
+      <OBJECT class="CAdaptVar" myid="1">
+        <Variable Comp="SOURCE">
+          <Description BlockType="CMotionProcess" IDPhase="5" IDVar="PRES" Size="1"/>
+        </Variable>
+        <Type>GRADIENT</Type>
+        <Value Source="*.0"/>
+        <Weight>1</Weight>
+        <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+      </OBJECT>
+      <OBJECT class="CAdaptPlace" myid="2">
+        <Kind>OBJECT</Kind>
+        <Place>*-2.-2.0</Place>
+        <Settings>
+          <Mode>VOLUME</Mode>
+          <Parts/>
+        </Settings>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CAdaptStatic" myid="1" UIName="Adaptation #0" Activation="1">
+      <maxLevel Source="*.0"/>
+      <subregArray>
+        <ITEM>*-2.-2.2</ITEM>
+      </subregArray>
+      <placeArray>
+        <ITEM>*.2</ITEM>
+      </placeArray>
+      <AdpStatType>MERGE</AdpStatType>
+      <TwoChips>1</TwoChips>
+      <Concavity>1</Concavity>
+      <OpSameBC>1</OpSameBC>
+      <OpDiffConj>1</OpDiffConj>
+      <AdpToCurvParams IsActive="0" AddLevels="2" SurfCurvMaxAngle="15" SurfCurvUpperLimit="120"/>
+      <AdpToEdgeParams IsActive="0" AddLevels="2" SharpEdgeAngle="60"/>
+      <layerCounts>
+        <ITEM Source="*.1"/>
+      </layerCounts>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="1"/>
+      <OBJECT class="CAdaptPlace" myid="2">
+        <Kind>OBJECT</Kind>
+        <Place>*-2.-2.0</Place>
+        <Settings>
+          <Mode>VOLUME</Mode>
+          <Parts/>
+        </Settings>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CAdaptStatic" myid="2" UIName="Адаптация #1" Activation="1">
+      <maxLevel Source="*.0"/>
+      <subregArray>
+        <ITEM>*-2.-2.2</ITEM>
+      </subregArray>
+      <placeArray/>
+      <AdpStatType>DIVIDE</AdpStatType>
+      <TwoChips>1</TwoChips>
+      <Concavity>1</Concavity>
+      <OpSameBC>1</OpSameBC>
+      <OpDiffConj>1</OpDiffConj>
+      <AdpToCurvParams IsActive="0" AddLevels="2" SurfCurvMaxAngle="15" SurfCurvUpperLimit="120"/>
+      <AdpToEdgeParams IsActive="0" AddLevels="2" SharpEdgeAngle="60"/>
+      <layerCounts>
+        <ITEM Source="*.2"/>
+        <ITEM Source="*.3"/>
+        <ITEM Source="*.4"/>
+      </layerCounts>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="3"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="3"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="3"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="3"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CBinderLinks" myid="-96">
+    <BinderConditions/>
+    <Binders/>
+    <FreeBConds/>
+  </OBJECT>
+  <OBJECT class="CExternalInteractions" myid="-95" Debug="0">
+    <ExchangeTime>
+      <Type>*.-2</Type>
+      <UserStep Source="*.0"/>
+      <UndefStep>0.001</UndefStep>
+      <StepCoef Source="*.1"/>
+    </ExchangeTime>
+    <OldOffsetMethod>1</OldOffsetMethod>
+    <SaveAfterReceive>0</SaveAfterReceive>
+    <Interactions/>
+    <OBJECT class="CMPMInterInternal" myid="-4" Active="1">
+      <InterSurfaces/>
+      <Type>2</Type>
+    </OBJECT>
+    <OBJECT class="CMPMInterInternal" myid="-3" Active="1">
+      <InterSurfaces/>
+      <Type>1</Type>
+    </OBJECT>
+    <OBJECT class="CMPMInterInternal" myid="-2" Active="1">
+      <InterSurfaces/>
+      <Type>0</Type>
+    </OBJECT>
+    <OBJECT class="CFvValueConstant" myid="0" Constant="0.01"/>
+    <OBJECT class="CFvValueConstant" myid="1" Constant="1"/>
+  </OBJECT>
+  <OBJECT class="CSpaceEntity" myid="0" GUID="6778DC9C-F382-4A4E-ABB1-D426D3CA01AA"/>
+  <OBJECT class="CSubregion" myid="1" UIName="Outside">
+    <Kind>OUTSIDE</Kind>
+    <Model>0</Model>
+    <LocalFrameRef>0</LocalFrameRef>
+    <Rotation>0</Rotation>
+    <BConditions>
+      <ITEM>*.5</ITEM>
+    </BConditions>
+    <Filters/>
+    <InitialData/>
+    <OBJECT class="CAdaptArrayToSolution" myid="-3" maxLevel="1" cellCount="5000">
+      <Activation>
+        <Kind>PERMANENT</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>1</IterStart>
+        <IterDuration>1</IterDuration>
+        <IterPeriod>1</IterPeriod>
+      </Activation>
+      <Criteria/>
+    </OBJECT>
+    <OBJECT class="CAdaptArray" myid="-2">
+      <Activation>
+        <Kind>PERMANENT</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>1</IterStart>
+        <IterDuration>1</IterDuration>
+        <IterPeriod>1</IterPeriod>
+      </Activation>
+      <Criteria/>
+    </OBJECT>
+    <OBJECT class="CBCondition" myid="5" UIName="Wall #0" Color="00808080">
+      <Type>WALL</Type>
+      <WallTypes/>
+      <Roughness Source="*.1"/>
+      <Wetangle Source="*.2"/>
+      <GapSealing Source="*.4"/>
+      <AlphaWall Source="*.0"/>
+      <GapThermalConductance Source="*.3"/>
+      <LocalFrameRef>0</LocalFrameRef>
+      <Rotation>0</Rotation>
+      <Translation>0</Translation>
+      <NumberOfSectors>0</NumberOfSectors>
+      <BinderCondition>0</BinderCondition>
+      <Binder>0</Binder>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="90"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="-1"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CSubregion" myid="2" UIName="SubRegion #0">
+    <Kind>CALCULATE</Kind>
+    <Model>*-2.-2.6</Model>
+    <LocalFrameRef>0</LocalFrameRef>
+    <Rotation>0</Rotation>
+    <BConditions>
+      <ITEM>*.5</ITEM>
+      <ITEM>*.14</ITEM>
+      <ITEM>*.15</ITEM>
+      <ITEM>*.16</ITEM>
+    </BConditions>
+    <Filters>
+      <ITEM>*.17</ITEM>
+      <ITEM>*.25</ITEM>
+    </Filters>
+    <InitialData>
+      <ITEM>*.13</ITEM>
+    </InitialData>
+    <OBJECT class="CAdaptArrayToSolution" myid="-3" maxLevel="1" cellCount="5000">
+      <Activation>
+        <Kind>PERMANENT</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>1</IterStart>
+        <IterDuration>1</IterDuration>
+        <IterPeriod>1</IterPeriod>
+      </Activation>
+      <Criteria/>
+    </OBJECT>
+    <OBJECT class="CAdaptArray" myid="-2">
+      <Activation>
+        <Kind>PERMANENT</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>1</IterStart>
+        <IterDuration>1</IterDuration>
+        <IterPeriod>1</IterPeriod>
+      </Activation>
+      <Criteria/>
+    </OBJECT>
+    <OBJECT class="CBCondition" myid="5" UIName="Граничное условие" Color="00FF0000">
+      <Type>WALL</Type>
+      <WallTypes>
+        <ITEM>WALLFUNC_EQUIL</ITEM>
+      </WallTypes>
+      <Roughness Source="*.1"/>
+      <Wetangle Source="*.2"/>
+      <GapSealing Source="*.4"/>
+      <AlphaWall Source="*.0"/>
+      <GapThermalConductance Source="*.3"/>
+      <LocalFrameRef>0</LocalFrameRef>
+      <Rotation>0</Rotation>
+      <Translation>0</Translation>
+      <NumberOfSectors>0</NumberOfSectors>
+      <BinderCondition>0</BinderCondition>
+      <Binder>0</Binder>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="90"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="-1"/>
+      <OBJECT class="CBVelWallNonSlip" myid="7">
+        <Variable>*-2.-2.6.12</Variable>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CIniDataTri" myid="13" UIName="Init. condition #0" GUID="26581966-B1FC-4DAF-8E46-2B82E0B64597" Type="WholeCell">
+      <ViewObject>*-2.-2.0</ViewObject>
+      <IniData>*-2.-2.6.0</IniData>
+    </OBJECT>
+    <OBJECT class="CBCondition" myid="14" UIName="EXTENDED_INLET" Color="00FF0000">
+      <Type>INLETOUTLET</Type>
+      <WallTypes>
+        <ITEM>WALLFUNC_EQUIL</ITEM>
+      </WallTypes>
+      <Roughness Source="*.1"/>
+      <Wetangle Source="*.2"/>
+      <GapSealing Source="*.4"/>
+      <AlphaWall Source="*.0"/>
+      <GapThermalConductance Source="*.3"/>
+      <LocalFrameRef>0</LocalFrameRef>
+      <Rotation>0</Rotation>
+      <Translation>0</Translation>
+      <NumberOfSectors>0</NumberOfSectors>
+      <BinderCondition>0</BinderCondition>
+      <Binder>0</Binder>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="90"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="-1"/>
+      <OBJECT class="CBVelVectorPres" myid="7">
+        <Variable>*-2.-2.6.12</Variable>
+        <Pressure Source="*.1"/>
+        <VelVector>
+          <x Source="*.2"/>
+          <y Source="*.3"/>
+          <z Source="*.4"/>
+        </VelVector>
+        <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+        <OBJECT class="CFvValueConstant" myid="2" Constant="-103"/>
+        <OBJECT class="CFvValueConstant" myid="3" Constant="-5"/>
+        <OBJECT class="CFvValueConstant" myid="4" Constant="0"/>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CBCondition" myid="15" UIName="EXTENDED_OUTLET" Color="00FF0000">
+      <Type>FREEOUTLET</Type>
+      <WallTypes>
+        <ITEM>WALLFUNC_EQUIL</ITEM>
+      </WallTypes>
+      <Roughness Source="*.1"/>
+      <Wetangle Source="*.2"/>
+      <GapSealing Source="*.4"/>
+      <AlphaWall Source="*.0"/>
+      <GapThermalConductance Source="*.3"/>
+      <LocalFrameRef>0</LocalFrameRef>
+      <Rotation>0</Rotation>
+      <Translation>0</Translation>
+      <NumberOfSectors>0</NumberOfSectors>
+      <BinderCondition>0</BinderCondition>
+      <Binder>0</Binder>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="90"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="-1"/>
+      <OBJECT class="CBVelOutlet" myid="7">
+        <Variable>*-2.-2.6.12</Variable>
+        <Pressure Source="*.0"/>
+        <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CBCondition" myid="16" UIName="EXTENDED_NONREFLECT" Color="00FF0000">
+      <Type>NONREFLECT</Type>
+      <WallTypes>
+        <ITEM>WALLFUNC_EQUIL</ITEM>
+      </WallTypes>
+      <Roughness Source="*.1"/>
+      <Wetangle Source="*.2"/>
+      <GapSealing Source="*.4"/>
+      <AlphaWall Source="*.0"/>
+      <GapThermalConductance Source="*.3"/>
+      <LocalFrameRef>0</LocalFrameRef>
+      <Rotation>0</Rotation>
+      <Translation>0</Translation>
+      <NumberOfSectors>0</NumberOfSectors>
+      <BinderCondition>0</BinderCondition>
+      <Binder>0</Binder>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="90"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="-1"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="-1"/>
+      <OBJECT class="CBVelRiemann" myid="7">
+        <Variable>*-2.-2.6.12</Variable>
+        <VelInf>
+          <x Source="*.0"/>
+          <y Source="*.1"/>
+          <z Source="*.2"/>
+        </VelInf>
+        <PresInf Source="*.3"/>
+        <OBJECT class="CFvValueConstant" myid="0" Constant="-103"/>
+        <OBJECT class="CFvValueConstant" myid="1" Constant="-5"/>
+        <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
+        <OBJECT class="CFvValueConstant" myid="3" Constant="0"/>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CMovingBody" myid="17" UIName="Тело 1" GUID="9C6FAB7C-9AB2-47F5-828A-A7C248025A8C" InsideOut="0" FormatVersion="1">
+      <Object>*-2.-2.7</Object>
+      <MarkCellsMode>BY_BOX</MarkCellsMode>
+      <Activation>
+        <Kind>PERMANENT</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>1</IterStart>
+        <IterDuration>1</IterDuration>
+        <IterPeriod>1</IterPeriod>
+      </Activation>
+      <Update>
+        <Kind>NON</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </Update>
+      <MassProperty>
+        <Mass Source="*.0"/>
+        <CenterInertia>
+          <x Source="*.1"/>
+          <y Source="*.5"/>
+          <z Source="*.9"/>
+        </CenterInertia>
+        <MomentInertia0>
+          <x Source="*.2"/>
+          <y Source="*.6"/>
+          <z Source="*.10"/>
+        </MomentInertia0>
+        <MomentInertia1>
+          <x Source="*.3"/>
+          <y Source="*.7"/>
+          <z Source="*.11"/>
+        </MomentInertia1>
+        <MomentInertia2>
+          <x Source="*.4"/>
+          <y Source="*.8"/>
+          <z Source="*.12"/>
+        </MomentInertia2>
+      </MassProperty>
+      <Movement>
+        <TimeVel x="0" y="0" z="0"/>
+        <Velocity>
+          <x Source="*.13"/>
+          <y Source="*.15"/>
+          <z Source="*.17"/>
+        </Velocity>
+        <TimeForce x="0" y="0" z="0"/>
+        <Force>
+          <x Source="*.14"/>
+          <y Source="*.16"/>
+          <z Source="*.18"/>
+        </Force>
+        <HydroForce x="1" y="1" z="1"/>
+        <Omega Source="*.19"/>
+      </Movement>
+      <Rotation>
+        <UseCenterInertia>1</UseCenterInertia>
+        <Center>
+          <x Source="*.20"/>
+          <y Source="*.23"/>
+          <z Source="*.26"/>
+        </Center>
+        <TimeVel x="0" y="0" z="0"/>
+        <Velocity>
+          <x Source="*.21"/>
+          <y Source="*.24"/>
+          <z Source="*.27"/>
+        </Velocity>
+        <TimeMoment x="0" y="0" z="0"/>
+        <Moment>
+          <x Source="*.22"/>
+          <y Source="*.25"/>
+          <z Source="*.28"/>
+        </Moment>
+        <HydroMoment x="1" y="1" z="1"/>
+        <Omega Source="*.29"/>
+      </Rotation>
+      <Location>
+        <Origin x="0" y="0" z="0"/>
+        <Ort0 x="1" y="0" z="0"/>
+        <Ort1 x="0" y="1" z="0"/>
+        <Ort2 x="0" y="0" z="1"/>
+        <Scale>1</Scale>
+        <Def>CUSTOM_AXIS</Def>
+        <Axis x="1" y="0" z="0"/>
+        <DefEuler>AVIA_RUS_ANGLES</DefEuler>
+        <DefUser>THREE_AXES_XYZ</DefUser>
+        <Gamma>0</Gamma>
+        <Alpha>0</Alpha>
+        <Beta>0</Beta>
+      </Location>
+      <Limitation LimiterClass="CNoPositionLimiter">
+        <Limiter>*.-2</Limiter>
+      </Limitation>
+      <DOF Type="NO_LIMITS" Translation="1" Rotation="1">
+        <Point1>
+          <x Source="*.30"/>
+          <y Source="*.32"/>
+          <z Source="*.34"/>
+        </Point1>
+        <Point2>
+          <x Source="*.31"/>
+          <y Source="*.33"/>
+          <z Source="*.35"/>
+        </Point2>
+      </DOF>
+      <FsiParams ArtCompres="0">
+        <MB_flexibility Source="*.36"/>
+        <MB_mobility Source="*.37"/>
+      </FsiParams>
+      <OBJECT class="CNoPositionLimiter" myid="-2"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="5" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="6" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="7" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="8" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="9" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="10" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="11" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="12" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="13" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="14" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="15" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="16" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="17" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="18" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="19" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="20" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="21" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="22" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="23" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="24" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="25" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="26" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="27" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="28" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="29" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="30" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="31" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="32" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="33" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="34" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="35" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="36" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="37" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CMovingBody" myid="25" UIName="Тело 3" GUID="894BD9D3-020E-4BFF-8090-447CE4A874D2" InsideOut="0" FormatVersion="1">
+      <Object>*-2.-2.8</Object>
+      <MarkCellsMode>BY_BOX</MarkCellsMode>
+      <Activation>
+        <Kind>PERMANENT</Kind>
+        <TimeStart>0</TimeStart>
+        <TimeDuration>0</TimeDuration>
+        <TimePeriod>0</TimePeriod>
+        <IterStart>1</IterStart>
+        <IterDuration>1</IterDuration>
+        <IterPeriod>1</IterPeriod>
+      </Activation>
+      <Update>
+        <Kind>NON</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </Update>
+      <MassProperty>
+        <Mass Source="*.0"/>
+        <CenterInertia>
+          <x Source="*.1"/>
+          <y Source="*.5"/>
+          <z Source="*.9"/>
+        </CenterInertia>
+        <MomentInertia0>
+          <x Source="*.2"/>
+          <y Source="*.6"/>
+          <z Source="*.10"/>
+        </MomentInertia0>
+        <MomentInertia1>
+          <x Source="*.3"/>
+          <y Source="*.7"/>
+          <z Source="*.11"/>
+        </MomentInertia1>
+        <MomentInertia2>
+          <x Source="*.4"/>
+          <y Source="*.8"/>
+          <z Source="*.12"/>
+        </MomentInertia2>
+      </MassProperty>
+      <Movement>
+        <TimeVel x="0" y="0" z="0"/>
+        <Velocity>
+          <x Source="*.13"/>
+          <y Source="*.15"/>
+          <z Source="*.17"/>
+        </Velocity>
+        <TimeForce x="0" y="0" z="0"/>
+        <Force>
+          <x Source="*.14"/>
+          <y Source="*.16"/>
+          <z Source="*.18"/>
+        </Force>
+        <HydroForce x="1" y="1" z="1"/>
+        <Omega Source="*.19"/>
+      </Movement>
+      <Rotation>
+        <UseCenterInertia>1</UseCenterInertia>
+        <Center>
+          <x Source="*.20"/>
+          <y Source="*.23"/>
+          <z Source="*.26"/>
+        </Center>
+        <TimeVel x="0" y="0" z="0"/>
+        <Velocity>
+          <x Source="*.21"/>
+          <y Source="*.24"/>
+          <z Source="*.27"/>
+        </Velocity>
+        <TimeMoment x="0" y="0" z="0"/>
+        <Moment>
+          <x Source="*.22"/>
+          <y Source="*.25"/>
+          <z Source="*.28"/>
+        </Moment>
+        <HydroMoment x="1" y="1" z="1"/>
+        <Omega Source="*.29"/>
+      </Rotation>
+      <Location>
+        <Origin x="0" y="0" z="0"/>
+        <Ort0 x="1" y="0" z="0"/>
+        <Ort1 x="0" y="1" z="0"/>
+        <Ort2 x="0" y="0" z="1"/>
+        <Scale>1</Scale>
+        <Def>CUSTOM_AXIS</Def>
+        <Axis x="1" y="0" z="0"/>
+        <DefEuler>AVIA_RUS_ANGLES</DefEuler>
+        <DefUser>THREE_AXES_XYZ</DefUser>
+        <Gamma>0</Gamma>
+        <Alpha>0</Alpha>
+        <Beta>0</Beta>
+      </Location>
+      <Limitation LimiterClass="CNoPositionLimiter">
+        <Limiter>*.-2</Limiter>
+      </Limitation>
+      <DOF Type="NO_LIMITS" Translation="1" Rotation="1">
+        <Point1>
+          <x Source="*.30"/>
+          <y Source="*.32"/>
+          <z Source="*.34"/>
+        </Point1>
+        <Point2>
+          <x Source="*.31"/>
+          <y Source="*.33"/>
+          <z Source="*.35"/>
+        </Point2>
+      </DOF>
+      <FsiParams ArtCompres="0">
+        <MB_flexibility Source="*.36"/>
+        <MB_mobility Source="*.37"/>
+      </FsiParams>
+      <OBJECT class="CNoPositionLimiter" myid="-2"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="3" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="4" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="5" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="6" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="7" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="8" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="9" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="10" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="11" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="12" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="13" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="14" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="15" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="16" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="17" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="18" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="19" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="20" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="21" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="22" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="23" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="24" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="25" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="26" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="27" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="28" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="29" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="30" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="31" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="32" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="33" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="34" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="35" Constant="1"/>
+      <OBJECT class="CFvValueConstant" myid="36" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="37" Constant="0"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CSubstance" myid="4" UIName="Substance #0">
+    <Type>standart</Type>
+    <State>gas</State>
+    <OBJECT class="CSubstanceProperty" myid="0" Number="0">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0.029000000000000001"/>
+    </OBJECT>
+    <OBJECT class="CSubstancePropertyDens" myid="1" Number="1">
+      <Value Source="*.2"/>
+      <dRodP Source="*.0"/>
+      <dRodT Source="*.1"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+      <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+      <OBJECT class="CFvValueDepIdealGas" myid="2"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="2" Number="2">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="2.0000000000000002E-05"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="3" Number="3">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0.021999999999999999"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="4" Number="4">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="1000"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="5" Number="5">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueDepEnthalpy" myid="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="6" Number="6">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="7" Number="7">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="8" Number="8">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="9" Number="9">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="10" Number="10">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="11" Number="11">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="12" Number="12">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="13" Number="13">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="14" Number="14">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="15" Number="15">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="16" Number="16">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+    <OBJECT class="CSubstanceProperty" myid="17" Number="17">
+      <Value Source="*.0"/>
+      <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CPhase" myid="5" UIName="Phase #0" Diam_Groups_Number_D="1">
+    <Type>Continuum</Type>
+    <MuMixingModel>MODEL2_MU</MuMixingModel>
+    <LbMixingModel>MODEL2_LB</LbMixingModel>
+    <Substances>
+      <ITEM>*-2.-2.4</ITEM>
+    </Substances>
+    <Drop_Size_Spectra/>
+    <OBJECT class="CEquations" myid="1">
+      <OBJECT class="CNavierStokesEqSys" myid="0" TIME_STEP_COEF="1" ForceCVisc="0"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CModel" myid="6" UIName="Model #0">
+    <Phases>
+      <ITEM>*-2.-2.5</ITEM>
+    </Phases>
+    <InterPhase/>
+    <InitialData>
+      <ITEM>*.0</ITEM>
+    </InitialData>
+    <GapModel>0</GapModel>
+    <Rotary>0</Rotary>
+    <GapEqSys>0</GapEqSys>
+    <Averaging>
+      <AveragingVariables/>
+      <AveragingStartTime>0</AveragingStartTime>
+    </Averaging>
+    <OBJECT class="CInitialData" myid="0" UIName="Init. data #0">
+      <OBJECT class="CIniVarVector" myid="0" Variable="*-2.-2.6.12">
+        <Value>
+          <x Source="*.0"/>
+          <y Source="*.1"/>
+          <z Source="*.2"/>
+        </Value>
+        <OBJECT class="CFvValueConstant" myid="0" Constant="-103"/>
+        <OBJECT class="CFvValueConstant" myid="1" Constant="-5"/>
+        <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
+      </OBJECT>
+      <OBJECT class="CIniVarScalar" myid="1" Variable="*-2.-2.6.16">
+        <Value Source="*.0"/>
+        <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CFVScalarVariable" myid="1" IDVar="VOLUMEDATA" IDNum="0" MainVar="0" Obj="0" Flag="3" avType="AV_NOTSET" ICell="0" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="2" IDVar="TIMESTEP_EXPLICIT" IDNum="5" MainVar="0" Obj="0" Flag="16" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="3" IDVar="BL_BUILT" IDNum="6" MainVar="0" Obj="0" Flag="0" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="4" IDVar="FLAGMODIFICATORS" IDNum="1" MainVar="0" Obj="0" Flag="3" avType="AV_NOTSET" ICell="1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="5" IDVar="MOLWEIGHT" IDNum="0" MainVar="0" Obj="*-2.-2.5" Flag="19" avType="AV_DENS_VOF_VOL" ICell="2" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="6" IDVar="DENSITY" IDNum="1" MainVar="0" Obj="*-2.-2.5" Flag="4115" avType="AV_FITA_VOF_VOLUME" ICell="3" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="7" IDVar="VISCOSITY" IDNum="2" MainVar="0" Obj="*-2.-2.5" Flag="19" avType="AV_DENS_VOF_VOL" ICell="4" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="8" IDVar="CP" IDNum="4" MainVar="0" Obj="*-2.-2.5" Flag="19" avType="AV_DENS_VOF_VOL" ICell="5" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="9" IDVar="PHASE_VOLUME" IDNum="19" MainVar="0" Obj="*-2.-2.5" Flag="2071" avType="AV_VOF_VOLUME" ICell="6" IBVar="0"/>
+    <OBJECT class="CFVScalarVariable" myid="10" IDVar="PHASE_VOLUME_CURR" IDNum="20" MainVar="*-2.-2.6.9" Obj="*-2.-2.5" Flag="1" avType="AV_VOF_VOLUME" ICell="7" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="11" IDVar="VECTOR_DUMMY" IDNum="21" MainVar="0" Obj="*-2.-2.5" Flag="1" avType="AV_FITA_VOF_VOLUME" ICell="8" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="12" IDVar="VEL" IDNum="0" MainVar="0" Obj="*-2.-2.5.1.0" Flag="41759" avType="AV_DENS_VOF_VOL" ICell="11" IBVar="0"/>
+    <OBJECT class="CFVVectorVariable" myid="13" IDVar="VEL_CURR" IDNum="1" MainVar="*-2.-2.6.12" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="14" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="14" IDVar="VEL_NORM" IDNum="2" MainVar="*-2.-2.6.12" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_NOTSET" ICell="58" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="15" IDVar="VEL_TILD" IDNum="3" MainVar="*-2.-2.6.12" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_NOTSET" ICell="59" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="16" IDVar="PRES" IDNum="4" MainVar="0" Obj="*-2.-2.5.1.0" Flag="45847" avType="AV_FITA_VOF_VOLUME" ICell="17" IBVar="1"/>
+    <OBJECT class="CFVScalarVariable" myid="17" IDVar="PRES_CURR" IDNum="5" MainVar="*-2.-2.6.16" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="18" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="18" IDVar="PRES_HST" IDNum="6" MainVar="*-2.-2.6.16" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_FITA_VOF_VOLUME" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="19" IDVar="DENS_CURR" IDNum="7" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="19" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="20" IDVar="MARK_CELL" IDNum="8" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_DENS_VOF_VOL" ICell="20" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="21" IDVar="DRODP" IDNum="9" MainVar="0" Obj="*-2.-2.5.1.0" Flag="3" avType="AV_DENS_VOF_VOL" ICell="21" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="22" IDVar="DENS_TILD" IDNum="10" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_DENS_VOF_VOL" ICell="22" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="23" IDVar="DENS_PRIM" IDNum="11" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_DENS_VOF_VOL" ICell="23" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="24" IDVar="W_CENTER" IDNum="12" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_DENS_VOF_VOL" ICell="24" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="25" IDVar="MACH" IDNum="13" MainVar="0" Obj="*-2.-2.5.1.0" Flag="3" avType="AV_DENS_VOF_VOL" ICell="27" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="26" IDVar="SONIC_SPEED" IDNum="14" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="27" IDVar="GAMMA" IDNum="15" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_NOTSET" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="28" IDVar="TOTAL_PRESSURE" IDNum="16" MainVar="0" Obj="*-2.-2.5.1.0" Flag="19" avType="AV_FITA_VOF_VOLUME" ICell="28" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="29" IDVar="DIV_VEL" IDNum="17" MainVar="0" Obj="*-2.-2.5.1.0" Flag="19" avType="AV_DENS_VOF_VOL" ICell="29" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="30" IDVar="STRESS" IDNum="18" MainVar="0" Obj="*-2.-2.5.1.0" Flag="83" avType="AV_FITA_VOF_VOLUME" ICell="30" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="31" IDVar="STRESS_X" IDNum="19" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_DENS_VOF_VOL" ICell="60" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="32" IDVar="STRESS_Y" IDNum="20" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_DENS_VOF_VOL" ICell="61" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="33" IDVar="STRESS_Z" IDNum="21" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_DENS_VOF_VOL" ICell="62" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="34" IDVar="VALUE_IN_CELL" IDNum="22" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="31" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="35" IDVar="DARCY_COEF" IDNum="23" MainVar="0" Obj="*-2.-2.5.1.0" Flag="33" avType="AV_DENS_VOF_VOL" ICell="32" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="36" IDVar="VELDIAG_COEF" IDNum="24" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_DENS_VOF_VOL" ICell="33" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="37" IDVar="VOLUME_FORCE_SOURCE" IDNum="25" MainVar="0" Obj="*-2.-2.5.1.0" Flag="33" avType="AV_DENS_VOF_VOL" ICell="36" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="38" IDVar="P_GRAD" IDNum="26" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_NOTSET" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="39" IDVar="P_GRAD_CURR" IDNum="27" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_NOTSET" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="40" IDVar="VIS_DIST" IDNum="28" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="41" IDVar="VIS_POTENTIAL" IDNum="29" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="42" IDVar="VIS_ROTARY" IDNum="62" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="43" IDVar="ROT_VEL" IDNum="30" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="44" IDVar="S_CRITERION" IDNum="31" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="45" IDVar="W_CRITERION" IDNum="32" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="46" IDVar="Q_CRITERION" IDNum="33" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="47" IDVar="MACH_NUMBER" IDNum="34" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="48" IDVar="AV" IDNum="35" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_FITA_VOF_VOLUME" ICell="63" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="49" IDVar="BV" IDNum="36" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_FITA_VOF_VOLUME" ICell="64" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="50" IDVar="GCOMPLEX" IDNum="37" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_FITA_VOF_VOLUME" ICell="39" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="51" IDVar="DRT_INVARIANT_2" IDNum="38" MainVar="0" Obj="*-2.-2.5.1.0" Flag="17" avType="AV_FITA_VOF_VOLUME" ICell="40" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="52" IDVar="SHEAR_STRESS_VEC" IDNum="39" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_FITA_VOF_VOLUME" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="53" IDVar="ADD_RIGHT_PART" IDNum="40" MainVar="0" Obj="*-2.-2.5.1.0" Flag="2049" avType="AV_NOTSET" ICell="41" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="54" IDVar="FSI_OVERMASS" IDNum="43" MainVar="0" Obj="*-2.-2.5.1.0" Flag="2049" avType="AV_FITA_VOF_VOLUME" ICell="44" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="55" IDVar="VOLUME_CORRECTS" IDNum="41" MainVar="0" Obj="*-2.-2.5.1.0" Flag="2049" avType="AV_NOTSET" ICell="45" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="56" IDVar="IS_NEED_CORR" IDNum="42" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="48" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="57" IDVar="LIGHTHILL_SMALL" IDNum="44" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="58" IDVar="LIGHTHILL_FULL" IDNum="45" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="59" IDVar="LIGHTHILL_SMALL_DIV" IDNum="46" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="60" IDVar="LIGHTHILL_FULL_DIV" IDNum="47" MainVar="0" Obj="*-2.-2.5.1.0" Flag="16" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="61" IDVar="LGHT_SMALL_X" IDNum="48" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="62" IDVar="LGHT_SMALL_Y" IDNum="49" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="63" IDVar="LGHT_SMALL_Z" IDNum="50" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="64" IDVar="LGHT_FULL_X" IDNum="51" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="65" IDVar="LGHT_FULL_Y" IDNum="52" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="66" IDVar="LGHT_FULL_Z" IDNum="53" MainVar="0" Obj="*-2.-2.5.1.0" Flag="0" avType="AV_DENS_VOF_VOL" ICell="-1" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="67" IDVar="PRES_CHIP" IDNum="54" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_FITA_VOF_VOLUME" ICell="65" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="68" IDVar="TEMP_CHIP" IDNum="55" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_FITA_VOF_VOLUME" ICell="66" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="69" IDVar="DENS_CHIP" IDNum="56" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_FITA_VOF_VOLUME" ICell="67" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="70" IDVar="SSPD_CHIP" IDNum="57" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_FITA_VOF_VOLUME" ICell="68" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="71" IDVar="VELM_CHIP" IDNum="58" MainVar="0" Obj="*-2.-2.5.1.0" Flag="64" avType="AV_FITA_VOF_VOLUME" ICell="69" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="72" IDVar="TIMESTEP_EXPLICIT" IDNum="59" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="51" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="73" IDVar="ENCLAVE_NUMBER" IDNum="63" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_VOL" ICell="52" IBVar="-1"/>
+    <OBJECT class="CFVVectorVariable" myid="74" IDVar="VEL_CONS" IDNum="60" MainVar="*-2.-2.6.12" Obj="*-2.-2.5.1.0" Flag="19" avType="AV_DENS_VOF_VOL" ICell="53" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="75" IDVar="VELGRADDENSITY" IDNum="64" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="56" IBVar="-1"/>
+    <OBJECT class="CFVScalarVariable" myid="76" IDVar="INTPHASE_MOUNT_CELL" IDNum="61" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="57" IBVar="-1"/>
+  </OBJECT>
+  <OBJECT class="CMeshEntity" myid="7" UIName="Тело 1" GUID="CA305BA8-10CC-44E1-9D8D-170EBD3B5A73">
+    <Location>
+      <Origin x="0" y="0" z="0"/>
+      <Ort0 x="1" y="0" z="0"/>
+      <Ort1 x="0" y="1" z="0"/>
+      <Ort2 x="0" y="0" z="1"/>
+      <Scale>1</Scale>
+    </Location>
+    <Source>E:\UniFlight\flow\\full_rocket20_fv\data/Тело 1.vtk</Source>
+  </OBJECT>
+  <OBJECT class="CMeshEntity" myid="8" UIName="Тело 3" GUID="D6E920F1-2AB3-4510-BE97-EC766C0C8058">
+    <Location>
+      <Origin x="0" y="0" z="0"/>
+      <Ort0 x="1" y="0" z="0"/>
+      <Ort1 x="0" y="1" z="0"/>
+      <Ort2 x="0" y="0" z="1"/>
+      <Scale>1</Scale>
+    </Location>
+    <Source>E:\UniFlight\flow\\full_rocket20_fv\data/Тело 3.vtk</Source>
+  </OBJECT>
+  <OBJECT class="CPlaneEntity" myid="9" UIName="Смещенная плоскость:1" GUID="D3088E0B-C352-47EA-9DA7-DAC9C748BD7D" shiftAlongNormal="0">
+    <center x="0.00050000000000000001" y="0.00050000000000000001" z="0.01"/>
+    <normal x="0" y="0" z="1"/>
+  </OBJECT>
+  <OBJECT class="CSupergroupEntity" myid="10" UIName="Supergroup #0" GUID="8A45D465-DD28-4058-AD33-0581C7A3059D">
+    <GroupSets>
+      <ITEM GeomOwner="*-2.-2.7">
+        <Groups>
+          <ITEM>0</ITEM>
+          <ITEM>1</ITEM>
+          <ITEM>2</ITEM>
+        </Groups>
+      </ITEM>
+      <ITEM GeomOwner="*-2.-2.8">
+        <Groups>
+          <ITEM>0</ITEM>
+          <ITEM>1</ITEM>
+          <ITEM>2</ITEM>
+          <ITEM>3</ITEM>
+          <ITEM>4</ITEM>
+          <ITEM>5</ITEM>
+          <ITEM>6</ITEM>
+        </Groups>
+      </ITEM>
+    </GroupSets>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="11" UIName="Характеристика Результат #1" GUID="E8E3D189-E194-4AF3-A4DD-6BF91830D8BE" SubRegion="*-2.-2.2" IceSurface="0" ExtendedData="0">
+    <Object>*-2.-2.10</Object>
+    <Settings>
+      <Mode>WHOLE_SURFACE</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="0" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description BlockType="CMotionProcess" IDPhase="5" IDVar="PRES" Size="1"/>
+    </Var>
+    <EnclaveAnalysis Enabled="0" SmallPolicy="KEEP" VolThreshold="0"/>
+    <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+    <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
+  </OBJECT>
+  <OBJECT class="CSupergroupEntity" myid="12" UIName="Supergroup #1" GUID="E1A53698-392B-4FD4-AE21-E3E82AC672D5">
+    <GroupSets>
+      <ITEM GeomOwner="*-2.-2.7">
+        <Groups>
+          <ITEM>0</ITEM>
+          <ITEM>1</ITEM>
+          <ITEM>2</ITEM>
+        </Groups>
+      </ITEM>
+      <ITEM GeomOwner="*-2.-2.8">
+        <Groups>
+          <ITEM>0</ITEM>
+          <ITEM>1</ITEM>
+          <ITEM>2</ITEM>
+          <ITEM>3</ITEM>
+          <ITEM>4</ITEM>
+          <ITEM>5</ITEM>
+          <ITEM>6</ITEM>
+        </Groups>
+      </ITEM>
+    </GroupSets>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="13" UIName="Характеристика Результат #2" GUID="A3A340BB-3FDD-4B87-AD27-7690CCECBCD6" SubRegion="*-2.-2.2" IceSurface="0" ExtendedData="0">
+    <Object>*-2.-2.12</Object>
+    <Settings>
+      <Mode>WHOLE_SURFACE</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="0" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description BlockType="CMotionProcess" IDPhase="5" IDVar="PRES" Size="1"/>
+    </Var>
+    <EnclaveAnalysis Enabled="0" SmallPolicy="KEEP" VolThreshold="0"/>
+    <OBJECT class="CFvValueConstant" myid="0" Constant="0"/>
+    <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
+    <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
+  </OBJECT>
+</FVINPUT>

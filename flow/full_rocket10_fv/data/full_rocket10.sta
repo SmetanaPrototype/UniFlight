@@ -1,0 +1,2018 @@
+=============================== PreSolve ======================================
+CALCULATION TIME STATISTICS
+Total calculation time:  0.063 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3747.44     34.16     43.78      0.14      0.00      0.00
+
+============================== Iter number 0 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.492 
+Total calculation time:  0.554 
+
+SOLVING STATISTICS
+Tcur:   0.1 
+Texpl:  0.0112836 
+Tstep:  0.1 
+Nstep:  0 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3724.02     65.04     79.27      2.28      0.14      0.00
+
+============================== Iter number 1 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.15 
+Total calculation time:  0.703 
+
+SOLVING STATISTICS
+Tcur:   0.180802 
+Texpl:  0.00808016 
+Tstep:  0.0808016 
+Nstep:  1 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3734.30     66.19     80.99      0.69      0.00      0.00
+
+============================== Iter number 2 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.166 
+Total calculation time:  0.867 
+
+SOLVING STATISTICS
+Tcur:   0.252681 
+Texpl:  0.00718792 
+Tstep:  0.0718792 
+Nstep:  2 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3711.12     65.44     80.99      0.50      0.00      0.00
+
+============================== Iter number 3 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.184 
+Total calculation time:  1.049 
+
+SOLVING STATISTICS
+Tcur:   0.319668 
+Texpl:  0.00669871 
+Tstep:  0.0669871 
+Nstep:  3 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3720.75     65.86     81.17      0.89      0.00      0.00
+
+============================== Iter number 4 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.174 
+Total calculation time:  1.221 
+
+SOLVING STATISTICS
+Tcur:   0.384406 
+Texpl:  0.00647386 
+Tstep:  0.0647386 
+Nstep:  4 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3714.48     65.23     81.17      0.80      0.00      0.00
+
+============================== Iter number 5 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.187 
+Total calculation time:  1.406 
+
+SOLVING STATISTICS
+Tcur:   0.448827 
+Texpl:  0.00644201 
+Tstep:  0.0644201 
+Nstep:  5 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3719.40     64.95     81.17      0.62      0.00      0.00
+
+============================== Iter number 6 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.275 
+Total calculation time:  1.679 
+
+SOLVING STATISTICS
+Tcur:   0.512634 
+Texpl:  0.00638078 
+Tstep:  0.0638078 
+Nstep:  6 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3714.86     66.01     81.17      1.17      0.00      0.00
+
+============================== Iter number 7 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.28 
+Total calculation time:  1.955 
+
+SOLVING STATISTICS
+Tcur:   0.574705 
+Texpl:  0.00620701 
+Tstep:  0.0620701 
+Nstep:  7 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3696.46     65.86     81.17      0.92      0.05      0.00
+
+============================== Iter number 8 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.301 
+Total calculation time:  2.253 
+
+SOLVING STATISTICS
+Tcur:   0.635559 
+Texpl:  0.0060854 
+Tstep:  0.060854 
+Nstep:  8 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3668.51     65.50     81.17      1.16      0.00      0.00
+
+============================== Iter number 9 ==================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   0.217 
+Total calculation time:  2.468 
+
+SOLVING STATISTICS
+Tcur:   0.695702 
+Texpl:  0.00601432 
+Tstep:  0.0601432 
+Nstep:  9 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3689.53     65.30     81.17      0.97      0.00      0.00
+
+============================== Iter number 10 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.714 
+Total calculation time:  4.18 
+
+SOLVING STATISTICS
+Tcur:   0.755457 
+Texpl:  0.00597553 
+Tstep:  0.0597553 
+Nstep:  10 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3584.82    169.30    241.71      8.14      0.00      0.00
+
+============================== Iter number 11 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.903 
+Total calculation time:  7.081 
+
+SOLVING STATISTICS
+Tcur:   0.815018 
+Texpl:  0.00595612 
+Tstep:  0.0595612 
+Nstep:  11 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3467.04    303.37    487.27     20.39      0.00      0.00
+
+============================== Iter number 12 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.087 
+Total calculation time:  9.166 
+
+SOLVING STATISTICS
+Tcur:   0.874334 
+Texpl:  0.00593156 
+Tstep:  0.0593156 
+Nstep:  12 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3472.32    306.20    500.60     16.06      0.09      0.00
+
+============================== Iter number 13 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.507 
+Total calculation time:  11.671 
+
+SOLVING STATISTICS
+Tcur:   0.933326 
+Texpl:  0.00589926 
+Tstep:  0.0589926 
+Nstep:  13 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3444.96    301.04    500.60     16.95      0.00      0.00
+
+============================== Iter number 14 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.39 
+Total calculation time:  14.059 
+
+SOLVING STATISTICS
+Tcur:   0.992075 
+Texpl:  0.00587487 
+Tstep:  0.0587487 
+Nstep:  14 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3436.40    305.55    500.74     16.73      0.00      0.00
+
+============================== Iter number 15 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.129 
+Total calculation time:  16.186 
+
+SOLVING STATISTICS
+Tcur:   1.05067 
+Texpl:  0.00585969 
+Tstep:  0.0585969 
+Nstep:  15 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3448.17    306.38    500.74     14.92      0.00      0.00
+
+============================== Iter number 16 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.856 
+Total calculation time:  18.04 
+
+SOLVING STATISTICS
+Tcur:   1.10914 
+Texpl:  0.00584679 
+Tstep:  0.0584679 
+Nstep:  16 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3472.87    302.01    501.77     14.17      0.00      0.00
+
+============================== Iter number 17 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.838 
+Total calculation time:  19.876 
+
+SOLVING STATISTICS
+Tcur:   1.16756 
+Texpl:  0.00584177 
+Tstep:  0.0584177 
+Nstep:  17 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3473.12    300.74    501.77     14.50      0.00      0.00
+
+============================== Iter number 18 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.777 
+Total calculation time:  21.651 
+
+SOLVING STATISTICS
+Tcur:   1.22592 
+Texpl:  0.0058358 
+Tstep:  0.058358 
+Nstep:  18 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3479.27    303.92    502.72     14.50      0.00      0.00
+
+============================== Iter number 19 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.821 
+Total calculation time:  23.47 
+
+SOLVING STATISTICS
+Tcur:   1.28426 
+Texpl:  0.0058344 
+Tstep:  0.058344 
+Nstep:  19 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3497.86    303.34    502.72     12.83      0.00      0.00
+
+============================== Iter number 20 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.248 
+Total calculation time:  26.716 
+
+SOLVING STATISTICS
+Tcur:   1.34257 
+Texpl:  0.00583138 
+Tstep:  0.0583138 
+Nstep:  20 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3497.26    323.53    538.38     23.97      0.00      0.00
+
+============================== Iter number 21 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.814 
+Total calculation time:  29.528 
+
+SOLVING STATISTICS
+Tcur:   1.4009 
+Texpl:  0.00583288 
+Tstep:  0.0583288 
+Nstep:  21 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3507.72    314.30    538.38     19.84      0.00      0.00
+
+============================== Iter number 22 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.636 
+Total calculation time:  31.162 
+
+SOLVING STATISTICS
+Tcur:   1.45923 
+Texpl:  0.00583228 
+Tstep:  0.0583228 
+Nstep:  22 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3504.21    316.13    538.38     12.52      0.00      0.00
+
+============================== Iter number 23 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.637 
+Total calculation time:  32.798 
+
+SOLVING STATISTICS
+Tcur:   1.51758 
+Texpl:  0.00583585 
+Tstep:  0.0583585 
+Nstep:  23 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3509.65    316.73    538.38     12.08      0.17      0.00
+
+============================== Iter number 24 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.714 
+Total calculation time:  34.51 
+
+SOLVING STATISTICS
+Tcur:   1.576 
+Texpl:  0.0058413 
+Tstep:  0.058413 
+Nstep:  24 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3525.46    318.14    538.38     14.06      0.00      0.00
+
+============================== Iter number 25 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.951 
+Total calculation time:  36.459 
+
+SOLVING STATISTICS
+Tcur:   1.63447 
+Texpl:  0.00584693 
+Tstep:  0.0584693 
+Nstep:  25 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3491.82    317.77    538.38     13.20      0.00      0.00
+
+============================== Iter number 26 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.229 
+Total calculation time:  38.684 
+
+SOLVING STATISTICS
+Tcur:   1.693 
+Texpl:  0.00585334 
+Tstep:  0.0585334 
+Nstep:  26 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3490.98    317.66    538.38     15.59      0.00      0.00
+
+============================== Iter number 27 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.148 
+Total calculation time:  40.829 
+
+SOLVING STATISTICS
+Tcur:   1.75158 
+Texpl:  0.00585815 
+Tstep:  0.0585815 
+Nstep:  27 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3486.71    317.30    538.38     14.72      0.00      0.00
+
+============================== Iter number 28 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.921 
+Total calculation time:  42.748 
+
+SOLVING STATISTICS
+Tcur:   1.81022 
+Texpl:  0.00586364 
+Tstep:  0.0586364 
+Nstep:  28 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3475.05    318.07    538.38     14.33      0.00      0.00
+
+============================== Iter number 29 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.887 
+Total calculation time:  44.633 
+
+SOLVING STATISTICS
+Tcur:   1.86889 
+Texpl:  0.00586738 
+Tstep:  0.0586738 
+Nstep:  29 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3490.04    313.43    538.38     13.88      0.00      0.00
+
+============================== Iter number 30 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.144 
+Total calculation time:  47.774 
+
+SOLVING STATISTICS
+Tcur:   1.92761 
+Texpl:  0.00587176 
+Tstep:  0.0587176 
+Nstep:  30 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3456.02    330.02    538.38     23.14      0.00      0.00
+
+============================== Iter number 31 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.218 
+Total calculation time:  50.989 
+
+SOLVING STATISTICS
+Tcur:   1.98636 
+Texpl:  0.00587487 
+Tstep:  0.0587487 
+Nstep:  31 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3477.59    346.99    553.73     24.05      0.00      0.00
+
+============================== Iter number 32 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.017 
+Total calculation time:  53.005 
+
+SOLVING STATISTICS
+Tcur:   2.04514 
+Texpl:  0.00587833 
+Tstep:  0.0587833 
+Nstep:  32 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3477.58    349.48    553.73     14.92      0.00      0.00
+
+============================== Iter number 33 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.994 
+Total calculation time:  54.997 
+
+SOLVING STATISTICS
+Tcur:   2.10395 
+Texpl:  0.00588069 
+Tstep:  0.0588069 
+Nstep:  33 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3447.90    347.96    553.73     15.48      0.12      0.00
+
+============================== Iter number 34 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.957 
+Total calculation time:  56.952 
+
+SOLVING STATISTICS
+Tcur:   2.16278 
+Texpl:  0.00588325 
+Tstep:  0.0588325 
+Nstep:  34 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3440.61    348.11    557.24     14.92      0.00      0.00
+
+============================== Iter number 35 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.94 
+Total calculation time:  58.89 
+
+SOLVING STATISTICS
+Tcur:   2.22163 
+Texpl:  0.00588502 
+Tstep:  0.0588502 
+Nstep:  35 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3441.14    350.23    558.77     14.33      0.00      0.00
+
+============================== Iter number 36 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.1 
+Total calculation time:  60.989 
+
+SOLVING STATISTICS
+Tcur:   2.2805 
+Texpl:  0.00588682 
+Tstep:  0.0588682 
+Nstep:  36 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3451.20    351.84    558.77     15.56      0.00      0.00
+
+============================== Iter number 37 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.98 
+Total calculation time:  62.967 
+
+SOLVING STATISTICS
+Tcur:   2.33938 
+Texpl:  0.00588828 
+Tstep:  0.0588828 
+Nstep:  37 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3451.21    348.36    558.77     14.98      0.00      0.00
+
+============================== Iter number 38 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.923 
+Total calculation time:  64.889 
+
+SOLVING STATISTICS
+Tcur:   2.39827 
+Texpl:  0.00588937 
+Tstep:  0.0588937 
+Nstep:  38 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3464.08    349.46    558.77     14.23      0.00      0.00
+
+============================== Iter number 39 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.94 
+Total calculation time:  66.827 
+
+SOLVING STATISTICS
+Tcur:   2.45718 
+Texpl:  0.00589059 
+Tstep:  0.0589059 
+Nstep:  39 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3470.77    345.32    558.77     14.64      0.00      0.00
+
+============================== Iter number 40 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.246 
+Total calculation time:  70.071 
+
+SOLVING STATISTICS
+Tcur:   2.51609 
+Texpl:  0.00589129 
+Tstep:  0.0589129 
+Nstep:  40 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3478.69    319.38    558.77     24.80      0.00      0.00
+
+============================== Iter number 41 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.322 
+Total calculation time:  73.391 
+
+SOLVING STATISTICS
+Tcur:   2.57502 
+Texpl:  0.00589232 
+Tstep:  0.0589232 
+Nstep:  41 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3440.18    342.15    558.77     24.28      0.00      0.00
+
+============================== Iter number 42 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.029 
+Total calculation time:  75.419 
+
+SOLVING STATISTICS
+Tcur:   2.63394 
+Texpl:  0.00589264 
+Tstep:  0.0589264 
+Nstep:  42 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3457.32    343.69    558.77     15.67      0.00      0.00
+
+============================== Iter number 43 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.974 
+Total calculation time:  77.391 
+
+SOLVING STATISTICS
+Tcur:   2.69288 
+Texpl:  0.0058935 
+Tstep:  0.058935 
+Nstep:  43 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3453.85    342.66    558.77     14.78      0.00      0.00
+
+============================== Iter number 44 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.987 
+Total calculation time:  79.376 
+
+SOLVING STATISTICS
+Tcur:   2.75181 
+Texpl:  0.00589355 
+Tstep:  0.0589355 
+Nstep:  44 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3453.41    343.54    558.77     16.00      0.00      0.00
+
+============================== Iter number 45 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.951 
+Total calculation time:  81.324 
+
+SOLVING STATISTICS
+Tcur:   2.81076 
+Texpl:  0.00589424 
+Tstep:  0.0589424 
+Nstep:  45 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3448.53    339.40    558.77     14.41      0.00      0.00
+
+============================== Iter number 46 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.957 
+Total calculation time:  83.279 
+
+SOLVING STATISTICS
+Tcur:   2.8697 
+Texpl:  0.00589414 
+Tstep:  0.0589414 
+Nstep:  46 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3481.88    323.15    558.77     14.41      0.00      0.00
+
+============================== Iter number 47 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.062 
+Total calculation time:  85.339 
+
+SOLVING STATISTICS
+Tcur:   2.92864 
+Texpl:  0.00589456 
+Tstep:  0.0589456 
+Nstep:  47 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3454.80    343.91    558.77     16.30      0.00      0.00
+
+============================== Iter number 48 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.029 
+Total calculation time:  87.367 
+
+SOLVING STATISTICS
+Tcur:   2.98759 
+Texpl:  0.00589439 
+Tstep:  0.0589439 
+Nstep:  48 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3442.55    342.91    558.77     15.77      0.00      0.00
+
+============================== Iter number 49 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.121 
+Total calculation time:  89.486 
+
+SOLVING STATISTICS
+Tcur:   3.04653 
+Texpl:  0.00589475 
+Tstep:  0.0589475 
+Nstep:  49 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3460.39    342.42    558.77     15.67      0.00      0.00
+
+============================== Iter number 50 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.176 
+Total calculation time:  92.66 
+
+SOLVING STATISTICS
+Tcur:   3.10548 
+Texpl:  0.0058945 
+Tstep:  0.058945 
+Nstep:  50 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3451.46    337.24    558.77     23.83      0.00      0.00
+
+============================== Iter number 51 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.309 
+Total calculation time:  95.966 
+
+SOLVING STATISTICS
+Tcur:   3.16443 
+Texpl:  0.00589478 
+Tstep:  0.0589478 
+Nstep:  51 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3430.42    341.20    558.77     24.66      0.02      0.00
+
+============================== Iter number 52 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.343 
+Total calculation time:  98.307 
+
+SOLVING STATISTICS
+Tcur:   3.22337 
+Texpl:  0.00589446 
+Tstep:  0.0589446 
+Nstep:  52 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3410.26    342.78    558.77     16.23      0.00      0.00
+
+============================== Iter number 53 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.856 
+Total calculation time:  101.161 
+
+SOLVING STATISTICS
+Tcur:   3.28232 
+Texpl:  0.00589469 
+Tstep:  0.0589469 
+Nstep:  53 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3383.42    337.81    558.77     17.64      0.00      0.00
+
+============================== Iter number 54 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.916 
+Total calculation time:  103.076 
+
+SOLVING STATISTICS
+Tcur:   3.34126 
+Texpl:  0.00589435 
+Tstep:  0.0589435 
+Nstep:  54 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3382.16    337.75    558.77     15.36      0.00      0.00
+
+============================== Iter number 55 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.232 
+Total calculation time:  105.306 
+
+SOLVING STATISTICS
+Tcur:   3.40021 
+Texpl:  0.00589449 
+Tstep:  0.0589449 
+Nstep:  55 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3369.15    337.95    558.77     15.00      0.00      0.00
+
+============================== Iter number 56 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.246 
+Total calculation time:  107.55 
+
+SOLVING STATISTICS
+Tcur:   3.45915 
+Texpl:  0.00589418 
+Tstep:  0.0589418 
+Nstep:  56 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3375.79    340.19    558.77     16.53      0.00      0.00
+
+============================== Iter number 57 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.072 
+Total calculation time:  109.621 
+
+SOLVING STATISTICS
+Tcur:   3.51809 
+Texpl:  0.00589432 
+Tstep:  0.0589432 
+Nstep:  57 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3399.83    340.04    558.77     15.27      0.00      0.00
+
+============================== Iter number 58 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.966 
+Total calculation time:  111.585 
+
+SOLVING STATISTICS
+Tcur:   3.57703 
+Texpl:  0.00589404 
+Tstep:  0.0589404 
+Nstep:  58 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3435.12    320.39    558.77     14.92      0.00      0.00
+
+============================== Iter number 59 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.917 
+Total calculation time:  113.5 
+
+SOLVING STATISTICS
+Tcur:   3.63597 
+Texpl:  0.00589421 
+Tstep:  0.0589421 
+Nstep:  59 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3433.82    320.46    558.77     14.55      0.00      0.00
+
+============================== Iter number 60 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.136 
+Total calculation time:  116.634 
+
+SOLVING STATISTICS
+Tcur:   3.69491 
+Texpl:  0.00589397 
+Tstep:  0.0589397 
+Nstep:  60 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3458.15    333.54    568.16     24.36      0.02      0.00
+
+============================== Iter number 61 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.143 
+Total calculation time:  119.776 
+
+SOLVING STATISTICS
+Tcur:   3.75386 
+Texpl:  0.00589415 
+Tstep:  0.0589415 
+Nstep:  61 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3442.77    341.93    568.16     23.73      0.00      0.00
+
+============================== Iter number 62 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.933 
+Total calculation time:  121.707 
+
+SOLVING STATISTICS
+Tcur:   3.8128 
+Texpl:  0.00589391 
+Tstep:  0.0589391 
+Nstep:  62 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3426.13    347.96    568.16     15.42      0.00      0.00
+
+============================== Iter number 63 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.936 
+Total calculation time:  123.641 
+
+SOLVING STATISTICS
+Tcur:   3.87174 
+Texpl:  0.00589407 
+Tstep:  0.0589407 
+Nstep:  63 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3433.63    345.45    568.16     15.59      0.00      0.00
+
+============================== Iter number 64 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.969 
+Total calculation time:  125.608 
+
+SOLVING STATISTICS
+Tcur:   3.93067 
+Texpl:  0.00589377 
+Tstep:  0.0589377 
+Nstep:  64 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3429.38    347.01    568.16     14.75      0.14      0.00
+
+============================== Iter number 65 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.955 
+Total calculation time:  127.561 
+
+SOLVING STATISTICS
+Tcur:   3.98961 
+Texpl:  0.00589394 
+Tstep:  0.0589394 
+Nstep:  65 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3434.88    344.45    568.16     15.45      0.00      0.00
+
+============================== Iter number 66 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.975 
+Total calculation time:  129.534 
+
+SOLVING STATISTICS
+Tcur:   4.04855 
+Texpl:  0.00589367 
+Tstep:  0.0589367 
+Nstep:  66 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3423.48    344.63    568.16     14.83      0.00      0.00
+
+============================== Iter number 67 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.944 
+Total calculation time:  131.476 
+
+SOLVING STATISTICS
+Tcur:   4.10749 
+Texpl:  0.00589388 
+Tstep:  0.0589388 
+Nstep:  67 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3453.60    343.56    568.16     14.88      0.00      0.00
+
+============================== Iter number 68 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.975 
+Total calculation time:  133.449 
+
+SOLVING STATISTICS
+Tcur:   4.16642 
+Texpl:  0.00589364 
+Tstep:  0.0589364 
+Nstep:  68 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3442.46    346.91    568.16     15.06      0.00      0.00
+
+============================== Iter number 69 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.939 
+Total calculation time:  135.386 
+
+SOLVING STATISTICS
+Tcur:   4.22536 
+Texpl:  0.00589385 
+Tstep:  0.0589385 
+Nstep:  69 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3442.08    347.09    568.16     13.92      0.00      0.00
+
+============================== Iter number 70 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.107 
+Total calculation time:  138.492 
+
+SOLVING STATISTICS
+Tcur:   4.2843 
+Texpl:  0.00589362 
+Tstep:  0.0589362 
+Nstep:  70 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3465.08    317.48    568.16     24.12      0.00      0.00
+
+============================== Iter number 71 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.108 
+Total calculation time:  141.598 
+
+SOLVING STATISTICS
+Tcur:   4.34324 
+Texpl:  0.00589387 
+Tstep:  0.0589387 
+Nstep:  71 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3465.86    330.34    568.16     22.38      0.00      0.00
+
+============================== Iter number 72 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.002 
+Total calculation time:  143.597 
+
+SOLVING STATISTICS
+Tcur:   4.40217 
+Texpl:  0.00589367 
+Tstep:  0.0589367 
+Nstep:  72 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3434.27    358.05    568.16     14.89      0.16      0.00
+
+============================== Iter number 73 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.92 
+Total calculation time:  145.515 
+
+SOLVING STATISTICS
+Tcur:   4.46111 
+Texpl:  0.00589388 
+Tstep:  0.0589388 
+Nstep:  73 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3457.23    331.81    568.16     14.66      0.00      0.00
+
+============================== Iter number 74 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.919 
+Total calculation time:  147.432 
+
+SOLVING STATISTICS
+Tcur:   4.52005 
+Texpl:  0.00589366 
+Tstep:  0.0589366 
+Nstep:  74 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3470.30    333.07    568.16     14.80      0.00      0.00
+
+============================== Iter number 75 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.934 
+Total calculation time:  149.364 
+
+SOLVING STATISTICS
+Tcur:   4.57899 
+Texpl:  0.00589383 
+Tstep:  0.0589383 
+Nstep:  75 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3461.79    353.47    568.16     13.88      0.00      0.00
+
+============================== Iter number 76 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.422 
+Total calculation time:  151.784 
+
+SOLVING STATISTICS
+Tcur:   4.63792 
+Texpl:  0.00589359 
+Tstep:  0.0589359 
+Nstep:  76 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3459.84    349.67    568.16     15.88      0.00      0.00
+
+============================== Iter number 77 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.6 
+Total calculation time:  154.382 
+
+SOLVING STATISTICS
+Tcur:   4.69686 
+Texpl:  0.00589382 
+Tstep:  0.0589382 
+Nstep:  77 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3430.64    357.36    568.16     18.67      0.00      0.00
+
+============================== Iter number 78 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.354 
+Total calculation time:  156.734 
+
+SOLVING STATISTICS
+Tcur:   4.7558 
+Texpl:  0.0058936 
+Tstep:  0.058936 
+Nstep:  78 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3448.62    353.50    568.16     17.09      0.00      0.00
+
+============================== Iter number 79 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.187 
+Total calculation time:  158.919 
+
+SOLVING STATISTICS
+Tcur:   4.81474 
+Texpl:  0.00589385 
+Tstep:  0.0589385 
+Nstep:  79 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3444.36    352.92    568.16     15.69      0.00      0.00
+
+============================== Iter number 80 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.296 
+Total calculation time:  162.214 
+
+SOLVING STATISTICS
+Tcur:   4.87367 
+Texpl:  0.00589361 
+Tstep:  0.0589361 
+Nstep:  80 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3453.25    343.27    568.16     24.52      0.00      0.00
+
+============================== Iter number 81 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.337 
+Total calculation time:  165.55 
+
+SOLVING STATISTICS
+Tcur:   4.93261 
+Texpl:  0.00589388 
+Tstep:  0.0589388 
+Nstep:  81 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3477.71    337.57    568.16     24.22      0.00      0.00
+
+============================== Iter number 82 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.943 
+Total calculation time:  167.491 
+
+SOLVING STATISTICS
+Tcur:   4.99155 
+Texpl:  0.00589363 
+Tstep:  0.0589363 
+Nstep:  82 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3445.79    352.58    568.16     14.98      0.00      0.00
+
+============================== Iter number 83 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.944 
+Total calculation time:  169.433 
+
+SOLVING STATISTICS
+Tcur:   5.05049 
+Texpl:  0.0058939 
+Tstep:  0.058939 
+Nstep:  83 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3465.39    336.27    568.16     14.72      0.00      0.00
+
+============================== Iter number 84 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.918 
+Total calculation time:  171.349 
+
+SOLVING STATISTICS
+Tcur:   5.10942 
+Texpl:  0.00589363 
+Tstep:  0.0589363 
+Nstep:  84 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3467.40    342.47    568.16     15.70      0.00      0.00
+
+============================== Iter number 85 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.924 
+Total calculation time:  173.271 
+
+SOLVING STATISTICS
+Tcur:   5.16836 
+Texpl:  0.00589386 
+Tstep:  0.0589386 
+Nstep:  85 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3479.20    334.48    568.16     15.36      0.00      0.00
+
+============================== Iter number 86 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.933 
+Total calculation time:  175.202 
+
+SOLVING STATISTICS
+Tcur:   5.2273 
+Texpl:  0.0058936 
+Tstep:  0.058936 
+Nstep:  86 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3477.82    333.12    568.16     15.45      0.00      0.00
+
+============================== Iter number 87 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.992 
+Total calculation time:  177.192 
+
+SOLVING STATISTICS
+Tcur:   5.28624 
+Texpl:  0.00589385 
+Tstep:  0.0589385 
+Nstep:  87 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3413.02    352.31    568.16     15.52      0.00      0.00
+
+============================== Iter number 88 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.074 
+Total calculation time:  179.264 
+
+SOLVING STATISTICS
+Tcur:   5.34517 
+Texpl:  0.0058936 
+Tstep:  0.058936 
+Nstep:  88 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3575.70    350.85    568.16     15.44      0.00      0.00
+
+============================== Iter number 89 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.915 
+Total calculation time:  181.176 
+
+SOLVING STATISTICS
+Tcur:   5.40411 
+Texpl:  0.00589387 
+Tstep:  0.0589387 
+Nstep:  89 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3596.29    333.64    568.16     14.77      0.00      0.00
+
+============================== Iter number 90 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.073 
+Total calculation time:  184.247 
+
+SOLVING STATISTICS
+Tcur:   5.46305 
+Texpl:  0.00589364 
+Tstep:  0.0589364 
+Nstep:  90 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3608.22    325.21    568.16     22.48      0.19      0.00
+
+============================== Iter number 91 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.28 
+Total calculation time:  187.525 
+
+SOLVING STATISTICS
+Tcur:   5.52199 
+Texpl:  0.00589393 
+Tstep:  0.0589393 
+Nstep:  91 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3602.38    334.91    568.16     23.53      0.00      0.00
+
+============================== Iter number 92 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.907 
+Total calculation time:  189.43 
+
+SOLVING STATISTICS
+Tcur:   5.58092 
+Texpl:  0.00589369 
+Tstep:  0.0589369 
+Nstep:  92 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3602.60    330.15    568.16     15.95      0.00      0.00
+
+============================== Iter number 93 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.941 
+Total calculation time:  191.369 
+
+SOLVING STATISTICS
+Tcur:   5.63986 
+Texpl:  0.00589394 
+Tstep:  0.0589394 
+Nstep:  93 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3590.46    349.56    568.16     14.75      0.00      0.00
+
+============================== Iter number 94 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.928 
+Total calculation time:  193.295 
+
+SOLVING STATISTICS
+Tcur:   5.6988 
+Texpl:  0.00589367 
+Tstep:  0.0589367 
+Nstep:  94 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3613.98    329.45    568.16     14.27      0.00      0.00
+
+============================== Iter number 95 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.921 
+Total calculation time:  195.214 
+
+SOLVING STATISTICS
+Tcur:   5.75774 
+Texpl:  0.00589389 
+Tstep:  0.0589389 
+Nstep:  95 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3584.77    351.95    568.16     14.62      0.16      0.00
+
+============================== Iter number 96 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.927 
+Total calculation time:  197.139 
+
+SOLVING STATISTICS
+Tcur:   5.81668 
+Texpl:  0.00589363 
+Tstep:  0.0589363 
+Nstep:  96 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3598.14    330.75    568.16     14.17      0.00      0.00
+
+============================== Iter number 97 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.9 
+Total calculation time:  199.037 
+
+SOLVING STATISTICS
+Tcur:   5.87561 
+Texpl:  0.00589388 
+Tstep:  0.0589388 
+Nstep:  97 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3605.66    329.78    568.16     15.27      0.00      0.00
+
+============================== Iter number 98 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.935 
+Total calculation time:  200.97 
+
+SOLVING STATISTICS
+Tcur:   5.93455 
+Texpl:  0.00589364 
+Tstep:  0.0589364 
+Nstep:  98 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3606.20    328.62    568.16     15.84      0.00      0.00
+
+============================== Iter number 99 =================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.915 
+Total calculation time:  202.883 
+
+SOLVING STATISTICS
+Tcur:   5.99349 
+Texpl:  0.0058939 
+Tstep:  0.058939 
+Nstep:  99 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3599.23    328.01    568.16     14.59      0.00      0.00
+
+============================== Iter number 100 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.135 
+Total calculation time:  206.016 
+
+SOLVING STATISTICS
+Tcur:   6.05243 
+Texpl:  0.00589364 
+Tstep:  0.0589364 
+Nstep:  100 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3576.98    344.32    568.16     23.02      0.00      0.00
+
+============================== Iter number 101 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.13 
+Total calculation time:  209.144 
+
+SOLVING STATISTICS
+Tcur:   6.11137 
+Texpl:  0.00589394 
+Tstep:  0.0589394 
+Nstep:  101 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3579.95    343.07    568.16     23.25      0.00      0.00
+
+============================== Iter number 102 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.95 
+Total calculation time:  211.091 
+
+SOLVING STATISTICS
+Tcur:   6.1703 
+Texpl:  0.00589371 
+Tstep:  0.0589371 
+Nstep:  102 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3590.99    344.22    568.16     15.38      0.00      0.00
+
+============================== Iter number 103 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.978 
+Total calculation time:  213.067 
+
+SOLVING STATISTICS
+Tcur:   6.22924 
+Texpl:  0.00589396 
+Tstep:  0.0589396 
+Nstep:  103 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3616.00    343.20    568.16     16.27      0.00      0.00
+
+============================== Iter number 104 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.923 
+Total calculation time:  214.987 
+
+SOLVING STATISTICS
+Tcur:   6.28818 
+Texpl:  0.00589371 
+Tstep:  0.0589371 
+Nstep:  104 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3617.03    340.53    568.16     15.31      0.00      0.00
+
+============================== Iter number 105 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.947 
+Total calculation time:  216.932 
+
+SOLVING STATISTICS
+Tcur:   6.34712 
+Texpl:  0.00589389 
+Tstep:  0.0589389 
+Nstep:  105 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3607.97    340.31    568.16     16.41      0.00      0.00
+
+============================== Iter number 106 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.917 
+Total calculation time:  218.847 
+
+SOLVING STATISTICS
+Tcur:   6.40605 
+Texpl:  0.00589366 
+Tstep:  0.0589366 
+Nstep:  106 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3616.53    339.60    568.16     15.42      0.00      0.00
+
+============================== Iter number 107 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.929 
+Total calculation time:  220.774 
+
+SOLVING STATISTICS
+Tcur:   6.46499 
+Texpl:  0.00589387 
+Tstep:  0.0589387 
+Nstep:  107 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3608.31    342.49    568.16     15.08      0.00      0.00
+
+============================== Iter number 108 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.913 
+Total calculation time:  222.685 
+
+SOLVING STATISTICS
+Tcur:   6.52393 
+Texpl:  0.00589369 
+Tstep:  0.0589369 
+Nstep:  108 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3607.88    342.06    568.16     14.66      0.00      0.00
+
+============================== Iter number 109 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.891 
+Total calculation time:  224.574 
+
+SOLVING STATISTICS
+Tcur:   6.58287 
+Texpl:  0.00589391 
+Tstep:  0.0589391 
+Nstep:  109 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3598.21    340.30    568.16     15.39      0.00      0.00
+
+============================== Iter number 110 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.123 
+Total calculation time:  227.695 
+
+SOLVING STATISTICS
+Tcur:   6.64181 
+Texpl:  0.00589373 
+Tstep:  0.0589373 
+Nstep:  110 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3608.39    337.67    568.16     22.72      0.00      0.00
+
+============================== Iter number 111 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.215 
+Total calculation time:  230.909 
+
+SOLVING STATISTICS
+Tcur:   6.70075 
+Texpl:  0.00589394 
+Tstep:  0.0589394 
+Nstep:  111 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3593.43    342.09    568.16     23.14      0.00      0.00
+
+============================== Iter number 112 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.923 
+Total calculation time:  232.831 
+
+SOLVING STATISTICS
+Tcur:   6.75968 
+Texpl:  0.00589377 
+Tstep:  0.0589377 
+Nstep:  112 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3607.49    341.34    568.16     16.27      0.00      0.00
+
+============================== Iter number 113 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.922 
+Total calculation time:  234.752 
+
+SOLVING STATISTICS
+Tcur:   6.81862 
+Texpl:  0.00589396 
+Tstep:  0.0589396 
+Nstep:  113 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3606.29    340.96    568.16     14.91      0.00      0.00
+
+============================== Iter number 114 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.104 
+Total calculation time:  236.854 
+
+SOLVING STATISTICS
+Tcur:   6.87756 
+Texpl:  0.00589376 
+Tstep:  0.0589376 
+Nstep:  114 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3613.38    341.82    568.16     14.81      0.00      0.00
+
+============================== Iter number 115 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.085 
+Total calculation time:  238.937 
+
+SOLVING STATISTICS
+Tcur:   6.9365 
+Texpl:  0.00589392 
+Tstep:  0.0589392 
+Nstep:  115 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3611.31    342.00    568.16     16.72      0.00      0.00
+
+============================== Iter number 116 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.296 
+Total calculation time:  241.232 
+
+SOLVING STATISTICS
+Tcur:   6.99544 
+Texpl:  0.0058937 
+Tstep:  0.058937 
+Nstep:  116 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3591.52    342.78    568.16     16.08      0.00      0.00
+
+============================== Iter number 117 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.085 
+Total calculation time:  243.316 
+
+SOLVING STATISTICS
+Tcur:   7.05438 
+Texpl:  0.0058939 
+Tstep:  0.058939 
+Nstep:  117 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3586.54    342.96    568.16     15.52      0.00      0.00
+
+============================== Iter number 118 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.938 
+Total calculation time:  245.251 
+
+SOLVING STATISTICS
+Tcur:   7.11331 
+Texpl:  0.00589363 
+Tstep:  0.0589363 
+Nstep:  118 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3594.67    328.38    568.16     14.36      0.00      0.00
+
+============================== Iter number 119 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.057 
+Total calculation time:  247.306 
+
+SOLVING STATISTICS
+Tcur:   7.17225 
+Texpl:  0.0058939 
+Tstep:  0.058939 
+Nstep:  119 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3594.73    344.70    568.16     14.97      0.00      0.00
+
+============================== Iter number 120 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.553 
+Total calculation time:  250.857 
+
+SOLVING STATISTICS
+Tcur:   7.23119 
+Texpl:  0.00589361 
+Tstep:  0.0589361 
+Nstep:  120 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3594.11    355.80    568.16     25.31      0.02      0.00
+
+============================== Iter number 121 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.07 
+Total calculation time:  253.925 
+
+SOLVING STATISTICS
+Tcur:   7.29013 
+Texpl:  0.00589392 
+Tstep:  0.0589392 
+Nstep:  121 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3601.34    350.69    568.16     23.62      0.00      0.00
+
+============================== Iter number 122 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.06 
+Total calculation time:  255.982 
+
+SOLVING STATISTICS
+Tcur:   7.34906 
+Texpl:  0.00589362 
+Tstep:  0.0589362 
+Nstep:  122 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3588.99    350.80    568.16     16.09      0.00      0.00
+
+============================== Iter number 123 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.941 
+Total calculation time:  257.921 
+
+SOLVING STATISTICS
+Tcur:   7.408 
+Texpl:  0.00589391 
+Tstep:  0.0589391 
+Nstep:  123 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3595.87    347.97    568.16     15.47      0.00      0.00
+
+============================== Iter number 124 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.928 
+Total calculation time:  259.847 
+
+SOLVING STATISTICS
+Tcur:   7.46694 
+Texpl:  0.00589357 
+Tstep:  0.0589357 
+Nstep:  124 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3577.58    348.47    568.16     15.56      0.00      0.00
+
+============================== Iter number 125 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.911 
+Total calculation time:  261.756 
+
+SOLVING STATISTICS
+Tcur:   7.52588 
+Texpl:  0.00589384 
+Tstep:  0.0589384 
+Nstep:  125 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3570.61    348.38    568.16     14.84      0.00      0.00
+
+============================== Iter number 126 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.899 
+Total calculation time:  263.652 
+
+SOLVING STATISTICS
+Tcur:   7.58481 
+Texpl:  0.00589356 
+Tstep:  0.0589356 
+Nstep:  126 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3577.50    347.84    568.16     15.33      0.00      0.00
+
+============================== Iter number 127 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   2.051 
+Total calculation time:  265.701 
+
+SOLVING STATISTICS
+Tcur:   7.64375 
+Texpl:  0.00589383 
+Tstep:  0.0589383 
+Nstep:  127 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3586.18    348.16    568.16     15.08      0.00      0.00
+
+============================== Iter number 128 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.88 
+Total calculation time:  267.578 
+
+SOLVING STATISTICS
+Tcur:   7.70269 
+Texpl:  0.0058936 
+Tstep:  0.058936 
+Nstep:  128 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3574.79    348.55    568.16     14.11      0.00      0.00
+
+============================== Iter number 129 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.89 
+Total calculation time:  269.465 
+
+SOLVING STATISTICS
+Tcur:   7.76162 
+Texpl:  0.00589382 
+Tstep:  0.0589382 
+Nstep:  129 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3584.30    348.02    568.16     14.62      0.00      0.00
+
+============================== Iter number 130 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.07 
+Total calculation time:  272.533 
+
+SOLVING STATISTICS
+Tcur:   7.82056 
+Texpl:  0.0058936 
+Tstep:  0.058936 
+Nstep:  130 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3587.35    341.40    568.16     22.73      0.17      0.00
+
+============================== Iter number 131 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   3.142 
+Total calculation time:  275.673 
+
+SOLVING STATISTICS
+Tcur:   7.88037 
+Texpl:  0.00589383 
+Tstep:  0.0598132 
+Nstep:  131 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3571.34    343.61    568.16     22.98      0.00      0.00
+
+============================== Iter number 132 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.923 
+Total calculation time:  277.594 
+
+SOLVING STATISTICS
+Tcur:   7.94019 
+Texpl:  0.00589362 
+Tstep:  0.0598132 
+Nstep:  132 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3578.42    344.86    568.16     15.05      0.00      0.00
+
+============================== Iter number 133 ================================
+CALCULATION TIME STATISTICS
+Iter calculation time:   1.987 
+Total calculation time:  279.58 
+
+SOLVING STATISTICS
+Tcur:   8 
+Texpl:  0.00589382 
+Tstep:  0.0598132 
+Nstep:  133 
+
+SYSTEM STATISTICS
+          PhM_total  PhM_free  Proc_mem  Peak_mem  CPU_time  Wait_CPU Wait_Wall 
+Proc0   :  16163.30   3563.05    342.57    568.16     14.80      0.00      0.00
+

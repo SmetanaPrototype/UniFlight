@@ -1,0 +1,6 @@
+Time=1.00000e-01	StepNumber=1	TimeStep=1.00000e-01	ExplicitTimeStep=1.27418e-02	NumCells=6998
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	4.46856e-11	1.00000e+00
+Velocity	9	6.06568e-12	1.00000e+00
+

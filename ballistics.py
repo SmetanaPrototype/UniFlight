@@ -131,7 +131,7 @@ class ballistics:
 
             self.attack = np.radians(self.get_attack_func(self.vel, time))
             self.G.calculate_CXY(self.vel, self.alt, self.attack)
-            self.attack += aeroelasticity2.aero_attack(self.G.CY, self.dypressure, time)
+            self.attack += 10000*aeroelasticity2.aero_attack(self.G.CY, self.dypressure, time)
             self.G.calculate_CXY(self.vel, self.alt, self.attack)
             self.atm = atmo.atmosphere(self.alt)
             self.dencity = self.atm.get_density()

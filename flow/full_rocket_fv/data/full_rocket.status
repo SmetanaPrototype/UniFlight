@@ -1,0 +1,480 @@
+Time=1.00000e-01	StepNumber=1	TimeStep=1.00000e-01	ExplicitTimeStep=1.78659e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	3.00419e-11	1.00000e+00
+Velocity	7	1.21180e-14	1.00000e+00
+TurbEnergy	7	1.11770e-13	1.00000e+00
+TurbDissipation	6	1.83986e-13	1.00000e+00
+
+Time=2.00000e-01	StepNumber=2	TimeStep=1.00000e-01	ExplicitTimeStep=1.76865e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	15	2.53481e-11	3.85895e-01
+Velocity	5	2.98592e-11	5.21250e-01
+TurbEnergy	7	1.92598e-13	8.84763e-01
+TurbDissipation	6	4.74536e-13	8.43145e-01
+
+Time=3.00000e-01	StepNumber=3	TimeStep=1.00000e-01	ExplicitTimeStep=1.76100e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	14	2.48498e-11	2.77925e-01
+Velocity	5	1.67486e-11	3.39766e-01
+TurbEnergy	6	1.09737e-12	7.80567e-01
+TurbDissipation	6	3.68927e-13	7.01246e-01
+
+Time=4.00000e-01	StepNumber=4	TimeStep=1.00000e-01	ExplicitTimeStep=1.75615e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	14	1.74394e-11	2.06000e-01
+Velocity	5	4.67307e-12	2.55771e-01
+TurbEnergy	7	3.68989e-14	6.41921e-01
+TurbDissipation	6	1.37096e-11	5.30442e-01
+
+Time=5.00000e-01	StepNumber=5	TimeStep=1.00000e-01	ExplicitTimeStep=1.75192e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	13	4.59703e-11	1.53285e-01
+Velocity	5	2.82395e-12	2.19400e-01
+TurbEnergy	7	1.80602e-14	4.64256e-01
+TurbDissipation	6	3.66424e-14	3.41896e-01
+
+Time=6.00000e-01	StepNumber=6	TimeStep=1.00000e-01	ExplicitTimeStep=1.74868e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	14	1.28452e-11	1.16179e-01
+Velocity	5	8.92083e-13	1.59999e-01
+TurbEnergy	7	3.90758e-15	2.92527e-01
+TurbDissipation	6	1.81609e-12	1.91141e-01
+
+Time=7.00000e-01	StepNumber=7	TimeStep=1.00000e-01	ExplicitTimeStep=1.74629e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	13	3.68808e-11	8.89679e-02
+Velocity	5	1.01185e-12	1.21904e-01
+TurbEnergy	7	1.74578e-16	1.66269e-01
+TurbDissipation	5	1.01619e-11	9.81875e-02
+
+Time=8.00000e-01	StepNumber=8	TimeStep=1.00000e-01	ExplicitTimeStep=1.74457e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	13	4.04168e-11	6.99286e-02
+Velocity	5	4.45715e-13	1.03792e-01
+TurbEnergy	6	1.53211e-15	8.84123e-02
+TurbDissipation	5	3.44955e-12	4.81069e-02
+
+Time=9.00000e-01	StepNumber=9	TimeStep=1.00000e-01	ExplicitTimeStep=1.74333e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	13	2.71370e-11	5.44966e-02
+Velocity	5	3.64464e-13	9.25880e-02
+TurbEnergy	6	7.80396e-15	4.48925e-02
+TurbDissipation	6	3.41249e-14	2.28297e-02
+
+Time=1.00000e+00	StepNumber=10	TimeStep=1.00000e-01	ExplicitTimeStep=1.74250e-02	NumCells=1000
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	13	2.83246e-11	4.39964e-02
+Velocity	5	3.65253e-13	8.30240e-02
+TurbEnergy	4	6.11541e-11	2.19972e-02
+TurbDissipation	5	5.55548e-11	1.05702e-02
+
+Time=1.10000e+00	StepNumber=11	TimeStep=1.00000e-01	ExplicitTimeStep=8.70910e-03	NumCells=7993
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	14	1.49557e-11	1.44675e-01
+Velocity	8	4.65402e-11	1.00000e+00
+TurbEnergy	8	3.79183e-13	1.52071e-01
+TurbDissipation	7	2.86627e-12	8.84953e-02
+
+Time=1.20000e+00	StepNumber=12	TimeStep=1.00000e-01	ExplicitTimeStep=4.22911e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.06128e-11	1.54821e-01
+Velocity	12	1.81717e-11	1.00000e+00
+TurbEnergy	8	7.07628e-11	1.69706e-01
+TurbDissipation	8	4.22486e-12	4.99207e-02
+
+Time=1.30000e+00	StepNumber=13	TimeStep=1.00000e-01	ExplicitTimeStep=4.11588e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	5.66768e-11	1.62601e-01
+Velocity	11	5.97684e-12	5.09873e-01
+TurbEnergy	8	5.56868e-13	1.75394e-01
+TurbDissipation	6	4.11021e-11	4.81098e-02
+
+Time=1.40000e+00	StepNumber=14	TimeStep=1.00000e-01	ExplicitTimeStep=4.00706e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	22	3.17198e-11	1.48930e-01
+Velocity	10	2.32694e-11	4.84927e-01
+TurbEnergy	7	6.75613e-12	1.25513e-01
+TurbDissipation	6	2.48587e-11	2.60905e-02
+
+Time=1.50000e+00	StepNumber=15	TimeStep=1.00000e-01	ExplicitTimeStep=3.93332e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	4.93208e-11	1.28625e-01
+Velocity	10	7.29126e-12	4.12495e-01
+TurbEnergy	7	2.00187e-12	7.18259e-02
+TurbDissipation	6	7.65078e-12	1.34084e-02
+
+Time=1.60000e+00	StepNumber=16	TimeStep=1.00000e-01	ExplicitTimeStep=3.86688e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.33781e-11	1.15009e-01
+Velocity	10	6.73749e-12	3.54105e-01
+TurbEnergy	7	4.36639e-13	3.40113e-02
+TurbDissipation	6	2.29632e-12	6.39195e-03
+
+Time=1.70000e+00	StepNumber=17	TimeStep=1.00000e-01	ExplicitTimeStep=3.80819e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.94848e-11	1.02625e-01
+Velocity	10	5.07885e-12	3.19624e-01
+TurbEnergy	7	5.63204e-13	1.45689e-02
+TurbDissipation	6	3.25606e-12	3.09583e-03
+
+Time=1.80000e+00	StepNumber=18	TimeStep=1.00000e-01	ExplicitTimeStep=3.75650e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	21	3.19929e-11	9.28038e-02
+Velocity	10	4.65919e-12	2.94051e-01
+TurbEnergy	7	7.43614e-13	5.90214e-03
+TurbDissipation	7	9.86890e-14	1.54077e-03
+
+Time=1.90000e+00	StepNumber=19	TimeStep=1.00000e-01	ExplicitTimeStep=3.70819e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	4.53793e-11	8.29349e-02
+Velocity	10	3.92199e-12	2.71258e-01
+TurbEnergy	7	7.31109e-13	2.54454e-03
+TurbDissipation	7	1.06378e-13	9.82489e-04
+
+Time=2.00000e+00	StepNumber=20	TimeStep=1.00000e-01	ExplicitTimeStep=3.66796e-03	NumCells=63929
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.65278e-11	7.56719e-02
+Velocity	10	3.11475e-12	2.49580e-01
+TurbEnergy	7	8.44985e-13	1.50708e-03
+TurbDissipation	7	1.18795e-13	7.76159e-04
+
+Time=2.10000e+00	StepNumber=21	TimeStep=1.00000e-01	ExplicitTimeStep=3.63028e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	20	3.01760e-11	6.78633e-02
+Velocity	10	2.86176e-12	2.27435e-01
+TurbEnergy	7	9.92655e-13	1.23567e-03
+TurbDissipation	7	1.32929e-13	7.24689e-04
+
+Time=2.20000e+00	StepNumber=22	TimeStep=1.00000e-01	ExplicitTimeStep=3.59835e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	7.46950e-11	6.20171e-02
+Velocity	10	2.13888e-12	2.08503e-01
+TurbEnergy	7	1.16374e-12	1.30611e-03
+TurbDissipation	7	1.62352e-13	7.57423e-04
+
+Time=2.30000e+00	StepNumber=23	TimeStep=1.00000e-01	ExplicitTimeStep=3.56873e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	5.25558e-11	5.60867e-02
+Velocity	10	1.87715e-12	1.92703e-01
+TurbEnergy	7	9.74342e-13	1.29385e-03
+TurbDissipation	7	1.38773e-13	7.38089e-04
+
+Time=2.40000e+00	StepNumber=24	TimeStep=1.00000e-01	ExplicitTimeStep=3.54311e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	6.08278e-11	5.15527e-02
+Velocity	9	3.09250e-11	1.82422e-01
+TurbEnergy	7	1.27954e-12	1.27423e-03
+TurbDissipation	7	1.77653e-13	7.39643e-04
+
+Time=2.50000e+00	StepNumber=25	TimeStep=1.00000e-01	ExplicitTimeStep=3.52072e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	4.72167e-11	4.71733e-02
+Velocity	9	2.99858e-11	1.72394e-01
+TurbEnergy	7	1.15939e-12	1.19781e-03
+TurbDissipation	7	1.86909e-13	6.80222e-04
+
+Time=2.60000e+00	StepNumber=26	TimeStep=1.00000e-01	ExplicitTimeStep=3.50045e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	18	3.57124e-11	4.37994e-02
+Velocity	9	2.30115e-11	1.59868e-01
+TurbEnergy	7	1.79830e-12	1.09193e-03
+TurbDissipation	7	2.53200e-13	6.14393e-04
+
+Time=2.70000e+00	StepNumber=27	TimeStep=1.00000e-01	ExplicitTimeStep=3.48332e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	5.62785e-11	4.08480e-02
+Velocity	9	1.97485e-11	1.49659e-01
+TurbEnergy	7	1.72248e-12	1.05879e-03
+TurbDissipation	7	2.17825e-13	5.67331e-04
+
+Time=2.80000e+00	StepNumber=28	TimeStep=1.00000e-01	ExplicitTimeStep=3.46813e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	5.17795e-11	3.79953e-02
+Velocity	9	1.82389e-11	1.43628e-01
+TurbEnergy	7	2.05162e-12	1.00254e-03
+TurbDissipation	7	2.64546e-13	5.94609e-04
+
+Time=2.90000e+00	StepNumber=29	TimeStep=1.00000e-01	ExplicitTimeStep=3.45518e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	5.36188e-11	3.56642e-02
+Velocity	9	1.41460e-11	1.36359e-01
+TurbEnergy	7	2.46592e-12	9.50969e-04
+TurbDissipation	7	2.67544e-13	5.22177e-04
+
+Time=3.00000e+00	StepNumber=30	TimeStep=1.00000e-01	ExplicitTimeStep=3.43620e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	4.50048e-11	3.32797e-02
+Velocity	9	1.41516e-11	1.31127e-01
+TurbEnergy	7	2.45981e-12	8.62707e-04
+TurbDissipation	7	3.02920e-13	5.06691e-04
+
+Time=3.10000e+00	StepNumber=31	TimeStep=1.00000e-01	ExplicitTimeStep=3.42387e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	4.29409e-11	3.12912e-02
+Velocity	9	1.17325e-11	1.24326e-01
+TurbEnergy	7	2.75058e-12	8.16199e-04
+TurbDissipation	7	3.27379e-13	4.57675e-04
+
+Time=3.20000e+00	StepNumber=32	TimeStep=1.00000e-01	ExplicitTimeStep=3.41179e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	5.48661e-11	2.93514e-02
+Velocity	9	1.08210e-11	1.22406e-01
+TurbEnergy	7	2.82082e-12	7.16457e-04
+TurbDissipation	7	3.52110e-13	4.28647e-04
+
+Time=3.30000e+00	StepNumber=33	TimeStep=1.00000e-01	ExplicitTimeStep=3.39903e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	4.55205e-11	2.76960e-02
+Velocity	9	7.43759e-12	1.18947e-01
+TurbEnergy	7	3.07374e-12	6.92713e-04
+TurbDissipation	7	3.49140e-13	4.17819e-04
+
+Time=3.40000e+00	StepNumber=34	TimeStep=1.00000e-01	ExplicitTimeStep=3.38970e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	5.22915e-11	2.61557e-02
+Velocity	9	8.40837e-12	1.15986e-01
+TurbEnergy	7	3.07909e-12	6.32037e-04
+TurbDissipation	7	3.71711e-13	3.70365e-04
+
+Time=3.50000e+00	StepNumber=35	TimeStep=1.00000e-01	ExplicitTimeStep=3.37837e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	4.35177e-11	2.48181e-02
+Velocity	9	4.14813e-12	1.10188e-01
+TurbEnergy	7	3.27709e-12	6.05529e-04
+TurbDissipation	7	3.37527e-13	4.29638e-04
+
+Time=3.60000e+00	StepNumber=36	TimeStep=1.00000e-01	ExplicitTimeStep=3.36128e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	4.89315e-11	2.36240e-02
+Velocity	9	5.63567e-12	1.05584e-01
+TurbEnergy	7	3.51856e-12	5.43840e-04
+TurbDissipation	7	4.29263e-13	3.48861e-04
+
+Time=3.70000e+00	StepNumber=37	TimeStep=1.00000e-01	ExplicitTimeStep=3.35220e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	3.70896e-11	2.25742e-02
+Velocity	9	2.64867e-12	1.01748e-01
+TurbEnergy	6	9.08724e-11	5.47533e-04
+TurbDissipation	7	2.97886e-13	3.88768e-04
+
+Time=3.80000e+00	StepNumber=38	TimeStep=1.00000e-01	ExplicitTimeStep=3.33508e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	3.73195e-11	2.16181e-02
+Velocity	9	3.77246e-12	9.88457e-02
+TurbEnergy	6	5.50041e-11	4.72036e-04
+TurbDissipation	7	2.35113e-13	3.17166e-04
+
+Time=3.90000e+00	StepNumber=39	TimeStep=1.00000e-01	ExplicitTimeStep=3.32832e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	2.89795e-11	2.06860e-02
+Velocity	9	2.68264e-12	9.49169e-02
+TurbEnergy	6	3.63409e-11	4.62681e-04
+TurbDissipation	7	1.27753e-13	3.69633e-04
+
+Time=4.00000e+00	StepNumber=40	TimeStep=1.00000e-01	ExplicitTimeStep=3.31254e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	2.64327e-11	1.98226e-02
+Velocity	9	3.54114e-12	9.35216e-02
+TurbEnergy	6	3.91699e-11	4.06603e-04
+TurbDissipation	7	1.85578e-13	3.05191e-04
+
+Time=4.10000e+00	StepNumber=41	TimeStep=1.00000e-01	ExplicitTimeStep=3.30779e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	2.31364e-11	1.90290e-02
+Velocity	9	2.72152e-12	9.05629e-02
+TurbEnergy	6	2.60491e-11	3.95646e-04
+TurbDissipation	6	3.71155e-12	3.41862e-04
+
+Time=4.20000e+00	StepNumber=42	TimeStep=1.00000e-01	ExplicitTimeStep=3.29534e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	2.61891e-11	1.82315e-02
+Velocity	9	4.16395e-12	8.78979e-02
+TurbEnergy	6	2.79100e-11	3.87195e-04
+TurbDissipation	7	1.42547e-13	2.99833e-04
+
+Time=4.30000e+00	StepNumber=43	TimeStep=1.00000e-01	ExplicitTimeStep=3.29133e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	4.46495e-11	1.75134e-02
+Velocity	9	2.63809e-12	8.61640e-02
+TurbEnergy	6	2.25833e-11	3.66772e-04
+TurbDissipation	6	3.49056e-12	3.36535e-04
+
+Time=4.40000e+00	StepNumber=44	TimeStep=1.00000e-01	ExplicitTimeStep=3.28180e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	4.31055e-11	1.67317e-02
+Velocity	9	4.18800e-12	8.45314e-02
+TurbEnergy	6	2.62043e-11	3.40789e-04
+TurbDissipation	7	1.31920e-13	2.82208e-04
+
+Time=4.50000e+00	StepNumber=45	TimeStep=1.00000e-01	ExplicitTimeStep=3.27855e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	2.48008e-11	1.60541e-02
+Velocity	9	2.86081e-12	8.21353e-02
+TurbEnergy	6	2.36714e-11	3.32221e-04
+TurbDissipation	6	3.81352e-12	3.23111e-04
+
+Time=4.60000e+00	StepNumber=46	TimeStep=1.00000e-01	ExplicitTimeStep=3.27010e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	17	2.16983e-11	1.53399e-02
+Velocity	9	3.89582e-12	8.04676e-02
+TurbEnergy	6	2.51587e-11	3.25375e-04
+TurbDissipation	7	1.32487e-13	2.65785e-04
+
+Time=4.70000e+00	StepNumber=47	TimeStep=1.00000e-01	ExplicitTimeStep=3.26669e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	4.26982e-11	1.47082e-02
+Velocity	9	2.64591e-12	7.77615e-02
+TurbEnergy	6	2.03722e-11	3.14503e-04
+TurbDissipation	6	3.69726e-12	3.06374e-04
+
+Time=4.80000e+00	StepNumber=48	TimeStep=1.00000e-01	ExplicitTimeStep=3.26168e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	4.41854e-11	1.40366e-02
+Velocity	8	6.28265e-11	7.60398e-02
+TurbEnergy	6	1.91028e-11	3.16131e-04
+TurbDissipation	7	1.13303e-13	2.71616e-04
+
+Time=4.90000e+00	StepNumber=49	TimeStep=1.00000e-01	ExplicitTimeStep=3.25938e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	3.96850e-11	1.34712e-02
+Velocity	9	3.51067e-12	7.32091e-02
+TurbEnergy	6	3.17729e-11	3.09564e-04
+TurbDissipation	7	1.57400e-13	2.85433e-04
+
+Time=5.00000e+00	StepNumber=50	TimeStep=1.00000e-01	ExplicitTimeStep=3.25605e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	3.72088e-11	1.28553e-02
+Velocity	8	8.25101e-11	7.38059e-02
+TurbEnergy	6	9.06216e-12	2.72219e-04
+TurbDissipation	6	1.99138e-12	2.44709e-04
+
+Time=5.10000e+00	StepNumber=51	TimeStep=1.00000e-01	ExplicitTimeStep=3.25571e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	3.62482e-11	1.22871e-02
+Velocity	9	4.53004e-12	7.33615e-02
+TurbEnergy	6	2.15427e-11	3.05434e-04
+TurbDissipation	6	3.67666e-12	2.82632e-04
+
+Time=5.20000e+00	StepNumber=52	TimeStep=1.00000e-01	ExplicitTimeStep=3.25485e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	3.20914e-11	1.17338e-02
+Velocity	9	3.77673e-12	7.14709e-02
+TurbEnergy	6	9.62367e-12	2.61843e-04
+TurbDissipation	6	2.34738e-12	2.79353e-04
+
+Time=5.30000e+00	StepNumber=53	TimeStep=1.00000e-01	ExplicitTimeStep=3.25182e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	3.05226e-11	1.12474e-02
+Velocity	9	4.99365e-12	6.73022e-02
+TurbEnergy	6	1.79829e-11	2.64262e-04
+TurbDissipation	6	2.33784e-12	2.64255e-04
+
+Time=5.40000e+00	StepNumber=54	TimeStep=1.00000e-01	ExplicitTimeStep=3.25505e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	3.71827e-11	1.07162e-02
+Velocity	8	7.81893e-11	6.67721e-02
+TurbEnergy	6	1.11031e-11	2.30838e-04
+TurbDissipation	6	2.42171e-12	2.20046e-04
+
+Time=5.50000e+00	StepNumber=55	TimeStep=1.00000e-01	ExplicitTimeStep=3.25164e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	2.81389e-11	1.02280e-02
+Velocity	9	5.09701e-12	6.69114e-02
+TurbEnergy	6	1.92927e-11	2.65164e-04
+TurbDissipation	6	2.29455e-12	2.59879e-04
+
+Time=5.60000e+00	StepNumber=56	TimeStep=1.00000e-01	ExplicitTimeStep=3.25619e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	2.55852e-11	9.76425e-03
+Velocity	8	7.62006e-11	6.49987e-02
+TurbEnergy	6	1.16174e-11	2.18177e-04
+TurbDissipation	6	2.36672e-12	2.08067e-04
+
+Time=5.70000e+00	StepNumber=57	TimeStep=1.00000e-01	ExplicitTimeStep=3.25201e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	2.07136e-11	9.32208e-03
+Velocity	8	9.01218e-11	6.37779e-02
+TurbEnergy	6	1.86125e-11	2.35712e-04
+TurbDissipation	6	2.14440e-12	2.29227e-04
+
+Time=5.80000e+00	StepNumber=58	TimeStep=1.00000e-01	ExplicitTimeStep=3.25732e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	1.85987e-11	8.89418e-03
+Velocity	8	7.53042e-11	6.20116e-02
+TurbEnergy	6	9.27394e-12	2.08605e-04
+TurbDissipation	6	2.07617e-12	2.11806e-04
+
+Time=5.90000e+00	StepNumber=59	TimeStep=1.00000e-01	ExplicitTimeStep=3.25327e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	15	3.65235e-11	8.48900e-03
+Velocity	9	4.45390e-12	6.24344e-02
+TurbEnergy	6	1.59915e-11	2.27392e-04
+TurbDissipation	6	1.69455e-12	2.30691e-04
+
+Time=6.00000e+00	StepNumber=60	TimeStep=1.00000e-01	ExplicitTimeStep=3.25905e-03	NumCells=63992
+================================================================================
+Equation	Iterations	AlgResidual	FuncResidual
+Pressure	16	1.83173e-11	8.07393e-03
+Velocity	9	3.01824e-12	6.09300e-02
+TurbEnergy	6	6.94678e-12	2.00546e-04
+TurbDissipation	6	1.60665e-12	2.08532e-04
+

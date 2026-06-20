@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<FVPROJECT YAML="1">
+  <ProjID>6C3EF767-FA44-402B-98B4-7851B64DDEFF</ProjID>
+  <VersionID>36D31442-9D63-4C2C-A374-6709ECD4D2E4</VersionID>
+  <SceneID>6751D6A1-4B3A-430B-9AB9-1A6CD29B75A6</SceneID>
+  <CtrlID>EBA08B62-326D-43D7-9234-CCF02E2E984A</CtrlID>
+  <FormatVer>3</FormatVer>
+  <Steps>
+    <ITEM>
+      <Number>0</Number>
+      <Iteration>120</Iteration>
+      <Time>8</Time>
+      <Contents>HGBOSMV</Contents>
+    </ITEM>
+  </Steps>
+</FVPROJECT>
