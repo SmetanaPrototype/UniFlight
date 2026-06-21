@@ -116,6 +116,10 @@ class ballistics:
         print(round(time / parser.full_time * 100), "%", end="\r")
         if self.last_time != time:
             self.thrust = self.parser.get_thrust_from_time(time)
+            if time > parser.work_time[0]:
+                self.thrust = 0
+            # if time > 400 and time < 440:
+            #     self.thrust = parser.thrust[0] * 0.2
             self.mass = self.parser.get_mass_from_time(time)
             self.inertia = self.parser.get_inertia_from_time(time)
             self.center = self.parser.get_center_from_time(time)
@@ -131,8 +135,10 @@ class ballistics:
 
             self.attack = np.radians(self.get_attack_func(self.vel, time))
             self.G.calculate_CXY(self.vel, self.alt, self.attack)
-            self.attack += 10000*aeroelasticity2.aero_attack(self.G.CY, self.dypressure, time)
-            self.G.calculate_CXY(self.vel, self.alt, self.attack)
+            if time > parser.work_time[0]:
+                self.G.CY*=1.5
+            # self.attack += 10000*aeroelasticity2.aero_attack(self.G.CY, self.dypressure, time)
+            # self.G.calculate_CXY(self.vel, self.alt, self.attack)
             self.atm = atmo.atmosphere(self.alt)
             self.dencity = self.atm.get_density()
             self.wind = self.atm.get_wind()
@@ -345,12 +351,14 @@ def main():
     if sol.success:
         final_velocity = sol.y[2][-1]
         final_altitude = sol.y[3][-1]
+        final_longitude = sol.y[4][-1]
         final_angle = sol.y[1][-1] * 180 / np.pi
         final_attack = attack_list[-1] if attack_list else 0
 
         print("\n=== РЕЗУЛЬТАТЫ РАСЧЕТА ===")
         print(f"Конечная скорость: {final_velocity:.2f} м/с")
         print(f"Конечная высота: {final_altitude/1000:.2f} км")
+        print(f"Конечная дальность: {final_longitude/1000:.2f} км")
         print(f"Конечный угол траектории: {final_angle:.2f}°")
         print(f"Конечный угол атаки: {final_attack:.2f}°")
         print(f"Максимальный угол атаки: {max(attack_list):.2f}°")

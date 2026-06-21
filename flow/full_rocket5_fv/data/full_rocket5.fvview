@@ -130,17 +130,17 @@
       <Attenuation Linear="0" Quadratic="0"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT class="CSpaceObjectLayer" myid="0" GUID="394DD944-1FD0-4974-87B4-374D32390DFF" Visible="1" Clipped="0" Lit="1">
+  <OBJECT class="CSpaceObjectLayer" myid="0" GUID="0F2636C4-A9BE-4575-A399-EF48BD1543D0" Visible="1" Clipped="0" Lit="1">
     <Object>*-2.-2.0</Object>
   </OBJECT>
-  <OBJECT class="CObjectLayer" myid="1" GUID="D0C22D51-0073-4CE4-A416-58F596BDD43E" Visible="0" Clipped="0" Lit="1">
+  <OBJECT class="CObjectLayer" myid="1" GUID="E646539E-0B9D-45A8-98CD-DDBDF5F51A06" Visible="0" Clipped="0" Lit="1">
     <Object>*-2.-2.7</Object>
     <OBJECT class="CCommonAppearance" myid="0" Mode="WIRE">
       <Lines Color="00FFFF00" Width="3"/>
       <Fill Color="00808000" Alpha="100"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT class="CObjectLayer" myid="2" GUID="9003BBA0-47A6-4AFB-8E67-75F51E3CCE42" Visible="0" Clipped="0" Lit="1">
+  <OBJECT class="CObjectLayer" myid="2" GUID="9B1A7D8B-E221-4BEA-A003-BA26CF70B836" Visible="0" Clipped="0" Lit="1">
     <Object>*-2.-2.8</Object>
     <OBJECT class="CCommonAppearance" myid="0" Mode="WIRE">
       <Lines Color="00FFFF00" Width="3"/>
@@ -158,21 +158,21 @@
     </SaveData>
     <Chars>*-2.-2.-99</Chars>
   </OBJECT>
-  <OBJECT class="CPlaneEntity" myid="4" UIName="Plane #0" GUID="025DB47B-6421-4B6C-BFEA-02C79405DB24" shiftAlongNormal="0">
+  <OBJECT class="CPlaneEntity" myid="4" UIName="Plane #0" GUID="2F14A3D7-85A6-403F-8246-3DC58639C42D" shiftAlongNormal="0">
     <center x="-0.0077846215356487392" y="-0.01125736531020749" z="1.0658141036401503E-14"/>
     <normal x="1" y="0" z="0"/>
   </OBJECT>
-  <OBJECT class="CPlaneObjectLayer" myid="5" GUID="439906F3-C7F3-47AC-8F88-802865A1616F" Visible="1" Clipped="0" Lit="1" Clipper="0" Mirror="0">
+  <OBJECT class="CPlaneObjectLayer" myid="5" GUID="DD052A38-6C91-46B2-9F17-DA4C06CB32D9" Visible="1" Clipped="0" Lit="1" Clipper="0" Mirror="0">
     <Object>*-2.-4.4</Object>
     <OBJECT class="CCommonAppearance" myid="0" Mode="WIRE">
       <Lines Color="00FFFF00" Width="3"/>
       <Fill Color="00808000" Alpha="100"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT class="CCoordSystemLayer" myid="6" GUID="8D382D05-0038-4783-898A-3C27FB526DB7" Visible="1" Clipped="0" Lit="1" m_VPosition="eBottom" m_HPosition="eLeft" m_InOrigin="0" m_ViewportPart="0.16250000000000001">
+  <OBJECT class="CCoordSystemLayer" myid="6" GUID="367DF4DC-03CC-4E29-BEBE-27AA0ECF8C40" Visible="1" Clipped="0" Lit="1" m_VPosition="eBottom" m_HPosition="eLeft" m_InOrigin="0" m_ViewportPart="0.16250000000000001">
     <Object>*-2.-2.0</Object>
   </OBJECT>
-  <OBJECT class="CSolidGeometryLayer" myid="7" GUID="3308DFA7-78DC-45DD-9721-57F7F3036171" Visible="1" Clipped="1" Lit="1">
+  <OBJECT class="CSolidGeometryLayer" myid="7" GUID="6FC5792E-047A-4DEE-A5FC-157812CFC64F" Visible="1" Clipped="1" Lit="1">
     <Object>*-2.-2.0</Object>
     <Outlines Color="00FFFFFF" Width="4"/>
     <Outside UseInside="1">
@@ -180,11 +180,11 @@
     </Outside>
     <OBJECT class="CVariantView" myid="-2"/>
   </OBJECT>
-  <OBJECT class="CIniGridLayer" myid="8" GUID="F157662A-2258-4E86-A6E4-DEE97981E22E" Visible="0" Clipped="0" Lit="1" Surface="1">
+  <OBJECT class="CIniGridLayer" myid="8" GUID="917D0F27-DBA9-4E09-84BA-2E9C06F9ABD2" Visible="0" Clipped="0" Lit="1" Surface="1">
     <Object>*-2.-2.0</Object>
     <Lines Color="00FFFFFF" Width="1"/>
   </OBJECT>
-  <OBJECT class="CPlaneObjectLayer" myid="9" GUID="66CC792A-64D9-40C3-B2BB-5DE693725EC0" Visible="1" Clipped="0" Lit="1" Clipper="0" Mirror="0">
+  <OBJECT class="CPlaneObjectLayer" myid="9" GUID="792EFC89-972B-49ED-A3D1-6080BCD99CF2" Visible="1" Clipped="0" Lit="1" Clipper="0" Mirror="0">
     <Object>*-2.-2.9</Object>
     <OBJECT class="CCommonAppearance" myid="0" Mode="WIRE">
       <Lines Color="00FFFF00" Width="3"/>
@@ -275,7 +275,7 @@
     </Palette>
     <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="10" Size2="10"/>
   </OBJECT>
-  <OBJECT class="CSupergroupObjectLayer" myid="11" GUID="8528DA0A-8AC8-44CA-8D14-2375C366850E" Visible="1" Clipped="0" Lit="1">
+  <OBJECT class="CSupergroupObjectLayer" myid="11" GUID="D8BFDE2B-3910-4ACB-BB41-4B1F2E197BFE" Visible="1" Clipped="0" Lit="1">
     <Object>*-2.-2.10</Object>
   </OBJECT>
   <OBJECT class="CIntegralCharsLayer" myid="12">
@@ -289,7 +289,7 @@
     </SaveData>
     <Chars>*-2.-2.11</Chars>
   </OBJECT>
-  <OBJECT class="CSupergroupObjectLayer" myid="13" GUID="C82B3911-37AD-416E-9312-339AB247BED2" Visible="1" Clipped="0" Lit="1">
+  <OBJECT class="CSupergroupObjectLayer" myid="13" GUID="284F59BD-2F3B-45C7-BBFB-90A1E9BE38EF" Visible="1" Clipped="0" Lit="1">
     <Object>*-2.-2.12</Object>
   </OBJECT>
   <OBJECT class="CIntegralCharsLayer" myid="14">

@@ -97,14 +97,14 @@
       <Number>1000000</Number>
     </OBJECT>
     <OBJECT class="CFVTimeSpan" myid="-2" begin="0" end="8"/>
-    <OBJECT class="CSolverStopperResidual" myid="0" GUID="D13ED1B2-8E80-424D-A706-8451F1442A6D" Level="0" Averaging="COMMON" Color="00006312" Variable="*-2.-2.6.12" Name="Velocity">
+    <OBJECT class="CSolverStopperResidual" myid="0" GUID="DB2CD696-CD19-489B-89B9-F1B32CC50CB8" Level="0" Averaging="COMMON" Color="00006312" Variable="*-2.-2.6.12" Name="Velocity">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT class="CSolverStopperResidual" myid="1" GUID="916887B5-59BD-4910-B134-52CC33612A7B" Level="0" Averaging="COMMON" Color="004B4BF4" Variable="*-2.-2.6.16" Name="Pressure">
+    <OBJECT class="CSolverStopperResidual" myid="1" GUID="BB497C01-CCB1-4FD0-9402-C14B349E32C7" Level="0" Averaging="COMMON" Color="004B4BF4" Variable="*-2.-2.6.16" Name="Pressure">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>

@@ -52,7 +52,7 @@ boundary_conditions:
   -
     name: "EXTENDED_INLET"
     id: 1
-    object_id: BC39748E-5DAD-48A1-B7B0-A4FEE8C56B25
+    object_id: 081D39BA-DBF8-493B-8C96-FE0F40005304
     type: INLET
     variables:
       -
@@ -66,7 +66,7 @@ boundary_conditions:
   -
     name: "EXTENDED_OUTLET"
     id: 2
-    object_id: 06C02BB6-E442-40A1-A3E8-E4EDC41772FB
+    object_id: AAF13B4F-D992-490C-A096-24F7DE59B636
     type: FREEOUTLET
     variables:
       -
@@ -78,7 +78,7 @@ boundary_conditions:
   -
     name: "EXTENDED_NONREFLECT"
     id: 3
-    object_id: 29CF86BE-D81C-4F49-BF5B-3214E6789076
+    object_id: A1D45E41-D14B-44C5-87C3-869C53A6BB80
     type: NONREFLECT
     variables:
       -

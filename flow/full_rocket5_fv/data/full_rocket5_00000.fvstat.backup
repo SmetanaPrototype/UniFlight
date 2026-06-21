@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<FVSTATUS UIName="VarStatus" timeIter="50" current="3.1499381919819074" timeStep="0.061117721853009094" expTimeStep="0.0061117721853009097" surfTimeStep="3.4028234663852886E+38" difTimeStep="59909.089518202556" slideTimeStep="3.4028234663852886E+38" filmTimeStep="3.4028234663852886E+38" ownIcingTime="3.1499381919819074" filmFlowTime="0" beadgrowthTimeStep="0" dispCrystBlockActivated="0" totalCells="97576" calcCells="97018" totalCellsOBL="0" calcCellsOBL="0" expTimeStepFSI="0">
+<FVSTATUS UIName="VarStatus" timeIter="50" current="3.1499381923997944" timeStep="0.061117721207600603" expTimeStep="0.0061117721207600605" surfTimeStep="3.4028234663852886E+38" difTimeStep="59909.089465527999" slideTimeStep="3.4028234663852886E+38" filmTimeStep="3.4028234663852886E+38" ownIcingTime="3.1499381923997944" filmFlowTime="0" beadgrowthTimeStep="0" dispCrystBlockActivated="0" totalCells="97506" calcCells="96948" totalCellsOBL="0" calcCellsOBL="0" expTimeStepFSI="0">
   <UseOld Grid="1" Mask="1" Data="1"/>
   <eqResiduals>
-    <ITEM Step="50" Iters="20" LinRes="5.5911638755876435E-11" EqRes="0.025007207160154209" MaxEqRes="3.4139650432757196" Name="Pressure" IsOBL="0">
+    <ITEM Step="50" Iters="21" LinRes="3.6061054229860952E-11" EqRes="0.024843065205068935" MaxEqRes="3.4139650432762458" Name="Pressure" IsOBL="0">
       <Var BlockType="CMotionProcess" IDPhase="5" IDVar="PRES" Size="1" IDModel="6"/>
     </ITEM>
-    <ITEM Step="50" Iters="7" LinRes="2.0598415258605056E-12" EqRes="0.1364428605639367" MaxEqRes="0.011118135669645639" Name="Velocity" IsOBL="0">
+    <ITEM Step="50" Iters="7" LinRes="2.2154475349397843E-12" EqRes="0.13640323568753029" MaxEqRes="0.011118135669077154" Name="Velocity" IsOBL="0">
       <Var BlockType="CMotionProcess" IDPhase="5" IDVar="VEL" Size="3" IDModel="6"/>
     </ITEM>
   </eqResiduals>
   <stopperData>
-    <ITEM Stopper="*-2.-5.-5.1">
-      <History Mode="BY_TIME" Iterations="1" Time="0" Min="0.024208577544606018" Max="1" MinAvg="0.024208577544606018" MaxAvg="1">
+    <ITEM Stopper="*-2.-5.-5.2">
+      <History Mode="BY_TIME" Iterations="1" Time="0" Min="31545.204230708558" Max="71407.185689691076" MinAvg="31545.204230708558" MaxAvg="71407.185689691076">
         <Data>
-          <ITEM ID="50" Time="3.1499381919819074" Value="0.025007207160154209"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.0">
-      <History Mode="BY_TIME" Iterations="1" Time="0" Min="0.096871396504555674" Max="1" MinAvg="0.096871396504555674" MaxAvg="1">
-        <Data>
-          <ITEM ID="50" Time="3.1499381919819074" Value="0.1364428605639367"/>
+          <ITEM ID="50" Time="3.1499381923997944" Value="43593.266867092032"/>
         </Data>
       </History>
     </ITEM>
     <ITEM Stopper="*-2.-5.-5.3">
-      <History Mode="BY_TIME" Iterations="1" Time="0" Min="-631.87950146850199" Max="2267.5124910685117" MinAvg="-631.87950146850199" MaxAvg="2267.5124910685117">
+      <History Mode="BY_TIME" Iterations="1" Time="0" Min="-631.8795014534553" Max="2267.5124590312043" MinAvg="-631.8795014534553" MaxAvg="2267.5124590312043">
         <Data>
-          <ITEM ID="50" Time="3.1499381919819074" Value="884.68310246952751"/>
+          <ITEM ID="50" Time="3.1499381923997944" Value="884.6306343969336"/>
         </Data>
       </History>
     </ITEM>
-    <ITEM Stopper="*-2.-5.-5.2">
-      <History Mode="BY_TIME" Iterations="1" Time="0" Min="31545.204230712217" Max="71407.185689589169" MinAvg="31545.204230712217" MaxAvg="71407.185689589169">
+    <ITEM Stopper="*-2.-5.-5.0">
+      <History Mode="BY_TIME" Iterations="1" Time="0" Min="0.096871608741073825" Max="1" MinAvg="0.096871608741073825" MaxAvg="1">
         <Data>
-          <ITEM ID="50" Time="3.1499381919819074" Value="43593.224875771775"/>
+          <ITEM ID="50" Time="3.1499381923997944" Value="0.13640323568753029"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.1">
+      <History Mode="BY_TIME" Iterations="1" Time="0" Min="0.02420996590128419" Max="1" MinAvg="0.02420996590128419" MaxAvg="1">
+        <Data>
+          <ITEM ID="50" Time="3.1499381923997944" Value="0.024843065205068935"/>
         </Data>
       </History>
     </ITEM>
@@ -42,67 +42,67 @@
   <variableData/>
   <massvofData/>
   <OBJECT class="CActivationStatus" myid="0">
-    <Context>*-2.-5.-10</Context>
-    <StructPath>Start</StructPath>
-    <LastTime>-2</LastTime>
-    <LastIter>-2</LastIter>
-  </OBJECT>
-  <OBJECT class="CActivationStatus" myid="1">
     <Context>*-2.-5.-3</Context>
     <StructPath>Balancing</StructPath>
     <LastTime>-2</LastTime>
     <LastIter>-2</LastIter>
   </OBJECT>
-  <OBJECT class="CActivationStatus" myid="2">
-    <Context>*-2.-2.2.-2</Context>
-    <StructPath>Activation</StructPath>
-    <LastTime>-2</LastTime>
-    <LastIter>-2</LastIter>
-  </OBJECT>
-  <OBJECT class="CActivationStatus" myid="3">
+  <OBJECT class="CActivationStatus" myid="1">
     <Context>*-2.-2.2.17</Context>
     <StructPath>Activation</StructPath>
     <LastTime>0</LastTime>
     <LastIter>0</LastIter>
   </OBJECT>
-  <OBJECT class="CActivationStatus" myid="4">
+  <OBJECT class="CActivationStatus" myid="2">
     <Context>*-2.-2.2.25</Context>
     <StructPath>Activation</StructPath>
     <LastTime>0</LastTime>
     <LastIter>0</LastIter>
   </OBJECT>
-  <OBJECT class="CActivationStatus" myid="5">
+  <OBJECT class="CActivationStatus" myid="3">
+    <Context>*-2.-5.-10</Context>
+    <StructPath>Start</StructPath>
+    <LastTime>-2</LastTime>
+    <LastIter>-2</LastIter>
+  </OBJECT>
+  <OBJECT class="CActivationStatus" myid="4">
     <Context>*-2.-2.-97.-3</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>2.5998412211527273</LastTime>
+    <LastTime>2.5998412205758243</LastTime>
+    <LastIter>41</LastIter>
+  </OBJECT>
+  <OBJECT class="CActivationStatus" myid="5">
+    <Context>*-2.-2.-97.-2</Context>
+    <StructPath>Activation</StructPath>
+    <LastTime>2.5998412205758243</LastTime>
     <LastIter>41</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="6">
-    <Context>*-2.-2.-97.-2</Context>
-    <StructPath>Activation</StructPath>
-    <LastTime>2.5998412211527273</LastTime>
-    <LastIter>41</LastIter>
-  </OBJECT>
-  <OBJECT class="CActivationStatus" myid="7">
     <Context>*-2.-2.-97.-5</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>3.0888204701288982</LastTime>
+    <LastTime>3.0888204711921938</LastTime>
     <LastIter>49</LastIter>
   </OBJECT>
-  <OBJECT class="CActivationStatus" myid="8">
-    <Context>*-2.-2.2.-3</Context>
+  <OBJECT class="CActivationStatus" myid="7">
+    <Context>*-2.-2.1.-3</Context>
     <StructPath>Activation</StructPath>
     <LastTime>-2</LastTime>
     <LastIter>-2</LastIter>
   </OBJECT>
-  <OBJECT class="CActivationStatus" myid="9">
+  <OBJECT class="CActivationStatus" myid="8">
     <Context>*-2.-2.1.-2</Context>
     <StructPath>Activation</StructPath>
     <LastTime>-2</LastTime>
     <LastIter>-2</LastIter>
   </OBJECT>
+  <OBJECT class="CActivationStatus" myid="9">
+    <Context>*-2.-2.2.-3</Context>
+    <StructPath>Activation</StructPath>
+    <LastTime>-2</LastTime>
+    <LastIter>-2</LastIter>
+  </OBJECT>
   <OBJECT class="CActivationStatus" myid="10">
-    <Context>*-2.-2.1.-3</Context>
+    <Context>*-2.-2.2.-2</Context>
     <StructPath>Activation</StructPath>
     <LastTime>-2</LastTime>
     <LastIter>-2</LastIter>

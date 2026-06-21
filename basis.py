@@ -23,7 +23,7 @@ class density(enum.Enum):
 
 mode_num = 3
 
-timestep = 1
+timestep = 2
 lenstep  = 0.1
 
 young_modulus = 71000000000

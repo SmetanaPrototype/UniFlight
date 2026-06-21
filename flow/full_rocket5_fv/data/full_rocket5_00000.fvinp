@@ -265,7 +265,7 @@
     <OBJECT class="CFvValueConstant" myid="0" Constant="0.01"/>
     <OBJECT class="CFvValueConstant" myid="1" Constant="1"/>
   </OBJECT>
-  <OBJECT class="CSpaceEntity" myid="0" GUID="33DA2FA9-7919-41F2-A3E3-D617DC31C95D"/>
+  <OBJECT class="CSpaceEntity" myid="0" GUID="F098E8AC-D72A-46E3-9F4D-060245ECEA7A"/>
   <OBJECT class="CSubregion" myid="1" UIName="Outside">
     <Kind>OUTSIDE</Kind>
     <Model>0</Model>
@@ -388,7 +388,7 @@
         <Variable>*-2.-2.6.12</Variable>
       </OBJECT>
     </OBJECT>
-    <OBJECT class="CIniDataTri" myid="13" UIName="Init. condition #0" GUID="6201729E-46F3-4B0E-BE32-C24686B02D17" Type="WholeCell">
+    <OBJECT class="CIniDataTri" myid="13" UIName="Init. condition #0" GUID="91AD40CC-FDE4-44C1-BCEA-FD48551F88CF" Type="WholeCell">
       <ViewObject>*-2.-2.0</ViewObject>
       <IniData>*-2.-2.6.0</IniData>
     </OBJECT>
@@ -489,7 +489,7 @@
         <OBJECT class="CFvValueConstant" myid="3" Constant="0"/>
       </OBJECT>
     </OBJECT>
-    <OBJECT class="CMovingBody" myid="17" UIName="Тело 3" GUID="B7636BD5-2073-4933-A41F-4907ABCF3876" InsideOut="0" FormatVersion="1">
+    <OBJECT class="CMovingBody" myid="17" UIName="Тело 3" GUID="CD47F5E9-5CE2-4388-B450-5A735C6B8544" InsideOut="0" FormatVersion="1">
       <Object>*-2.-2.7</Object>
       <MarkCellsMode>BY_BOX</MarkCellsMode>
       <Activation>
@@ -640,7 +640,7 @@
       <OBJECT class="CFvValueConstant" myid="36" Constant="0"/>
       <OBJECT class="CFvValueConstant" myid="37" Constant="0"/>
     </OBJECT>
-    <OBJECT class="CMovingBody" myid="25" UIName="Тело 2" GUID="C8946A35-E663-463D-B6DF-E5C47E528E9C" InsideOut="0" FormatVersion="1">
+    <OBJECT class="CMovingBody" myid="25" UIName="Тело 2" GUID="3BBF3B43-3918-4967-B313-A024BD4FC6AF" InsideOut="0" FormatVersion="1">
       <Object>*-2.-2.8</Object>
       <MarkCellsMode>BY_BOX</MarkCellsMode>
       <Activation>
@@ -992,7 +992,7 @@
     <OBJECT class="CFVScalarVariable" myid="75" IDVar="VELGRADDENSITY" IDNum="64" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="56" IBVar="-1"/>
     <OBJECT class="CFVScalarVariable" myid="76" IDVar="INTPHASE_MOUNT_CELL" IDNum="61" MainVar="0" Obj="*-2.-2.5.1.0" Flag="1" avType="AV_NOTSET" ICell="57" IBVar="-1"/>
   </OBJECT>
-  <OBJECT class="CMeshEntity" myid="7" UIName="Тело 3" GUID="37B9528C-885D-461B-9A14-ACF1791AFC97">
+  <OBJECT class="CMeshEntity" myid="7" UIName="Тело 3" GUID="1B774FBB-2EF5-427C-8B0F-006309A2706E">
     <Location>
       <Origin x="0" y="0" z="0"/>
       <Ort0 x="1" y="0" z="0"/>
@@ -1002,7 +1002,7 @@
     </Location>
     <Source>E:\UniFlight\flow\\full_rocket5_fv\data/Тело 3.vtk</Source>
   </OBJECT>
-  <OBJECT class="CMeshEntity" myid="8" UIName="Тело 2" GUID="528748ED-22F7-42AA-B8DB-F0EEF6B6C5D2">
+  <OBJECT class="CMeshEntity" myid="8" UIName="Тело 2" GUID="8EE2378A-7B09-4A82-90E4-F4A5C830FA66">
     <Location>
       <Origin x="0" y="0" z="0"/>
       <Ort0 x="1" y="0" z="0"/>
@@ -1016,7 +1016,7 @@
     <center x="0.00050000000000000001" y="0.00050000000000000001" z="0.01"/>
     <normal x="0" y="0" z="1"/>
   </OBJECT>
-  <OBJECT class="CSupergroupEntity" myid="10" UIName="Supergroup #0" GUID="A8D5EB6A-7FC5-431C-AE41-7AC958006549">
+  <OBJECT class="CSupergroupEntity" myid="10" UIName="Supergroup #0" GUID="CC49462B-9706-4792-AF30-B5CF94E1F28B">
     <GroupSets>
       <ITEM GeomOwner="*-2.-2.7">
         <Groups>
@@ -1058,7 +1058,7 @@
     <OBJECT class="CFvValueConstant" myid="1" Constant="0"/>
     <OBJECT class="CFvValueConstant" myid="2" Constant="0"/>
   </OBJECT>
-  <OBJECT class="CSupergroupEntity" myid="12" UIName="Supergroup #1" GUID="2325B2DB-28F7-4964-BD92-A0ED5C4DA474">
+  <OBJECT class="CSupergroupEntity" myid="12" UIName="Supergroup #1" GUID="6E6D36C9-0187-492D-923F-AFBEED07A70A">
     <GroupSets>
       <ITEM GeomOwner="*-2.-2.7">
         <Groups>

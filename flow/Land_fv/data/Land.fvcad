@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<FVCAD>
+  <file_format>2</file_format>
+  <head_version></head_version>
+  <scene_version></scene_version>
+  <geom_version>767693F6-8665-42C2-AF8B-5E4D2C90D5B8</geom_version>
+  <cad_objects>
+    <ITEM cad_id="0E21CAB5-1866-4124-A2B3-DEC499FA58E6" fvobject_ref="*-2.-4.11"/>
+    <ITEM cad_id="0F465734-DA7A-423E-8738-972C78831E7E" fvobject_ref="*-2.-2.8"/>
+    <ITEM cad_id="3A441CD5-D046-4144-B091-4258D282E807" fvobject_ref="*-2.-2.-97.2"/>
+    <ITEM cad_id="52338CD4-01C1-4C8E-8807-30BABDA21D77" fvobject_ref="*-2.-2.10"/>
+    <ITEM cad_id="6C915ADE-D646-43D4-9837-BD397AA97D07" fvobject_ref="*-2.-5.-5.5"/>
+    <ITEM cad_id="A3659819-C06E-40A1-8932-64A566FBB4DA" fvobject_ref="*-2.-4.14"/>
+    <ITEM cad_id="C41E399C-D471-49D8-B8A5-67759338A328" fvobject_ref="*-2.-2.9"/>
+    <ITEM cad_id="D85A59CD-2649-427F-984D-DC56E7FF4D9F" fvobject_ref="*-2.-5.-5.4"/>
+  </cad_objects>
+  <palette_color_counter>2</palette_color_counter>
+  <planes_map>
+    <ITEM cad_id="1" fvobject_id="8" in_post="0"/>
+    <ITEM cad_id="2" fvobject_id="9" in_post="0"/>
+    <ITEM cad_id="7" fvobject_id="10" in_post="0"/>
+  </planes_map>
+  <sensors_map/>
+  <bodies_map>
+    <ITEM cad_id="1" fvobject_id="17"/>
+  </bodies_map>
+</FVCAD>
