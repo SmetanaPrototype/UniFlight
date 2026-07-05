@@ -6,8 +6,6 @@ import attack
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.integrate import solve_ivp
-import scipy.constants as earth
-import aeroelasticity2
 
 # Глобальные списки для записи данных
 Cbs_list = []
@@ -39,22 +37,22 @@ Csb_list = [[] for _ in range(basis.mode_num)]
 parser = rp.rocket_parser()
 rocketname = basis.current_rocket
 
-# Загрузка данных жесткости
-# f_stiffness = [0] * basis.mode_num
-# f_stiffness_diff = [0] * basis.mode_num
+#Загрузка данных жесткости
+f_stiffness = [0] * basis.mode_num
+f_stiffness_diff = [0] * basis.mode_num
 
-# oscillations_file = "output/"+rocketname+"_oscillations.csv"
-# f_stiffness[0] = basis.read_array_from_csv(oscillations_file, "form_1")
-# f_stiffness[1] = basis.read_array_from_csv(oscillations_file, "form_2")
-# f_stiffness[2] = basis.read_array_from_csv(oscillations_file, "form_3")
-# f_stiffness_diff[0] = basis.read_array_from_csv(oscillations_file, "difform_1")
-# f_stiffness_diff[1] = basis.read_array_from_csv(oscillations_file, "difform_2")
-# f_stiffness_diff[2] = basis.read_array_from_csv(oscillations_file, "difform_3")
-# coord_stiffness = basis.read_array_from_csv(oscillations_file, "length")
+oscillations_file = "output/"+rocketname+"_oscillations.csv"
+f_stiffness[0] = basis.read_array_from_csv(oscillations_file, "form_1")
+f_stiffness[1] = basis.read_array_from_csv(oscillations_file, "form_2")
+f_stiffness[2] = basis.read_array_from_csv(oscillations_file, "form_3")
+f_stiffness_diff[0] = basis.read_array_from_csv(oscillations_file, "difform_1")
+f_stiffness_diff[1] = basis.read_array_from_csv(oscillations_file, "difform_2")
+f_stiffness_diff[2] = basis.read_array_from_csv(oscillations_file, "difform_3")
+coord_stiffness = basis.read_array_from_csv(oscillations_file, "length")
 
-# freq_file = "output/"+rocketname+"_frequency.csv"
-# freq_time = basis.read_array_from_csv(freq_file, "time")
-# freq_mass = basis.read_array_from_csv(freq_file, "freq_mass_1")
+freq_file = "output/"+rocketname+"_frequency.csv"
+freq_time = basis.read_array_from_csv(freq_file, "time")
+freq_mass = basis.read_array_from_csv(freq_file, "freq_mass_1")
 
 
 def get_attack_from_coefs(vel, time):
@@ -116,8 +114,8 @@ class ballistics:
         print(round(time / parser.full_time * 100), "%", end="\r")
         if self.last_time != time:
             self.thrust = self.parser.get_thrust_from_time(time)
-            if time > parser.work_time[0]:
-                self.thrust = 0
+            # if time > parser.work_time[0]:
+            #     self.thrust = 0
             # if time > 400 and time < 440:
             #     self.thrust = parser.thrust[0] * 0.2
             self.mass = self.parser.get_mass_from_time(time)
@@ -135,8 +133,8 @@ class ballistics:
 
             self.attack = np.radians(self.get_attack_func(self.vel, time))
             self.G.calculate_CXY(self.vel, self.alt, self.attack)
-            if time > parser.work_time[0]:
-                self.G.CY*=1.5
+            # if time > parser.work_time[0]:
+            #     self.G.CY*=1.5
             # self.attack += 10000*aeroelasticity2.aero_attack(self.G.CY, self.dypressure, time)
             # self.G.calculate_CXY(self.vel, self.alt, self.attack)
             self.atm = atmo.atmosphere(self.alt)
@@ -178,35 +176,34 @@ class ballistics:
             thrust_list.append(self.thrust)
             aog_list.append(self.atm.get_AOG())
             mass_list.append(self.mass)
-            # mach_list.append(self.mach)
 
-            # Cbs_list.append(-self.thrust * self.parser.thrust_ratio / self.mass)
-            # Cyw_list.append(-(self.thrust + self.G.CY * self.dypressure * self.parser.maximum_area) / self.mass)
-            # Cww_list.append((-self.G.CY * self.dypressure * self.parser.maximum_area * self.first_point) / self.inertia)
-            # Cyy_list.append((self.G.CY * self.dypressure * self.parser.maximum_area) / (self.mass * self.vel))
-            # Cwy_list.append((self.G.CY * self.dypressure * self.parser.maximum_area * self.first_point) / self.inertia / self.vel)
-            # Cwb_list.append(self.thrust * self.parser.thrust_ratio * self.second_point / self.inertia)
+            Cbs_list.append(-self.thrust * self.parser.thrust_ratio / self.mass)
+            Cyw_list.append(-(self.thrust + self.G.CY * self.dypressure * self.parser.maximum_area) / self.mass)
+            Cww_list.append((-self.G.CY * self.dypressure * self.parser.maximum_area * self.first_point) / self.inertia)
+            Cyy_list.append((self.G.CY * self.dypressure * self.parser.maximum_area) / (self.mass * self.vel))
+            Cwy_list.append((self.G.CY * self.dypressure * self.parser.maximum_area * self.first_point) / self.inertia / self.vel)
+            Cwb_list.append(self.thrust * self.parser.thrust_ratio * self.second_point / self.inertia)
 
-            # for k in range(basis.mode_num):
-            #     Csw_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia *
-            #                       ((self.second_point - self.parser.rocket_length) * f_stiffness_diff[k][-1] + f_stiffness[k][-1]))
-            #     Csy_list[k].append(self.thrust * self.parser.thrust_ratio * f_stiffness_diff[k][-1] / self.mass)
-            #     Csb_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia * f_stiffness[k][-1])
+            for k in range(basis.mode_num):
+                Csw_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia *
+                                  ((self.second_point - self.parser.rocket_length) * f_stiffness_diff[k][-1] + f_stiffness[k][-1]))
+                Csy_list[k].append(self.thrust * self.parser.thrust_ratio * f_stiffness_diff[k][-1] / self.mass)
+                Csb_list[k].append(self.thrust * self.parser.thrust_ratio / self.inertia * f_stiffness[k][-1])
 
-            # stream_ratio = -self.parser.maximum_area * self.dypressure
-            # cy_integral = [0, 0, 0]
-            # delta_stiffness = 1
-            # mass_s = basis.get_y(time, freq_time, freq_mass)
+            stream_ratio = -self.parser.maximum_area * self.dypressure
+            cy_integral = [0, 0, 0]
+            delta_stiffness = 1
+            mass_s = basis.get_y(time, freq_time, freq_mass)
 
-            # for f, scoord in enumerate(coord_stiffness):
-            #     dcy = self.G.get_cya_from_coord(scoord)
-            #     cy_integral[0] += dcy * f_stiffness_diff[0][f] * (scoord - self.second_point) / delta_stiffness
-            #     cy_integral[1] += dcy * f_stiffness_diff[0][f] / delta_stiffness
-            #     cy_integral[2] += dcy * f_stiffness[0][f] * f_stiffness_diff[0][f] / delta_stiffness
+            for f, scoord in enumerate(coord_stiffness):
+                dcy = self.G.get_cya_from_coord(scoord)
+                cy_integral[0] += dcy * f_stiffness_diff[0][f] * (scoord - self.second_point) / delta_stiffness
+                cy_integral[1] += dcy * f_stiffness_diff[0][f] / delta_stiffness
+                cy_integral[2] += dcy * f_stiffness[0][f] * f_stiffness_diff[0][f] / delta_stiffness
 
-            # CswQ_list.append(stream_ratio / self.inertia * cy_integral[0])
-            # CsyQ_list.append(stream_ratio / self.mass * cy_integral[1])
-            # CssQ_list.append(stream_ratio / mass_s * cy_integral[2])
+            CswQ_list.append(stream_ratio / self.inertia * cy_integral[0])
+            CsyQ_list.append(stream_ratio / self.mass * cy_integral[1])
+            CssQ_list.append(stream_ratio / mass_s * cy_integral[2])
 
     def delta_velocity(self, time):
         self.update_params(time)

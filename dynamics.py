@@ -89,7 +89,10 @@ def Cvw_t(time):
 
 
 def velocity_t(time):
-    return basis.get_y(time, const_time, velocity)
+    y = basis.get_y(time, const_time, velocity)
+    if y < 0.01:
+        y = 1
+    return y
 
 
 def Wind_t(time):
@@ -125,17 +128,24 @@ def CssQ_t(time):
 
 
 # control coefficients
-a0 = 4
-a1 = 2
-a2 = 0.0004
+a0 = 1 #4
+a1 = 1.7 #2
+a2 = 0.0004 # 3-5e-4
 a3 = 10 * a2
 t1 = 0.38
 t2 = 0.04
 
+# a0 = 0
+# a1 = 0
+# a2 = 0
+# a3 = 10 * a2
+# t1 = 0
+# t2 = 1
+
 # constants
 work_time = parser.get_work_time()
 dempher = 0.06
-h = 2 / (2 * np.pi * freq_t(work_time[0], 2) * np.sqrt(1 + dempher * dempher))
+h = dempher#2 / (2 * np.pi * freq_t(work_time[0], 2) * np.sqrt(1 + dempher * dempher))
 
 
 def calculate_parameters(include_oscillations, include_aerostiffness):
@@ -157,6 +167,7 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
     ds = [f_stiffness_diff[0][0], f_stiffness_diff[1][0], f_stiffness_diff[2][0]]
     dds = basis.mode_num * [0]
     t = 0
+    attack = 0
 
     pitch_vector = []
     velocity_vector = []
@@ -164,10 +175,11 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
     cotroL_sec_vector = []
     time_vector = []
     zero_line = []
+    attck_vector = []
 
-    while t < work_time[0]:
+    while t < 100:
 
-        dv = -Cvw_t(t) * w - Cvv_t(t) * v - Cvb_t(t) * uc
+        dv = +Cvw_t(t) * w - Cvv_t(t) * v - Cvb_t(t) * uc # первый -
         ddw = -Cww_t(t) * w - Cwv_t(t) * v - Cwb_t(t) * uc
 
         dv += Cvv_t(t) * Wind_t(t)
@@ -175,12 +187,10 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
 
         if include_oscillations:
             for ci in range(basis.mode_num):
+                fre = freq_t(t, ci)
                 dv += Csv_t(t, ci) * s[ci]
                 ddw += Csw_t(t, ci) * s[ci]
-                fre = freq_t(t, ci) * (2 * np.pi)
-                dds[ci] = (
-                    Csb_t(t, ci) * uc - pow(fre, 2) * s[ci] - 2 * dempher * fre * ds[ci]
-                )
+                dds[ci] = Csb_t(t, ci) * uc - pow(fre, 2) * s[ci] - dempher * fre * ds[ci]/np.pi
                 if ci == 0 and include_aerostiffness:
                     dv += CsvQ_t(t) * s[0]
                     ddw += CswQ_t(t) * s[0]
@@ -200,7 +210,10 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
         t += h
         duc += h * dduc
         uc += h * duc
-
+        # uc = (Cwv_t(t)*Cvw_t(t) - Cww_t(t)*Cvv_t(t))/(Cwb_t(t)*Cvw_t(t) - Cww_t(t)*Cvb_t(t))* Wind_t(t)
+        # w = (Cvv_t(t)*Wind_t(t)-Cvb_t(t)*uc)/Cvw_t(t)
+        # y = (uc-a0*w)/a2
+        attack = w + (Wind_t(t)-v)/velocity_t(t)
         if uc > 7 / 57.3:
             uc = 7 / 57.3
 
@@ -213,39 +226,45 @@ def calculate_parameters(include_oscillations, include_aerostiffness):
             movement_vector.append(float(y))
             cotroL_sec_vector.append(float(uc * 57.3))
             time_vector.append(float(t))
+            attck_vector.append(float(attack))
 
             zero_line.append(float(0))
 
         # destroying
         if w * 57.3 > 5:
+            print("Destroying!")
             break
 
-    plt.subplot(4, 1, 1)
-    plt.plot(time_vector, velocity_vector)
-    plt.ylabel("Скорость(t), м/c", color="gray")
-    plt.plot(time_vector, zero_line)
-    plt.grid(True)
+    # plt.subplot(4, 1, 1)
+    # plt.plot(time_vector, velocity_vector)
+    # plt.ylabel("Скорость(t), м/c", color="gray")
+    # plt.plot(time_vector, zero_line)
+    # plt.grid(True)
 
-    plt.subplot(4, 1, 2)
-    plt.plot(time_vector, pitch_vector)
-    plt.ylabel("Угол (t), град", color="gray")
-    plt.plot(time_vector, zero_line)
-    plt.grid(True)
+    # plt.subplot(4, 1, 2)
+    # plt.plot(time_vector, pitch_vector)
+    # plt.ylabel("Угол (t), град", color="gray")
+    # plt.plot(time_vector, zero_line)
+    # plt.grid(True)
 
-    plt.subplot(4, 1, 3)
-    plt.plot(time_vector, movement_vector)
-    plt.ylabel("Перемещение(t), м", color="gray")
-    plt.plot(time_vector, zero_line)
-    plt.grid(True)
+    # plt.subplot(4, 1, 3)
+    # plt.plot(time_vector, movement_vector)
+    # plt.ylabel("Угол атаки, град", color="gray")
+    # plt.plot(time_vector, zero_line)
+    # plt.grid(True)
 
-    plt.subplot(4, 1, 4)
+    # plt.subplot(4, 1, 4)
     plt.plot(time_vector, cotroL_sec_vector)
     plt.ylabel("Поворот ОУ(t), град", color="gray")
     plt.plot(time_vector, zero_line)
     plt.grid(True)
+    print(max(cotroL_sec_vector))
 
 # on/off oscillations & aerostiffness
 calculate_parameters(False, False)
+# plt.show()
 calculate_parameters(True, False)
+# plt.show()
 calculate_parameters(True, True)
 plt.show()
+

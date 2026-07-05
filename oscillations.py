@@ -54,7 +54,7 @@ freqmass_vector_2 = []
 freqmass_vector_3 = []
 total_iterations = 0
 
-time_vector = [t for t in range(0, 80+1, basis.timestep)]
+time_vector = [t for t in range(0, 60, basis.timestep)]
 ver_mass_vector = [parser.changed_mass(ti) for ti in time_vector]
 total_iterations = len(ver_mass_vector)
 
@@ -70,7 +70,6 @@ custom_lines = [
 ]
 
 plt.figure(figsize=(8, 8))
-
 def output(parser):
    """Save results to file"""
    rocketname = parser.name
@@ -234,6 +233,7 @@ for mo, mass in enumerate(ver_mass_vector):
        ([1, 0.68, 0.68], [1, 0, 0]),
        ([0.8, 0.8, 0.8], [0, 0, 0])
    ]
+
 
    for i in range(basis.mode_num):
        f_stiffness[i] = calculate_form(i, mo*basis.timestep)
