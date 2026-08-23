@@ -5,7 +5,7 @@ import rocket_parser as rp
 import numpy as np
 import basis
 import atmosphere as atmo
-import aeroelasticity
+# import aeroelasticity
 
 class Element:
     def __init__(self):
@@ -577,7 +577,7 @@ class UnionStream(DragForce, LiftForce):
         return basis.get_y(x, self.lengthprofile, self.liftprofile)
 
 def loc_calc():
-    parser = rp.rocket_parser()
+    parser = rp.Rocket_parser()
     G = UnionStream()
     G.set_elnumber(parser.get_block_number() + 1)
     G.set_diameter(parser.get_part_diameters())
@@ -607,7 +607,8 @@ def loc_calc():
 
 
 def main():
-    parser = rp.rocket_parser()
+    parser = rp.Rocket_parser()
+    parser.get_data(is_booster = False)
     G = UnionStream()
     G.set_elnumber(parser.get_block_number() + 1)
     G.set_diameter(parser.get_part_diameters())

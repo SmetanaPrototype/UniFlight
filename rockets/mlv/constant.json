@@ -1,0 +1,30 @@
+{
+  "name": "mlv",
+  "type": "tandem",
+  "block_number": 2,
+  "payload_mass": 16000,
+  "block_mass": [
+    340000,
+    29000
+  ],
+  "components_ratio": 2.4,
+  "thrust_ratio": 0.7,
+  "exhaust_velocity": [
+    2992,
+    3218
+  ],
+  "thrust": [
+    7161000,
+    890000
+  ],
+  "structural_values": [
+    12.1,
+    13.1
+  ],
+  "fuel": "RP_1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    4.0,
+    0.3
+  ]
+}

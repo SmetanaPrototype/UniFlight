@@ -38,3 +38,5 @@ The thirt attempt to make an universal application for rocket flight.
 ### Syntax RULES
     _sec  - rocket micro parts
     _part - rocket step parts
+    main - related to central parts
+    boost - related to side parts

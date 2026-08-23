@@ -1,0 +1,30 @@
+{
+  "name": "cz2c",
+  "type": "tandem",
+  "block_number": 2,
+  "payload_mass": 3850,
+  "block_mass": [
+    171300,
+    58000
+  ],
+  "components_ratio": 2.5,
+  "thrust_ratio": 0.6,
+  "exhaust_velocity": [
+    2890,
+    3020
+  ],
+  "thrust": [
+    3475000,
+    832000
+  ],
+  "structural_values": [
+    19.9,
+    17.6
+  ],
+  "fuel": "UDMH",
+  "oxidizer": "N2O4",
+  "attack_coefs": [
+    2.71,
+    0.3
+  ]
+}

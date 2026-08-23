@@ -54,39 +54,8 @@ freq_file = "output/"+rocketname+"_frequency.csv"
 freq_time = basis.read_array_from_csv(freq_file, "time")
 freq_mass = basis.read_array_from_csv(freq_file, "freq_mass_1")
 
-
-def get_attack_from_coefs(vel, time):
-    """Получение угла атаки по коэффициентам из парсера"""
-    alpha_obj = attack.alpha(
-        parser.attack_coefs[0], parser.attack_coefs[1], parser.work_time[0], False
-    )
-    alpha_val = alpha_obj.calculate_alpha(vel, time)
-    return max(-30, min(30, alpha_val))
-
-
-def fall_event(t, y, parser, get_attack_func):
-    return y[3]
-
-
-fall_event.terminal = True
-fall_event.direction = -1
-
-
-def system(t, vars, parser, get_attack_func):
-    """Система дифференциальных уравнений"""
-    n, y, v, h, l = vars
-    b = ballistics(n, y, v, h, parser, get_attack_func)
-    return [
-        b.delta_polar(t),
-        b.delta_trajangle(t),
-        b.delta_velocity(t),
-        b.delta_altitude(t),
-        b.delta_longitude(t),
-    ]
-
-
 class ballistics:
-    def __init__(self, N, Y, vel, alt, parser, get_attack_func):
+    def __init__(self, N, Y, vel, alt, parser, get_attack_func, is_landing):
         self.N = N
         self.Y = Y
         self.vel = vel
@@ -318,6 +287,17 @@ def to_reverse(parser):
 
     print(f"Сжатие данных: {len(time_list)} -> {len(time_reduced)} точек")
 
+def system(t, vars, parser, get_attack_func):
+    """Система дифференциальных уравнений"""
+    n, y, v, h, l = vars
+    b = ballistics(n, y, v, h, parser, get_attack_func, False)
+    return [
+        b.delta_polar(t),
+        b.delta_trajangle(t),
+        b.delta_velocity(t),
+        b.delta_altitude(t),
+        b.delta_longitude(t),
+    ]
 
 def main():
     print("ЗАПУСК БАЛЛИСТИЧЕСКОГО РАСЧЕТА")
@@ -332,6 +312,12 @@ def main():
     t_span = (0, min(ft - 1, 800))
     y0 = [0, np.pi / 2, 10.0, 100.0, 0.1]
 
+    def fall_event(t, y, parser, get_attack_func):
+        return y[3]
+
+    fall_event.terminal = True
+    fall_event.direction = -1
+
     # Запуск симуляции
     sol = solve_ivp(
         system,
@@ -339,7 +325,7 @@ def main():
         y0,
         method="RK45",
         max_step=h,
-        args=(parser, get_attack_from_coefs),
+        args=(parser, parser.attack_func),
         events=fall_event,
         rtol=1e-6,
         atol=1e-8,

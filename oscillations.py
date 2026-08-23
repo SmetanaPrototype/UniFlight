@@ -3,6 +3,7 @@ import math as m
 import rocket_parser as rp
 import basis
 import numpy as np
+import os
 
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -28,14 +29,17 @@ def calculate_sum(base):
             summ[i] = summ[i-1] + base[i - 1] + base[i]
     return summ
 
-parser = rp.rocket_parser()
+parser = rp.Rocket_parser()
 work_time = parser.get_work_time()
 
-numeric   =  parser.numeric
-stiffness =  parser.stiffnesses
-length    =  parser.steps
-masses    =  parser.masses
-alength   =  parser.asc_length
+is_booster = False
+data = parser.get_data(is_booster)
+
+numeric   =  data.numbers
+stiffness =  data.stiffnesses
+length    =  data.lengths
+masses    =  data.masses
+alength   =  data.cumlengths
 
 block_number    = int(parser.get_block_number())
 delta_mass_fu   = parser.get_delta_mass_fu()
@@ -73,7 +77,12 @@ plt.figure(figsize=(8, 8))
 def output(parser):
    """Save results to file"""
    rocketname = parser.name
-   basis.write_arrays_to_csv("output/"+rocketname+"_oscillations.csv",
+   if is_booster:
+    rocketname += "_boost"
+   
+   os.makedirs("output/"+rocketname, exist_ok=True)
+
+   basis.write_arrays_to_csv("output/"+rocketname+"/oscillations.csv",
                                 length   =numeric,
                                 form_1     =f_stiffness[0],
                                 form_2     =f_stiffness[1],
@@ -85,7 +94,7 @@ def output(parser):
                                 intform_2  =f_stiffness_integral[1],
                                 intform_3  =f_stiffness_integral[2])
 
-   basis.write_arrays_to_csv("output/"+rocketname+"_frequency.csv",
+   basis.write_arrays_to_csv("output/"+rocketname+"/frequency.csv",
                                 time       =time_vector,
                                 freq_1     =freq_vector_1,
                                 freq_2     =freq_vector_2,
@@ -122,7 +131,7 @@ for mo, mass in enumerate(ver_mass_vector):
    preIn = basis.calculate_multi(N_Nm2, mass)
    In = calculate_sum(preIn)
 
-   rocket_length = parser.rocket_length
+   rocket_length = parser.get_full_length()
    rocket_mass = parser.full_mass
 
    a = [x/rocket_length for x in L]
@@ -149,7 +158,8 @@ for mo, mass in enumerate(ver_mass_vector):
 
        f_start = f_zero[index]
        tolerance = 1e-8
-       mass_effective = parser.effective_mass(time_idx, index)
+    #    mass_effective = parser.effective_mass(time_idx, index) # TODO: Make effective or construction mass
+       mass_effective = parser.get_changed_mass(time_idx)
        iteration = 0
        while(True):
            m_f1 = basis.calculate_multi(mass_effective, f_start)

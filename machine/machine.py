@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import json
 
 def read_rocket(rocket):
-    path = "rocket_lib/" + rocket + "/constant.json"
+    path = "rockets/" + rocket + "/constant.json"
     with open(path, "r") as r_file:
         r_data = json.load(r_file)
     s = r_data["structural_values"]

@@ -1,0 +1,30 @@
+{
+  "name": "angara12",
+  "type": "tandem",
+  "block_number": 2,
+  "payload_mass": 3500,
+  "block_mass": [
+    139000,
+    25200
+  ],
+  "components_ratio": 2.6,
+  "thrust_ratio": 0.5,
+  "exhaust_velocity": [
+    3310,
+    3522
+  ],
+  "thrust": [
+    1922000,
+    294300
+  ],
+  "structural_values": [
+    13.5,
+    10.64
+  ],
+  "fuel": "RP_1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    0.3,
+    0.15
+  ]
+}

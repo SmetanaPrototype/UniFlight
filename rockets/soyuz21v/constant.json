@@ -1,0 +1,35 @@
+{
+  "name": "soyuz21v",
+  "payload_mass": 2800,
+  "block_mass": [
+    157800,
+    25380
+  ],
+  "exhaust_velocity": [
+    3100,
+    3520
+  ],
+  "thrust": [
+    1978000,
+    294000
+  ],
+  "structural_values": [
+    12,
+    10
+  ],
+  "fuel_type": [
+    "RP1",
+    "RP1"
+  ],
+
+  "oxidizer_type": [
+    "LOX",
+    "LOX"
+  ],
+  "booster_number": 1,
+  "attack_coefs": [
+    0.2,
+    0.2
+  ],
+  "chumbers_number": 1
+}

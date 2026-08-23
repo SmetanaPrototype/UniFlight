@@ -1,0 +1,33 @@
+{
+  "name": "athena2",
+  "block_number": 3,
+  "payload_mass": 2100,
+  "block_mass": [
+    66000,
+    18000,
+    5000
+  ],
+  "components_ratio": 0.0,
+  "thrust_ratio": 0.55,
+  "exhaust_velocity": [
+    2800,
+    2900,
+    2950
+  ],
+  "thrust": [
+    1600000,
+    440000,
+    70000
+  ],
+  "structural_values": [
+    12,
+    10,
+    8
+  ],
+  "fuel": "HTPB",
+  "oxidizer": "AP",
+  "attack_coefs": [
+    3.0,
+    0.21
+  ]
+}

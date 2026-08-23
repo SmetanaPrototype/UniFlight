@@ -1,0 +1,30 @@
+{
+  "name": "zenit",
+  "type": "tandem",
+  "block_number": 2,
+  "payload_mass": 13740,
+  "block_mass": [
+    354350,
+    90794
+  ],
+  "components_ratio": 2.63,
+  "thrust_ratio": 0.5,
+  "exhaust_velocity": [
+    3307,
+    3430
+  ],
+  "thrust": [
+    7257000,
+    912000
+  ],
+  "structural_values": [
+    13,
+    11
+  ],
+  "fuel": "RP_1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    3.3,
+    0.25
+  ]
+}

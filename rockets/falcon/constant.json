@@ -1,0 +1,30 @@
+{
+  "name": "falcon",
+  "type": "tandem",
+  "block_number": 2,
+  "payload_mass": 22200,
+  "block_mass": [
+    433100,
+    111500
+  ],
+  "components_ratio": 2.56,
+  "thrust_ratio": 0.5,
+  "exhaust_velocity": [
+    3100,
+    3480
+  ],
+  "thrust": [
+    7607000,
+    934000
+  ],
+  "structural_values": [
+    18,
+    25
+  ],
+  "fuel": "RP_1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    1.17,
+    0.7
+  ]
+}

@@ -6,20 +6,39 @@ import pandas as pd
 
 lamb = (4.73, 7.853, 10.996, 14.137, 17.279)
 
-current_rocket = 'falcon'
+current_rocket = 'soyuz21b'
 
-class density(enum.Enum):
+class Density(enum.Enum):
     LOX = 1100.0      # Жидкий кислород
-    RP_1 = 810.0      # Очищенный керосин
+    RP1 = 810.0      # Очищенный керосин
     UDMH = 790.0      # Несимметричный диметилгидразин
     N2O4 = 1450.0     # Азотный тетраоксид
     HTPB = 1800.0     # Твердое топливо (гидроксил-терминированный полибутадиен)
     AP = 1950.0       # Перхлорат аммония (окислитель в твердом топливе)
-    RG_1 = 440.0      # Российский ракетный керосин
+    RG1 = 440.0      # Российский ракетный керосин
     UH25 = 880.0      # Смесь UDMH и гидразина
     CH4 = 422.0       # Сжиженный метан (жидкий природный газ)
     LH2 = 70.8        # Жидкий водород (Liquid Hydrogen)
     Naphthyl = 840.0  # Нафтил (модифицированный керосин для Союз-5, плотность между RP-1 и RG-1)
+
+class FuelRatio(enum.Enum):
+    LOX_RP1 = 2.56
+    LOX_RG1 = 2.6
+    LOX_Naphthyl = 2.5
+    LOX_LH2 = 5.0
+    N2O4_UDMH = 2.6
+    N2O4_UH25 = 2.5
+    LOX_CH4 = 3.5
+    AP_HTPB = 6.0
+
+engine_control_coefficients = {
+    1: 1.0,
+    2: 1.0,
+    3: 0.33,
+    4: 0.5,
+    5: 0.4,
+    6: 0.6,
+}
 
 mode_num = 3
 
@@ -43,8 +62,8 @@ def cross_sectional_area(diameter):
 def calculate_static(mass_, shoulder):
     return 0.5 * mass_ * shoulder
 
-def calculate_inertia(mass_, shoulder, shoulder_diff, diameter):
-    return 0.25 * mass_ * (np.pow(shoulder, 2) + 0.333 * np.pow(shoulder_diff, 2) + np.pow((diameter/2), 2))
+def calculate_inertia(mass_, shoulder, length, diameter):
+    return mass_ * (0.25 * shoulder**2 + 0.333 * length**2 + (diameter/2)**2)
 
 def write_arrays_to_csv(filename, **arrays):
    """Запись массивов в CSV файл"""

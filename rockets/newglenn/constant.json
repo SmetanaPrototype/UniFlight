@@ -1,0 +1,30 @@
+{
+  "name": "new_glenn",
+  "type": "tandem",
+  "block_number": 2,
+  "payload_mass": 45000,
+  "block_mass": [
+    1150000,
+    300000
+  ],
+  "components_ratio": 3.6,
+  "thrust_ratio": 1.35,
+  "exhaust_velocity": [
+    3200,
+    3700
+  ],
+  "thrust": [
+    19928000,
+    1779000
+  ],
+  "structural_values": [
+    16,
+    14
+  ],
+  "fuel": "CH4",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    0.6,
+    0.2
+  ]
+}

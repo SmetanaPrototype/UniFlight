@@ -1,0 +1,30 @@
+{
+  "name": "delta_ii",
+  "type": "tandem",
+  "block_number": 2,
+  "payload_mass": 3470,
+  "block_mass": [
+    101900,
+    6000
+  ],
+  "components_ratio": 2.6,
+  "thrust_ratio": 0.6,
+  "exhaust_velocity": [
+    2960,
+    3130
+  ],
+  "thrust": [
+    1054000,
+    43600
+  ],
+  "structural_values": [
+    13.4,
+    13.5
+  ],
+  "fuel": "RP_1",
+  "oxidizer": "LOX",
+  "attack_coefs": [
+    3.0,
+    0.21
+  ]
+}

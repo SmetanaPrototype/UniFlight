@@ -1,0 +1,42 @@
+{
+  "name": "soyuz21b",
+  "payload_mass": 7000,
+  "block_mass": [
+    44000,
+    99765,
+    27755
+  ],
+  "exhaust_velocity": [
+    2400,
+    3100,
+    3520
+  ],
+  "thrust": [
+    838500,
+    840000,
+    790000
+  ],
+  "structural_values": [
+    15,
+    12,
+    12
+  ],
+  "fuel_type": [
+    "RP1",
+    "RP1",
+    "RP1"
+  ],
+
+  "oxidizer_type": [
+    "LOX",
+    "LOX",
+    "LOX"
+  ],
+
+  "booster_number": 4,
+  "attack_coefs": [
+    0.2,
+    0.2
+  ],
+  "chumbers_number": 4
+}
