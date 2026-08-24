@@ -45,6 +45,8 @@ mode_num = 3
 timestep = 2
 lenstep  = 0.1
 
+tail_coefficient = 1/3
+
 young_modulus = 71000000000
 earth_radius  = 6371000
 

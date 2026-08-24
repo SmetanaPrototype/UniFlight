@@ -1,4 +1,28 @@
+import basis
 
+def read_propellant_density(propellant_type):
+    """Возвращает плотность для типа топлива"""
+    try:
+        return getattr(basis.Density, propellant_type).value
+    except AttributeError:
+        return 0
+
+def read_mixture_ratio(type1, type2):
+    """Возвращает соотношение O/F для пары окислитель-горючее"""
+    pair_name = f"{type1}_{type2}".upper()
+    try:
+        return getattr(basis.FuelRatio, pair_name).value
+    except AttributeError:
+        pass
+    pair_name = f"{type2}_{type1}".upper()
+    try:
+        return getattr(basis.FuelRatio, pair_name).value
+    except AttributeError:
+        return 0
+
+def read_control_coefficient(engine_count):
+    """Возвращает коэффициент управления для заданного числа камер"""
+    return basis.engine_control_coefficients.get(engine_count, 0.0)
 
 #длина блока
 def get_stage_length(current_stage, current_group):

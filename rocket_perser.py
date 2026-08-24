@@ -7,30 +7,6 @@ import attack
 import types
 import parser_utils
 
-def read_propellant_density(propellant_type):
-    """Возвращает плотность для типа топлива"""
-    try:
-        return getattr(basis.Density, propellant_type).value
-    except AttributeError:
-        return 0
-
-def read_mixture_ratio(type1, type2):
-    """Возвращает соотношение O/F для пары окислитель-горючее"""
-    pair_name = f"{type1}_{type2}".upper()
-    try:
-        return getattr(basis.FuelRatio, pair_name).value
-    except AttributeError:
-        pass
-    pair_name = f"{type2}_{type1}".upper()
-    try:
-        return getattr(basis.FuelRatio, pair_name).value
-    except AttributeError:
-        return 0
-
-def read_control_coefficient(engine_count):
-    """Возвращает коэффициент управления для заданного числа камер"""
-    return basis.engine_control_coefficients.get(engine_count, 0.0)
-
 class Distributed_dataset:
     def __init__(self):
         self.numbers = []
@@ -108,7 +84,7 @@ class Rocket_parser:
         self.mass_fu = []
         delta_mass = []
         work_time = []
-        structural_mass = []
+        self.structural_mass = []
         delta_mass_ox = []
         delta_mass_fu = []
         fuel_density = []
@@ -124,14 +100,13 @@ class Rocket_parser:
             self.mass_fu.append(propellant_mass[k] / (mixture_ratio[k] + 1))
             delta_mass.append(self.thrust[k] / self.exhaust_velocity[k])
             work_time.append(propellant_mass[k] / delta_mass[k])
-            structural_mass.append(self.block_mass[k] - propellant_mass[k])
+            self.structural_mass.append(self.block_mass[k] - propellant_mass[k])
             delta_mass_ox.append(delta_mass[k] * mixture_ratio[k] / (mixture_ratio[k] + 1))
             delta_mass_fu.append(delta_mass[k] / (mixture_ratio[k] + 1))
 
     def _distributed_handler(self):
         """Расчет распределенных по длине параметров"""
         start_     = Distributed_dataset()
-        # stage_set_ = [Distributed_dataset() for _ in range(self.block_number + 1)]
         result_    = Distributed_dataset()
 
         df = pd.read_csv(self.csv_filename)
@@ -151,10 +126,11 @@ class Rocket_parser:
 
         # Masses
         class_masses = {}
-        class_masses.update({"Oxidizer": sum(self.mass_ox)})
-        class_masses.update({"Fuel": sum(self.mass_fu)})
-        class_masses.update({"Tail": self.payload_mass / 3})
-        class_masses.update({"Construction": self.full_mass - sum(class_masses.values())})
+        class_masses.update({"Head": self.payload_mass})
+        class_masses.update({"Oxidizer": self.mass_ox[0] * self.boosters_number + sum(self.mass_ox[1:])})
+        class_masses.update({"Fuel": self.mass_fu[0] * self.boosters_number + sum(self.mass_fu[1:])})
+        class_masses.update({"Tail": self.payload_mass * basis.tail_coefficient})
+        class_masses.update({"Construction": self.structural_mass[0] * self.boosters_number + sum(self.structural_mass[1:]) - self.payload_mass * basis.tail_coefficient})
 
         result_.lengths.append(0)
         result_.diameters.append(0)
@@ -162,21 +138,14 @@ class Rocket_parser:
         result_.areas.append(0)
         result_.volumes.append(0)
 
-        if parser_utils.get_stage_length("Payload", start_) > 0:
-            class_masses.update({"Head": self.payload_mass})
-            class_masses["Construction"] -= class_masses["Head"]
-            result_.classes.append("Head")
-            result_.stages.append("Payload")
-        else:
-            result_.classes.append("Construction")
-            result_.stages.append("First")
-
-        result_.numbers = []
-        result_.cumlengths = []
+        result_.classes.append("Head")
+        result_.stages.append("Payload")
 
         li = 0
         num = 0
+        # надо пересчитывать для каждого блока с учетом разных типов топлива
         # print(start_.lengths)
+        # Разбиение на малые элементы
         while li < sum(start_.lengths):
             if li >= basis.lenstep / 2:
                 result_.lengths.append(basis.lenstep)
@@ -220,6 +189,7 @@ class Rocket_parser:
         oxidyzer_coordinates = []
         structural_coordinates = []
 
+        # Поиск уровней
         for s in self.stages:
             if parser_utils.get_stage_length(s, result_)>0 and s!="Payload":
 
@@ -252,16 +222,16 @@ class Rocket_parser:
                 return 0
 
         class_densities = {}
-        class_densities.update({"Construction": class_masses["Construction"] / sum(result_.volumes)})
-        for cw in class_masses.keys():
-            if cw != "Construction":
-                class_densities.update({cw: get_class_density(cw,  result_)})
+        # class_densities.update({"Construction": class_masses["Construction"] / sum(result_.volumes)})
+        # for cw in class_masses.keys():
+        #     if cw != "Construction":
+        #         class_densities.update({cw: get_class_density(cw,  result_)})
 
         for j in range(len(result_.volumes)):
-            m = class_densities["Construction"] * result_.volumes[j]
+            # m = class_densities["Construction"] * result_.volumes[j]
             for cw in class_masses.keys():
-                if result_.classes[j] == cw and cw != "Construction":
-                    m += get_class_density(cw,  result_) * result_.volumes[j]
+                if result_.classes[j] == cw:
+                    m = get_class_density(cw,  result_) * result_.volumes[j]
             result_.masses.append(m)
 
         print("Destr mass:", sum(result_.masses))
@@ -272,7 +242,6 @@ class Rocket_parser:
         stage_datasets = {}
         for stage_name in self.stages:
             stage_dataset = Distributed_dataset()
-            
             # Инициализация пустых списков
             stage_dataset.lengths = []
             stage_dataset.diameters = []
@@ -301,10 +270,22 @@ class Rocket_parser:
             
             # Сохраняем в словарь
             stage_datasets[stage_name] = stage_dataset
+        print(sum(stage_datasets["First"].masses))
+        print(sum(stage_datasets["Second"].masses))
+        print(sum(stage_datasets["Third"].masses))
+        print(sum(stage_datasets["Payload"].masses))
         
-        if self.is_packet:
-            packet_result_ = Distributed_dataset()
-            print(stage_datasets["First"])
+        # if self.is_packet:
+        #     packet_result_ = Distributed_dataset()
+        #     for idx in range(len(result_.classes)):
+        #         if result_.stages[idx] != "First":
+        #             packet_result_.lengths.append(result_.lengths[idx])
+        #             packet_result_.numbers.append(result_.numbers[idx])
+        #             packet_result_.cumlengths.append(result_.cumlengths[idx])
+        #             packet_result_.masses.append(result_.masses[idx])
+                
+            #packet_result_.masses + # надо с последними элементами (кол-во равно кол-ву с First) сложить массы из First, умноженные на self.boosters_number
+
         #     # я хочу обратную логику, отдельно должны вычисляться данные для stages
         #     # если is packet, то first, умноженные на self.booster_number добавляется в конец 
         # сейчас логика неправильная, из full_mass вычитаются остатки и размазываются по конструкции, что неверно
