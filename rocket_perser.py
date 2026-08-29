@@ -86,7 +86,7 @@ class Rocket_parser:
         # Deep Handling
         self._calculate_stage_parameters()
         self.partial = self._distributed_handler()
-        flight_data = self._calculate_flight_dynamics()
+        self.flight_data = self._calculate_flight_dynamics()
 
     def _calculate_stage_parameters(self):
         """Расчет параметров ступеней"""
@@ -689,3 +689,14 @@ class Rocket_parser:
         return self.changed_mass(time_)
 
 rp = Rocket_parser()
+
+plt.plot(rp.flight_data[0].times, rp.flight_data[0].thrusts, label="Тяга, Н", color="purple")
+plt.plot(rp.flight_data[1].times, rp.flight_data[1].thrusts, label="Тяга, Н", color="purple")
+plt.plot(rp.flight_data[2].times, rp.flight_data[2].thrusts, label="Тяга, Н", color="purple")
+plt.xlabel("Время, с")
+plt.ylabel("Тяга, Н")
+plt.title("Тяга, Н")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
