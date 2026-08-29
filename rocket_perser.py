@@ -5,7 +5,8 @@ import json
 import matplotlib.pyplot as plt
 import attack
 import types
-import parser_utils
+import rocket_parser_utils
+from collections import defaultdict
 
 class Distributed_dataset:
     def __init__(self):
@@ -19,6 +20,19 @@ class Distributed_dataset:
         self.areas = []
         self.volumes = []
         self.masses = []
+
+    def __iter__(self):
+        for attr_name, attr_value in self.__dict__.items():
+            yield attr_name, attr_value
+
+class Flight_dataset:
+    def __init__(self):
+         self.thrusts = []
+         self.masses = []
+         self.times = []
+         self.statics = []
+         self.inertions = []
+         self.centers = []
 
 class Coord_element:
     def __init__(self, start, length):
@@ -47,7 +61,6 @@ class Rocket_parser:
         self.attack_coefs      = r_data["attack_coefs"]
         self.chumbers_number   = r_data["chumbers_number"]
 
-
         # Проверка размеров массивов
         is_equal = len(set(map(len, 
             [self.oxidizer_type, 
@@ -72,42 +85,47 @@ class Rocket_parser:
 
         # Deep Handling
         self._calculate_stage_parameters()
-        distr_data = self._distributed_handler()
-        # flight_data = self._calculate_flight_dynamics
+        self.partial = self._distributed_handler()
+        flight_data = self._calculate_flight_dynamics()
 
     def _calculate_stage_parameters(self):
         """Расчет параметров ступеней"""
-        control_coefficient = read_control_coefficient(self.chumbers_number)
+        control_coefficient = rocket_parser_utils.read_control_coefficient(self.chumbers_number)
 
         propellant_mass = []
         self.mass_ox = []
         self.mass_fu = []
         delta_mass = []
-        work_time = []
+        self.work_time = []
         self.structural_mass = []
-        delta_mass_ox = []
-        delta_mass_fu = []
-        fuel_density = []
-        oxidizer_density = []
+        self.delta_mass_ox = []
+        self.delta_mass_fu = []
+        self.fuel_density = []
+        self.oxidizer_density = []
         mixture_ratio = []
 
         for k in range(self.block_number):
-            fuel_density.append(read_propellant_density(self.fuel_type[k]))
-            oxidizer_density.append(read_propellant_density(self.oxidizer_type[k]))
-            mixture_ratio.append(read_mixture_ratio(self.fuel_type[k], self.oxidizer_type[k]))
+            self.fuel_density.append(rocket_parser_utils.read_propellant_density(self.fuel_type[k]))
+            self.oxidizer_density.append(rocket_parser_utils.read_propellant_density(self.oxidizer_type[k]))
+            mixture_ratio.append(rocket_parser_utils.read_mixture_ratio(self.fuel_type[k], self.oxidizer_type[k]))
             propellant_mass.append(self.block_mass[k] * self.structural_values[k] / (self.structural_values[k] + 1))
             self.mass_ox.append(propellant_mass[k] * mixture_ratio[k] / (mixture_ratio[k] + 1))
             self.mass_fu.append(propellant_mass[k] / (mixture_ratio[k] + 1))
             delta_mass.append(self.thrust[k] / self.exhaust_velocity[k])
-            work_time.append(propellant_mass[k] / delta_mass[k])
+            self.work_time.append(propellant_mass[k] / delta_mass[k])
             self.structural_mass.append(self.block_mass[k] - propellant_mass[k])
-            delta_mass_ox.append(delta_mass[k] * mixture_ratio[k] / (mixture_ratio[k] + 1))
-            delta_mass_fu.append(delta_mass[k] / (mixture_ratio[k] + 1))
+            self.delta_mass_ox.append(delta_mass[k] * mixture_ratio[k] / (mixture_ratio[k] + 1))
+            self.delta_mass_fu.append(delta_mass[k] / (mixture_ratio[k] + 1))
+
+        self.full_time = sum(self.work_time)
+        if self.is_packet:
+            self.full_time -= self.work_time[0]
+
 
     def _distributed_handler(self):
         """Расчет распределенных по длине параметров"""
         start_     = Distributed_dataset()
-        result_    = Distributed_dataset()
+        # result_    = Distributed_dataset()
 
         df = pd.read_csv(self.csv_filename)
         start_.lengths = pd.to_numeric(df["L"], errors='coerce').tolist()
@@ -117,182 +135,447 @@ class Rocket_parser:
         start_.cumlengths = np.cumsum(start_.lengths) #кумулятивная длина
         start_.numbers = list(range(len(start_.lengths)))
 
-        self.stages = ["Payload", "First", "Second", "Third", "Fourth", "Fifth"]
-        self.classes = ["Head", "Oxidizer", "Fuel", "Construction", "Tail"]
+        # Проверка обработки исходных данных
+        if len(start_.lengths) != len(set(start_.lengths)):
+            raise ValueError("Найдены одинаковые по длине участки")
+
+        if self.block_number not in [2,3,4,5]:
+            raise ValueError("Current block number is not supported")
+
+        # Распределение масс по ступеням
+        self.stages = []
+        if self.block_number == 2:
+            self.stages = ["First", "Second", "Payload"]
+        elif self.block_number == 3:
+            self.stages = ["First", "Second", "Third", "Payload"]
+        elif self.block_number == 4:
+            self.stages = ["First", "Second", "Third", "Fourth", "Payload"]
+        elif self.block_number == 5:
+            self.stages = ["First", "Second", "Third", "Fourth", "Fifth", "Payload"]
+        
+        self.classes = ["Tail", "Fuel", "Oxidizer", "Construction", "Head"]
+
+        def get_class_stage_mass(class_, stage_):
+            res = 0
+            eachtailmass = self.payload_mass * basis.tail_coefficient / (self.block_number + self.boosters_number - 1)
+            if class_ == "Head" and stage_ == "Payload":
+                res = self.payload_mass
+            
+            for b in range(self.block_number):
+                if class_ == "Tail" and stage_ == self.stages[b]:
+                    res = eachtailmass
+                elif class_ == "Oxidizer" and stage_ == self.stages[b]:
+                    res = self.mass_ox[b]
+                elif class_ == "Fuel" and stage_ == self.stages[b]:
+                    res = self.mass_fu[b]
+                elif class_ == "Construction" and stage_ == self.stages[b]:
+                    res = self.structural_mass[b] - eachtailmass
+                
+            return res
 
         stages_lengths = []
+        class_stage_masses = defaultdict(dict)
         for s in self.stages: 
-            stages_lengths.append(parser_utils.get_stage_length(s, start_))
-
-        # Masses
-        class_masses = {}
-        class_masses.update({"Head": self.payload_mass})
-        class_masses.update({"Oxidizer": self.mass_ox[0] * self.boosters_number + sum(self.mass_ox[1:])})
-        class_masses.update({"Fuel": self.mass_fu[0] * self.boosters_number + sum(self.mass_fu[1:])})
-        class_masses.update({"Tail": self.payload_mass * basis.tail_coefficient})
-        class_masses.update({"Construction": self.structural_mass[0] * self.boosters_number + sum(self.structural_mass[1:]) - self.payload_mass * basis.tail_coefficient})
-
-        result_.lengths.append(0)
-        result_.diameters.append(0)
-        result_.stiffnesses.append(0)
-        result_.areas.append(0)
-        result_.volumes.append(0)
-
-        result_.classes.append("Head")
-        result_.stages.append("Payload")
-
-        li = 0
-        num = 0
-        # надо пересчитывать для каждого блока с учетом разных типов топлива
-        # print(start_.lengths)
-        # Разбиение на малые элементы
-        while li < sum(start_.lengths):
-            if li >= basis.lenstep / 2:
-                result_.lengths.append(basis.lenstep)
-            result_.cumlengths.append(round(li, 1))
-            result_.numbers.append(num)
-            found = False
-            for i in range(len(start_.cumlengths) - 1):
-                if (
-                    li <= start_.cumlengths[i + 1]
-                    and li > start_.cumlengths[i]
-                ):
-                    found = True
-                    result_.classes.append(start_.classes[i + 1])
-                    result_.stages.append(start_.stages[i + 1])
-                    delta_diameter = (
-                        start_.diameters[i + 1] - start_.diameters[i]
-                    )
-                    delta_length = (
-                        start_.cumlengths[i + 1] - start_.cumlengths[i]
-                    )
-
-                    offset = li - start_.cumlengths[i]
-
-                    if delta_length > 0:
-                        current_diameter = (
-                            start_.diameters[i]
-                            + (delta_diameter / delta_length) * offset
-                        )
-                    else:
-                        current_diameter = start_.diameters[i]
-
-                    result_.diameters.append(current_diameter)
-                    result_.stiffnesses.append(basis.calculate_stiffness(current_diameter))
-                    result_.areas.append(basis.cross_sectional_area(current_diameter))
-                    result_.volumes.append(result_.areas[-1] * basis.lenstep)
-
-            li += basis.lenstep
-            num += 1
-        # print(result_.diameters)
-        fuel_coordinates = []
-        oxidyzer_coordinates = []
-        structural_coordinates = []
-
-        # Поиск уровней
-        for s in self.stages:
-            if parser_utils.get_stage_length(s, result_)>0 and s!="Payload":
-
-                fuel_coordinates.append(
-                    Coord_element(
-                        parser_utils.get_start_stageclass(s, "Fuel",  result_), 
-                        parser_utils.get_stageclass_length(s, "Fuel", result_)
-                    )
-                )
-
-                oxidyzer_coordinates.append(
-                    Coord_element(
-                        parser_utils.get_start_stageclass(s, "Oxidizer",  result_),
-                        parser_utils.get_stageclass_length(s, "Oxidizer", result_),
-                    )
-                )
-
-                structural_coordinates.append(
-                    Coord_element(
-                        parser_utils.get_start_class(s,  result_), 
-                        parser_utils.get_class_length(s, result_))
-                )
-
-        def get_class_density(current_class, current_group):
-            if parser_utils.get_class_length(current_class, current_group)>0:
-                return (class_masses[current_class] / sum(current_group.volumes[i]
-                    for i in range(len(current_group.classes)) 
-                    if current_group.classes[i] == current_class))
-            else:
-                return 0
-
-        class_densities = {}
-        # class_densities.update({"Construction": class_masses["Construction"] / sum(result_.volumes)})
-        # for cw in class_masses.keys():
-        #     if cw != "Construction":
-        #         class_densities.update({cw: get_class_density(cw,  result_)})
-
-        for j in range(len(result_.volumes)):
-            # m = class_densities["Construction"] * result_.volumes[j]
-            for cw in class_masses.keys():
-                if result_.classes[j] == cw:
-                    m = get_class_density(cw,  result_) * result_.volumes[j]
-            result_.masses.append(m)
-
-        print("Destr mass:", sum(result_.masses))
-        full_length = result_.cumlengths[-1]
-
-
-        # СОЗДАНИЕ НАБОРОВ ДАННЫХ ДЛЯ КАЖДОГО ТИПА STAGES ОТДЕЛЬНО
-        stage_datasets = {}
-        for stage_name in self.stages:
-            stage_dataset = Distributed_dataset()
-            # Инициализация пустых списков
-            stage_dataset.lengths = []
-            stage_dataset.diameters = []
-            stage_dataset.stiffnesses = []
-            stage_dataset.areas = []
-            stage_dataset.volumes = []
-            stage_dataset.classes = []
-            stage_dataset.stages = []
-            stage_dataset.numbers = []
-            stage_dataset.cumlengths = []
-            stage_dataset.masses = []
-            
-            # Заполнение данными только для текущего stage
-            for idx in range(len(result_.classes)):
-                if result_.stages[idx] == stage_name:
-                    stage_dataset.lengths.append(result_.lengths[idx])
-                    stage_dataset.diameters.append(result_.diameters[idx])
-                    stage_dataset.stiffnesses.append(result_.stiffnesses[idx])
-                    stage_dataset.areas.append(result_.areas[idx])
-                    stage_dataset.volumes.append(result_.volumes[idx])
-                    stage_dataset.classes.append(result_.classes[idx])
-                    stage_dataset.stages.append(result_.stages[idx])
-                    stage_dataset.numbers.append(result_.numbers[idx])
-                    stage_dataset.cumlengths.append(result_.cumlengths[idx])
-                    stage_dataset.masses.append(result_.masses[idx])
-            
-            # Сохраняем в словарь
-            stage_datasets[stage_name] = stage_dataset
-        print(sum(stage_datasets["First"].masses))
-        print(sum(stage_datasets["Second"].masses))
-        print(sum(stage_datasets["Third"].masses))
-        print(sum(stage_datasets["Payload"].masses))
+            stages_lengths.append(rocket_parser_utils.get_stage_length(s, start_))
+            for c in self.classes:
+                class_stage_masses[c][s] = get_class_stage_mass(c,s)
         
-        # if self.is_packet:
-        #     packet_result_ = Distributed_dataset()
-        #     for idx in range(len(result_.classes)):
-        #         if result_.stages[idx] != "First":
-        #             packet_result_.lengths.append(result_.lengths[idx])
-        #             packet_result_.numbers.append(result_.numbers[idx])
-        #             packet_result_.cumlengths.append(result_.cumlengths[idx])
-        #             packet_result_.masses.append(result_.masses[idx])
-                
-            #packet_result_.masses + # надо с последними элементами (кол-во равно кол-ву с First) сложить массы из First, умноженные на self.boosters_number
+        shared_mass = sum(sum(inner_dict.values()) for inner_dict in class_stage_masses.values())
+        booster_mass = sum(class_stage_masses[c].get("First", 0) for c in self.classes)
+        shared_mass += booster_mass * (self.boosters_number - 1)
+    
+        # Проверка распределения масс по ступеням
+        if abs(shared_mass - self.full_mass) > 0.01:
+            raise ValueError("Неправильное распределение масс по ступеням!")
 
-        #     # я хочу обратную логику, отдельно должны вычисляться данные для stages
-        #     # если is packet, то first, умноженные на self.booster_number добавляется в конец 
-        # сейчас логика неправильная, из full_mass вычитаются остатки и размазываются по конструкции, что неверно
-        # массы должны складываться, площадь и диамеры должна быть средние D + d/2 + d/2 (для бустеров)
-        # а моменты инерции считаться по
-        # # Возвращаем основной результат и словарь с наборами данных по stages
-        return result_, stage_datasets
+        # Создание наборов для каждого блока
+        dis_partial_ = [Distributed_dataset() for _ in range(self.block_number)]
+        # Разбиение на малые элементы
+
+        ful_li = 0
+        for b in range(len(dis_partial_)):
+            li = 0
+            num = 0
+
+            while li < stages_lengths[b]:
+                if li >= basis.lenstep / 2:
+                    dis_partial_[b].lengths.append(basis.lenstep)
+                dis_partial_[b].cumlengths.append(round(li, int(basis.lenstep)))
+                dis_partial_[b].numbers.append(num)
+                dis_partial_[b].stages.append(self.stages[b])
+                dis_partial_[b].classes.append(rocket_parser_utils.get_cumlength_class(ful_li, start_))
+                local_length = rocket_parser_utils.get_stageclass_length(dis_partial_[b].stages[-1], dis_partial_[b].classes[-1], start_)
+                dis_partial_[b].masses.append(local_length > 0 and get_class_stage_mass(dis_partial_[b].classes[-1], dis_partial_[b].stages[-1]) * basis.lenstep / local_length or 0)
+                dis_partial_[b].diameters.append(rocket_parser_utils.get_stage_diameter(self.stages[b], start_))
+                dis_partial_[b].stiffnesses.append(basis.calculate_stiffness(dis_partial_[b].diameters[-1]))
+                dis_partial_[b].areas.append(basis.cross_sectional_area(dis_partial_[b].diameters[-1]))
+                dis_partial_[b].volumes.append(dis_partial_[b].areas[-1] * basis.lenstep)
+
+                li += basis.lenstep
+                ful_li += basis.lenstep
+                num +=1
+            
+        # Проверка разбиения на малые элементы
+        mass_with_micro = sum(sum(block.masses) for block in dis_partial_) + (self.boosters_number - 1) * sum(dis_partial_[0].masses)
+        if abs(mass_with_micro - self.full_mass) < 0.01:
+            raise ValueError("Неправильное разбиение на малые элементы")
+
+        return dis_partial_
+
+    def _calculate_flight_dynamics(self):
+        """Расчет динамических параметров полета"""
+        # max_area     = max(max(block.areas) for block in self.partial)
+        # max_diameter = max(max(block.diameters) for block in self.partial)
+        # print(max_area)
+
+        
+
+        delta_level_ox = []
+        delta_level_fu = []
+        for k in range(len(self.partial)):
+            max_area = max(self.partial[k].areas)
+            delta_level_ox.append(
+                self.delta_mass_ox[k] / self.oxidizer_density[k] / max_area
+            )
+            delta_level_fu.append(
+                self.delta_mass_fu[k] / self.fuel_density[k] / max_area
+            )
+
+        # Здесь ступени, а не блоки
+        fly_partial_ = [Flight_dataset() for _ in range(self.block_number)]
+
+        time = 0
+        time_stages = np.cumsum(self.work_time)
+        if self.is_packet:
+            time_stages[1:] -= time_stages[0]
+
+        while time < self.full_mass:
+            for s in fly_partial_:
+                s.times.append(time)
+            
+            if time < time_stages[0]:
+                for s in fly_partial_:
+                    thrust_ = self.thrust[0] * self.boosters_number
+                    if self.is_packet:
+                        thrust_ += self.thrust[1]
+                    s.thrusts.append(thrust_)
+
+            elif time >= time_stages[0] and time < time_stages[1]:
+                fly_partial_[0].thrusts.append(0)
+                for s in fly_partial_[1:]:
+                    s.thrusts.append(self.thrust[1])
+            elif time >= time_stages[1] and time < time_stages[2]:
+                fly_partial_[0].thrusts.append(0)
+                fly_partial_[1].thrusts.append(0)
+                for s in fly_partial_[2:]:
+                    s.thrusts.append(self.thrust[2])
+            
+
+            time += basis.timestep
+        
+        return fly_partial_
+
+        # for s in fly_partial_:
+            
+        # time = 0
+        # current_mass = self.full_mass
+        # stage_dropped = []
+        # stage_separation_times = []
+        # t_sep = 0
+        # for i in range((self.block_number)):
+        #     stage_dropped.append(False)
+        #     t_sep += work_time[i]
+        #     stage_separation_times.append(t_sep)
+
+        # fdata.masses.append(current_mass)
+        # fdata.times.append(time)
+        # fdata.thrusts.append(thrust[0])
+
+        # static_moment = basis.calculate_static(
+        #     self.full_mass, full_length
+        # ) * 1.3 # TODO: Fox error
+        # inertia_moment = basis.calculate_inertia(
+        #     self.full_mass, full_length, full_length, max_diameter
+        # )
+        # fdata.statics.append(static_moment)
+        # fdata.inertions.append(inertia_moment)
+        # fdata.centers.append(full_length - static_moment / current_mass) # TODO: Fix jump error
+
+        # while time < stage_separation_times[-1]:
+        #     fdata.statics.append(static_moment)
+        #     fdata.inertions.append(inertia_moment)
+
+        #     current_stage = None
+        #     for i in range(self.block_number):
+        #         if time < stage_separation_times[i]:
+        #             current_stage = i
+        #             break
+
+        #     if current_stage is not None:
+        #         current_mass -= delta_mass[current_stage] * basis.timestep
+        #         lower_point = fuel_coordinates[current_stage].end
+        #         upper_point = fuel_coordinates[current_stage].end - delta_level_fu[current_stage]
+        #         static_moment -= (
+        #             basis.calculate_static(delta_mass_fu[current_stage], lower_point + upper_point) * basis.timestep
+        #         )
+        #         lower_point = oxidyzer_coordinates[current_stage].end
+        #         upper_point = oxidyzer_coordinates[current_stage].end - delta_level_ox[current_stage]
+        #         static_moment -= (
+        #             basis.calculate_static(delta_mass_ox[current_stage], lower_point + upper_point) * basis.timestep
+        #         )
+        #         lower_point = fuel_coordinates[current_stage].end
+        #         upper_point = fuel_coordinates[current_stage].end - delta_level_fu[current_stage]
+        #         inertia_moment -= (
+        #             basis.calculate_inertia(
+        #                 delta_mass_fu[current_stage],
+        #                 lower_point + upper_point,
+        #                 lower_point - upper_point,
+        #                 max_diameter,
+        #             )
+        #             * basis.timestep
+        #         )
+        #         lower_point = oxidyzer_coordinates[current_stage].end
+        #         upper_point = oxidyzer_coordinates[current_stage].end - delta_level_ox[current_stage]
+        #         inertia_moment -= (
+        #             basis.calculate_inertia(
+        #                 delta_mass_ox[current_stage],
+        #                 lower_point + upper_point,
+        #                 lower_point - upper_point,
+        #                 max_diameter,
+        #             )
+        #             * basis.timestep
+        #         )
+
+        #         thrust = thrust[current_stage]
+
+        #     for i in range(self.block_number):
+        #         if not stage_dropped[i] and time >= stage_separation_times[i]:
+        #             current_mass -= structural_mass[i]
+        #             static_moment -= basis.calculate_static(
+        #                 structural_mass[i],
+        #                 structural_coordinates[i].end
+        #                 + structural_coordinates[i].start,
+        #             )
+        #             inertia_moment -= basis.calculate_inertia(
+        #                 structural_mass[i],
+        #                 structural_coordinates[i].end
+        #                 + structural_coordinates[i].start,
+        #                 structural_coordinates[i].length,
+        #                 max_diameter,
+        #             )
+        #             stage_dropped[i] = True
+        #             print(
+        #                 f"Отделена {i+1}-я ступень в t={time} с, расчетное время: {stage_separation_times[i]} c, текущая масса: {current_mass}"
+        #             )
+        #     cent = static_moment / current_mass
+
+
+        #     fdata.masses.append(current_mass)
+        #     fdata.times.append(time)
+        #     fdata.thrusts.append(thrust)
+        #     fdata.centers.append(cent)
+        #     time += basis.timestep
+        # return fdata
+
+                # этот скрипт писался для всей ракеты, теперь же надо адаптировать его под каждый блок
+        # for b in range(self.block_number):
+        #         found = False
+        #         for i in range(len(dis_partial_[b].cumlengths) - 1):
+        #             if (
+        #                 li <= start_.cumlengths[i + 1]
+        #                 and li > start_.cumlengths[i]
+        #             ):
+        #                 found = True
+        #                 result_.classes.append(start_.classes[i + 1])
+        #                 result_.stages.append(start_.stages[i + 1])
+        #                 delta_diameter = (
+        #                     start_.diameters[i + 1] - start_.diameters[i]
+        #                 )
+        #                 delta_length = (
+        #                     start_.cumlengths[i + 1] - start_.cumlengths[i]
+        #                 )
+        #                 offset = li - start_.cumlengths[i]
+        #                 if delta_length > 0:
+        #                     current_diameter = (
+        #                         start_.diameters[i]
+        #                         + (delta_diameter / delta_length) * offset
+        #                     )
+        #                 else:
+        #                     current_diameter = start_.diameters[i]
+        #                 result_.diameters.append(current_diameter)
+        #                 result_.stiffnesses.append(basis.calculate_stiffness(current_diameter))
+        #                 result_.areas.append(basis.cross_sectional_area(current_diameter))
+        #                 result_.volumes.append(result_.areas[-1] * basis.lenstep)
+                  # этот скрипт писался для всей ракеты, теперь же надо адаптировать его под каждый блок
+
+
+
+
+
+
+        # Получение данных для всей ракеты
+
+        # result_.lengths.append(0)
+        # result_.diameters.append(0)
+        # result_.stiffnesses.append(0)
+        # result_.areas.append(0)
+        # result_.volumes.append(0)
+
+        # result_.classes.append("Head")
+        # result_.stages.append("Payload")
+
+        # li = 0
+        # num = 0
+        # # надо пересчитывать для каждого блока с учетом разных типов топлива
+        # # print(start_.lengths)
+        # # Разбиение на малые элементы
+        # while li < sum(start_.lengths):
+        #     if li >= basis.lenstep / 2:
+        #         result_.lengths.append(basis.lenstep)
+        #     result_.cumlengths.append(round(li, 1))
+        #     result_.numbers.append(num)
+        #     found = False
+        #     for i in range(len(start_.cumlengths) - 1):
+        #         if (
+        #             li <= start_.cumlengths[i + 1]
+        #             and li > start_.cumlengths[i]
+        #         ):
+        #             found = True
+        #             result_.classes.append(start_.classes[i + 1])
+        #             result_.stages.append(start_.stages[i + 1])
+        #             delta_diameter = (
+        #                 start_.diameters[i + 1] - start_.diameters[i]
+        #             )
+        #             delta_length = (
+        #                 start_.cumlengths[i + 1] - start_.cumlengths[i]
+        #             )
+
+        #             offset = li - start_.cumlengths[i]
+
+        #             if delta_length > 0:
+        #                 current_diameter = (
+        #                     start_.diameters[i]
+        #                     + (delta_diameter / delta_length) * offset
+        #                 )
+        #             else:
+        #                 current_diameter = start_.diameters[i]
+
+        #             result_.diameters.append(current_diameter)
+        #             result_.stiffnesses.append(basis.calculate_stiffness(current_diameter))
+        #             result_.areas.append(basis.cross_sectional_area(current_diameter))
+        #             result_.volumes.append(result_.areas[-1] * basis.lenstep)
+
+        #     li += basis.lenstep
+        #     num += 1
+        # # print(result_.diameters)
+        # fuel_coordinates = []
+        # oxidyzer_coordinates = []
+        # structural_coordinates = []
+
+        # # Поиск уровней
+        # for s in self.stages:
+        #     if rocket_parser_utils.get_stage_length(s, result_)>0 and s!="Payload":
+
+        #         fuel_coordinates.append(
+        #             Coord_element(
+        #                 rocket_parser_utils.get_start_stageclass(s, "Fuel",  result_), 
+        #                 rocket_parser_utils.get_stageclass_length(s, "Fuel", result_)
+        #             )
+        #         )
+
+        #         oxidyzer_coordinates.append(
+        #             Coord_element(
+        #                 rocket_parser_utils.get_start_stageclass(s, "Oxidizer",  result_),
+        #                 rocket_parser_utils.get_stageclass_length(s, "Oxidizer", result_),
+        #             )
+        #         )
+
+        #         structural_coordinates.append(
+        #             Coord_element(
+        #                 rocket_parser_utils.get_start_class(s,  result_), 
+        #                 rocket_parser_utils.get_class_length(s, result_))
+        #         )
+
+        # def get_class_density(current_class, current_group):
+        #     if rocket_parser_utils.get_class_length(current_class, current_group)>0:
+        #         return (class_masses[current_class] / sum(current_group.volumes[i]
+        #             for i in range(len(current_group.classes)) 
+        #             if current_group.classes[i] == current_class))
+        #     else:
+        #         return 0
+
+        # class_densities = {}
+        # # class_densities.update({"Construction": class_masses["Construction"] / sum(result_.volumes)})
+        # # for cw in class_masses.keys():
+        # #     if cw != "Construction":
+        # #         class_densities.update({cw: get_class_density(cw,  result_)})
+
+        # for j in range(len(result_.volumes)):
+        #     # m = class_densities["Construction"] * result_.volumes[j]
+        #     for cw in class_masses.keys():
+        #         if result_.classes[j] == cw:
+        #             m = get_class_density(cw,  result_) * result_.volumes[j]
+        #     result_.masses.append(m)
+
+        # print("Destr mass:", sum(result_.masses))
+        # full_length = result_.cumlengths[-1]
+
+
+        # # СОЗДАНИЕ НАБОРОВ ДАННЫХ ДЛЯ КАЖДОГО ТИПА STAGES ОТДЕЛЬНО
+        # stage_datasets = {}
+        # for stage_name in self.stages:
+        #     stage_dataset = Distributed_dataset()
+        #     # Инициализация пустых списков
+        #     stage_dataset.lengths = []
+        #     stage_dataset.diameters = []
+        #     stage_dataset.stiffnesses = []
+        #     stage_dataset.areas = []
+        #     stage_dataset.volumes = []
+        #     stage_dataset.classes = []
+        #     stage_dataset.stages = []
+        #     stage_dataset.numbers = []
+        #     stage_dataset.cumlengths = []
+        #     stage_dataset.masses = []
+            
+        #     # Заполнение данными только для текущего stage
+        #     for idx in range(len(result_.classes)):
+        #         if result_.stages[idx] == stage_name:
+        #             stage_dataset.lengths.append(result_.lengths[idx])
+        #             stage_dataset.diameters.append(result_.diameters[idx])
+        #             stage_dataset.stiffnesses.append(result_.stiffnesses[idx])
+        #             stage_dataset.areas.append(result_.areas[idx])
+        #             stage_dataset.volumes.append(result_.volumes[idx])
+        #             stage_dataset.classes.append(result_.classes[idx])
+        #             stage_dataset.stages.append(result_.stages[idx])
+        #             stage_dataset.numbers.append(result_.numbers[idx])
+        #             stage_dataset.cumlengths.append(result_.cumlengths[idx])
+        #             stage_dataset.masses.append(result_.masses[idx])
+            
+        #     # Сохраняем в словарь
+        #     stage_datasets[stage_name] = stage_dataset
+        # print(sum(stage_datasets["First"].masses))
+        # print(sum(stage_datasets["Second"].masses))
+        # print(sum(stage_datasets["Third"].masses))
+        # print(sum(stage_datasets["Payload"].masses))
+        
+        # # if self.is_packet:
+        # #     packet_result_ = Distributed_dataset()
+        # #     for idx in range(len(result_.classes)):
+        # #         if result_.stages[idx] != "First":
+        # #             packet_result_.lengths.append(result_.lengths[idx])
+        # #             packet_result_.numbers.append(result_.numbers[idx])
+        # #             packet_result_.cumlengths.append(result_.cumlengths[idx])
+        # #             packet_result_.masses.append(result_.masses[idx])
+                
+        #     #packet_result_.masses + # надо с последними элементами (кол-во равно кол-ву с First) сложить массы из First, умноженные на self.boosters_number
+
+        # #     # я хочу обратную логику, отдельно должны вычисляться данные для stages
+        # #     # если is packet, то first, умноженные на self.booster_number добавляется в конец 
+        # # сейчас логика неправильная, из full_mass вычитаются остатки и размазываются по конструкции, что неверно
+        # # массы должны складываться, площадь и диамеры должна быть средние D + d/2 + d/2 (для бустеров)
+        # # а моменты инерции считаться по
+        # # # Возвращаем основной результат и словарь с наборами данных по stages
+        # return result_, stage_datasets
 
     def changed_mass(self, time_):
         """Расчет распределенной массы в заданный момент времени"""
@@ -357,124 +640,6 @@ class Rocket_parser:
                 time_remaining = 0
         return mass_t
 
-    def _calculate_flight_dynamics(self):
-        """Расчет динамических параметров полета"""
-        max_area     = max(distr_data.areas)
-        max_diameter = max(distr_data.diameters)
-
-
-
-        delta_level_ox = []
-        delta_level_fu = []
-        for k in range(self.block_number):
-            delta_level_ox.append(
-                delta_mass_ox[k] / oxidizer_density[k] / max_area
-            )
-            delta_level_fu.append(
-                delta_mass_fu[k] / fuel_density[k] / max_area
-            )
-
-        fdata = Flight_dataset()
-
-        time = 0
-        current_mass = self.full_mass
-        stage_dropped = []
-        stage_separation_times = []
-        t_sep = 0
-        for i in range((self.block_number)):
-            stage_dropped.append(False)
-            t_sep += work_time[i]
-            stage_separation_times.append(t_sep)
-
-        fdata.masses.append(current_mass)
-        fdata.times.append(time)
-        fdata.thrusts.append(thrust[0])
-
-        static_moment = basis.calculate_static(
-            self.full_mass, full_length
-        ) * 1.3 # TODO: Fox error
-        inertia_moment = basis.calculate_inertia(
-            self.full_mass, full_length, full_length, max_diameter
-        )
-        fdata.statics.append(static_moment)
-        fdata.inertions.append(inertia_moment)
-        fdata.centers.append(full_length - static_moment / current_mass) # TODO: Fix jump error
-
-        while time < stage_separation_times[-1]:
-            fdata.statics.append(static_moment)
-            fdata.inertions.append(inertia_moment)
-
-            current_stage = None
-            for i in range(self.block_number):
-                if time < stage_separation_times[i]:
-                    current_stage = i
-                    break
-
-            if current_stage is not None:
-                current_mass -= delta_mass[current_stage] * basis.timestep
-                lower_point = fuel_coordinates[current_stage].end
-                upper_point = fuel_coordinates[current_stage].end - delta_level_fu[current_stage]
-                static_moment -= (
-                    basis.calculate_static(delta_mass_fu[current_stage], lower_point + upper_point) * basis.timestep
-                )
-                lower_point = oxidyzer_coordinates[current_stage].end
-                upper_point = oxidyzer_coordinates[current_stage].end - delta_level_ox[current_stage]
-                static_moment -= (
-                    basis.calculate_static(delta_mass_ox[current_stage], lower_point + upper_point) * basis.timestep
-                )
-                lower_point = fuel_coordinates[current_stage].end
-                upper_point = fuel_coordinates[current_stage].end - delta_level_fu[current_stage]
-                inertia_moment -= (
-                    basis.calculate_inertia(
-                        delta_mass_fu[current_stage],
-                        lower_point + upper_point,
-                        lower_point - upper_point,
-                        max_diameter,
-                    )
-                    * basis.timestep
-                )
-                lower_point = oxidyzer_coordinates[current_stage].end
-                upper_point = oxidyzer_coordinates[current_stage].end - delta_level_ox[current_stage]
-                inertia_moment -= (
-                    basis.calculate_inertia(
-                        delta_mass_ox[current_stage],
-                        lower_point + upper_point,
-                        lower_point - upper_point,
-                        max_diameter,
-                    )
-                    * basis.timestep
-                )
-
-                thrust = thrust[current_stage]
-
-            for i in range(self.block_number):
-                if not stage_dropped[i] and time >= stage_separation_times[i]:
-                    current_mass -= structural_mass[i]
-                    static_moment -= basis.calculate_static(
-                        structural_mass[i],
-                        structural_coordinates[i].end
-                        + structural_coordinates[i].start,
-                    )
-                    inertia_moment -= basis.calculate_inertia(
-                        structural_mass[i],
-                        structural_coordinates[i].end
-                        + structural_coordinates[i].start,
-                        structural_coordinates[i].length,
-                        max_diameter,
-                    )
-                    stage_dropped[i] = True
-                    print(
-                        f"Отделена {i+1}-я ступень в t={time} с, расчетное время: {stage_separation_times[i]} c, текущая масса: {current_mass}"
-                    )
-            cent = static_moment / current_mass
-
-
-            fdata.masses.append(current_mass)
-            fdata.times.append(time)
-            fdata.thrusts.append(thrust)
-            fdata.centers.append(cent)
-            time += basis.timestep
-        return fdata
 
     def attack_func(self, vel, time):
         """Получение угла атаки по коэффициентам из парсера"""

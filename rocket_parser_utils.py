@@ -1,4 +1,5 @@
 import basis
+import numpy as np
 
 def read_propellant_density(propellant_type):
     """Возвращает плотность для типа топлива"""
@@ -33,6 +34,12 @@ def get_class_length(current_class, current_group):
 def get_stageclass_length(current_stage, current_class, current_group):
     return sum(current_group.lengths[i] for i in range(len(current_group.classes)) if current_group.classes[i] == current_class and
                                                                                       current_group.stages[i] == current_stage)
+
+def get_cumlength_class(current_cumlength, current_group):
+    nearest_idx = min(range(len(current_group.cumlengths)), 
+                      key=lambda i: abs(current_group.cumlengths[i] - current_cumlength))
+    return current_group.classes[nearest_idx]
+
 def get_start_stageclass(current_stage, current_class, current_group):
     return min(current_group.cumlengths[i] for i in range(len(current_group.classes)) if current_group.classes[i] == current_class and 
                                                                                          current_group.stages[i] == current_stage)
