@@ -250,27 +250,39 @@ class Rocket_parser:
             time_stages[1:] -= time_stages[0]
 
         while time < self.full_mass:
-            for s in fly_partial_:
+            for index, s in enumerate(fly_partial_):
                 s.times.append(time)
             
-            if time < time_stages[0]:
+            # Определяем текущий этап
+            current_stage = None
+            for i in range(len(time_stages)):
+                if i == 0 and time < time_stages[0]:
+                    current_stage = 0
+                    break
+                elif i > 0 and time_stages[i-1] <= time < time_stages[i]:
+                    current_stage = i
+                    break
+            
+            # Применяем thrust для всех ступеней
+            if current_stage == 0:
+                # Первый этап - специальная логика
                 for s in fly_partial_:
                     thrust_ = self.thrust[0] * self.boosters_number
                     if self.is_packet:
                         thrust_ += self.thrust[1]
                     s.thrusts.append(thrust_)
-
-            elif time >= time_stages[0] and time < time_stages[1]:
-                fly_partial_[0].thrusts.append(0)
-                for s in fly_partial_[1:]:
-                    s.thrusts.append(self.thrust[1])
-            elif time >= time_stages[1] and time < time_stages[2]:
-                fly_partial_[0].thrusts.append(0)
-                fly_partial_[1].thrusts.append(0)
-                for s in fly_partial_[2:]:
-                    s.thrusts.append(self.thrust[2])
+            elif current_stage is not None:
+                # Остальные этапы
+                for i, s in enumerate(fly_partial_):
+                    if i < current_stage:
+                        s.thrusts.append(0)
+                    else:
+                        s.thrusts.append(self.thrust[current_stage])
+            else:
+                # После всех этапов
+                for s in fly_partial_:
+                    s.thrusts.append(0)
             
-
             time += basis.timestep
         
         return fly_partial_
