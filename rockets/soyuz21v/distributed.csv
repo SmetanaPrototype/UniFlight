@@ -8,8 +8,7 @@ L,D,Class,Stage
 3.5,2.95,Oxidizer,Second
 4.0,2.95,Fuel,Second
 1.0,2.95,Construction,Second
-1.0,2.95,Tail,Second
-0.5,2.95,Interstage,SecondFirst
+1.5,2.95,Tail,Second
 1.5,2.95,Construction,First
 7.0,2.95,Oxidizer,First
 10.0,2.95,Fuel,First

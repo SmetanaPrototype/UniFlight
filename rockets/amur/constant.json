@@ -1,14 +1,10 @@
 {
   "name": "amur",
-  "type": "tandem",
-  "block_number": 2,
   "payload_mass": 12000,
   "block_mass": [
     302000,
     47500
   ],
-  "components_ratio": 3.7,
-  "thrust_ratio": 0.16,
   "exhaust_velocity": [
     3210,
     3560
@@ -17,14 +13,24 @@
     5000000,
     930000
   ],
+  "payload_thrust": 0,
   "structural_values": [
     15,
     20
   ],
-  "fuel": "CH4",
-  "oxidizer": "LOX",
+  "fuel_type": [
+    "CH4",
+    "CH4"
+  ],
+  "oxidizer_type": [
+    "LOX",
+    "LOX"
+  ],
+  "booster_number": 1,
   "attack_coefs": [
     1.7,
     0.5
-  ]
+  ],
+  "chumbers_number": 1,
+  "prop_reserve": [0.1, 0.0]
 }

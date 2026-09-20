@@ -13,6 +13,7 @@
     1978000,
     294000
   ],
+  "payload_thrust": 0,
   "structural_values": [
     12,
     10
@@ -31,5 +32,6 @@
     0.2,
     0.2
   ],
-  "chumbers_number": 1
+  "chumbers_number": 1,
+  "prop_reserve": [0.0, 0.0]
 }

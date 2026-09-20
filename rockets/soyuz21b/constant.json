@@ -38,5 +38,7 @@
     0.2,
     0.2
   ],
-  "chumbers_number": 4
+  "chumbers_number": 4,
+  "prop_reserve": [0.01, 0.01, 0.01],
+  "separation_time": [0, 2, 2]
 }

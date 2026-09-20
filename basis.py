@@ -43,30 +43,38 @@ engine_control_coefficients = {
 mode_num = 3
 
 timestep = 2
-lenstep  = 0.1
+lenstep  = 0.01
 
 tail_coefficient = 1/3
 
 young_modulus = 71000000000
 earth_radius  = 6371000
 
+accuracy = 1e-9
+
+@staticmethod
 def get_y(x, x_array, y_array):
     if len(x_array) == 0 or len(y_array) == 0:
         return 0
     return np.interp(x, x_array, y_array)
 
+@staticmethod
 def calculate_stiffness(diameter):
     return young_modulus * np.pi * cross_sectional_area(diameter)
 
+@staticmethod
 def cross_sectional_area(diameter):
     return np.pi * (diameter**2) / 4
 
+@staticmethod
 def calculate_static(mass_, shoulder):
     return 0.5 * mass_ * shoulder
 
+@staticmethod
 def calculate_inertia(mass_, shoulder, length, diameter):
     return mass_ * (0.25 * shoulder**2 + 0.333 * length**2 + (diameter/2)**2)
 
+@staticmethod
 def write_arrays_to_csv(filename, **arrays):
    """Запись массивов в CSV файл"""
    if not arrays:
@@ -85,7 +93,7 @@ def write_arrays_to_csv(filename, **arrays):
            writer.writerow(row)
    print(f"Data was moved to '{filename}'.")
 
-
+@staticmethod
 def read_array_from_csv(filename, arrayname):
     try:
         df = pd.read_csv(filename)
@@ -102,15 +110,46 @@ def read_array_from_csv(filename, arrayname):
         print(f"Ошибка при чтении файла {filename}: {e}")
         return None
 
+@staticmethod
 def interpolate_color(start_color, end_color, i, total):
    return [
        start_color[j] + (end_color[j] - start_color[j]) * i / (total - 1)
        for j in range(mode_num)
    ]
-
+@staticmethod
 def aerostat_file(filename):
     df = pd.read_csv(filename)
     return df.T.values.tolist()
 
+@staticmethod
 def calculate_multi(one, second):
     return [a * b for a, b in zip(one, second)]
+
+@staticmethod
+def get_classes_list():
+    return ["Tail", "Fuel", "Oxidizer", "Construction", "Head"]
+
+@staticmethod
+def get_stages_list(block_num):
+    if block_num not in [2,3,4,5]:
+        raise ValueError("Current block number is not supported")
+
+    if block_num == 2:
+        return ["First", "Second", "Payload"]
+    elif block_num == 3:
+        return ["First", "Second", "Third", "Payload"]
+    elif block_num == 4:
+        return ["First", "Second", "Third", "Fourth", "Payload"]
+    elif block_num == 5:
+        return ["First", "Second", "Third", "Fourth", "Fifth", "Payload"]
+
+@staticmethod
+def normalize_list(dataset, target):
+    """Приводит сумму dataset.masses к target пропорционально.
+    Если текущая сумма 0 — ничего не делает."""
+    current = sum(dataset)
+    if current <= 0.0:
+        return
+    scale = target / current
+    for i in range(len(dataset)):
+        dataset[i] *= scale
