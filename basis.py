@@ -3,6 +3,7 @@ import numpy as np
 import os
 import csv
 import pandas as pd
+import math
 
 lamb = (4.73, 7.853, 10.996, 14.137, 17.279)
 
@@ -122,8 +123,25 @@ def aerostat_file(filename):
     return df.T.values.tolist()
 
 @staticmethod
-def calculate_multi(one, second):
-    return [a * b for a, b in zip(one, second)]
+def calculate_multi(*args):
+    return [math.prod(items) for items in zip(*args)]
+
+@staticmethod
+def calculate_sum(*args):
+    if not args:
+        return []
+
+    vectors = [list(v) for v in args]
+    base_idx = max(range(len(vectors)), key=lambda i: len(vectors[i]))
+    result = vectors[base_idx].copy()
+
+    for i, vec in enumerate(vectors):
+        if i == base_idx:
+            continue
+        for j, value in enumerate(vec):
+            result[j] += value
+
+    return result
 
 @staticmethod
 def get_classes_list():

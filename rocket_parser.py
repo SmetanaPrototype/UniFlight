@@ -9,7 +9,6 @@ import tkinter as tk
 from tkinter import ttk
 import sv_ttk
 
-
 # ---------------------------------------------------------------------------
 # Классы-контейнеры
 # ---------------------------------------------------------------------------
@@ -19,7 +18,6 @@ class Coord_element:
         self.start  = float(start)
         self.length = float(length)
         self.end    = self.start + self.length
-
 
 class Length_dataset:
     def __init__(self):
@@ -55,6 +53,7 @@ class United_data:
     def __init__(self, block_num):
         sectors_num = len(basis.get_stages_list(block_num))
         self.blocks = [Block_data() for _ in range(sectors_num)]
+        self.rocketdata = Block_data()
 
     def set_length_dataset(self, length_datasets):
         if len(length_datasets) != len(self.blocks):
@@ -74,6 +73,22 @@ class United_data:
         for block, time_ds in zip(self.blocks, time_datasets):
             block.time_data = time_ds
 
+    def build_rocket(self, boosters_number):
+
+        is_packet = boosters_number > 0
+        #length data
+        rocket_length = (sum((m.length_data.cumlengths[-1] for m in self.blocks)) if not is_packet 
+                         else sum((m.length_data.cumlengths[-1] for m in self.blocks[1:])))
+
+        self.rocketdata.length_data.lengths = [i * basis.lenstep for i in range(int(rocket_length / basis.lenstep))]
+
+        united_blocks = self.blocks if not is_packet else self.blocks + (boosters_number-1) * [self.blocks[0]]
+        #time data
+        self.rocketdata.time_data.times = list(self.blocks[0].time_data.times)
+        self.rocketdata.time_data.masses = basis.calculate_sum(
+            *(m.time_data.masses for m in united_blocks))
+        self.rocketdata.time_data.thrusts = basis.calculate_sum(
+            *(m.time_data.thrusts for m in united_blocks))
 # ---------------------------------------------------------------------------
 # Парсер
 # ---------------------------------------------------------------------------
@@ -98,7 +113,7 @@ class Rocket_parser:
         self.attack_coefs      = r_data["attack_coefs"]
         self.chumbers_number   = r_data["chumbers_number"]
         self.prop_reserve      = r_data["prop_reserve"]
-        self.separation_time   = r_data["separation_time"]
+        self.coast_phase       = r_data["coast_phase"]
 
         self.block_number = len(self.block_mass)
 
@@ -110,7 +125,7 @@ class Rocket_parser:
              self.exhaust_velocity,
              self.block_mass,
              self.prop_reserve,
-             self.separation_time]))) == 1
+             self.coast_phase]))) == 1
 
         if not is_equal:
             raise ValueError("Не хватает данных для всех ступеней!")
@@ -125,7 +140,7 @@ class Rocket_parser:
 
         self.prop_reserve.append(0)
 
-        if self.is_packet and self.separation_time[0] > 0:
+        if self.is_packet and self.coast_phase[0] > 0:
             raise ValueError("Центральный блок работает непрерывно!")
 
 
@@ -139,6 +154,8 @@ class Rocket_parser:
         self.united_data = United_data(self.block_number)
         self.united_data.set_length_dataset(self._distributed_handler())
         self.united_data.set_time_dataset(self._flight_handler())
+
+        self.united_data.build_rocket(self.boosters_number)
 
     # ------------------------------------------------------------------ #
     # Параметры ступеней
@@ -167,7 +184,6 @@ class Rocket_parser:
                 rocket_parser_utils.read_mixture_ratio(self.fuel_type[k],
                                                        self.oxidizer_type[k]))
 
-            # ИЗМЕНЕНО: полное топливо, не уменьшаем на reserve
             full_propellant = (
                 self.block_mass[k] * self.structural_values[k]
                 / (self.structural_values[k] + 1)
@@ -180,7 +196,6 @@ class Rocket_parser:
             self.burnable_mass.append(burnable)
             self.reserve_mass.append(reserve)
 
-            # ИЗМЕНЕНО: mass_ox/mass_fu — полное топливо
             self.mass_ox.append(
                 full_propellant * mixture_ratio[k] / (mixture_ratio[k] + 1))
             self.mass_fu.append(
@@ -188,10 +203,8 @@ class Rocket_parser:
 
             self.delta_mass.append(self.thrust[k] / self.exhaust_velocity[k])
 
-            # ИЗМЕНЕНО: время горения — только сгораемое топливо
             self.work_time.append(burnable / self.delta_mass[k])
 
-            # ИЗМЕНЕНО: structural_mass — сухая конструкция
             self.structural_mass.append(self.block_mass[k] - full_propellant)
 
             self.delta_mass_ox.append(
@@ -425,7 +438,7 @@ class Rocket_parser:
 # Визуализация
 # ---------------------------------------------------------------------------
 
-def plot_united_parameters(rp):
+def plot_stage_parameters(rp):
     fig1, ax1 = plt.subplots(3, 2)
 
     n_blocks = len(rp.united_data.blocks)
@@ -493,7 +506,24 @@ def plot_united_parameters(rp):
     fig1.tight_layout()
     plt.show()
 
-    
+def plot_rocket_parameters(rp):
+    fig1, ax1 = plt.subplots(2, 1)
+
+    ax1[0].plot(rp.united_data.rocketdata.time_data.times,
+                  rp.united_data.rocketdata.time_data.masses)
+    ax1[0].set_xlabel("Время, с")
+    ax1[0].set_ylabel("Масса, кг")
+    ax1[0].grid(True)
+
+    ax1[1].plot(rp.united_data.rocketdata.time_data.times,
+                  rp.united_data.rocketdata.time_data.thrusts)
+    ax1[1].set_xlabel("Время, с")
+    ax1[1].set_ylabel("Тяга, Н")
+    ax1[1].grid(True)
+
+    fig1.tight_layout()
+    plt.show()
+
 
 def plot_distromasses_parameters(rp):
     n_blocks = len(rp.united_data.blocks)
@@ -577,11 +607,11 @@ def main():
     btn1.pack(pady=5, ipadx=10, ipady=5)
 
     btn2 = ttk.Button(button_frame, text="МЦИХ блоков",
-                      command=lambda: plot_united_parameters(rp))
+                      command=lambda: plot_stage_parameters(rp))
     btn2.pack(pady=5, ipadx=10, ipady=5)
 
     btn3 = ttk.Button(button_frame, text="МЦИХ ракеты",
-                      command=lambda: plot_united_parameters(rp))
+                      command=lambda: plot_rocket_parameters(rp))
     btn3.pack(pady=5, ipadx=10, ipady=5)
 
     root.mainloop()
