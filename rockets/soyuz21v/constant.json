@@ -33,5 +33,6 @@
     0.2
   ],
   "chumbers_number": 1,
-  "prop_reserve": [0.0, 0.0]
+  "prop_reserve": [0.0, 0.0],
+  "coast_phase": [0, 2]
 }

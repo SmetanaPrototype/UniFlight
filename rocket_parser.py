@@ -79,7 +79,6 @@ class United_data:
             block.time_data = time_ds
 
     def build_rocket(self, boosters_number):
-
         is_packet = boosters_number > 0
         # length data
         rocket_length = (
@@ -103,6 +102,9 @@ class United_data:
         self.rocketdata.time_data.thrusts = basis.calculate_sum(
             *(m.time_data.thrusts for m in united_blocks))
 
+        # # --- статический момент всей ракеты ---
+        n_times = len(self.rocketdata.time_data.times)
+        n_blocks = len(self.blocks)
 
 # ---------------------------------------------------------------------------
 # Парсер
@@ -582,7 +584,7 @@ def plot_stage_parameters(rp):
 
 
 def plot_rocket_parameters(rp):
-    fig1, ax1 = plt.subplots(2, 1)
+    fig1, ax1 = plt.subplots(4, 1)
 
     ax1[0].plot(rp.united_data.rocketdata.time_data.times,
                 rp.united_data.rocketdata.time_data.masses)
@@ -595,6 +597,18 @@ def plot_rocket_parameters(rp):
     ax1[1].set_xlabel("Время, с")
     ax1[1].set_ylabel("Тяга, Н")
     ax1[1].grid(True)
+
+    ax1[2].plot(rp.united_data.rocketdata.time_data.times,
+                rp.united_data.rocketdata.time_data.statics)
+    ax1[2].set_xlabel("Время, с")
+    ax1[2].set_ylabel("Стат момент, кг м")
+    ax1[2].grid(True)
+
+    ax1[3].plot(rp.united_data.rocketdata.time_data.times,
+                rp.united_data.rocketdata.time_data.centers)
+    ax1[3].set_xlabel("Время, с")
+    ax1[3].set_ylabel("Центр масс, м")
+    ax1[3].grid(True)
 
     fig1.tight_layout()
     plt.show()
