@@ -137,3 +137,26 @@ def get_local_class(self, stage, local_li, start_):
         if local_li < acc:
             return cl
     return start_.classes[-1]
+
+def stage_is_active_at(self, index, time):
+    """
+    Мгновенная проверка: горит ли ступень index в момент time.
+
+    Отличается от stage_active_dt тем, что не «размазывает» активность
+    на интервал [time, time+dt]. В момент переключения ступеней ровно
+    одна из них активна — это устраняет ложные срабатывания проверки
+    _validate_thrust_isolation на границах step_time.
+
+    Для последней ступени (Payload) всегда возвращает False,
+    так как её нет в self.step_time.
+    """
+    if index < 0 or index >= len(self.step_time):
+        return False
+
+    if index == 0 or (self.is_packet and index == 1):
+        t_start = 0.0
+    else:
+        t_start = self.step_time[index - 1]
+    t_end = self.step_time[index]
+
+    return t_start <= time < t_end

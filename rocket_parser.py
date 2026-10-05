@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import ttk
 import sv_ttk
 
+
 # ---------------------------------------------------------------------------
 # Классы-контейнеры
 # ---------------------------------------------------------------------------
@@ -18,6 +19,7 @@ class Coord_element:
         self.start  = float(start)
         self.length = float(length)
         self.end    = self.start + self.length
+
 
 class Length_dataset:
     def __init__(self):
@@ -33,6 +35,7 @@ class Length_dataset:
         self.masses      = []
         self.coords      = []
 
+
 class Time_dataset:
     def __init__(self):
         self.thrusts      = []
@@ -44,10 +47,12 @@ class Time_dataset:
         self.inertionsY   = []
         self.centers      = []
 
+
 class Block_data:
     def __init__(self):
         self.time_data   = Time_dataset()
         self.length_data = Length_dataset()
+
 
 class United_data:
     def __init__(self, block_num):
@@ -76,19 +81,29 @@ class United_data:
     def build_rocket(self, boosters_number):
 
         is_packet = boosters_number > 0
-        #length data
-        rocket_length = (sum((m.length_data.cumlengths[-1] for m in self.blocks)) if not is_packet 
-                         else sum((m.length_data.cumlengths[-1] for m in self.blocks[1:])))
+        # length data
+        rocket_length = (
+            sum(m.length_data.cumlengths[-1] for m in self.blocks)
+            if not is_packet
+            else sum(m.length_data.cumlengths[-1] for m in self.blocks[1:])
+        )
 
-        self.rocketdata.length_data.lengths = [i * basis.lenstep for i in range(int(rocket_length / basis.lenstep))]
+        self.rocketdata.length_data.lengths = [
+            i * basis.lenstep for i in range(int(rocket_length / basis.lenstep))
+        ]
 
-        united_blocks = self.blocks if not is_packet else self.blocks + (boosters_number-1) * [self.blocks[0]]
-        #time data
+        united_blocks = (
+            self.blocks if not is_packet
+            else self.blocks + (boosters_number - 1) * [self.blocks[0]]
+        )
+        # time data
         self.rocketdata.time_data.times = list(self.blocks[0].time_data.times)
         self.rocketdata.time_data.masses = basis.calculate_sum(
             *(m.time_data.masses for m in united_blocks))
         self.rocketdata.time_data.thrusts = basis.calculate_sum(
             *(m.time_data.thrusts for m in united_blocks))
+
+
 # ---------------------------------------------------------------------------
 # Парсер
 # ---------------------------------------------------------------------------
@@ -142,7 +157,6 @@ class Rocket_parser:
 
         if self.is_packet and self.coast_phase[0] > 0:
             raise ValueError("Центральный блок работает непрерывно!")
-
 
         print(f"Payload mass: {self.payload_mass}")
         print(f"Block mass:   {self.block_mass}")
@@ -321,6 +335,48 @@ class Rocket_parser:
         return dis_partial_
 
     # ------------------------------------------------------------------ #
+    # Проверка изоляции тяг
+    # ------------------------------------------------------------------ #
+    def _validate_thrust_isolation(self, time_partial_):
+        """
+        Проверяет, что на каждом шаге по времени работает двигатель
+        не более чем одной ступени.
+
+        Исключение — пакетная схема: боковые блоки (индекс 0) и
+        центральный блок (индекс 1) горят параллельно по построению,
+        это разрешено.
+
+        Возбуждает RuntimeError при обнаружении недопустимого пересечения.
+        """
+        n_stages = len(time_partial_)
+        times    = time_partial_[0].times
+        tol      = basis.accuracy
+
+        parallel_ok = {0, 1} if self.is_packet else set()
+
+        for i, t in enumerate(times):
+            burning = [
+                s for s in range(n_stages)
+                if time_partial_[s].thrusts[i] > tol
+            ]
+
+            if len(burning) <= 1:
+                continue
+
+            if self.is_packet and set(burning).issubset(parallel_ok):
+                continue
+
+            thrusts = [time_partial_[s].thrusts[i] for s in burning]
+            raise RuntimeError(
+                f"Пересечение работы ступеней в t = {t:.3f} с: "
+                f"одновременно горят ступени {burning} "
+                f"(тяги = {thrusts} Н). "
+                f"Схема: {'пакетная' if self.is_packet else 'тандемная'}. "
+                f"Проверьте step_time={self.step_time}, "
+                f"work_time={self.work_time}."
+            )
+
+    # ------------------------------------------------------------------ #
     # Временные параметры + распределение массы (модель уровня топлива)
     # ------------------------------------------------------------------ #
     def _flight_handler(self):
@@ -352,28 +408,42 @@ class Rocket_parser:
             for index, tp in enumerate(time_partial_):
                 tp.times.append(time)
 
-                is_burning = False
+                is_payload = (index == n_stages - 1)
 
-                # --- Выгорание ---
-                if index != n_stages - 1 and self.work_time[index] > 0.0:
+                # ------------------------------------------------------
+                # 1. Мгновенная активность (для записи тяги)
+                # ------------------------------------------------------
+                is_active = False
+                if not is_payload:
+                    is_active = rocket_parser_utils.stage_is_active_at(
+                        self, index, time)
+
+                # ------------------------------------------------------
+                # 2. Интеграл горения на [time, time+dt] (для массы)
+                # ------------------------------------------------------
+                if is_active and self.work_time[index] > 0.0:
                     active_dt = rocket_parser_utils.stage_active_dt(
                         self, index, time, basis.timestep)
+                    remaining = self.work_time[index] - burn_time[index]
+                    active_dt = max(0.0, min(active_dt, remaining))
                     if active_dt > 0.0:
-                        remaining = self.work_time[index] - burn_time[index]
-                        if remaining > 0.0:
-                            effective_dt = min(active_dt, remaining)
-                            tmp_mass[index] -= self.delta_mass[index] * effective_dt
-                            burn_time[index] += effective_dt
-                            is_burning = True
+                        tmp_mass[index] -= self.delta_mass[index] * active_dt
+                        burn_time[index] += active_dt
+                    else:
+                        # Топливо кончилось раньше расписания — ступень гаснет
+                        is_active = False
 
-                # --- Тяга: ненулевая только пока ступень горит ---
-                thrust_val = self.thrust[index] if is_burning else 0.0
+                # ------------------------------------------------------
+                # 3. Тяга: мгновенная
+                # ------------------------------------------------------
+                thrust_val = self.thrust[index] if is_active else 0.0
                 tp.thrusts.append(thrust_val)
-
                 tp.masses.append(tmp_mass[index])
 
-                # --- Модель уровня топлива с учётом резерва ---
-                if index != n_stages - 1 and self.work_time[index] > 0.0:
+                # ------------------------------------------------------
+                # 4. Модель уровня топлива с учётом резерва
+                # ------------------------------------------------------
+                if not is_payload and self.work_time[index] > 0.0:
                     burn_ratio = min(1.0, burn_time[index] / self.work_time[index])
                 else:
                     burn_ratio = 0.0
@@ -386,14 +456,15 @@ class Rocket_parser:
                 basis.normalize_list(distro, tmp_mass[index])
                 tp.distromasses.append(distro)
 
-                # --- Моменты ---
+                # ------------------------------------------------------
+                # 5. Моменты
+                # ------------------------------------------------------
                 m = np.asarray(distro, dtype=float)
                 M = float(m.sum())
                 if M > basis.accuracy:
                     x = x_coords[index]
-                    R2 = r_half_sq[index]                       # Rᵢ²
+                    R2 = r_half_sq[index]
 
-                    # Центр масс ступени
                     S = float(np.sum(m * x))
                     c = S / M
 
@@ -425,11 +496,14 @@ class Rocket_parser:
                           f"sum(distro)={s:.6f} vs mass={m:.6f}")
                     break
 
-        # ИЗМЕНЕНО: конечная масса = сухая конструкция + reserve
+        # Конечная масса = сухая конструкция + reserve
         for k in range(n_stages - 1):
             expected = self.structural_mass[k] + self.reserve_mass[k]
             if abs(tmp_mass[k] - expected) > basis.accuracy:
                 print(f"[WARN] Ступень {k}: {tmp_mass[k]} vs {expected}")
+
+        # Проверка изоляции тяг
+        self._validate_thrust_isolation(time_partial_)
 
         return time_partial_
 
@@ -445,78 +519,79 @@ def plot_stage_parameters(rp):
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[0,0].plot(rp.united_data.blocks[i].time_data.times,
-                      rp.united_data.blocks[i].time_data.masses,
-                      label=label)
-    ax1[0,0].set_xlabel("Время, с")
-    ax1[0,0].set_ylabel("Масса, кг")
-    ax1[0,0].legend()
-    ax1[0,0].grid(True)
+        ax1[0, 0].plot(rp.united_data.blocks[i].time_data.times,
+                       rp.united_data.blocks[i].time_data.masses,
+                       label=label)
+    ax1[0, 0].set_xlabel("Время, с")
+    ax1[0, 0].set_ylabel("Масса, кг")
+    ax1[0, 0].legend()
+    ax1[0, 0].grid(True)
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[1,0].plot(rp.united_data.blocks[i].time_data.times,
-                      rp.united_data.blocks[i].time_data.thrusts,
-                      label=label)
-    ax1[1,0].set_xlabel("Время, с")
-    ax1[1,0].set_ylabel("Тяга, Н")
-    ax1[1,0].legend()
-    ax1[1,0].grid(True)
+        ax1[1, 0].plot(rp.united_data.blocks[i].time_data.times,
+                       rp.united_data.blocks[i].time_data.thrusts,
+                       label=label)
+    ax1[1, 0].set_xlabel("Время, с")
+    ax1[1, 0].set_ylabel("Тяга, Н")
+    ax1[1, 0].legend()
+    ax1[1, 0].grid(True)
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[2,0].plot(rp.united_data.blocks[i].time_data.times,
-                      rp.united_data.blocks[i].time_data.statics,
-                      label=label)
-    ax1[2,0].set_xlabel("Время, с")
-    ax1[2,0].set_ylabel("Статический момент, кг·м")
-    ax1[2,0].legend()
-    ax1[2,0].grid(True)
+        ax1[2, 0].plot(rp.united_data.blocks[i].time_data.times,
+                       rp.united_data.blocks[i].time_data.statics,
+                       label=label)
+    ax1[2, 0].set_xlabel("Время, с")
+    ax1[2, 0].set_ylabel("Статический момент, кг·м")
+    ax1[2, 0].legend()
+    ax1[2, 0].grid(True)
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[0,1].plot(rp.united_data.blocks[i].time_data.times,
-                      rp.united_data.blocks[i].time_data.inertionsX,
-                      label=label)
-    ax1[0,1].set_xlabel("Время, с")
-    ax1[0,1].set_ylabel("Продольный момент, кг·м2")
-    ax1[0,1].legend()
-    ax1[0,1].grid(True)
+        ax1[0, 1].plot(rp.united_data.blocks[i].time_data.times,
+                       rp.united_data.blocks[i].time_data.inertionsX,
+                       label=label)
+    ax1[0, 1].set_xlabel("Время, с")
+    ax1[0, 1].set_ylabel("Продольный момент, кг·м2")
+    ax1[0, 1].legend()
+    ax1[0, 1].grid(True)
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[1,1].plot(rp.united_data.blocks[i].time_data.times,
-                      rp.united_data.blocks[i].time_data.inertionsY,
-                      label=label)
-    ax1[1,1].set_xlabel("Время, с")
-    ax1[1,1].set_ylabel("Поперечный момент, кг·м2")
-    ax1[1,1].legend()
-    ax1[1,1].grid(True)
+        ax1[1, 1].plot(rp.united_data.blocks[i].time_data.times,
+                       rp.united_data.blocks[i].time_data.inertionsY,
+                       label=label)
+    ax1[1, 1].set_xlabel("Время, с")
+    ax1[1, 1].set_ylabel("Поперечный момент, кг·м2")
+    ax1[1, 1].legend()
+    ax1[1, 1].grid(True)
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[2,1].plot(rp.united_data.blocks[i].time_data.times,
-                      rp.united_data.blocks[i].time_data.centers,
-                      label=label)
-    ax1[2,1].set_xlabel("Время, с")
-    ax1[2,1].set_ylabel("Центр масс, м")
-    ax1[2,1].legend()
-    ax1[2,1].grid(True)
+        ax1[2, 1].plot(rp.united_data.blocks[i].time_data.times,
+                       rp.united_data.blocks[i].time_data.centers,
+                       label=label)
+    ax1[2, 1].set_xlabel("Время, с")
+    ax1[2, 1].set_ylabel("Центр масс, м")
+    ax1[2, 1].legend()
+    ax1[2, 1].grid(True)
 
     fig1.tight_layout()
     plt.show()
+
 
 def plot_rocket_parameters(rp):
     fig1, ax1 = plt.subplots(2, 1)
 
     ax1[0].plot(rp.united_data.rocketdata.time_data.times,
-                  rp.united_data.rocketdata.time_data.masses)
+                rp.united_data.rocketdata.time_data.masses)
     ax1[0].set_xlabel("Время, с")
     ax1[0].set_ylabel("Масса, кг")
     ax1[0].grid(True)
 
     ax1[1].plot(rp.united_data.rocketdata.time_data.times,
-                  rp.united_data.rocketdata.time_data.thrusts)
+                rp.united_data.rocketdata.time_data.thrusts)
     ax1[1].set_xlabel("Время, с")
     ax1[1].set_ylabel("Тяга, Н")
     ax1[1].grid(True)
