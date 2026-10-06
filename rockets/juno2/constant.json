@@ -1,7 +1,5 @@
 {
   "name": "juno2",
-  "type": "tandem",
-  "block_number": 4,
   "payload_mass": 40,
   "block_mass": [
     29000,
@@ -9,8 +7,6 @@
     2200,
     500
   ],
-  "components_ratio": 0.0,
-  "thrust_ratio": 0.6,
   "exhaust_velocity": [
     2600,
     2700,
@@ -23,16 +19,31 @@
     35000,
     8000
   ],
+  "payload_thrust": 0,
   "structural_values": [
     14,
     12,
     10,
     8
   ],
-  "fuel": "HTPB",
-  "oxidizer": "AP",
+  "fuel_type": [
+    "HTPB",
+    "HTPB",
+    "HTPB",
+    "HTPB"
+  ],
+  "oxidizer_type": [
+    "AP",
+    "AP",
+    "AP",
+    "AP"
+  ],
+  "booster_number": 1,
   "attack_coefs": [
     3.5,
     0.27
-  ]
+  ],
+  "chumbers_number": 1,
+  "prop_reserve": [0.0, 0.0, 0.0, 0.0],
+  "coast_phase": [0, 0, 0, 0]
 }

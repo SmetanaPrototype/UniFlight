@@ -1,14 +1,76 @@
-import pandas as pd
-import numpy as np
-import basis
 import json
-import matplotlib.pyplot as plt
-import rocket_parser_utils
-from collections import defaultdict
-import tkinter as tk
-from tkinter import ttk
-import sv_ttk
 
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+import sv_ttk
+import tkinter as tk
+from collections import defaultdict
+from tkinter import ttk
+
+import config as cfg
+import physics as phys
+
+import utils.geometry as u_geometry
+import utils.math as u_math
+import utils.plot as u_plot
+# ---------------------------------------------------------------------------
+# Вспомогательные функции
+# ---------------------------------------------------------------------------
+
+def get_class_stage_mass(parser_obj, class_, stage_):
+    res = 0
+    eachtailmass = parser_obj.payload_mass * cfg.tail_coefficient / (parser_obj.block_number + parser_obj.boosters_number - 1)
+    if class_ == "Head" and stage_ == "Payload":
+        res = parser_obj.payload_mass
+    
+    for b in range(parser_obj.block_number):
+        if class_ == "Tail" and stage_ == parser_obj.stages[b]:
+            res = eachtailmass
+        elif class_ == "Oxidizer" and stage_ == parser_obj.stages[b]:
+            res = parser_obj.mass_ox[b]
+        elif class_ == "Fuel" and stage_ == parser_obj.stages[b]:
+            res = parser_obj.mass_fu[b]
+        elif class_ == "Construction" and stage_ == parser_obj.stages[b]:
+            res = parser_obj.structural_mass[b] - eachtailmass
+        
+    return res
+
+def stage_active_dt(self, index, time, dt):
+    """Сколько секунд ступени index горит внутри интервала [time, time+dt]."""
+    if index == 0 or (self.is_packet and index == 1):
+        t_start = 0.0
+    else:
+        t_start = self.step_time[index - 1]
+    t_end = self.step_time[index]
+
+    lo = max(time, t_start)
+    hi = min(time + dt, t_end)
+    return max(0.0, hi - lo)
+
+
+def stage_is_active_at(self, index, time):
+    """
+    Мгновенная проверка: горит ли ступень index в момент time.
+
+    Отличается от stage_active_dt тем, что не «размазывает» активность
+    на интервал [time, time+dt]. В момент переключения ступеней ровно
+    одна из них активна — это устраняет ложные срабатывания проверки
+    _validate_thrust_isolation на границах step_time.
+
+    Для последней ступени (Payload) всегда возвращает False,
+    так как её нет в self.step_time.
+    """
+    if index < 0 or index >= len(self.step_time):
+        return False
+
+    if index == 0 or (self.is_packet and index == 1):
+        t_start = 0.0
+    else:
+        t_start = self.step_time[index - 1]
+    t_end = self.step_time[index]
+
+    return t_start <= time < t_end
 
 # ---------------------------------------------------------------------------
 # Классы-контейнеры
@@ -21,7 +83,7 @@ class Coord_element:
         self.end    = self.start + self.length
 
 
-class Length_dataset:
+class LengthData:
     def __init__(self):
         self.numbers     = []
         self.lengths     = []
@@ -36,7 +98,7 @@ class Length_dataset:
         self.coords      = []
 
 
-class Time_dataset:
+class TimeData:
     def __init__(self):
         self.thrusts      = []
         self.masses       = []
@@ -48,34 +110,34 @@ class Time_dataset:
         self.centers      = []
 
 
-class Block_data:
+class Block:
     def __init__(self):
-        self.time_data   = Time_dataset()
-        self.length_data = Length_dataset()
+        self.time_data   = TimeData()
+        self.length_data = LengthData()
 
 
-class United_data:
+class Rocket:
     def __init__(self, block_num):
-        sectors_num = len(basis.get_stages_list(block_num))
-        self.blocks = [Block_data() for _ in range(sectors_num)]
-        self.rocketdata = Block_data()
+        sectors_num = len(cfg.get_stages_list(block_num))
+        self.blocks = [Block() for _ in range(sectors_num)]
+        self.total = Block()
 
-    def set_length_dataset(self, length_datasets):
-        if len(length_datasets) != len(self.blocks):
+    def set_LengthData(self, LengthDatas):
+        if len(LengthDatas) != len(self.blocks):
             raise ValueError(
-                f"Число length-датасетов ({len(length_datasets)}) "
+                f"Число length-датасетов ({len(LengthDatas)}) "
                 f"не совпадает с числом блоков ({len(self.blocks)})"
             )
-        for block, length_ds in zip(self.blocks, length_datasets):
+        for block, length_ds in zip(self.blocks, LengthDatas):
             block.length_data = length_ds
 
-    def set_time_dataset(self, time_datasets):
-        if len(time_datasets) != len(self.blocks):
+    def set_TimeData(self, TimeDatas):
+        if len(TimeDatas) != len(self.blocks):
             raise ValueError(
-                f"Число time-датасетов ({len(time_datasets)}) "
+                f"Число time-датасетов ({len(TimeDatas)}) "
                 f"не совпадает с числом блоков ({len(self.blocks)})"
             )
-        for block, time_ds in zip(self.blocks, time_datasets):
+        for block, time_ds in zip(self.blocks, TimeDatas):
             block.time_data = time_ds
 
     def build_rocket(self, boosters_number):
@@ -87,8 +149,8 @@ class United_data:
             else sum(m.length_data.cumlengths[-1] for m in self.blocks[1:])
         )
 
-        self.rocketdata.length_data.lengths = [
-            i * basis.lenstep for i in range(int(rocket_length / basis.lenstep))
+        self.total.length_data.lengths = [
+            i * cfg.lenstep for i in range(int(rocket_length / cfg.lenstep))
         ]
 
         united_blocks = (
@@ -96,22 +158,22 @@ class United_data:
             else self.blocks + (boosters_number - 1) * [self.blocks[0]]
         )
         # time data
-        self.rocketdata.time_data.times = list(self.blocks[0].time_data.times)
-        self.rocketdata.time_data.masses = basis.calculate_sum(
+        self.total.time_data.times = list(self.blocks[0].time_data.times)
+        self.total.time_data.masses = u_math.calculate_sum(
             *(m.time_data.masses for m in united_blocks))
-        self.rocketdata.time_data.thrusts = basis.calculate_sum(
+        self.total.time_data.thrusts = u_math.calculate_sum(
             *(m.time_data.thrusts for m in united_blocks))
 
         # # --- статический момент всей ракеты ---
-        n_times = len(self.rocketdata.time_data.times)
+        n_times = len(self.total.time_data.times)
         n_blocks = len(self.blocks)
 
 # ---------------------------------------------------------------------------
 # Парсер
 # ---------------------------------------------------------------------------
 
-class Rocket_parser:
-    def __init__(self, rocket=basis.current_rocket):
+class Parser:
+    def __init__(self, rocket):
         json_filename = "rockets/" + rocket + "/constant.json"
 
         with open(json_filename, "r") as r_file:
@@ -167,11 +229,11 @@ class Rocket_parser:
 
         self._calculate_stage_parameters()
 
-        self.united_data = United_data(self.block_number)
-        self.united_data.set_length_dataset(self._distributed_handler())
-        self.united_data.set_time_dataset(self._flight_handler())
+        self.rocket = Rocket(self.block_number)
+        self.rocket.set_LengthData(self._distributed_handler())
+        self.rocket.set_TimeData(self._flight_handler())
 
-        self.united_data.build_rocket(self.boosters_number)
+        self.rocket.build_rocket(self.boosters_number)
 
     # ------------------------------------------------------------------ #
     # Параметры ступеней
@@ -193,12 +255,12 @@ class Rocket_parser:
 
         for k in range(self.block_number):
             self.fuel_density.append(
-                rocket_parser_utils.read_propellant_density(self.fuel_type[k]))
+                phys.read_propellant_density(self.fuel_type[k]))
             self.oxidizer_density.append(
-                rocket_parser_utils.read_propellant_density(self.oxidizer_type[k]))
+                phys.read_propellant_density(self.oxidizer_type[k]))
             mixture_ratio.append(
-                rocket_parser_utils.read_mixture_ratio(self.fuel_type[k],
-                                                       self.oxidizer_type[k]))
+                phys.read_mixture_ratio(self.fuel_type[k],
+                                        self.oxidizer_type[k]))
 
             full_propellant = (
                 self.block_mass[k] * self.structural_values[k]
@@ -257,7 +319,7 @@ class Rocket_parser:
     # Распределённые по длине параметры
     # ------------------------------------------------------------------ #
     def _distributed_handler(self):
-        start_ = Length_dataset()
+        start_ = LengthData()
 
         df = pd.read_csv(self.csv_filename)
         start_.lengths    = pd.to_numeric(df["L"], errors='coerce').tolist()
@@ -270,16 +332,16 @@ class Rocket_parser:
         if len(start_.cumlengths) != len(set(start_.cumlengths)):
             raise ValueError("Найдены одинаковые кумулятивные длины")
 
-        self.stages  = basis.get_stages_list(self.block_number)
-        self.classes = basis.get_classes_list()
+        self.stages  = cfg.get_stages_list(self.block_number)
+        self.classes = cfg.get_classes_list()
 
         self.stages_lengths = []
         class_stage_masses  = defaultdict(dict)
         for s in self.stages:
             self.stages_lengths.append(
-                rocket_parser_utils.get_stage_length(s, start_))
+                u_geometry.get_stage_length(s, start_))
             for c in self.classes:
-                class_stage_masses[c][s] = rocket_parser_utils.get_class_stage_mass(
+                class_stage_masses[c][s] = get_class_stage_mass(
                     self, c, s)
 
         shared_mass = sum(sum(inner.values()) for inner in class_stage_masses.values())
@@ -290,22 +352,22 @@ class Rocket_parser:
             raise ValueError(f"Неправильное распределение масс по ступеням: "
                              f"{shared_mass} vs {self.full_mass}")
 
-        dis_partial_ = [Length_dataset() for _ in range(len(self.stages))]
+        dis_partial_ = [LengthData() for _ in range(len(self.stages))]
 
         for b in range(len(dis_partial_)):
             li  = 0.0
             num = 0
 
-            while li < self.stages_lengths[b] - basis.accuracy:
-                step_len = min(basis.lenstep, self.stages_lengths[b] - li)
+            while li < self.stages_lengths[b] - cfg.accuracy:
+                step_len = min(cfg.lenstep, self.stages_lengths[b] - li)
 
-                cur_class    = rocket_parser_utils.get_local_class(
+                cur_class    = u_geometry.get_local_class(
                     self, self.stages[b], li, start_)
-                local_length = rocket_parser_utils.get_stageclass_length(
+                local_length = u_geometry.get_stageclass_length(
                     self.stages[b], cur_class, start_)
 
-                if local_length > basis.accuracy:
-                    mass_value = (rocket_parser_utils.get_class_stage_mass(
+                if local_length > cfg.accuracy:
+                    mass_value = (get_class_stage_mass(
                         self, cur_class, self.stages[b])
                         * step_len / local_length)
                 else:
@@ -319,10 +381,10 @@ class Rocket_parser:
                 dis_partial_[b].masses.append(mass_value)
                 dis_partial_[b].coords.append(Coord_element(li, step_len))
 
-                diameter = rocket_parser_utils.get_stage_diameter(self.stages[b], start_)
+                diameter = u_geometry.get_stage_diameter(self.stages[b], start_)
                 dis_partial_[b].diameters.append(diameter)
-                dis_partial_[b].stiffnesses.append(basis.calculate_stiffness(diameter))
-                area = basis.cross_sectional_area(diameter)
+                dis_partial_[b].stiffnesses.append(phys.calculate_stiffness(diameter))
+                area = phys.cross_sectional_area(diameter)
                 dis_partial_[b].areas.append(area)
                 dis_partial_[b].volumes.append(area * step_len)
 
@@ -332,7 +394,7 @@ class Rocket_parser:
         targets = [sum(class_stage_masses[c][s] for c in self.classes)
                    for s in self.stages]
         for b, ds in enumerate(dis_partial_):
-            basis.normalize_list(ds.masses, targets[b])
+            u_math.normalize_list(ds.masses, targets[b])
 
         return dis_partial_
 
@@ -352,7 +414,7 @@ class Rocket_parser:
         """
         n_stages = len(time_partial_)
         times    = time_partial_[0].times
-        tol      = basis.accuracy
+        tol      = cfg.accuracy
 
         parallel_ok = {0, 1} if self.is_packet else set()
 
@@ -383,19 +445,19 @@ class Rocket_parser:
     # ------------------------------------------------------------------ #
     def _flight_handler(self):
         n_stages      = len(self.stages)
-        time_partial_ = [Time_dataset() for _ in range(n_stages)]
+        time_partial_ = [TimeData() for _ in range(n_stages)]
 
         prop_reserve_full = list(self.prop_reserve) + \
                             [0.0] * (n_stages - len(self.prop_reserve))
 
-        init_masses = [list(self.united_data.blocks[b].length_data.masses)
+        init_masses = [list(self.rocket.blocks[b].length_data.masses)
                        for b in range(n_stages)]
 
         # Геометрия для моментов
         x_coords  = []
         r_half_sq = []
         for b in range(n_stages):
-            ld = self.united_data.blocks[b].length_data
+            ld = self.rocket.blocks[b].length_data
             x_coords.append(np.array([
                 ld.cumlengths[i] + ld.lengths[i] / 2.0
                 for i in range(len(ld.lengths))
@@ -417,15 +479,15 @@ class Rocket_parser:
                 # ------------------------------------------------------
                 is_active = False
                 if not is_payload:
-                    is_active = rocket_parser_utils.stage_is_active_at(
+                    is_active = stage_is_active_at(
                         self, index, time)
 
                 # ------------------------------------------------------
                 # 2. Интеграл горения на [time, time+dt] (для массы)
                 # ------------------------------------------------------
                 if is_active and self.work_time[index] > 0.0:
-                    active_dt = rocket_parser_utils.stage_active_dt(
-                        self, index, time, basis.timestep)
+                    active_dt = stage_active_dt(
+                        self, index, time, cfg.timestep)
                     remaining = self.work_time[index] - burn_time[index]
                     active_dt = max(0.0, min(active_dt, remaining))
                     if active_dt > 0.0:
@@ -450,12 +512,12 @@ class Rocket_parser:
                 else:
                     burn_ratio = 0.0
 
-                ld     = self.united_data.blocks[index].length_data
-                distro = rocket_parser_utils.fuel_distribution_by_level(
-                    self, ld, init_masses[index], burn_ratio,
+                ld     = self.rocket.blocks[index].length_data
+                distro = phys.fuel_distribution_by_level(
+                    ld, init_masses[index], burn_ratio,
                     reserve_fraction=prop_reserve_full[index],
                 )
-                basis.normalize_list(distro, tmp_mass[index])
+                u_math.normalize_list(distro, tmp_mass[index])
                 tp.distromasses.append(distro)
 
                 # ------------------------------------------------------
@@ -463,7 +525,7 @@ class Rocket_parser:
                 # ------------------------------------------------------
                 m = np.asarray(distro, dtype=float)
                 M = float(m.sum())
-                if M > basis.accuracy:
+                if M > cfg.accuracy:
                     x = x_coords[index]
                     R2 = r_half_sq[index]
 
@@ -483,7 +545,7 @@ class Rocket_parser:
                 tp.inertionsX.append(I_x)
                 tp.inertionsY.append(I_y)
 
-            time += basis.timestep
+            time += cfg.timestep
 
         # ------------------------------------------------------------------
         # Диагностика
@@ -493,7 +555,7 @@ class Rocket_parser:
             for t_idx in range(len(tp.times)):
                 s = sum(tp.distromasses[t_idx])
                 m = tp.masses[t_idx]
-                if abs(s - m) > basis.accuracy * max(1.0, abs(m)):
+                if abs(s - m) > cfg.accuracy * max(1.0, abs(m)):
                     print(f"[WARN] Ступень {index}, t={tp.times[t_idx]:.2f}: "
                           f"sum(distro)={s:.6f} vs mass={m:.6f}")
                     break
@@ -501,7 +563,7 @@ class Rocket_parser:
         # Конечная масса = сухая конструкция + reserve
         for k in range(n_stages - 1):
             expected = self.structural_mass[k] + self.reserve_mass[k]
-            if abs(tmp_mass[k] - expected) > basis.accuracy:
+            if abs(tmp_mass[k] - expected) > cfg.accuracy:
                 print(f"[WARN] Ступень {k}: {tmp_mass[k]} vs {expected}")
 
         # Проверка изоляции тяг
@@ -517,12 +579,12 @@ class Rocket_parser:
 def plot_stage_parameters(rp):
     fig1, ax1 = plt.subplots(3, 2)
 
-    n_blocks = len(rp.united_data.blocks)
+    n_blocks = len(rp.Rocket.blocks)
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[0, 0].plot(rp.united_data.blocks[i].time_data.times,
-                       rp.united_data.blocks[i].time_data.masses,
+        ax1[0, 0].plot(rp.Rocket.blocks[i].time_data.times,
+                       rp.Rocket.blocks[i].time_data.masses,
                        label=label)
     ax1[0, 0].set_xlabel("Время, с")
     ax1[0, 0].set_ylabel("Масса, кг")
@@ -531,8 +593,8 @@ def plot_stage_parameters(rp):
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[1, 0].plot(rp.united_data.blocks[i].time_data.times,
-                       rp.united_data.blocks[i].time_data.thrusts,
+        ax1[1, 0].plot(rp.Rocket.blocks[i].time_data.times,
+                       rp.Rocket.blocks[i].time_data.thrusts,
                        label=label)
     ax1[1, 0].set_xlabel("Время, с")
     ax1[1, 0].set_ylabel("Тяга, Н")
@@ -541,8 +603,8 @@ def plot_stage_parameters(rp):
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[2, 0].plot(rp.united_data.blocks[i].time_data.times,
-                       rp.united_data.blocks[i].time_data.statics,
+        ax1[2, 0].plot(rp.Rocket.blocks[i].time_data.times,
+                       rp.Rocket.blocks[i].time_data.statics,
                        label=label)
     ax1[2, 0].set_xlabel("Время, с")
     ax1[2, 0].set_ylabel("Статический момент, кг·м")
@@ -551,8 +613,8 @@ def plot_stage_parameters(rp):
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[0, 1].plot(rp.united_data.blocks[i].time_data.times,
-                       rp.united_data.blocks[i].time_data.inertionsX,
+        ax1[0, 1].plot(rp.Rocket.blocks[i].time_data.times,
+                       rp.Rocket.blocks[i].time_data.inertionsX,
                        label=label)
     ax1[0, 1].set_xlabel("Время, с")
     ax1[0, 1].set_ylabel("Продольный момент, кг·м2")
@@ -561,8 +623,8 @@ def plot_stage_parameters(rp):
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[1, 1].plot(rp.united_data.blocks[i].time_data.times,
-                       rp.united_data.blocks[i].time_data.inertionsY,
+        ax1[1, 1].plot(rp.Rocket.blocks[i].time_data.times,
+                       rp.Rocket.blocks[i].time_data.inertionsY,
                        label=label)
     ax1[1, 1].set_xlabel("Время, с")
     ax1[1, 1].set_ylabel("Поперечный момент, кг·м2")
@@ -571,8 +633,8 @@ def plot_stage_parameters(rp):
 
     for i in range(n_blocks):
         label = "ГО" if i == n_blocks - 1 else f"Ступень {i + 1}"
-        ax1[2, 1].plot(rp.united_data.blocks[i].time_data.times,
-                       rp.united_data.blocks[i].time_data.centers,
+        ax1[2, 1].plot(rp.Rocket.blocks[i].time_data.times,
+                       rp.Rocket.blocks[i].time_data.centers,
                        label=label)
     ax1[2, 1].set_xlabel("Время, с")
     ax1[2, 1].set_ylabel("Центр масс, м")
@@ -586,36 +648,36 @@ def plot_stage_parameters(rp):
 def plot_rocket_parameters(rp):
     fig1, ax1 = plt.subplots(4, 1)
 
-    ax1[0].plot(rp.united_data.rocketdata.time_data.times,
-                rp.united_data.rocketdata.time_data.masses)
+    ax1[0].plot(rp.Rocket.total.time_data.times,
+                rp.Rocket.total.time_data.masses)
     ax1[0].set_xlabel("Время, с")
     ax1[0].set_ylabel("Масса, кг")
     ax1[0].grid(True)
 
-    ax1[1].plot(rp.united_data.rocketdata.time_data.times,
-                rp.united_data.rocketdata.time_data.thrusts)
+    ax1[1].plot(rp.Rocket.total.time_data.times,
+                rp.Rocket.total.time_data.thrusts)
     ax1[1].set_xlabel("Время, с")
     ax1[1].set_ylabel("Тяга, Н")
     ax1[1].grid(True)
 
-    ax1[2].plot(rp.united_data.rocketdata.time_data.times,
-                rp.united_data.rocketdata.time_data.statics)
-    ax1[2].set_xlabel("Время, с")
-    ax1[2].set_ylabel("Стат момент, кг м")
-    ax1[2].grid(True)
+    # ax1[2].plot(rp.Rocket.total.time_data.times,
+    #             rp.Rocket.total.time_data.statics)
+    # ax1[2].set_xlabel("Время, с")
+    # ax1[2].set_ylabel("Стат момент, кг м")
+    # ax1[2].grid(True)
 
-    ax1[3].plot(rp.united_data.rocketdata.time_data.times,
-                rp.united_data.rocketdata.time_data.centers)
-    ax1[3].set_xlabel("Время, с")
-    ax1[3].set_ylabel("Центр масс, м")
-    ax1[3].grid(True)
+    # ax1[3].plot(rp.Rocket.total.time_data.times,
+    #             rp.Rocket.total.time_data.centers)
+    # ax1[3].set_xlabel("Время, с")
+    # ax1[3].set_ylabel("Центр масс, м")
+    # ax1[3].grid(True)
 
     fig1.tight_layout()
     plt.show()
 
 
 def plot_distromasses_parameters(rp):
-    n_blocks = len(rp.united_data.blocks)
+    n_blocks = len(rp.Rocket.blocks)
     fig2, axes = plt.subplots(n_blocks, 1, squeeze=False)
     axes = axes.ravel()
 
@@ -623,7 +685,7 @@ def plot_distromasses_parameters(rp):
     end_color   = [0.05, 0.05, 0.30]
 
     for b in range(n_blocks):
-        block = rp.united_data.blocks[b]
+        block = rp.Rocket.blocks[b]
         ld    = block.length_data
         td    = block.time_data
         is_payload = (b == n_blocks - 1)
@@ -637,7 +699,7 @@ def plot_distromasses_parameters(rp):
             t_start = 0.0 if (b == 0 or (rp.is_packet and b == 1)) else rp.step_time[b - 1]
 
         times_arr = np.array(td.times)
-        mask    = (times_arr >= t_start - basis.accuracy) & (times_arr <= t_end + basis.accuracy)
+        mask    = (times_arr >= t_start - cfg.accuracy) & (times_arr <= t_end + cfg.accuracy)
         n_local = int(mask.sum())
 
         if n_local == 0:
@@ -655,7 +717,7 @@ def plot_distromasses_parameters(rp):
 
         for i, k in enumerate(snap_idx):
             color = start_color if n_snap == 1 else \
-                    basis.interpolate_color(start_color, end_color, i, n_snap)
+                    u_plot.interpolate_color(start_color, end_color, i, n_snap)
             if is_payload:
                 lbl = "ГО"
             elif i == 0 or i == n_snap - 1:
@@ -681,7 +743,11 @@ def plot_distromasses_parameters(rp):
 
 
 def main():
-    rp = Rocket_parser()
+    # rocket_sequence = []
+    # for r in cfg.available_rockets:
+    #     rocket_sequence.append(Parser(r))
+
+    rp = Parser('soyuz21b') # pocket
 
     root = tk.Tk()
     sv_ttk.set_theme("dark")
