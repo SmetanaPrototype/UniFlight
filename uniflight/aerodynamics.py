@@ -1,11 +1,15 @@
 from matplotlib.cm import Reds
 import matplotlib.pyplot as plt
-import atmosphere
-import rocket_parser as rp
+import properties as rp
 import numpy as np
-import basis
-import atmosphere as atmo
+import utils.atmosphere as atmo
+import utils.math as u_math
+import utils.io as u_iostream
 # import aeroelasticity
+
+def aerostat_file(filename):
+    df = pd.read_csv(filename)
+    return df.T.values.tolist()
 
 class Element:
     def __init__(self):
@@ -237,18 +241,18 @@ class Pressure(Geometry):
                 return 0
             return 0.0155 / np.sqrt(self.cif * self.num * self.full_ratio)
         else:
-            data = basis.aerostat_file("resources/" + "HeadPressure.csv")
+            data = aerostat_file("resources/" + "HeadPressure.csv")
             # 7-й столбец (индекс 6) - как в исходнике
             return self.interpolate_Mach(Mach, [data[0], data[6]])
 
     def head_Cpres(self, Mach):
-        data = basis.aerostat_file("resources/" + "HeadPressure.csv")
+        data = aerostat_file("resources/" + "HeadPressure.csv")
         ratio = self.elem[0].ratio
         H_current = self.select_ratio_data_pressure(ratio, data)
         return self.interpolate_Mach(Mach, H_current)
 
     def triangle_Cpres(self, Mach, ratio):
-        data = basis.aerostat_file("resources/" + "TrianglePressure.csv")
+        data = aerostat_file("resources/" + "TrianglePressure.csv")
         H_current = self.select_ratio_data_triangle(ratio, data)
         return self.interpolate_Mach(Mach, H_current)
 
@@ -265,7 +269,7 @@ class Pressure(Geometry):
 class Inductance(Geometry):
     def E_pressure(self, angle, Mach):
         N = 10
-        data = basis.aerostat_file("resources/" + "EPressure.csv")
+        data = aerostat_file("resources/" + "EPressure.csv")
         Mach_v = data[0]
         H_head = data[1]
         H_cone = data[2]
@@ -309,7 +313,7 @@ class Inductance(Geometry):
 
 class LiftForce(Inductance):
     def head_lift(self, Mach):
-        data = basis.aerostat_file("resources/" + "HeadNormal.csv")
+        data = aerostat_file("resources/" + "HeadNormal.csv")
         Mah_v = data[0]
         H_0 = data[1]
         H_05 = data[2]
@@ -381,7 +385,7 @@ class LiftForce(Inductance):
 
     def triangle_lift(self, Mach, ratio, index):
         N = 9
-        data = basis.aerostat_file("resources/" + "TriangleNormal.csv")
+        data = aerostat_file("resources/" + "TriangleNormal.csv")
         Mah_v = data[0]
         H_0 = data[1]
         H_1 = data[2]
@@ -571,17 +575,17 @@ class UnionStream(DragForce, LiftForce):
 
             self.liftprofile.append(cy)
             self.lengthprofile.append(li)
-            li += basis.lenstep
+            li += config.lenstep
 
     def get_cya_from_coord(self, x):
-        return basis.get_y(x, self.lengthprofile, self.liftprofile)
+        return u_math.get_y(x, self.lengthprofile, self.liftprofile)
 
 def loc_calc():
-    parser = rp.Rocket_parser()
+    props = rp.Properties("amur")
     G = UnionStream()
-    G.set_elnumber(parser.get_block_number() + 1)
-    G.set_diameter(parser.get_part_diameters())
-    G.set_length(parser.get_part_length())
+    G.set_elnumber(props.get_block_number() + 1)
+    G.set_diameter(props.get_part_diameters())
+    G.set_length(props.get_part_length())
     arrayVelocity = [200, 1000, 2000]
     altitudes = [5, 25, 45]
 
@@ -597,8 +601,8 @@ def loc_calc():
         print(f"xf = {G.focus_position:6.1f}")
         l[i] = G.liftprofile
 
-    rocketname = parser.name
-    basis.write_arrays_to_csv("output/"+rocketname+"_aero.csv",
+    rocketname = props.name
+    u_iostream.write_arrays_to_csv("output/"+rocketname+"_aero.csv",
                                 length   =G.lengthprofile,
                                 cy1      =l[0],
                                 cy2      =l[1],
@@ -607,12 +611,12 @@ def loc_calc():
 
 
 def main():
-    parser = rp.Rocket_parser()
-    parser.get_data(is_booster = False)
+    props = rp.Properties("amur")
+    props.get_data(is_booster = False)
     G = UnionStream()
-    G.set_elnumber(parser.get_block_number() + 1)
-    G.set_diameter(parser.get_part_diameters())
-    G.set_length(parser.get_part_length())
+    G.set_elnumber(props.get_block_number() + 1)
+    G.set_diameter(props.get_part_diameters())
+    G.set_length(props.get_part_length())
 
     arrayVelocity = [96,118,187]
     altitudes = [1, 1.5, 3]
@@ -685,8 +689,8 @@ def main():
         # focus_lines.append(line4)
         legend_labels.append(label)
 
-        basis.write_arrays_to_csv(
-            "output/"+basis.current_rocket+"_"+str(alt)+"stat.csv",
+        u_iostream.write_arrays_to_csv(
+            "output/"+"amur"+str(alt)+"stat.csv",
             mach=get_machvec(alt),
             cx=CX_list,
             cy=CY_list
